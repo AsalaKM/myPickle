@@ -1,11 +1,16 @@
 {
   "name": "mypickle",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd server && npm run start",
+    "build": "cd client && npm run build",
+    "dev:start": "cd server && npm run dev:start",
+    "dev:both": "concurrently --kill-others-on-fail \"cd client && npm run start\" \"npm run dev:start\" ",
+    "test:client": "cd client && npm test",
+    "client:init": "cd client && npm i",
+    "coverage": "codecov"
   },
   "repository": {
     "type": "git",
@@ -17,37 +22,8 @@
     "url": "https://github.com/techforbetter/myPickle/issues"
   },
   "homepage": "https://github.com/techforbetter/myPickle#readme",
-  "standard": {
-    "ignore": [
-      "**/out/",
-      "node_modules/",
-      "/lib/select2/",
-      "/lib/ckeditor/",
-      "tmp.js"
-    ]
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "codecov": "^3.1.0",
-    "concurrently": "^4.1.0",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "env2": "^2.2.2",
-    "express": "~4.16.0",
-    "morgan": "~1.9.0"
-  },
   "devDependencies": {
-    "eslint": "^5.10.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "istanbul": "^0.4.5",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.7",
-    "supertest": "^3.3.0"
+    "codecov": "^3.1.0",
+    "concurrently": "^4.1.0"
   }
 }

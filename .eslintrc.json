@@ -6,7 +6,7 @@
     "plugin:jsx-a11y/recommended",
     "prettier"
   ],
-  "plugins": ["prettier", "jsx-a11y", "import", "react"],
+  "plugins": ["prettier", "jsx-a11y", "import", "react", "flowtype"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,

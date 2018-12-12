@@ -1,8 +1,5 @@
-## Checklist for PR
-
 <!-- Changes can be made to this template in PULL_REQUEST_TEMPLATE.md -->
-
-## Criteria
+## Checklist Criteria
 - [ ] **Branch is up to date with master**
 - [ ] **The project runs**
 - - [ ] You can download and install locally, and run the project locally

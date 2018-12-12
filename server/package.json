@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "dev:start": "nodemon ./bin/www",
     "test": "NODE_ENV=test jest --detectOpenHandles --forceExit --runInBand",
-    "test:coverage": "NODE_ENV=test  jest --coverage --detectOpenHandles --forceExit --runInBand"
+    "test:coverage": "NODE_ENV=test  jest --coverage --collectCoverage --detectOpenHandles --forceExit --runInBand"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,14 @@
     ]
   },
   "jest": {
-    "testRegex": "__test__/*",
+    "testRegex": "/*.test.js",
     "coverageDirectory": "./coverage/",
     "collectCoverageFrom": [
-      "**/__test__/*.test.js"
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/app.js",
+      "!**/coverage/**",
+      "!**/bin/**"
     ]
   },
   "dependencies": {
@@ -46,6 +50,7 @@
   },
   "devDependencies": {
     "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
     "istanbul": "^0.4.5",
     "jest": "^23.6.0",
     "nodemon": "^1.18.7",

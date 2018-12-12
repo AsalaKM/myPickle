@@ -18,10 +18,9 @@ body {
   font-family: "Merriweather Sans", sans-serif;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-} */
-
+html {
+  background-color: var(--white);
+}
 /* Colors */
 
 /* the below are the core colours if needed if classes below don't cover what you need */

@@ -1,0 +1,31 @@
+## Checklist for PR
+
+<!-- Changes can be made to this template in PULL_REQUEST_TEMPLATE.md -->
+
+## Criteria
+- [ ] **Branch is up to date with master**
+- [ ] **The project runs**
+- - [ ] You can download and install locally, and run the project locally
+- - [ ] All existing and new features run without bugs
+- - [ ] The build script runs without error
+- - [ ] (If the project is already deployed to Heroku) the branch to be merged can deploy successfully to Heroku
+- [ ] **Code is consistent**
+- - [ ] Linter is used, no error messages
+- - [ ] Code is consistent with agreed team style
+- - [ ] Naming of files is consistent with project (e.g. all files named with camelCase)
+- [ ] **Tests are in place**
+- - [ ] Test file is in the same folder as the original file, with the extension .test.js
+- - [ ] Each new file written has a test file (where possible)
+- [ ] **Tests all pass**
+- - [ ] All tests should pass locally and on Travis
+- - [ ] Edge cases have been considered in tests
+- [ ] **Test coverage is maintained**
+- - [ ] Project coverage stays > 95%
+- - [ ] PR will not bring down coverage by more than 1%
+- - [ ] Files and lines of code have been ignored if they cannot be tested
+- - [ ] If you are stuck with writing tests, you have assigned @arrested-developer to the PR and added a comment to explain what help is needed
+- [ ] **No console logs**
+- - [ ] Console.log is only used for crucial system messages (e.g. which port server is on).
+- - [ ] Any console.logs used for debugging have been removed.
+- - [ ] Console.error is used in error handling.
+- - [ ] global.console.log and global.console.error are mocked in tests when needed to avoid littering the console

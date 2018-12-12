@@ -12,7 +12,7 @@ install:
 before_script:
   - npm run build
 script:
-  - npm run test:client
+  - npm run test:both
 on:
   branch: master
 

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev:start": "nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test jest --detectOpenHandles --forceExit --runInBand",
+    "test:coverage": "NODE_ENV=test  jest --coverage --detectOpenHandles --forceExit --runInBand"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,13 @@
       "tmp.js"
     ]
   },
+  "jest": {
+    "testRegex": "__test__/*",
+    "coverageDirectory": "./coverage/",
+    "collectCoverageFrom": [
+      "**/__test__/*.test.js"
+    ]
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "codecov": "^3.1.0",
@@ -39,6 +47,7 @@
   "devDependencies": {
     "eslint": "^5.10.0",
     "istanbul": "^0.4.5",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.7",
     "supertest": "^3.3.0"
   }

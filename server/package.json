@@ -1,0 +1,59 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev:start": "nodemon ./bin/www",
+    "test": "NODE_ENV=test jest --detectOpenHandles --forceExit --runInBand",
+    "test:coverage": "NODE_ENV=test  jest --coverage --collectCoverage --detectOpenHandles --forceExit --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techforbetter/myPickle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techforbetter/myPickle/issues"
+  },
+  "homepage": "https://github.com/techforbetter/myPickle#readme",
+  "standard": {
+    "ignore": [
+      "**/out/",
+      "node_modules/",
+      "/lib/select2/",
+      "/lib/ckeditor/",
+      "tmp.js"
+    ]
+  },
+  "jest": {
+    "testRegex": "/*.test.js",
+    "coverageDirectory": "./coverage/",
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/app.js",
+      "!**/coverage/**",
+      "!**/bin/**"
+    ]
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "codecov": "^3.1.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "env2": "^2.2.2",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "istanbul": "^0.4.5",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.7",
+    "supertest": "^3.3.0"
+  }
+}

@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+  - npm run both:init
+
+before_script:
+  - npm run build
+script:
+  - npm run test:both
+on:
+  branch: master
+
+after_success:
+  - npm run coverage
+services:
+  - mongodb

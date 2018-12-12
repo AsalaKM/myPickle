@@ -1,0 +1,41 @@
+{
+  "name": "mypickle",
+  "version": "1.0.0",
+  "description": "[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)",
+  "main": "index.js",
+  "scripts": {
+    "toClient": "cd client",
+    "start": "cd server && npm run start",
+    "build": "cd client && npm run build",
+    "dev:servStart": "cd server && npm run dev:start",
+    "dev:viewStart": "cd client && npm start",
+    "dev:both": "concurrently --kill-others-on-fail \"npm run dev:viewStart\" \"npm run dev:servStart\" ",
+    "test:client:coverage": "cd client && npm run test:client",
+    "client:init": "cd client && npm i",
+    "server:init": "cd server && npm i",
+    "root:init": "npm i",
+    "both:init": "npm run client:init && npm run server:init && npm run root:init",
+    "test:server:coverage": "cd server && npm run test:coverage",
+    "test:both": "npm run test:client:coverage && npm run test:server:coverage",
+    "coverage": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techforbetter/myPickle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techforbetter/myPickle/issues"
+  },
+  "homepage": "https://github.com/techforbetter/myPickle#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "prettier": "^1.15.3",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0"
+  },
+  "dependencies": {
+    "codecov": "^3.1.0"
+  }
+}

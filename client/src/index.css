@@ -1,10 +1,141 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Fonts */
+/* headerText */
+
+@font-face {
+  font-family: "Gosmick Sans";
+  src: url("./assets/fonts/GosmickSans.ttf") format("truetype");
 }
 
-code {
+h1,
+h2 {
+  font-family: "Gosmick Sans", sans-serif;
+}
+
+/* mainText */
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700");
+
+body {
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+} */
+
+/* Colors */
+
+/* the below are the core colours if needed if classes below don't cover what you need */
+:root {
+  --primary: #53dd6c;
+  --darkPrimary: #4ea95f;
+  --lightPrimary: #91e9a1;
+  --secondary: #f7f161;
+  --alert: #ff0022;
+  --white: #f8fbfa;
+  --black: #2a2b2e;
+  --gray: #e8ede9;
+}
+
+/* Colors as classes - preferred way to apply color */
+
+/* Text colors */
+
+.mp-primary-color {
+  color: #53dd6c;
+}
+
+.mp-primary-color-dark {
+  color: #4ea95f;
+}
+
+.mp-primary-color-light {
+  color: #91e9a1;
+}
+
+.mp-secondary-color {
+  color: #f7f161;
+}
+
+.mp-alert-color {
+  color: #ff0022;
+}
+
+.mp-white-color {
+  color: #f8fbfa;
+}
+
+.mp-black-color {
+  color: #2a2b2e;
+}
+
+.mp-gray-color {
+  color: #e8ede9;
+}
+
+/* Background Colors */
+
+.mp-bg-primary {
+  background-color: #53dd6c;
+}
+
+.mp-bg-primary-dark {
+  background-color: #4ea95f;
+}
+
+.mp-bg-primary-light {
+  background-color: #91e9a1;
+}
+
+.mp-bg-secondary {
+  background-color: #f7f161;
+}
+
+.mp-bg-alert {
+  background-color: #ff0022;
+}
+
+.mp-bg-white {
+  background-color: #f8fbfa;
+}
+
+.mp-bg-black {
+  background-color: #2a2b2e;
+}
+
+.mp-bg-gray {
+  background-color: #e8ede9;
+}
+
+/* Border Colors */
+
+.mp-b--primary-color {
+  border-color: #53dd6c;
+}
+
+.mp-b--primary-dark {
+  border-color: #4ea95f;
+}
+
+.mp-b--primary-light {
+  border-color: #91e9a1;
+}
+
+.mp-b--secondary {
+  border-color: #f7f161;
+}
+
+.mp-b--alert {
+  border-color: #ff0022;
+}
+
+.mp-b--white {
+  border-color: #f8fbfa;
+}
+
+.mp-b--black {
+  border-color: #2a2b2e;
+}
+
+.mp-b--gray {
+  border-color: #e8ede9;
 }

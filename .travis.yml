@@ -7,7 +7,7 @@ cache:
 
 install:
   - npm install
-  - npm run client:init
+  - npm run both:init
 
 before_script:
   - npm run build

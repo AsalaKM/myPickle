@@ -4,7 +4,6 @@ import { Intro, Button, CircleLarge, CirclesContainer, CircleMed, CircleSm } fro
 
 export default class RegisterIntro extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
         <Intro>

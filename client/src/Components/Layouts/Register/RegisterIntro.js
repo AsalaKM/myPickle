@@ -4,7 +4,6 @@ import { Intro, Button } from "./Register.style"
 
 export default class RegisterIntro extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <Intro>
         <h2 className="tc mp-primary-color">Welcome to myPickle</h2>

@@ -2,6 +2,11 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import img from "../../../assets/pickle_logo.png"
 
+const LandingDiv = styled.div`
+  display: flex;
+  height: 100%;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,4 +70,4 @@ const Button = styled(Link).attrs({
   }
 `
 
-export { TextLink, Paragraph, Logo, Heading, Container, ButtonWrapper, Button }
+export { TextLink, Paragraph, Logo, Heading, Container, ButtonWrapper, Button, LandingDiv }

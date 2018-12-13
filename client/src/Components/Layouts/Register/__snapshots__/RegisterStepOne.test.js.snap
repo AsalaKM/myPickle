@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register matches snapshot 1`] = `
+Array [
+  <div
+    className="sc-bdVaJa flex flex-column items-center ph3 NjJhJ"
+  >
+    <h2
+      className="tc mp-primary-color"
+    >
+      Wellness Areas
+    </h2>
+    <p>
+      So we can customize your profile, please select the area(s) of wellness where you provide support.
+    </p>
+  </div>,
+  <div
+    className="sc-EHOje bCBdnp"
+  >
+    <div
+      className="sc-htpNat mp-b--primary-color klKWzH"
+    />
+    <div
+      className="sc-htpNat sc-bxivhb mp-b--primary-color dzjdHN"
+    />
+    <div
+      className="sc-htpNat sc-ifAKCX mp-b--primary-color jvwKmB"
+    />
+  </div>,
+  <div
+    className="flex items-center justify-between w-100"
+  >
+    <button
+      className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+    >
+      Back
+    </button>
+    <button
+      className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+    >
+      Next
+    </button>
+  </div>,
+]
+`;

@@ -6,6 +6,12 @@ const Schema = mongoose.Schema
 // Defines what kind of survey gets created: Pre(0), 1, 2 or 3
 
 const QuestionSchema = new Schema({
+  // this is where we link the question to the SupportType
+  supportType: {
+    // connect each question to the type of support (e.g. therapist)
+    type: Schema.Types.ObjectId, //FK ref the id in the SupportType model
+    ref: "supportTypes", // this says which model to go into
+  },
   // this is the text of the question
   questionText: {
     type: String,
@@ -29,11 +35,11 @@ const QuestionSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  // this is the section it falls into (e.g. Basic Info, Support Details)
   category: {
     type: String,
     required: true,
   },
-  // NEED TO PUT IN SUPPORT TYPE FK ONCE SUPPORT MODEL IS CREATED
 })
 
-module.exports = Question = mongoose.model("questions", QuestionSchema)
+module.exports = ProfileQuestion = mongoose.model("questions", QuestionSchema)

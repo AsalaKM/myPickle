@@ -54,7 +54,7 @@ const buildProfileQuestions = async () => {
       category: "Wellness Area",
     },
     {
-      supportType: generalType._id,
+      supportType: therapistType._id,
       questionText: "Contact name",
       inputType: "checkbox",
       options: [

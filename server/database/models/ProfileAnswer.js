@@ -15,7 +15,7 @@ const AnswerSchema = new Schema({
   question: {
     // connect each answer to the exact question they're answering
     type: Schema.Types.ObjectId, //FK ref the id in the Profile model
-    ref: "profiles", // this says which model to go into
+    ref: "questions", // this says which model to go into
   },
   // this is the answer the user has given us (this could be test, an array or an object)
   answer: {

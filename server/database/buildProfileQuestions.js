@@ -23,10 +23,54 @@ const buildProfileQuestions = async () => {
     },
   ])
 
+  const therapistType = await SupportType.findOne({
+    type: "Therapist",
+  })
+
+  const generalType = await SupportType.findOne({
+    type: "General",
+  })
+
   console.log("support created")
 
   // insert all the questions!
-  // await ProfileQuestion.insertMany([{}])
+  await ProfileQuestion.insertMany([
+    {
+      supportType: generalType._id,
+      questionText: "Please select your area(s) of wellness",
+      inputType: "checkbox",
+      helperText: "You can select as many as you like",
+      options: [
+        "Emotional",
+        "Social",
+        "Physical",
+        "Financial",
+        "Spiritual",
+        "Intellectual",
+        "Environmental",
+        "Occupational",
+      ],
+      isRequired: true,
+      category: "Wellness Area",
+    },
+    {
+      supportType: generalType._id,
+      questionText: "Contact name",
+      inputType: "checkbox",
+      options: [
+        "Emotional",
+        "Social",
+        "Physical",
+        "Financial",
+        "Spiritual",
+        "Intellectual",
+        "Environmental",
+        "Occupational",
+      ],
+      isRequired: true,
+      category: "Wellness Area",
+    },
+  ])
 }
 
 buildProfileQuestions().catch(err => console.log(err))

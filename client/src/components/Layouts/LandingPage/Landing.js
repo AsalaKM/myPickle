@@ -18,7 +18,6 @@ const LandingPage = () => (
     <Navbar />
     <Container>
       <Logo />
-
       <Heading>My Pickle</Heading>
       <Paragraph>
         My Pickle brings together therapists and those who want their help. Find therapists, read

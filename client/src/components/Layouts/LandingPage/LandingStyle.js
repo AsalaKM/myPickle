@@ -22,7 +22,7 @@ const Logo = styled.div`
   margin: auto;
   width: 139px;
   height: 174px;
-  background: url(${img}) no-repeat;
+  background: url(${img}) no repeat;
   background-size: cover;
 `
 

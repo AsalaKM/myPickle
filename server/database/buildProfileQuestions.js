@@ -75,6 +75,7 @@ const buildProfileQuestions = async () => {
     {
       supportType: generalType._id,
       questionText: "What best describes your core service offering?",
+      helperText: "Check all that apply to your core offering",
       options: [
         "Qualified therapy or counselling service",
         "Practical support",
@@ -734,7 +735,7 @@ const buildProfileQuestions = async () => {
     },
     {
       supportType: therapistType._id,
-      questionText: "Cost per session (per hour approx)",
+      questionText: "Accepted insurance plans",
       options: [
         "None",
         "AXA-PPP",

@@ -33,10 +33,10 @@ const QuestionSchema = new Schema({
   // this is where we say whether the question must be answered by the user or is optional
   isRequired: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   // this is the section it falls into (e.g. Basic Info, Support Details)
-  category: {
+  section: {
     type: String,
     required: true,
   },

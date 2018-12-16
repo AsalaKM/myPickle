@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa kyYzhX"
+>
+  <img
+    className="sc-htpNat EDNKe"
+    onClick={[Function]}
+    src="home.svg"
+  />
+  <img
+    className="sc-ifAKCX cvVEVs"
+    src="logo.jpg"
+  />
+  <h2
+    className="sc-EHOje coqnlr"
+  >
+    myPikle
+  </h2>
+  <form
+    className="sc-bwzfXH fcrouA"
+  >
+    <input
+      className="sc-bxivhb hxAQZq"
+      name="email"
+      onChange={[Function]}
+      placeholder="Your Email"
+      type="email"
+      value=""
+    />
+    <br />
+    <input
+      className="sc-bxivhb hxAQZq"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value=""
+    />
+    <br />
+  </form>
+  <button
+    className="sc-bZQynM hLkwAS"
+  >
+    Login
+  </button>
+  <a
+    href="/register"
+    onClick={[Function]}
+  >
+    Create new acccount!
+  </a>
+</div>
+`;

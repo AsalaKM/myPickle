@@ -5,6 +5,12 @@ class Login extends Component {
     email : '',
     password : ''
   }
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+     });
+  }
+
 
   render() {
     return (
@@ -14,6 +20,7 @@ class Login extends Component {
         placeholder='Your Email'
         name='email'
         value={this.state.email}
+        onChange={this.onChange}
         />
         <br/>
         <input
@@ -21,6 +28,7 @@ class Login extends Component {
         placeholder='Password'
         name='password'
         value={this.state.password}
+        onChange={this.onChange}
          />
         <br/>
         <button>Login</button>

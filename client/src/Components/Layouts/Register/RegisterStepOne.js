@@ -4,8 +4,7 @@ import { Intro, Button } from "./Register.style"
 
 export default class RegisterIntro extends React.Component {
   render() {
-    const { wellnessQuestion, handleChange, answers } = this.props
-    console.log(wellnessQuestion)
+    const { wellnessQuestion, handleChange, answers, checkStage, unanswered } = this.props
     return (
       <React.Fragment>
         <Intro>
@@ -14,6 +13,13 @@ export default class RegisterIntro extends React.Component {
             So we can customize your profile, please select the area(s) of wellness where you
             provide support.
           </p>
+          {unanswered && unanswered.includes(wellnessQuestion._id) ? (
+            <div className="required">
+              <p>Please answer this question</p>
+            </div>
+          ) : (
+            ""
+          )}
         </Intro>
         {/* <CirclesContainer>
           <CircleLarge />
@@ -42,7 +48,7 @@ export default class RegisterIntro extends React.Component {
           <Button id="prev-btn" onClick={this.props.handlePrevious}>
             Back
           </Button>
-          <Button className="next-btn" onClick={this.props.handleNext}>
+          <Button className="next-btn" onClick={checkStage}>
             Next
           </Button>
         </div>

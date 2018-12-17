@@ -37,7 +37,7 @@
       "!**/node_modules/",
       "!**/__snapshots__/**",
       "!**/src/index.js",
-      "!**/src/components/App/index.js",
+      "!**/src/Components/App/index.js",
       "!**/src/serviceWorker.js"
     ],
     "snapshotSerializers": [

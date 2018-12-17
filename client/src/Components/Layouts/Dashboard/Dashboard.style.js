@@ -1,8 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
-
-export const Container = styled.div
- `
+export const Container = styled.div`
  display: flex;
  flex-direction: column;
  height: 470px;
@@ -10,10 +8,9 @@ export const Container = styled.div
  margin: 0 auto;
  margin-top:100px;
 
-`
+`;
 
-export const Button = styled.button
-`
+export const Button = styled.button`
 height: 50px;
 width: 100%;
 border-radius: 9px;
@@ -24,12 +21,11 @@ background: #f8fbfa;
 box-shadow:1px 1px green;
 font-size: 18px;
 
-`
-export const Logout = styled.button
-`
+`;
+export const Logout = styled.button`
 height: 50px;
 width: 100%;
 border: none;
 border-radius: 5px;
 background:#ff0022;
-`
+`;

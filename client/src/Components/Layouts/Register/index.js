@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import swal from "sweetalert"
 
 import RegisterIntro from "./RegisterIntro"
 import RegisterStepOne from "./RegisterStepOne"
@@ -66,11 +67,14 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { history } = this.props
     const { registerAnswers } = this.state
 
     axios
-      .post("/submit/", registerAnswers)
-      .then(result => console.log(result))
+      .post("/register-user", registerAnswers)
+      .then(result => {
+        swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
+      })
       .catch(err => console.log(err))
   }
 

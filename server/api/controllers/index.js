@@ -3,6 +3,7 @@ const express = require("express")
 const router = express.Router()
 
 const registerController = require("./registerController")
+const registerUserController = require("./registerUserController")
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -10,5 +11,7 @@ router.get("/", (req, res, next) => {
 })
 
 router.use("/get-register-questions", registerController)
+
+router.use("/register-user", registerUserController)
 
 module.exports = router

@@ -38,7 +38,9 @@
       "!**/coverage/**",
       "!**/bin/**",
       "!**/dummy_data_build.js",
-      "!**/buildProfileQuestions.js"
+      "!**/buildProfileQuestions.js",
+      "!**/models/**",
+      "!**/db_connection.js"
     ]
   },
   "dependencies": {

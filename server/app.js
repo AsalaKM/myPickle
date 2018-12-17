@@ -2,6 +2,10 @@ const express = require("express")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 
+const dbConnection = require("./database/db_connection")
+
+dbConnection()
+
 const controllers = require("./api/controllers/index")
 
 const app = express()

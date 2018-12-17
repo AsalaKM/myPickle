@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import RegisterIntro from "./RegisterIntro"
 import RegisterStepOne from "./RegisterStepOne"
+import RegisterStepTwo from "./RegisterStepTwo"
 
 import axios from "axios"
 
@@ -20,6 +21,7 @@ class Register extends Component {
   }
 
   handleChange = option => {
+    // set up id of input field as the name attribute of that input
     const questionId = option.target.name
     const newAnswerState = this.state.registerAnswers
     let answer
@@ -77,7 +79,12 @@ class Register extends Component {
     if (position === 2) {
       return (
         <React.Fragment>
-          <h1>Great progress!</h1>
+          <RegisterStepTwo
+            handleNext={this.handleNext}
+            handlePrevious={this.handlePrevious}
+            handleChange={this.handleChange}
+            answers={this.state.registerAnswers}
+          />
         </React.Fragment>
       )
     }

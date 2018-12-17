@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import RegisterIntro from "./RegisterIntro"
 import RegisterStepOne from "./RegisterStepOne"
 import RegisterStepTwo from "./RegisterStepTwo"
+import RegisterStepThree from "./RegisterStepThree"
 
 import axios from "axios"
 
@@ -63,6 +64,16 @@ class Register extends Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    const { registerAnswers } = this.state
+
+    axios
+      .post("/submit/", registerAnswers)
+      .then(result => console.log(result))
+      .catch(err => console.log(err))
+  }
+
   render() {
     const { position } = this.state
     if (position === 0) {
@@ -97,10 +108,23 @@ class Register extends Component {
               this.state.registerQuestions &&
               this.filterQuestions(this.state.registerQuestions, "Admin Info")
             }
+          />
+        </React.Fragment>
+      )
+    }
+    if (position === 3) {
+      return (
+        <React.Fragment>
+          <RegisterStepThree
+            handleNext={this.handleNext}
+            handlePrevious={this.handlePrevious}
+            handleChange={this.handleChange}
+            answers={this.state.registerAnswers}
             basicInfoQuestions={
               this.state.registerQuestions &&
               this.filterQuestions(this.state.registerQuestions, "Basic Info")
             }
+            handleSubmit={this.handleSubmit}
           />
         </React.Fragment>
       )

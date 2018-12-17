@@ -23,7 +23,7 @@ export default class RegisterIntro extends React.Component {
         <div className="answers">
           {wellnessQuestion.options.map(option => {
             return (
-              <label htmlFor={option}>
+              <label htmlFor={option} key={Math.random()}>
                 <input
                   value={option}
                   type="checkbox"

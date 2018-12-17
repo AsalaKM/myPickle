@@ -11,6 +11,7 @@ class Register extends Component {
     registerQuestions: null,
     registerAnswers: {},
     position: 0,
+    unanswered: [],
   }
 
   componentDidMount() {
@@ -18,6 +19,47 @@ class Register extends Component {
       .get("/get-register-questions")
       .then(res => this.setState({ registerQuestions: res.data }))
       .catch(err => console.log("message", err))
+  }
+
+  checkRequiredAnswers = question => {
+    const value = question.target.value
+    const questionId = question.target.name
+    const newUnanswered = this.state.unanswered
+    if (!value) {
+      newUnanswered.push(questionId)
+    } else {
+      if (newUnanswered.includes(questionId)) {
+        const index = newUnanswered.indexOf(questionId)
+        newUnanswered.splice(index, 1)
+      }
+    }
+
+    this.setState({ unanswered: newUnanswered })
+  }
+
+  checkStage = () => {
+    // input the registration stage
+    // get the question ids for that stage
+    // check to see if they are in the answered state
+    // if so invoke handleNext
+    // if not then add questions to unanswered
+
+    const answerState = this.state.registerAnswers
+    const newUnanswered = this.state.unanswered
+    let counter = 0
+
+    if (this.state.position === 2) {
+      const array = ["name", "email", "password", "password2", "phone"]
+      array.forEach(item => {
+        if (!answerState[item] || answerState[item].length < 1) {
+          newUnanswered.push(item)
+          counter += 1
+        }
+      })
+      if (counter === 0) {
+        this.handleNext()
+      } else this.setState({ unanswered: newUnanswered })
+    }
   }
 
   handleChange = option => {
@@ -44,8 +86,7 @@ class Register extends Component {
     this.setState({ registerAnswers: newAnswerState })
   }
 
-  handleNext = e => {
-    e.preventDefault()
+  handleNext = () => {
     this.setState({ position: this.state.position + 1 })
   }
 
@@ -84,7 +125,17 @@ class Register extends Component {
             handlePrevious={this.handlePrevious}
             handleChange={this.handleChange}
             answers={this.state.registerAnswers}
+            checkRequiredAnswers={this.checkRequiredAnswers}
+            unanswered={this.state.unanswered}
+            checkStage={this.checkStage}
           />
+        </React.Fragment>
+      )
+    }
+    if (position === 3) {
+      return (
+        <React.Fragment>
+          <h4>Hello!</h4>
         </React.Fragment>
       )
     }

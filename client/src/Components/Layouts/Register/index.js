@@ -97,6 +97,10 @@ class Register extends Component {
               this.state.registerQuestions &&
               this.filterQuestions(this.state.registerQuestions, "Admin Info")
             }
+            basicInfoQuestions={
+              this.state.registerQuestions &&
+              this.filterQuestions(this.state.registerQuestions, "Basic Info")
+            }
           />
         </React.Fragment>
       )

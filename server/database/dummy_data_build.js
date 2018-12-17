@@ -100,7 +100,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[3]._id,
-      answer: { JUWH: "AKFAFD788", DAAD: "24FRHUW9", THAK: "ASLW20401" },
+      answer: "JUWH: AKFAFD788, DAAD: 24FRHUW9, THAK: ASLW20401",
     },
     {
       profile: therapistProfile._id,
@@ -249,7 +249,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[27]._id,
-      answer: "All",
+      answer: ["All"],
     },
     {
       profile: therapistProfile._id,
@@ -259,7 +259,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[29]._id,
-      answer: "All – no preference",
+      answer: ["All – no preference"],
     },
     {
       profile: therapistProfile._id,
@@ -269,7 +269,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[31]._id,
-      answer: "All – no preference",
+      answer: ["All – no preference"],
     },
     {
       profile: therapistProfile._id,
@@ -342,12 +342,12 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[38]._id,
-      answer: "All - no preference",
+      answer: ["All - no preference"],
     },
     {
       profile: therapistProfile._id,
       question: generalQuestions[39]._id,
-      answer: "All – no preference",
+      answer: ["All – no preference"],
     },
     // END OF TARGET CLIENT SECTION
     // START OF QUESTIONS SPECIFICALLY FOR THERAPISTS
@@ -365,7 +365,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: therapistQuestions[2]._id,
-      answer: [["Therapist Association", "AFH231"], "London Therapist Unity"],
+      answer: "Therapist Association, AFH231, London Therapist Unity",
     },
     {
       profile: therapistProfile._id,
@@ -441,7 +441,7 @@ const buildDb = async () => {
     {
       profile: generalProfile._id,
       question: generalQuestions[3]._id,
-      answer: { FAAF: "123456FD788", DAAD: "24DAW2599" },
+      answer: "FAAF: 123456FD788, DAAD: 24DAW2599",
     },
     {
       profile: generalProfile._id,
@@ -583,7 +583,7 @@ const buildDb = async () => {
     {
       profile: generalProfile._id,
       question: generalQuestions[27]._id,
-      answer: "All",
+      answer: ["All"],
     },
     {
       profile: generalProfile._id,
@@ -598,12 +598,12 @@ const buildDb = async () => {
     {
       profile: generalProfile._id,
       question: generalQuestions[30]._id,
-      answer: "All – no preference",
+      answer: ["All – no preference"],
     },
     {
       profile: generalProfile._id,
       question: generalQuestions[31]._id,
-      answer: "All – no preference",
+      answer: ["All – no preference"],
     },
     {
       profile: generalProfile._id,
@@ -678,11 +678,6 @@ const buildDb = async () => {
       ],
     },
   ])
-  // Check if questions and answers arrays are of the same length
-  console.log("therapist questions length", therapistQuestions.length)
-  console.log("therapist answers length", therapistAnswers.length)
-  console.log("general questions length", generalQuestions.length)
-  console.log("general answers length", generalUserAnswers.length)
 }
 
 buildDb().catch(err => console.log(err))

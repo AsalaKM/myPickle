@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa flex flex-column items-center ph3 NjJhJ"
+>
+  <h2
+    className="tc mp-primary-color"
+  >
+    Welcome to myPickle
+  </h2>
+  <p>
+    Please provide your contact and organisation details first. Then you can begin to list the service(s) you provide.
+  </p>
+  <p>
+    If at any point you need assistance, please email
+     
+    <a
+      href="mailto:hello@mypickle.org"
+    >
+      hello@mypickle.org
+    </a>
+     with your query and contact details.
+  </p>
+  <button
+    className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+  >
+    Next
+  </button>
+</div>
+`;

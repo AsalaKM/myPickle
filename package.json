@@ -37,6 +37,7 @@
     "eslint-plugin-prettier": "^3.0.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "codecov": "^3.1.0"
   }

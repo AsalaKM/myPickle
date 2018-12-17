@@ -13,6 +13,7 @@ const registerQuestions = async () => {
       { questionText: "Please select your area(s) of wellness" },
     ],
   })
+
   return profileQuestions
 }
 

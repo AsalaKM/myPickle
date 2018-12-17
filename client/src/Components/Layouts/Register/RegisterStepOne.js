@@ -1,9 +1,11 @@
 import React from "react"
 
-import { Intro, Button, CircleLarge, CirclesContainer, CircleMed, CircleSm } from "./Register.style"
+import { Intro, Button } from "./Register.style"
 
 export default class RegisterIntro extends React.Component {
   render() {
+    const { wellnessQuestion, handleChange, answers } = this.props
+    console.log(wellnessQuestion)
     return (
       <React.Fragment>
         <Intro>
@@ -13,11 +15,29 @@ export default class RegisterIntro extends React.Component {
             provide support.
           </p>
         </Intro>
-        <CirclesContainer>
+        {/* <CirclesContainer>
           <CircleLarge />
           <CircleMed />
           <CircleSm />
-        </CirclesContainer>
+        </CirclesContainer> */}
+        <div className="answers">
+          {wellnessQuestion.options.map(option => {
+            return (
+              <label htmlFor={option}>
+                <input
+                  value={option}
+                  type="checkbox"
+                  name={wellnessQuestion._id}
+                  onChange={handleChange}
+                  checked={
+                    answers[wellnessQuestion._id] && answers[wellnessQuestion._id].includes(option)
+                  }
+                />
+                <p>{option}</p>
+              </label>
+            )
+          })}
+        </div>
         <div className="flex items-center justify-between w-100">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>
             Back

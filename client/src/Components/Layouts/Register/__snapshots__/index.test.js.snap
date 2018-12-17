@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register component check position one renders 1`] = `
+<Fragment>
+  <RegisterIntro
+    handleNext={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`Register component check position two renders 1`] = `
+<Fragment>
+  <RegisterIntro
+    handleNext={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`Register component should render correctly 1`] = `
+<Fragment>
+  <RegisterIntro
+    handleNext={[Function]}
+  />
+</Fragment>
+`;

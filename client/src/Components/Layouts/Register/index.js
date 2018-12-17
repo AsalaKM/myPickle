@@ -54,6 +54,15 @@ class Register extends Component {
     this.setState({ position: this.state.position - 1 })
   }
 
+  filterQuestions = (array, string) => {
+    return array.filter(e => {
+      if (e.section.includes(string)) {
+        return e
+      }
+      return ""
+    })
+  }
+
   render() {
     const { position } = this.state
     if (position === 0) {
@@ -84,6 +93,10 @@ class Register extends Component {
             handlePrevious={this.handlePrevious}
             handleChange={this.handleChange}
             answers={this.state.registerAnswers}
+            adminQuestions={
+              this.state.registerQuestions &&
+              this.filterQuestions(this.state.registerQuestions, "Admin Info")
+            }
           />
         </React.Fragment>
       )

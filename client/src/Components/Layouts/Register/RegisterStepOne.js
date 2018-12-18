@@ -19,8 +19,12 @@ export default class RegisterIntro extends React.Component {
           <CircleSm />
         </CirclesContainer>
         <div className="flex items-center justify-between w-100">
-          <Button onClick={this.props.handlePrevious}>Back</Button>
-          <Button onClick={this.props.handleNext}>Next</Button>
+          <Button id="prev-btn" onClick={this.props.handlePrevious}>
+            Back
+          </Button>
+          <Button className="next-btn" onClick={this.props.handleNext}>
+            Next
+          </Button>
         </div>
       </React.Fragment>
     )

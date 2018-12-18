@@ -14,7 +14,7 @@ class Register extends Component {
     registerAnswers: {},
     position: 0,
     unanswered: [],
-    files: {},
+    file: null,
   }
 
   componentDidMount() {
@@ -101,14 +101,23 @@ class Register extends Component {
     } else this.setState({ unanswered: newUnanswered })
   }
 
+  imageUpload = file => {
+    const newAnswerState = this.state.registerAnswers
+    const questionId = file.target.name
+    const filename = file.target.files[0].name
+    const newFile = file.target.files[0]
+
+    newAnswerState[questionId] = filename
+
+    this.setState({ registerAnswers: newAnswerState, file: newFile })
+  }
+
   handleChange = option => {
     // set up id of input field as the name attribute of that input
     const questionId = option.target.name
     const newAnswerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
-    const newFiles = this.state.files
     let answer
-    let file
     console.log("HANDLE", questionId)
 
     if (option.target.type === "checkbox") {
@@ -125,17 +134,11 @@ class Register extends Component {
         const index = newAnswerState[questionId].indexOf(answer)
         newAnswerState[questionId].splice(index, 1)
       }
-    } else if (option.target.type === "file" && option.target.files[0] !== undefined) {
-      answer = option.target.files[0].name
-      newAnswerState[questionId] = answer
-      file = option.target.files[0]
-      newFiles[questionId] = file
-      console.log("FILE", file)
     } else {
       answer = option.target.value
       newAnswerState[questionId] = answer
     }
-    this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered, files: newFiles })
+    this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
   handleNext = () => {
@@ -228,6 +231,7 @@ class Register extends Component {
             checkRequiredAnswers={this.checkRequiredAnswers}
             unanswered={this.state.unanswered}
             checkStage={this.checkStage}
+            imageUpload={this.imageUpload}
           />
         </React.Fragment>
       )

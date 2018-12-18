@@ -14,6 +14,7 @@ export default class RegisterStepThree extends React.Component {
       handleSubmit,
       unanswered,
       checkRequiredAnswers,
+      imageUpload,
     } = this.props
 
     console.log("STEP3", basicInfoQuestions)
@@ -54,6 +55,7 @@ export default class RegisterStepThree extends React.Component {
                   answers={answers}
                   unanswered={unanswered}
                   checkRequiredAnswers={checkRequiredAnswers}
+                  imageUpload={imageUpload}
                 />
               )
             }

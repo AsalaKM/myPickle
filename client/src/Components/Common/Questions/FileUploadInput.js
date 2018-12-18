@@ -2,7 +2,7 @@ import React, { Component } from "react"
 
 export default class FileUploadInput extends Component {
   render() {
-    const { question, answers, handleChange } = this.props
+    const { question, answers, handleChange, imageUpload } = this.props
     const { questionText, _id: questionId, helperText } = question
     // this will need to get the file from the database and assign to value
     return (
@@ -16,9 +16,11 @@ export default class FileUploadInput extends Component {
             <input
               id={questionId}
               name={questionId}
-              onChange={handleChange}
+              onChange={imageUpload}
               className="file-upload-input"
               type="file"
+              multiple="false"
+              accept=".png, .jpg, .jpeg"
             />
           </label>
           <p>Current File: {answers[questionId] ? answers[questionId] : "None"}</p>

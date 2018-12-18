@@ -1,25 +1,28 @@
 const express = require("express")
 const router = express.Router()
 
+// load queries
 const registerUser = require("../../database/queries/registerUser")
 
-const ProfileQuestion = require("../../database/models/ProfileQuestion")
+const registerProfile = require("../../database/queries/registerProfile")
+
+const getSupportType = require("../../database/queries/getSupportType")
 
 router.post("/", async (req, res) => {
-  console.log(req.body)
+  console.log("REQBODY", req.body)
   // create user object
   const { name, email, phone, password } = req.body
 
-  // register new user
-  let profleAnswers = {}
-  // create profile object
-  for (const key in req.body) {
-    if (key !== "name" && key !== "email" && key !== "phone" && key !== "password") {
-      profleAnswers[key] = req.body[key]
-    }
-  }
+  const supportTypeID = await getSupportType(req.body).catch(err => console.log(err))
 
   const newUser = await registerUser(name, email, phone, password).catch(err => console.log(err))
+  console.log("newUser", newUser)
+
+  const newProfile = await registerProfile(supportTypeID, newUser._id, false).catch(err =>
+    console.log(err)
+  )
+
+  console.log("newProfile", newProfile)
 })
 
 module.exports = router

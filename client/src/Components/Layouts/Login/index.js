@@ -1,9 +1,18 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
+
 import home from "../../../assets/images/home.svg"
 import logo from "../../../assets/images/logo.jpg"
 
-import { LoginPage, Form, HomeIcon, Logo, Title, Input, Button } from "./Login.style.js"
+import {
+  LoginPage,
+  Form,
+  HomeIcon,
+  Logo,
+  Title,
+  Input,
+  Button,
+  RegisterLink,
+} from "./Login.style.js"
 
 class Login extends Component {
   state = {
@@ -18,6 +27,10 @@ class Login extends Component {
 
   clickHome = () => {
     this.props.history.push("/")
+  }
+
+  clickResgister = () => {
+    this.props.history.push("/register")
   }
 
   render() {
@@ -48,10 +61,11 @@ class Login extends Component {
           />
           <br />
         </Form>
+        <br />
 
         <Button>Login</Button>
 
-        <Link to="/register">Create new acccount!</Link>
+        <RegisterLink onClick={this.clickResgister}>Create new acccount!</RegisterLink>
       </LoginPage>
     )
   }

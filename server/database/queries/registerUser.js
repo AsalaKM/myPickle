@@ -13,7 +13,9 @@ const registerUser = async (name, email, phone, password) => {
       password,
     })
     await newUser.save()
-    return newUser
+    console.log("NEW!!!", newUser)
+    const userId = newUser._id
+    return userId
   }
 }
 

@@ -19,7 +19,12 @@ router.post("/", async (req, res) => {
     }
   }
 
-  const newUser = await registerUser(name, email, phone, password).catch(err => console.log(err))
+  registerUser(name, email, phone, password)
+    .then(userid => {
+      console.log("USERID", userid)
+      res.status(200).send(userid)
+    })
+    .catch(err => console.log(err))
 })
 
 module.exports = router

@@ -24,13 +24,30 @@ class Register extends Component {
   }
 
   checkRequiredAnswers = question => {
+    // get the value that's been input
     const value = question.target.value
+
+    // get the questionId from the input name
     const questionId = question.target.name
+
+    let isRequired
+    // deal with user questions
+    const userArray = ["name", "password", "email", "password2", "phone"]
+    if (userArray.includes(questionId)) {
+      isRequired = true
+    } else {
+      // deal with any other question
+      const questions = this.state.registerQuestions
+      isRequired = questions.filter(question => question._id === questionId)[0].isRequired
+    }
+
+    // get our list of unanswered questions in state
     const newUnanswered = this.state.unanswered
-    if (!value) {
+
+    if (isRequired && !value) {
       newUnanswered.push(questionId)
     } else {
-      if (newUnanswered.includes(questionId)) {
+      if (isRequired && newUnanswered.includes(questionId)) {
         const index = newUnanswered.indexOf(questionId)
         newUnanswered.splice(index, 1)
       }
@@ -58,12 +75,21 @@ class Register extends Component {
       }
     }
     if (this.state.position === 2) {
-      const array = ["name", "email", "password", "password2", "phone"]
-      array.forEach(item => {
+      // get all the questions
+      const questions = this.state.registerQuestions
+
+      // get the adminQs that are required
+      const requiredQs = questions
+        .filter(question => question.section === "Admin Info" && question.isRequired === true)
+        .map(requiredQ => requiredQ._id)
+
+      // add the user qs
+      requiredQs.push("name", "email", "password", "password2", "phone")
+
+      requiredQs.forEach(item => {
         if (!answerState[item] || answerState[item].length < 1) {
           if (!newUnanswered.includes(item)) newUnanswered.push(item)
           counter += 1
-          console.log(newUnanswered)
         }
       })
     }

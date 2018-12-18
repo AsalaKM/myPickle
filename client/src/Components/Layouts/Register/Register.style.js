@@ -58,4 +58,8 @@ const CirclesContainer = styled.div`
   height: 80vw;
 `
 
-export { Intro, Button, CircleLarge, CircleMed, CirclesContainer, CircleSm }
+const RegisterStepTwoWrapper = styled.div.attrs({
+  className: "flex flex-column items-center ph3",
+})``
+
+export { Intro, Button, CircleLarge, CircleMed, CirclesContainer, CircleSm, RegisterStepTwoWrapper }

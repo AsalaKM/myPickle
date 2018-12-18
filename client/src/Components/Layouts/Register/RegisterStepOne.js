@@ -2,7 +2,7 @@ import React from "react"
 
 import { Intro, Button } from "./Register.style"
 
-export default class RegisterIntro extends React.Component {
+export default class RegisterStepOne extends React.Component {
   render() {
     const { wellnessQuestion, handleChange, answers, checkStage, unanswered } = this.props
     return (

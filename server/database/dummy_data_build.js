@@ -8,9 +8,6 @@ const ProfileAnswer = require("./models/ProfileAnswer")
 // load profile questions build
 const buildProfileQuestions = require("./buildProfileQuestions")
 
-// load article_category build
-const articleCategoryData = require("./article_category_data")
-
 // load dbConnection
 const dbConnection = require("./db_connection")
 
@@ -686,9 +683,6 @@ const buildDb = async () => {
   console.log("therapist answers length", therapistAnswers.length)
   console.log("general questions length", generalQuestions.length)
   console.log("general answers length", generalUserAnswers.length)
-
-  // insert Articles and category
-  await articleCategoryData()
 }
 
 buildDb().catch(err => console.log(err))

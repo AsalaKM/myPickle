@@ -5,13 +5,13 @@ import logo from "../../../assets/images/logo.jpg"
 
 import {
   LoginPage,
-  Form,
   HomeIcon,
   Logo,
   Title,
   Input,
   Button,
   RegisterLink,
+  Branding,
 } from "./Login.style.js"
 
 class Login extends Component {
@@ -37,12 +37,12 @@ class Login extends Component {
     return (
       <LoginPage>
         <HomeIcon src={home} onClick={this.clickHome} />
+        <Branding>
+          <Logo src={logo} />
+          <Title>myPikle</Title>
+        </Branding>
 
-        <Logo src={logo} />
-
-        <Title>myPikle</Title>
-
-        <Form>
+        <form>
           <Input
             type="email"
             placeholder="Your Email"
@@ -60,7 +60,7 @@ class Login extends Component {
             onChange={this.onChange}
           />
           <br />
-        </Form>
+        </form>
         <br />
 
         <Button>Login</Button>

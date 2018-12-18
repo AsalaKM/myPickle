@@ -3,44 +3,34 @@ import styled from "styled-components"
 export const LoginPage = styled.div`
   display: flex;
   flex-direction: column;
-  height: 700px;
   width: 80%;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 125px;
 `
-
-export const Form = styled.form``
-// text-align: left;
-// margin-left: 50px;
-// border: none;
-
 export const HomeIcon = styled.img`
   height: 30px;
   width: 60px;
-  left: 0;
+  margin-top: -99px;
+  margin-left: -30px;
 `
+
 export const Input = styled.input`
   height: 50px;
   width: 100%;
+  border: none;
   border-radius: 9px;
-  border-style: solid;
-  border-width: 0.5px;
-  border-color: #53dd6c;
   background: #f8fbfa;
-  box-shadow: 1px 1px green;
   font-size: 18px;
   text-align: center;
+  display: block;
 `
 
 export const Logo = styled.img`
-  width: 200px;
-  margin-left: 60px;
-  margin-top: 50px;
+  width: 180px;
 `
 
 export const Title = styled.h2`
-  text-align: left;
-  margin-left: 120px;
+  text-align: center;
   display: block;
 `
 export const Button = styled.button`
@@ -48,10 +38,17 @@ export const Button = styled.button`
   width: 100%;
   border: none;
   border-radius: 5px;
-  background: #ff0022;
+  background: #6eeb26;
 `
 
 export const RegisterLink = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Branding = styled.div`
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;

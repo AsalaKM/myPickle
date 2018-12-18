@@ -181,18 +181,24 @@ class Register extends Component {
     axios
       .post("/register-user", registerAnswers)
       .then(userId => {
-        console.log(userId)
-        const formData = new FormData()
-        for (let key in file) {
-          formData.append(userId.data, file[key])
+        if (Object.keys(file).length > 0) {
+          this.uploadImage(userId)
         }
-        axios.post("/upload-image", formData).catch(err => console.log(err))
       })
       .then(result => {
         console.log("RESULT", result)
         swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
       })
       .catch(err => console.log(err))
+  }
+
+  uploadImage = userId => {
+    const { file } = this.state
+    const formData = new FormData()
+    for (let key in file) {
+      formData.append(userId.data, file[key])
+    }
+    axios.post("/upload-image", formData).catch(err => console.log(err))
   }
 
   render() {

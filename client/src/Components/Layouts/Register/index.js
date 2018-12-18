@@ -14,7 +14,7 @@ class Register extends Component {
     registerAnswers: {},
     position: 0,
     unanswered: [],
-    file: null,
+    file: {},
   }
 
   componentDidMount() {
@@ -105,7 +105,8 @@ class Register extends Component {
     const newAnswerState = this.state.registerAnswers
     const questionId = file.target.name
     const filename = file.target.files[0].name
-    const newFile = file.target.files[0]
+    const newFile = this.state.file
+    newFile[questionId] = file.target.files[0]
 
     newAnswerState[questionId] = filename
 
@@ -162,7 +163,18 @@ class Register extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
-    const { registerAnswers } = this.state
+    const { registerAnswers, file } = this.state
+
+    // upload the image
+    const formData = new FormData()
+    for (let key in file) {
+      formData.append(key, file[key])
+    }
+
+    fetch("/upload-image", {
+      method: "POST",
+      body: formData,
+    }).catch(err => console.log(err))
 
     axios
       .post("/register-user", registerAnswers)

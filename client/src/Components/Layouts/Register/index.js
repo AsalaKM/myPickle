@@ -14,6 +14,7 @@ class Register extends Component {
     registerAnswers: {},
     position: 0,
     unanswered: [],
+    files: {},
   }
 
   componentDidMount() {
@@ -24,6 +25,7 @@ class Register extends Component {
   }
 
   checkRequiredAnswers = question => {
+    console.log("REACHED")
     // get the value that's been input
     const value = question.target.value
 
@@ -57,6 +59,7 @@ class Register extends Component {
   }
 
   checkStage = () => {
+    console.log("CHECK STAGE REACHED")
     const answerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
     let counter = 0
@@ -103,7 +106,10 @@ class Register extends Component {
     const questionId = option.target.name
     const newAnswerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
+    const newFiles = this.state.files
     let answer
+    let file
+    console.log("HANDLE", questionId)
 
     if (option.target.type === "checkbox") {
       if (newUnanswered.includes(questionId)) {
@@ -119,11 +125,17 @@ class Register extends Component {
         const index = newAnswerState[questionId].indexOf(answer)
         newAnswerState[questionId].splice(index, 1)
       }
+    } else if (option.target.type === "file" && option.target.files[0] !== undefined) {
+      answer = option.target.files[0].name
+      newAnswerState[questionId] = answer
+      file = option.target.files[0]
+      newFiles[questionId] = file
+      console.log("FILE", file)
     } else {
       answer = option.target.value
       newAnswerState[questionId] = answer
     }
-    this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
+    this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered, files: newFiles })
   }
 
   handleNext = () => {

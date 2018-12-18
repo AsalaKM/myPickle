@@ -1,6 +1,8 @@
 import React from "react"
 
 import { Button, RegisterStepTwoWrapper } from "./Register.style"
+import TextInput from "../../Common/Questions/TextInput"
+import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
 export default class RegisterStepTwo extends React.Component {
   render() {
@@ -111,27 +113,30 @@ export default class RegisterStepTwo extends React.Component {
           )}
         </div>
         {adminQuestions.map(question => {
-          return (
-            <div>
-              <header>
-                <h4>{question.questionText}</h4>
-              </header>
-              <input
-                type="text"
-                name={question._id}
-                onChange={handleChange}
-                value={answers[question._id] ? answers[question._id] : ""}
-                onBlur={checkRequiredAnswers}
+          const { inputType } = question
+
+          if (inputType === "text") {
+            return (
+              <TextInput
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
               />
-              <div className="required">
-                {unanswered && unanswered.includes(question._id) ? (
-                  <p>Please answer this question</p>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-          )
+            )
+          }
+          if (inputType === "textarea" || inputType === "address") {
+            return (
+              <TextFieldInput
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+              />
+            )
+          }
         })}
         <div className="flex items-center justify-between w-100">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>

@@ -1,25 +1,62 @@
 import React from "react"
 
 import { Button } from "./Register.style"
+import TextInput from "../../Common/Questions/TextInput"
+import RadioInput from "../../Common/Questions/RadioInput"
+import FileUploadInput from "../../Common/Questions/FileUploadInput"
 
-export default class RegisterIntro extends React.Component {
+export default class RegisterStepThree extends React.Component {
   render() {
-    const { handleChange, answers, basicInfoQuestions, handleSubmit } = this.props
+    const {
+      handleChange,
+      answers,
+      basicInfoQuestions,
+      handleSubmit,
+      unanswered,
+      checkRequiredAnswers,
+    } = this.props
+
+    console.log("STEP3", basicInfoQuestions)
     return (
       <React.Fragment>
         <div className="BasicInfo">
           {basicInfoQuestions.map(question => {
-            return (
-              <React.Fragment>
-                <h4>{question.questionText}</h4>
-                <input
-                  type="text"
-                  name={question._id}
-                  onChange={handleChange}
-                  value={answers[question._id] ? answers[question._id] : ""}
+            // pull out the details from each question
+            const { inputType } = question
+
+            if (inputType === "text" || inputType === "url") {
+              return (
+                <TextInput
+                  question={question}
+                  handleChange={handleChange}
+                  answers={answers}
+                  unanswered={unanswered}
+                  checkRequiredAnswers={checkRequiredAnswers}
                 />
-              </React.Fragment>
-            )
+              )
+            }
+            if (inputType === "radio") {
+              return (
+                <RadioInput
+                  question={question}
+                  handleChange={handleChange}
+                  answers={answers}
+                  unanswered={unanswered}
+                  checkRequiredAnswers={checkRequiredAnswers}
+                />
+              )
+            }
+            if (inputType === "file-upload") {
+              return (
+                <FileUploadInput
+                  question={question}
+                  handleChange={handleChange}
+                  answers={answers}
+                  unanswered={unanswered}
+                  checkRequiredAnswers={checkRequiredAnswers}
+                />
+              )
+            }
           })}
         </div>
         <div className="flex items-center justify-between w-100">

@@ -13,6 +13,7 @@ class Register extends Component {
     registerQuestions: null,
     registerAnswers: {},
     position: 0,
+    unanswered: [],
   }
 
   componentDidMount() {
@@ -22,13 +23,67 @@ class Register extends Component {
       .catch(err => console.log("message", err))
   }
 
+  checkRequiredAnswers = question => {
+    const value = question.target.value
+    const questionId = question.target.name
+    const newUnanswered = this.state.unanswered
+    if (!value) {
+      newUnanswered.push(questionId)
+    } else {
+      if (newUnanswered.includes(questionId)) {
+        const index = newUnanswered.indexOf(questionId)
+        newUnanswered.splice(index, 1)
+      }
+    }
+
+    this.setState({ unanswered: newUnanswered })
+  }
+
+  checkStage = () => {
+    const answerState = this.state.registerAnswers
+    const newUnanswered = this.state.unanswered
+    let counter = 0
+
+    if (this.state.position === 1) {
+      const wellnessQuestion = this.state.registerQuestions[0]
+      if (!answerState[wellnessQuestion._id] || answerState[wellnessQuestion._id].length < 1) {
+        if (!newUnanswered.includes(wellnessQuestion._id)) newUnanswered.push(wellnessQuestion._id)
+        counter += 1
+        console.log(newUnanswered)
+      } else {
+        if (newUnanswered.includes(wellnessQuestion._id)) {
+          const index = newUnanswered.indexOf(wellnessQuestion._id)
+          newUnanswered.splice(index, 1)
+        }
+      }
+    }
+    if (this.state.position === 2) {
+      const array = ["name", "email", "password", "password2", "phone"]
+      array.forEach(item => {
+        if (!answerState[item] || answerState[item].length < 1) {
+          if (!newUnanswered.includes(item)) newUnanswered.push(item)
+          counter += 1
+          console.log(newUnanswered)
+        }
+      })
+    }
+    if (counter === 0) {
+      this.handleNext()
+    } else this.setState({ unanswered: newUnanswered })
+  }
+
   handleChange = option => {
     // set up id of input field as the name attribute of that input
     const questionId = option.target.name
     const newAnswerState = this.state.registerAnswers
+    const newUnanswered = this.state.unanswered
     let answer
 
     if (option.target.type === "checkbox") {
+      if (newUnanswered.includes(questionId)) {
+        const index = newUnanswered.indexOf(questionId)
+        newUnanswered.splice(index, 1)
+      }
       answer = option.target.value
       if (!newAnswerState[questionId]) {
         newAnswerState[questionId] = [answer]
@@ -42,12 +97,10 @@ class Register extends Component {
       answer = option.target.value
       newAnswerState[questionId] = answer
     }
-
-    this.setState({ registerAnswers: newAnswerState })
+    this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
-  handleNext = e => {
-    e.preventDefault()
+  handleNext = () => {
     this.setState({ position: this.state.position + 1 })
   }
 
@@ -96,6 +149,8 @@ class Register extends Component {
             wellnessQuestion={this.state.registerQuestions[0]}
             answers={this.state.registerAnswers}
             handleChange={this.handleChange}
+            checkStage={this.checkStage}
+            unanswered={this.state.unanswered}
           />
         </React.Fragment>
       )
@@ -112,6 +167,9 @@ class Register extends Component {
               this.state.registerQuestions &&
               this.filterQuestions(this.state.registerQuestions, "Admin Info")
             }
+            checkRequiredAnswers={this.checkRequiredAnswers}
+            unanswered={this.state.unanswered}
+            checkStage={this.checkStage}
           />
         </React.Fragment>
       )
@@ -129,7 +187,17 @@ class Register extends Component {
               this.filterQuestions(this.state.registerQuestions, "Basic Info")
             }
             handleSubmit={this.handleSubmit}
+            checkRequiredAnswers={this.checkRequiredAnswers}
+            unanswered={this.state.unanswered}
+            checkStage={this.checkStage}
           />
+        </React.Fragment>
+      )
+    }
+    if (position === 3) {
+      return (
+        <React.Fragment>
+          <h4>Hello!</h4>
         </React.Fragment>
       )
     }

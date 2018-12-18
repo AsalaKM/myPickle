@@ -16,11 +16,13 @@ h2 {
 
 body {
   font-family: "Merriweather Sans", sans-serif;
+  color: var(--black);
 }
 
 html {
   background-color: var(--white);
 }
+
 /* Colors */
 
 /* the below are the core colours if needed if classes below don't cover what you need */

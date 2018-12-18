@@ -36,7 +36,11 @@
       "!**/node_modules/**",
       "!**/app.js",
       "!**/coverage/**",
-      "!**/bin/**"
+      "!**/bin/**",
+      "!**/dummy_data_build.js",
+      "!**/buildProfileQuestions.js",
+      "!**/models/**",
+      "!**/db_connection.js"
     ]
   },
   "dependencies": {

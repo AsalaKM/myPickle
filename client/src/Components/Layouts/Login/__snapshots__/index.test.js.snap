@@ -2,27 +2,29 @@
 
 exports[`Login matches snapshot 1`] = `
 <div
-  className="sc-bdVaJa kyYzhX"
+  className="sc-bdVaJa caUQkH"
 >
   <img
-    className="sc-htpNat EDNKe"
+    className="sc-bwzfXH fesAsK"
     onClick={[Function]}
     src="home.svg"
   />
-  <img
-    className="sc-ifAKCX cvVEVs"
-    src="logo.jpg"
-  />
-  <h2
-    className="sc-EHOje coqnlr"
+  <div
+    className="sc-gzVnrw kpZGLP"
   >
-    myPikle
-  </h2>
-  <form
-    className="sc-bwzfXH fcrouA"
-  >
+    <img
+      className="sc-bxivhb hTUQbg"
+      src="logo.jpg"
+    />
+    <h2
+      className="sc-ifAKCX Tiktc"
+    >
+      myPikle
+    </h2>
+  </div>
+  <form>
     <input
-      className="sc-bxivhb hxAQZq"
+      className="sc-htpNat hfCgQd"
       name="email"
       onChange={[Function]}
       placeholder="Your Email"
@@ -31,7 +33,7 @@ exports[`Login matches snapshot 1`] = `
     />
     <br />
     <input
-      className="sc-bxivhb hxAQZq"
+      className="sc-htpNat hfCgQd"
       name="password"
       onChange={[Function]}
       placeholder="Password"
@@ -40,16 +42,17 @@ exports[`Login matches snapshot 1`] = `
     />
     <br />
   </form>
+  <br />
   <button
-    className="sc-bZQynM hLkwAS"
+    className="sc-EHOje iUMJbr"
   >
     Login
   </button>
-  <a
-    href="/register"
+  <h2
+    className="sc-bZQynM eHnwNe"
     onClick={[Function]}
   >
     Create new acccount!
-  </a>
+  </h2>
 </div>
 `;

@@ -37,6 +37,7 @@ class Login extends Component {
     return (
       <LoginPage>
         <HomeIcon src={home} onClick={this.clickHome} />
+
         <Branding>
           <Logo src={logo} />
           <Title>myPikle</Title>
@@ -51,7 +52,6 @@ class Login extends Component {
             onChange={this.onChange}
           />
           <br />
-
           <Input
             type="password"
             placeholder="Password"
@@ -61,6 +61,7 @@ class Login extends Component {
           />
           <br />
         </form>
+
         <br />
 
         <Button>Login</Button>

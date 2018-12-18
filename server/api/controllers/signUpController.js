@@ -1,3 +1,4 @@
+// creates User and initial profile
 const express = require("express")
 const router = express.Router()
 
@@ -9,29 +10,22 @@ const getProfileAnswers = require("../../database/queries/getProfileAnswers")
 const storeAnswers = require("../../database/queries/storeProfileAnswers")
 
 router.post("/", async (req, res) => {
-  console.log("REQBODY", req.body)
   // create user object
   const { name, email, phone, password } = req.body
   // get support type id (either therapist or general)
-  const supportTypeID = await getSupportType(req.body).catch(err =>
-    console.log("err getting support type id", err)
-  )
+  const supportTypeID = await getSupportType(req.body).catch(err => res.status(400).json(err))
   // register a new user
   const newUser = await registerUser(name, email, phone, password).catch(err =>
-    console.log("err registering new user", err)
+    res.status(400).json(err)
   )
-  console.log("newUser", newUser)
-
   // register new profile
   const newProfile = await registerProfile(supportTypeID, newUser._id, false).catch(err =>
-    console.log("error creating new profile", err)
+    res.status(400).json(err)
   )
-  console.log("newProfile", newProfile)
   // create profile answers object
   const profileAnswers = await getProfileAnswers(req.body)
   // store those answers in database
   const saveProfileAnswers = await storeAnswers(newProfile._id, profileAnswers)
-  console.log("stored Profile Answers", saveProfileAnswers)
 })
 
 module.exports = router

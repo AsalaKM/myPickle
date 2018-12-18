@@ -2,17 +2,19 @@ const mongoose = require("mongoose")
 
 // read "config.env" file and add it's variable to "process.env"
 if (!process.env.TRAVIS) {
-  require("env2")("./../config.env")
+  require("env2")("./config.env")
 }
 
 const dbConnection = () => {
   // get DB url from process.env
-  let { mongoURI } = process.env
+  // let { mongoURI } = process.env
+  mongoURI = "mongodb://localhost:27017/mypickledb"
 
   // check if the environment is test
   if (process.env.NODE_ENV === "test") {
     // let DB url equal testing DB
-    mongoURI = process.env.mongoURI_TEST
+    // mongoURI = process.env.mongoURI_TEST
+    mongoURI = "mongodb://localhost:27017/mypickledb_TEST"
   }
 
   // create DB connection

@@ -32,7 +32,7 @@ html {
   --lightPrimary: #91e9a1;
   --secondary: #f7f161;
   --alert: #ff0022;
-  --white: #f8fbfa;
+  --white: hsla(0,0%,100%,.8);
   --black: #2a2b2e;
   --gray: #e8ede9;
 }

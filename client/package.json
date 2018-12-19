@@ -26,9 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test -u",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:client": "react-scripts test --coverage -u"
+    "test:client": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

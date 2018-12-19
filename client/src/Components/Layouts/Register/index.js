@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import swal from "sweetalert"
+import validator from "validator"
 
 import RegisterIntro from "./RegisterIntro"
 import RegisterStepOne from "./RegisterStepOne"
@@ -14,6 +15,7 @@ class Register extends Component {
     registerAnswers: {},
     position: 0,
     unanswered: [],
+    errors: [],
     file: {},
   }
 
@@ -22,6 +24,57 @@ class Register extends Component {
       .get("/get-register-questions")
       .then(res => this.setState({ registerQuestions: res.data }))
       .catch(err => console.log("message", err))
+  }
+
+  validateInput = question => {
+    // get the value that's been input and the question id
+    const value = question.target.value
+    const questionId = question.target.name
+
+    // check if its empty and required
+    this.checkRequiredAnswers(question)
+
+    // get current answers from the state
+    const answerState = this.state.registerAnswers
+    const errorState = this.state.errors
+
+    if (value) {
+      // password validation
+      if (questionId === "password") {
+        if (!validator.isLength(value, { min: 6, max: 30 })) {
+          errorState.push(questionId)
+        } else {
+          if (errorState.includes(questionId)) {
+            const index = errorState.indexOf(questionId)
+            errorState.splice(index, 1)
+          }
+        }
+      }
+
+      // check passwords match
+      if (questionId === "password2") {
+        if (answerState.password !== value) {
+          errorState.push(questionId)
+        } else {
+          if (errorState.includes(questionId)) {
+            const index = errorState.indexOf(questionId)
+            errorState.splice(index, 1)
+          }
+        }
+      }
+
+      // check valid email
+      if (questionId === "email") {
+        if (!validator.isEmail(value)) {
+          errorState.push(questionId)
+        } else {
+          if (errorState.includes(questionId)) {
+            const index = errorState.indexOf(questionId)
+            errorState.splice(index, 1)
+          }
+        }
+      }
+    }
   }
 
   checkRequiredAnswers = question => {
@@ -58,9 +111,9 @@ class Register extends Component {
   }
 
   checkStage = () => {
-    console.log("CHECK STAGE REACHED")
     const answerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
+    const errorState = this.state.errors
     let counter = 0
 
     if (this.state.position === 1) {
@@ -93,11 +146,20 @@ class Register extends Component {
           if (!newUnanswered.includes(item)) newUnanswered.push(item)
           counter += 1
         }
+        if (errorState.length > 0) {
+          counter += 1
+        }
       })
+
+      // final check of password
+      if (answerState.password !== answerState.password2) {
+        if (!errorState.includes("password2")) errorState.push("password2")
+        counter += 1
+      }
     }
     if (counter === 0) {
       this.handleNext()
-    } else this.setState({ unanswered: newUnanswered })
+    } else this.setState({ unanswered: newUnanswered, errors: errorState })
   }
 
   imageUpload = file => {
@@ -236,7 +298,9 @@ class Register extends Component {
               this.state.registerQuestions &&
               this.filterQuestions(this.state.registerQuestions, "Admin Info")
             }
+            validateInput={this.validateInput}
             checkRequiredAnswers={this.checkRequiredAnswers}
+            errors={this.state.errors}
             unanswered={this.state.unanswered}
             checkStage={this.checkStage}
           />

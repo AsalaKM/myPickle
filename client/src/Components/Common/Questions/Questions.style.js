@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const CommonStyles = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 8px;
 
   h4 {
     margin-bottom: 0;

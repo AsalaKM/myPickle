@@ -11,7 +11,9 @@ export default class RegisterStepTwo extends React.Component {
       handleChange,
       answers,
       adminQuestions,
+      validateInput,
       checkRequiredAnswers,
+      errors,
       unanswered,
       checkStage,
     } = this.props
@@ -31,7 +33,7 @@ export default class RegisterStepTwo extends React.Component {
               name="name"
               onChange={handleChange}
               value={answers["name"] ? answers["name"] : ""}
-              onBlur={checkRequiredAnswers}
+              onBlur={validateInput}
               required
             />
             {unanswered && unanswered.includes("name") ? (
@@ -52,11 +54,18 @@ export default class RegisterStepTwo extends React.Component {
               name="email"
               onChange={handleChange}
               value={answers["email"] ? answers["email"] : ""}
-              onBlur={checkRequiredAnswers}
+              onBlur={validateInput}
             />
             {unanswered && unanswered.includes("email") ? (
               <ErrorMsg>
                 <p>Please answer this question</p>
+              </ErrorMsg>
+            ) : (
+              ""
+            )}
+            {errors && errors.includes("email") ? (
+              <ErrorMsg>
+                <p>Email is invalid</p>
               </ErrorMsg>
             ) : (
               ""
@@ -72,11 +81,18 @@ export default class RegisterStepTwo extends React.Component {
               name="password"
               onChange={handleChange}
               value={answers["password"] ? answers["password"] : ""}
-              onBlur={checkRequiredAnswers}
+              onBlur={validateInput}
             />
             {unanswered && unanswered.includes("password") ? (
               <ErrorMsg>
                 <p>Please answer this question</p>
+              </ErrorMsg>
+            ) : (
+              ""
+            )}
+            {errors && errors.includes("password") ? (
+              <ErrorMsg>
+                <p>Password must be at least 6 characters</p>
               </ErrorMsg>
             ) : (
               ""
@@ -92,11 +108,18 @@ export default class RegisterStepTwo extends React.Component {
               name="password2"
               onChange={handleChange}
               value={answers["password2"] ? answers["password2"] : ""}
-              onBlur={checkRequiredAnswers}
+              onBlur={validateInput}
             />
             {unanswered && unanswered.includes("password2") ? (
               <ErrorMsg>
                 <p>Please answer this question</p>
+              </ErrorMsg>
+            ) : (
+              ""
+            )}
+            {errors && errors.includes("password2") ? (
+              <ErrorMsg>
+                <p>Passwords do not match</p>
               </ErrorMsg>
             ) : (
               ""

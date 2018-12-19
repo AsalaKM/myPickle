@@ -64,9 +64,9 @@ const RegisterStepTwoWrapper = styled.div.attrs({
   className: "flex flex-column ph3",
 })``
 
-const Answers = styled(Intro)`
-  align-items: flex-start;
-
+const Answers = styled.div.attrs({
+  className: "flex flex-column ph3",
+})`
   label {
     display: flex;
     align-items: center;

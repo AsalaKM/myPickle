@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Intro, Button, Answers } from "./Register.style"
+import { ErrorMsg } from "../../Common/Questions/Questions.style"
 
 import CheckboxInput from "../../Common/Questions/CheckboxInput"
 
@@ -12,14 +13,10 @@ export default class RegisterStepOne extends React.Component {
       <React.Fragment>
         <Intro>
           <h2 className="tc mp-primary-color">Wellness Areas</h2>
-          <p>
-            So we can customize your profile, please select the area(s) of wellness where you
-            provide support.{isRequired ? " *" : ""}
-          </p>
           {unanswered && unanswered.includes(wellnessQuestion._id) ? (
-            <div className="required">
+            <ErrorMsg>
               <p>Please answer this question</p>
-            </div>
+            </ErrorMsg>
           ) : (
             ""
           )}
@@ -35,23 +32,6 @@ export default class RegisterStepOne extends React.Component {
             handleChange={handleChange}
             answers={answers}
           />
-
-          {/* {wellnessQuestion.options.map(option => {
-            return (
-              <label htmlFor={option} key={Math.random()}>
-                <input
-                  value={option}
-                  type="checkbox"
-                  name={wellnessQuestion._id}
-                  onChange={handleChange}
-                  checked={
-                    answers[wellnessQuestion._id] && answers[wellnessQuestion._id].includes(option)
-                  }
-                />
-                <p>{option}</p>
-              </label>
-            )
-          })} */}
         </Answers>
         <div className="flex items-center justify-center w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>

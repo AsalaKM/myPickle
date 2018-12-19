@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { RadioField } from "./Questions.style"
+import { RadioField, ErrorMsg } from "./Questions.style"
 
 export default class RadioInput extends Component {
   render() {
@@ -37,9 +37,9 @@ export default class RadioInput extends Component {
             })}
           </div>
           {unanswered && unanswered.includes(questionId) ? (
-            <div className="required">
+            <ErrorMsg>
               <p>Please answer this question</p>
-            </div>
+            </ErrorMsg>
           ) : (
             ""
           )}

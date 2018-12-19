@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { TextField } from "./Questions.style"
+import { TextField, ErrorMsg } from "./Questions.style"
 
 export default class TextInput extends Component {
   render() {
@@ -25,9 +25,9 @@ export default class TextInput extends Component {
             onBlur={checkRequiredAnswers}
           />
           {unanswered && unanswered.includes(questionId) ? (
-            <div className="required">
+            <ErrorMsg>
               <p>Please answer this question</p>
-            </div>
+            </ErrorMsg>
           ) : (
             ""
           )}

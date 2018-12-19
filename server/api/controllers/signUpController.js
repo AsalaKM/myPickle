@@ -15,17 +15,19 @@ router.post("/", async (req, res) => {
   // get support type id (either therapist or general)
   const supportTypeID = await getSupportType(req.body).catch(err => res.status(400).json(err))
   // register a new user
-  const newUser = await registerUser(name, email, phone, password).catch(err =>
+  const newUserID = await registerUser(name, email, phone, password).catch(err =>
     res.status(400).json(err)
   )
   // register new profile
-  const newProfile = await registerProfile(supportTypeID, newUser._id, false).catch(err =>
+  const newProfileID = await registerProfile(supportTypeID, newUserID, false).catch(err =>
     res.status(400).json(err)
   )
   // create profile answers object
   const profileAnswers = await getProfileAnswers(req.body)
   // store those answers in database
-  const saveProfileAnswers = await storeAnswers(newProfile._id, profileAnswers)
+  const saveProfileAnswers = await storeAnswers(newProfileID, profileAnswers)
+
+  res.status(200).send(newProfileID)
 })
 
 module.exports = router

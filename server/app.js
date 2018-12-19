@@ -2,6 +2,7 @@ const express = require("express")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 const bodyParser = require("body-parser")
+const fileUpload = require("express-fileupload")
 
 const controllers = require("./api/controllers")
 
@@ -32,6 +33,7 @@ app
   })
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
+  .use(fileUpload())
   .use(controllers)
 
 module.exports = app

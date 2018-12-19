@@ -10,7 +10,8 @@
     "react-scripts": "2.1.1",
     "react-test-renderer": "^16.6.3",
     "styled-components": "^4.1.2",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "validator": "^10.9.0"
   },
   "devDependencies": {
     "enzyme": "^3.8.0",
@@ -25,9 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test -u",
     "eject": "react-scripts eject",
-    "test:client": "react-scripts test --coverage"
+    "test:client": "react-scripts test --coverage -u"
   },
   "eslintConfig": {
     "extends": "react-app"

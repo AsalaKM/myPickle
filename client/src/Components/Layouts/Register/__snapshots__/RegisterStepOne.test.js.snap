@@ -32,11 +32,12 @@ Array [
   >
     <button
       className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+      id="prev-btn"
     >
       Back
     </button>
     <button
-      className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+      className="next-btn sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
     >
       Next
     </button>

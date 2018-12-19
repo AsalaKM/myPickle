@@ -6,6 +6,10 @@ import { ErrorMsg } from "../../Common/Questions/Questions.style"
 import CheckboxInput from "../../Common/Questions/CheckboxInput"
 
 export default class RegisterStepOne extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     const { wellnessQuestion, handleChange, answers, checkStage, unanswered } = this.props
     const { isRequired } = wellnessQuestion

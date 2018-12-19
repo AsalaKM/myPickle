@@ -24,6 +24,8 @@ class Register extends Component {
       .get("/get-register-questions")
       .then(res => this.setState({ registerQuestions: res.data }))
       .catch(err => console.log("message", err))
+
+    window.scrollTo(0, 0)
   }
 
   validateInput = question => {

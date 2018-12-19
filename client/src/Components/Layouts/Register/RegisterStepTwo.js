@@ -6,6 +6,9 @@ import TextInput from "../../Common/Questions/TextInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
 export default class RegisterStepTwo extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
   render() {
     const {
       handleChange,

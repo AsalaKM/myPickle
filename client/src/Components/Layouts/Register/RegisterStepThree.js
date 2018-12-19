@@ -6,6 +6,9 @@ import RadioInput from "../../Common/Questions/RadioInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"
 
 export default class RegisterStepThree extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
   render() {
     const {
       handleChange,

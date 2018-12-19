@@ -1,44 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard matches snapshot 1`] = `
+exports[`Login matches snapshot 1`] = `
 <div
-  className="sc-bdVaJa dCcmtV"
+  className="sc-bdVaJa caUQkH"
 >
-  <h2>
-    Welcome back, Haneen
+  <img
+    className="sc-bwzfXH fesAsK"
+    onClick={[Function]}
+    src="home.svg"
+  />
+  <div
+    className="sc-gzVnrw kpZGLP"
+  >
+    <img
+      className="sc-bxivhb hTUQbg"
+      src="logo.jpg"
+    />
+    <h2
+      className="sc-ifAKCX Tiktc"
+    >
+      myPikle
+    </h2>
+  </div>
+  <form>
+    <input
+      className="sc-htpNat hfCgQd"
+      name="email"
+      onChange={[Function]}
+      placeholder="Your Email"
+      type="email"
+      value=""
+    />
+    <br />
+    <input
+      className="sc-htpNat hfCgQd"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value=""
+    />
+    <br />
+  </form>
+  <br />
+  <button
+    className="sc-EHOje iUMJbr"
+  >
+    Login
+  </button>
+  <h2
+    className="sc-bZQynM eHnwNe"
+    onClick={[Function]}
+  >
+    Create new acccount!
   </h2>
-  <button
-    className="sc-bwzfXH hfIVGL"
-    onClick={[Function]}
-  >
-     Edit Profile 
-  </button>
-  <br />
-  <button
-    className="sc-bwzfXH hfIVGL"
-    onClick={[Function]}
-  >
-     Create Blog Post 
-  </button>
-  <br />
-  <button
-    className="sc-bwzfXH hfIVGL"
-    onClick={[Function]}
-  >
-     Browse Profiles
-  </button>
-  <br />
-  <button
-    className="sc-bwzfXH hfIVGL"
-    onClick={[Function]}
-  >
-    Browse Blog Posts
-  </button>
-  <br />
-  <button
-    className="sc-htpNat uAZkr"
-  >
-    Logout
-  </button>
 </div>
 `;

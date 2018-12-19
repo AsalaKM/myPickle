@@ -11,11 +11,9 @@ const getSupportType = async dataObj => {
   // check if answer is therapist or other
   if (supportTypeAnswer !== "Qualified therapy or counselling service") {
     const supportTypeElement = await SupportType.findOne({ type: "General" })
-    console.log("GeneralType", supportTypeElement._id)
     return supportTypeElement._id
   } else {
     const supportTypeElement = await SupportType.findOne({ type: "Therapist" })
-    console.log("TherapistType", supportTypeElement._id)
     return supportTypeElement._id
   }
 }

@@ -2,6 +2,8 @@ import React from "react"
 
 import { Intro, Button, Answers } from "./Register.style"
 
+import CheckboxInput from "../../Common/Questions/CheckboxInput"
+
 export default class RegisterStepOne extends React.Component {
   render() {
     const { wellnessQuestion, handleChange, answers, checkStage, unanswered } = this.props
@@ -28,7 +30,13 @@ export default class RegisterStepOne extends React.Component {
           <CircleSm />
         </CirclesContainer> */}
         <Answers>
-          {wellnessQuestion.options.map(option => {
+          <CheckboxInput
+            question={wellnessQuestion}
+            handleChange={handleChange}
+            answers={answers}
+          />
+
+          {/* {wellnessQuestion.options.map(option => {
             return (
               <label htmlFor={option} key={Math.random()}>
                 <input
@@ -43,7 +51,7 @@ export default class RegisterStepOne extends React.Component {
                 <p>{option}</p>
               </label>
             )
-          })}
+          })} */}
         </Answers>
         <div className="flex items-center justify-center w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>

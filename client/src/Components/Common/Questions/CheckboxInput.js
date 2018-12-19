@@ -1,15 +1,15 @@
 import React, { Component } from "react"
 
-import { RadioField } from "./Questions.style"
+import { CheckboxField } from "./Questions.style"
 
-export default class RadioInput extends Component {
+export default class CheckboxInput extends Component {
   render() {
-    const { question, handleChange, answers, unanswered, checkRequiredAnswers } = this.props
+    const { question, handleChange, answers, unanswered } = this.props
     const { questionText, _id: questionId, options, helperText, isRequired } = question
     console.log("Q", question)
     return (
       <React.Fragment>
-        <RadioField>
+        <CheckboxField>
           <header>
             <h4>
               {questionText}
@@ -24,11 +24,11 @@ export default class RadioInput extends Component {
                 <label htmlFor={uniqueId}>
                   <input
                     value={option}
+                    type="checkbox"
                     id={uniqueId}
                     name={questionId}
-                    type="radio"
                     onChange={handleChange}
-                    onBlur={checkRequiredAnswers}
+                    checked={answers[questionId] && answers[questionId].includes(option)}
                   />
                   <span className="checkmark" />
                   <p>{option}</p>
@@ -43,7 +43,7 @@ export default class RadioInput extends Component {
           ) : (
             ""
           )}
-        </RadioField>
+        </CheckboxField>
       </React.Fragment>
     )
   }

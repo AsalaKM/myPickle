@@ -1,15 +1,20 @@
 import React, { Component } from "react"
+import { TextField } from "./Questions.style"
 
 export default class TextFieldInput extends Component {
   render() {
     const { question, handleChange, answers, unanswered, checkRequiredAnswers } = this.props
-    const { questionText, _id: questionId } = question
+    const { questionText, _id: questionId, helperText, isRequired } = question
 
     return (
       <React.Fragment>
-        <div>
+        <TextField>
           <header>
-            <h4>{questionText}</h4>
+            <h4>
+              {questionText}
+              {isRequired ? " *" : ""}
+            </h4>
+            <p>{helperText}</p>
           </header>
           <textarea
             type="textarea"
@@ -25,7 +30,7 @@ export default class TextFieldInput extends Component {
           ) : (
             ""
           )}
-        </div>
+        </TextField>
       </React.Fragment>
     )
   }

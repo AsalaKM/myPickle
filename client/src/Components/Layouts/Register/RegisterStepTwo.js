@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Button, RegisterStepTwoWrapper } from "./Register.style"
+import { TextField } from "../../Common/Questions/Questions.style"
 import TextInput from "../../Common/Questions/TextInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
@@ -16,9 +17,10 @@ export default class RegisterStepTwo extends React.Component {
     } = this.props
     return (
       <RegisterStepTwoWrapper>
-        <div>
+        <TextField>
           <header>
-            <h4>Contact Name:</h4>
+            <h4>Contact Name:*</h4>
+            <p />
           </header>
           <input
             type="text"
@@ -35,10 +37,11 @@ export default class RegisterStepTwo extends React.Component {
           ) : (
             ""
           )}
-        </div>
-        <div>
+        </TextField>
+        <TextField>
           <header>
-            <h4>Contact Email:</h4>
+            <h4>Contact Email:*</h4>
+            <p />
           </header>
           <input
             type="email"
@@ -54,10 +57,11 @@ export default class RegisterStepTwo extends React.Component {
           ) : (
             ""
           )}
-        </div>
-        <div>
+        </TextField>
+        <TextField>
           <header>
-            <h4>Contact Password:</h4>
+            <h4>Contact Password:*</h4>
+            <p />
           </header>
           <input
             type="password"
@@ -73,10 +77,11 @@ export default class RegisterStepTwo extends React.Component {
           ) : (
             ""
           )}
-        </div>
-        <div>
+        </TextField>
+        <TextField>
           <header>
-            <h4>Confirm Password:</h4>
+            <h4>Confirm Password:*</h4>
+            <p />
           </header>
           <input
             type="password"
@@ -92,10 +97,11 @@ export default class RegisterStepTwo extends React.Component {
           ) : (
             ""
           )}
-        </div>
-        <div>
+        </TextField>
+        <TextField>
           <header>
-            <h4>Phone Number:</h4>
+            <h4>Phone Number:*</h4>
+            <p />
           </header>
           <input
             type="text"
@@ -111,7 +117,7 @@ export default class RegisterStepTwo extends React.Component {
           ) : (
             ""
           )}
-        </div>
+        </TextField>
         {adminQuestions.map(question => {
           const { inputType } = question
 
@@ -138,7 +144,7 @@ export default class RegisterStepTwo extends React.Component {
             )
           }
         })}
-        <div className="flex items-center justify-between w-100">
+        <div className="flex items-center justify-between w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>
             Back
           </Button>

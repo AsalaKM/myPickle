@@ -19,7 +19,7 @@ export default class FileUploadInput extends Component {
               onChange={imageUpload}
               className="file-upload-input"
               type="file"
-              multiple="false"
+              multiple={false}
               accept=".png, .jpg, .jpeg"
             />
           </label>

@@ -14,6 +14,8 @@ const Button = styled.button.attrs({
   border-radius: 2rem;
   cursor: pointer;
   margin-top: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   width: 40vw;
   height: 3rem;
 
@@ -59,7 +61,26 @@ const CirclesContainer = styled.div`
 `
 
 const RegisterStepTwoWrapper = styled.div.attrs({
-  className: "flex flex-column items-center ph3",
+  className: "flex flex-column ph3",
 })``
 
-export { Intro, Button, CircleLarge, CircleMed, CirclesContainer, CircleSm, RegisterStepTwoWrapper }
+const Answers = styled(Intro)`
+  align-items: flex-start;
+
+  label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+`
+
+export {
+  Intro,
+  Button,
+  CircleLarge,
+  CircleMed,
+  CirclesContainer,
+  CircleSm,
+  RegisterStepTwoWrapper,
+  Answers,
+}

@@ -61,7 +61,7 @@ export default class RegisterStepThree extends React.Component {
             }
           })}
         </div>
-        <div className="flex items-center justify-between w-100">
+        <div className="flex items-center justify-between w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>
             Back
           </Button>

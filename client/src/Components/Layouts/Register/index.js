@@ -25,7 +25,6 @@ class Register extends Component {
   }
 
   checkRequiredAnswers = question => {
-    console.log("REACHED")
     // get the value that's been input
     const value = question.target.value
 

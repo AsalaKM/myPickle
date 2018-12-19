@@ -1,17 +1,18 @@
 import React from "react"
 
-import { Intro, Button } from "./Register.style"
+import { Intro, Button, Answers } from "./Register.style"
 
 export default class RegisterStepOne extends React.Component {
   render() {
     const { wellnessQuestion, handleChange, answers, checkStage, unanswered } = this.props
+    const { isRequired } = wellnessQuestion
     return (
       <React.Fragment>
         <Intro>
           <h2 className="tc mp-primary-color">Wellness Areas</h2>
           <p>
             So we can customize your profile, please select the area(s) of wellness where you
-            provide support.
+            provide support.{isRequired ? " *" : ""}
           </p>
           {unanswered && unanswered.includes(wellnessQuestion._id) ? (
             <div className="required">
@@ -26,7 +27,7 @@ export default class RegisterStepOne extends React.Component {
           <CircleMed />
           <CircleSm />
         </CirclesContainer> */}
-        <div className="answers">
+        <Answers>
           {wellnessQuestion.options.map(option => {
             return (
               <label htmlFor={option} key={Math.random()}>
@@ -43,8 +44,8 @@ export default class RegisterStepOne extends React.Component {
               </label>
             )
           })}
-        </div>
-        <div className="flex items-center justify-between w-100">
+        </Answers>
+        <div className="flex items-center justify-center w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>
             Back
           </Button>

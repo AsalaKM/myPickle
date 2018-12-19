@@ -182,7 +182,6 @@ class Register extends Component {
     const newAnswerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
     let answer
-    console.log("HANDLE", questionId)
 
     if (option.target.type === "checkbox") {
       if (newUnanswered.includes(questionId)) {

@@ -22,7 +22,6 @@ export default class RegisterStepThree extends React.Component {
       imageUpload,
     } = this.props
 
-    console.log("STEP3", basicInfoQuestions)
     return (
       <React.Fragment>
         <Intro>
@@ -30,60 +29,59 @@ export default class RegisterStepThree extends React.Component {
           <p>We've got just a final couple of questions to build your shiny profile!</p>
         </Intro>
         <Answers>
-          {basicInfoQuestions.map(question => {
-            // pull out the details from each question
-            const { inputType } = question
-
-            if (inputType === "text" || inputType === "url") {
-              return (
-                <TextInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                  validateInput={validateInput}
-                />
-              )
-            }
-            if (inputType === "textarea") {
-              return (
-                <TextFieldInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                  validateInput={validateInput}
-                />
-              )
-            }
-            if (inputType === "radio") {
-              return (
-                <RadioInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                  validateInput={validateInput}
-                />
-              )
-            }
-            if (inputType === "file-upload") {
-              return (
-                <FileUploadInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                  imageUpload={imageUpload}
-                  validateInput={validateInput}
-                />
-              )
-            }
-          })}
+          {basicInfoQuestions
+            .filter(question => question.inputType === "text" || question.inputType === "url")
+            .map((question, index) => (
+              <TextInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+                validateInput={validateInput}
+              />
+            ))}
+          {basicInfoQuestions
+            .filter(question => question.inputType === "textarea")
+            .map((question, index) => (
+              <TextFieldInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+                validateInput={validateInput}
+              />
+            ))}
+          {basicInfoQuestions
+            .filter(question => question.inputType === "radio")
+            .map((question, index) => (
+              <RadioInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+                validateInput={validateInput}
+              />
+            ))}
+          {basicInfoQuestions
+            .filter(question => question.inputType === "file-upload")
+            .map((question, index) => (
+              <FileUploadInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+                imageUpload={imageUpload}
+                validateInput={validateInput}
+              />
+            ))}
         </Answers>
         <div className="flex items-center justify-between w-100 mb4">
           <Button id="prev-btn" onClick={this.props.handlePrevious}>

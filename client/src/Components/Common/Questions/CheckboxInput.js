@@ -6,7 +6,6 @@ export default class CheckboxInput extends Component {
   render() {
     const { question, handleChange, answers, unanswered } = this.props
     const { questionText, _id: questionId, options, helperText, isRequired } = question
-    console.log("Q", question)
     return (
       <React.Fragment>
         <CheckboxField>
@@ -21,7 +20,7 @@ export default class CheckboxInput extends Component {
             {options.map(option => {
               const uniqueId = option + questionId
               return (
-                <label htmlFor={uniqueId}>
+                <label htmlFor={uniqueId} key={Math.random()}>
                   <input
                     value={option}
                     type="checkbox"

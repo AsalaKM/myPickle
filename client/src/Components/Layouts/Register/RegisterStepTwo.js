@@ -148,32 +148,32 @@ export default class RegisterStepTwo extends React.Component {
               ""
             )}
           </TextField>
-          {adminQuestions.map(question => {
-            const { inputType } = question
-
-            if (inputType === "text") {
-              return (
-                <TextInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                />
-              )
-            }
-            if (inputType === "textarea" || inputType === "address") {
-              return (
-                <TextFieldInput
-                  question={question}
-                  handleChange={handleChange}
-                  answers={answers}
-                  unanswered={unanswered}
-                  checkRequiredAnswers={checkRequiredAnswers}
-                />
-              )
-            }
-          })}
+          {adminQuestions
+            .filter(question => question.inputType === "text")
+            .map((question, index) => (
+              <TextInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+              />
+            ))}
+          {adminQuestions
+            .filter(
+              question => question.inputType === "textarea" || question.inputType === "address"
+            )
+            .map((question, index) => (
+              <TextFieldInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+              />
+            ))}
           <div className="flex items-center justify-between w-100 mb4">
             <Button id="prev-btn" onClick={this.props.handlePrevious}>
               Back

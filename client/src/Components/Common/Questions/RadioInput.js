@@ -4,9 +4,8 @@ import { RadioField, ErrorMsg } from "./Questions.style"
 
 export default class RadioInput extends Component {
   render() {
-    const { question, handleChange, answers, unanswered, checkRequiredAnswers } = this.props
+    const { question, handleChange, unanswered, checkRequiredAnswers } = this.props
     const { questionText, _id: questionId, options, helperText, isRequired } = question
-    console.log("Q", question)
     return (
       <React.Fragment>
         <RadioField>
@@ -18,10 +17,10 @@ export default class RadioInput extends Component {
             <p>{helperText}</p>
           </header>
           <div className="answers">
-            {options.map(option => {
+            {options.map((option, index) => {
               const uniqueId = option + questionId
               return (
-                <label htmlFor={uniqueId}>
+                <label htmlFor={uniqueId} key={index}>
                   <input
                     value={option}
                     id={uniqueId}

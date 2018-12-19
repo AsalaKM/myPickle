@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const atricleSchema = new Schema({
+const articleSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -24,4 +24,4 @@ const atricleSchema = new Schema({
   },
 })
 
-module.exports = atricle = mongoose.model("atricles", atricleSchema)
+module.exports = Article = mongoose.model("articles", articleSchema)

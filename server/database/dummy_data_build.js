@@ -19,6 +19,7 @@ const buildDb = async () => {
   await SupportType.deleteMany({})
   await Profile.deleteMany({})
   await ProfileQuestion.deleteMany({})
+  await ProfileAnswer.deleteMany({})
 
   console.log("collections deleted")
 

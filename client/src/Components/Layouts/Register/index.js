@@ -257,19 +257,6 @@ class Register extends Component {
       return
     }
 
-    // upload the image
-    // const formData = new FormData()
-    // for (let key in file) {
-    //   formData.append(key, file[key])
-    // }
-
-    // fetch("/upload-image", {
-    //   method: "POST",
-    //   body: formData,
-    // }).catch(err => console.log(err))
-
-    // axios.post("/upload-image", formData).catch(err => console.log(err))
-
     axios
       .post("/register-user", registerAnswers)
       .then(profileId => {

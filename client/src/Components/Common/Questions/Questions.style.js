@@ -12,12 +12,6 @@ const CommonStyles = styled.div`
       margin-top: 8px;
     }
   }
-  /* .helpertext {
-    opacity: 0.8;
-    size: 16px;
-  } */
-
-  /* ${({ unanswered }) => unanswered && "color: red;"} */
 `
 
 const TextField = styled(CommonStyles)`
@@ -28,8 +22,6 @@ const TextField = styled(CommonStyles)`
     width: 100%;
     padding: 8px;
   }
-
-  /* ${({ unanswered }) => unanswered && "color: red; input { border: 1px solid red} "} */
 `
 
 const RadioField = styled(CommonStyles)`
@@ -68,14 +60,9 @@ const RadioField = styled(CommonStyles)`
         width: 17px;
       }
 
-      /* :checked ~ .checkmark:after {
-        top: 9px;
-        left: 9px;
-        /* width: 8px;
-        height: 8px; */
         border-radius: 50%;
         background-color: white;
-      } */
+      } 
     }
 
     .checkmark {

@@ -8,6 +8,7 @@ const uploadImage = require("./uploadImage")
 
 // edit profle controllers
 const editSupportDetails = require("./editSupportDetails")
+const getQuestions = require("./getQuestions")
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -17,6 +18,7 @@ router.get("/", (req, res, next) => {
 router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
+router.use("/get-questions/:section/:id", getQuestions)
 
 // edit profile routes
 router.use("/edit-profile/support/:id", editSupportDetails)

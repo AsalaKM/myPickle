@@ -57,7 +57,7 @@ const buildDb = async () => {
 
   // create new profile for user with support type therapist and user_id as foreign keys
   const therapistProfile = new Profile({
-    SupportType: supportTypeTherapist._id,
+    supportType: supportTypeTherapist._id,
     user: therapist._id,
     approved: true,
   })
@@ -67,7 +67,7 @@ const buildDb = async () => {
 
   // create new profile for user with support type general and user_id as foreign keys
   const generalProfile = new Profile({
-    SupportType: supportTypeGeneral._id,
+    supportType: supportTypeGeneral._id,
     user: generalUser._id,
     approved: true,
   })

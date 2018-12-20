@@ -1,8 +1,6 @@
 // load the mongo models
-const ProfileQuestion = require("../../models/ProfileQuestion")
 const ProfileAnswer = require("../../models/ProfileAnswer")
 const Profile = require("../../models/Profile")
-// const User = require("../models/User")
 
 // INITIAL SIGNUP
 // get support details questions and answers for those questions that have been pre-filled
@@ -23,7 +21,14 @@ const getSupportDetails = async profileID => {
     { $match: { "question.section": "Support Details" } },
   ])
 
-  return supportDetails
+  let supportAnswers = {}
+  // const filteredDetails = questions.map(
+  //   answer => (obj[answer.question.question._id] = answer.answer)
+  // )
+
+  supportDetails.map(answer => (supportAnswers[answer.question._id] = answer.answer))
+
+  return supportAnswers
 }
 
 module.exports = getSupportDetails

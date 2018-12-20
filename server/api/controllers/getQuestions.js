@@ -1,11 +1,16 @@
 const express = require("express")
 const router = express.Router()
 
-const getSupportDetails = require("../../database/queries/editProfile/getSupportDetails")
+const getQuestions = require("../../database/queries/editProfile/getQuestions")
 
 router.get("/", (req, res) => {
+  const section = req.originalUrl.split("/")[2]
   const profileID = req.originalUrl.split("/")[3]
-  getSupportDetails(profileID)
+  console.log("REACHED", profileID)
+
+  // function that will feed in the section to then get the questions for that section
+
+  getQuestions(section)
     .then(questions => {
       res.status(200).json(questions)
     })

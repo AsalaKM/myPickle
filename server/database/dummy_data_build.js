@@ -30,7 +30,7 @@ const buildDb = async () => {
   const therapist = new User({
     name: "Josephine Doeski",
     phone: "004407566683",
-    email: "Josephine@the-therapists.co.uk",
+    email: "josephine@the-therapists.co.uk",
     address: "66 Moaning Road E50DW London",
     password: "123456",
   })

@@ -67,4 +67,23 @@ describe("Tests for registerUser.js", () => {
     expect(typeof foundUser).toEqual("object")
     expect(foundUser.name).toEqual("testMeBabyOneMoreTime")
   })
+  test("can't register if user already exists in db", async () => {
+    const testUser = await User.findOne({ email: "josephine@the-therapists.co.uk" })
+    const { name, email, phone, password } = testUser
+    const registeredUser = await registerUser(name, email, phone, password)
+    expect(testUser).toBeDefined()
+    expect(testUser.email).toBe("josephine@the-therapists.co.uk")
+    expect(registeredUser).toBeUndefined()
+  })
+  test("can't register user with missing data", async () => {
+    const testUser = {
+      name: "",
+      phone: "004407566683",
+      email: "test@testme.co.uk",
+      address: "666 highway to test E50DW London",
+      password: "",
+    }
+    const { name, email, phone, password } = testUser
+    await registerUser(name, email, phone, password).catch(err => expect(err).toBeDefined())
+  })
 })

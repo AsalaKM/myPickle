@@ -4,9 +4,9 @@
 const ProfileQuestion = require("./models/ProfileQuestion")
 const SupportType = require("./models/SupportType")
 
-const dbConnection = require("./db_connection")
-
-dbConnection()
+// ONLY NEED THESE LINES BELOW IF YOU'RE ONLY BUILDING QUESTIONS AND NOT THE WHOLE DUMMY DATA
+// const dbConnection = require("./db_connection")
+// dbConnection()
 
 const buildProfileQuestions = async () => {
   // clear profile model

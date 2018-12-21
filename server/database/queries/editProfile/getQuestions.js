@@ -15,8 +15,10 @@ const getQuestions = async (section, profileID) => {
   if (section === "admin-info") sectionType = "Admin Info"
   if (section === "target-clients") sectionType = "Target Clients"
 
+  // get the profile details
   const profile = await Profile.findById(profileID)
 
+  // see what type of support provider they are (e.g. therapist, general)
   const supportTypeDetails = await Profile.aggregate([
     { $match: { _id: profile._id } },
     {
@@ -48,7 +50,7 @@ const getQuestions = async (section, profileID) => {
   else {
     questions = await ProfileQuestion.find({ section: sectionType })
   }
-
+  console.log("Qs", questions)
   return questions
 }
 

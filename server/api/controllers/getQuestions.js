@@ -13,7 +13,15 @@ router.get("/", (req, res) => {
     .then(questions => {
       res.status(200).json(questions)
     })
-    .catch(err => res.status(500).send("Server Error"))
+    .catch(err => {
+      if (err.message.indexOf("Cast to ObjectId failed") !== -1) {
+        res.status(404)
+        res.send("Data was not found")
+      } else {
+        res.status(500)
+        res.send("Server Error")
+      }
+    })
 })
 
 module.exports = router

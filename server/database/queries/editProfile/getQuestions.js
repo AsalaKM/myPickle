@@ -50,7 +50,6 @@ const getQuestions = async (section, profileID) => {
   else {
     questions = await ProfileQuestion.find({ section: sectionType })
   }
-  console.log("Qs", questions)
   return questions
 }
 

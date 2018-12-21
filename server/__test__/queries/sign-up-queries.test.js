@@ -11,7 +11,7 @@ const ProfileAnswer = require("../../database/models/ProfileAnswer")
 
 //load queries
 const getRegisterQuestions = require("../../database/queries/getRegisterQuestions")
-
+const registerUser = require("../../database/queries/registerUser")
 // connect
 dbConnection()
 
@@ -24,7 +24,7 @@ afterAll(async () => {
   await mongoose.connection.close()
 })
 
-describe("Getting Register Questions for each profile type (therapist vs. general user", () => {
+describe("can build dummy data correctly", () => {
   test("successfully creates collections", async () => {
     expect(SupportType).toBeDefined()
     expect(User).toBeDefined()
@@ -37,6 +37,9 @@ describe("Getting Register Questions for each profile type (therapist vs. genera
     const actual = foundTherapist.email
     expect(actual).toBe(expected)
   })
+})
+
+describe("Tests for getRegisterProfileQuestions.js", () => {
   test("getRegisterProfileQuestions returns the right question", async () => {
     const canGetRegisterQuestions = await getRegisterQuestions()
     expect(canGetRegisterQuestions).toBeDefined()
@@ -45,5 +48,23 @@ describe("Getting Register Questions for each profile type (therapist vs. genera
   test("getRegisterProfileQuestions error handling", async () => {
     // leave out async behaviour to throw an error
     getRegisterQuestions().catch(err => expect(err).toBeDefined())
+  })
+})
+
+describe("Tests for registerUser.js", () => {
+  test("can register a user using valid data", async () => {
+    const testUser = {
+      name: "testMeBabyOneMoreTime",
+      phone: "004407566683",
+      email: "test@testme.co.uk",
+      address: "666 highway to test E50DW London",
+      password: "123456",
+    }
+    const { name, email, phone, password } = testUser
+    const registeredUser = await registerUser(name, email, phone, password)
+    const foundUser = await User.findById(registeredUser)
+    expect(foundUser).toBeDefined()
+    expect(typeof foundUser).toEqual("object")
+    expect(foundUser.name).toEqual("testMeBabyOneMoreTime")
   })
 })

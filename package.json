@@ -35,9 +35,14 @@
   "homepage": "https://github.com/techforbetter/myPickle#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0"
   },
   "dependencies": {
-    "codecov": "^3.1.0"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "codecov": "^3.1.0",
+    "jest": "^23.6.0"
   }
 }

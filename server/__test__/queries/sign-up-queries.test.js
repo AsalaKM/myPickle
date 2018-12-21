@@ -12,6 +12,7 @@ const ProfileAnswer = require("../../database/models/ProfileAnswer")
 //load queries
 const getRegisterQuestions = require("../../database/queries/getRegisterQuestions")
 const registerUser = require("../../database/queries/registerUser")
+const getSupportType = require("../../database/queries/getSupportType")
 // connect
 dbConnection()
 
@@ -85,5 +86,24 @@ describe("Tests for registerUser.js", () => {
     }
     const { name, email, phone, password } = testUser
     await registerUser(name, email, phone, password).catch(err => expect(err).toBeDefined())
+  })
+
+  describe("Tests for getSupportType.js", () => {
+    test("can get support type by inserting valid request", async () => {
+      const supportTypeQuestion = await ProfileQuestion.findOne({
+        questionText: "What best describes your core service offering?",
+      })
+      const supportTypeQuestionID = supportTypeQuestion._id
+      const requestObj = {}
+      requestObj[supportTypeQuestionID] = "Qualified therapy or counselling service"
+      const gotSupportType = await getSupportType(requestObj)
+      const foundSupportType = await SupportType.findById(gotSupportType)
+      expect(foundSupportType).toBeDefined()
+      expect(foundSupportType.type).toEqual("Therapist")
+    })
+    test("can't get support type by inserting invalid request", async () => {
+      const requestObj = {}
+      await getSupportType(requestObj).catch(err => expect(err).toBeDefined())
+    })
   })
 })

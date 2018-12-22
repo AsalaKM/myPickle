@@ -5,6 +5,7 @@ const getTargetClientsDetails = require("../../database/queries/editProfile/getT
 
 router.get("/", (req, res) => {
   const profileID = req.originalUrl.split("/")[3]
+
   getTargetClientsDetails(profileID)
     .then(answers => {
       res.status(200).json(answers)

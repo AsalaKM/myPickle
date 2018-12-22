@@ -8,6 +8,7 @@ const uploadImage = require("./uploadImage")
 
 // edit profle controllers
 const editSupportDetails = require("./editSupportDetails")
+const editTargetClientsDetails = require("./editTargetClientsDetails")
 const getQuestions = require("./getQuestions")
 
 /* GET home page. */
@@ -22,5 +23,6 @@ router.use("/get-questions/:section/:id", getQuestions)
 
 // edit profile routes
 router.use("/edit-profile/support/:id", editSupportDetails)
+router.use("/edit-profile/target/:id", editTargetClientsDetails)
 
 module.exports = router

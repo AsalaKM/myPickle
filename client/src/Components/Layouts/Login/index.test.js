@@ -2,13 +2,13 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { StaticRouter } from "react-router-dom"
 
-import RegisterStepOne from "./RegisterStepOne"
+import Login from "./index"
 
-test("Register matches snapshot", () => {
+test("Login matches snapshot", () => {
   const context = {}
   const component = renderer.create(
     <StaticRouter context={context}>
-      <RegisterStepOne />
+      <Login />
     </StaticRouter>
   )
   expect(component).toMatchSnapshot()

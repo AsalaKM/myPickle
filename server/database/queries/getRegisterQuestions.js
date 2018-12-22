@@ -1,7 +1,5 @@
-const mongoose = require("mongoose")
 // load the mongo models
 const ProfileQuestion = require("../models/ProfileQuestion")
-const User = require("../models/User")
 
 // INITIAL SIGNUP
 // get questions for admin-info plus basic-info plus wellness-areas question from support-details
@@ -14,6 +12,7 @@ const registerQuestions = async () => {
       { questionText: "Please select your area(s) of wellness" },
     ],
   })
+
   return profileQuestions
 }
 

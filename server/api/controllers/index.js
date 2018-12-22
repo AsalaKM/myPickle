@@ -2,14 +2,25 @@ const express = require("express")
 
 const router = express.Router()
 
-const getRegisterQuestions = require("../../database/queries/getRegisterQuestions")
+const getRegisterQuestionsController = require("./getRegisterQuestionsController")
+const signUpController = require("./signUpController")
+const uploadImage = require("./uploadImage")
+
+// edit profle controllers
+const editSupportDetails = require("./editSupportDetails")
+const getQuestions = require("./getQuestions")
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
   res.send({ title: "Express" })
 })
 
-// Get Profile Questions
-router.use("/get-register-questions", getRegisterQuestions)
+router.use("/get-register-questions", getRegisterQuestionsController)
+router.use("/register-user", signUpController)
+router.use("/upload-image", uploadImage)
+router.use("/get-questions/:section/:id", getQuestions)
+
+// edit profile routes
+router.use("/edit-profile/support/:id", editSupportDetails)
 
 module.exports = router

@@ -12,6 +12,7 @@ const dbConnection = () => {
   // get DB url from process.env
 
   let { mongoURI } = process.env
+  // let mongoURI = "mongodb://localhost:27017/mypickledb"
   // check if the environment is test
   if (process.env.NODE_ENV === "test") {
     // let DB url equal testing DB

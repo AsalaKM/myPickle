@@ -11,7 +11,6 @@ class TargetClients extends Component {
     targetQuestions: null,
     unanswered: [],
     errors: {},
-    loaded: false,
   }
 
   componentDidMount() {
@@ -23,7 +22,6 @@ class TargetClients extends Component {
       .then(questions =>
         this.setState({
           targetQuestions: questions.data,
-          loaded: true,
         })
       )
       .catch(err => console.log(err))
@@ -35,16 +33,15 @@ class TargetClients extends Component {
   }
 
   render() {
-    const { loaded, targetQuestions, targetAnswers } = this.state
-    console.log(targetQuestions)
-
-    if (!loaded) {
+    const { targetQuestions, targetAnswers } = this.state
+    if (targetQuestions === null || targetAnswers === null) {
       return (
         <Intro>
           <h2 className="tc mp-primary-color">Loading Your Details...</h2>
         </Intro>
       )
     }
+
     return (
       <React.Fragment>
         <Intro>
@@ -62,7 +59,7 @@ class TargetClients extends Component {
                   </h4>
                   <p>{question.helperText}</p>
                 </header>
-                <div>
+                <div className="answers">
                   {question.options.map(option => {
                     const uniqueId = option + question._id
                     return (
@@ -72,11 +69,12 @@ class TargetClients extends Component {
                           type="checkbox"
                           id={uniqueId}
                           name={question._id}
-                          // checked={
-                          //   targetAnswers[question._id] &&
-                          //   targetAnswers[question._id].includes(option)
-                          // }
+                          checked={
+                            targetAnswers[question._id] &&
+                            targetAnswers[question._id].includes(option)
+                          }
                         />
+                        <span className="checkmark" />
                         <p>{option}</p>
                       </label>
                     )

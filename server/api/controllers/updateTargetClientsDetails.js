@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const axios = require("axios")
+
 // load query
 const updateTargetClientsDetails = require("../../database/queries/editProfile/updateTargetClients")
 

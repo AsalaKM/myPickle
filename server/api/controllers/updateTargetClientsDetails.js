@@ -1,12 +1,15 @@
 const express = require("express")
 const router = express.Router()
-
 // load query
-const updateTargetClientsDetails = require("../../database/queries/editProfile/updateTargetClients")
+const getTargetClientsDetails = require("../../database/queries/editProfile/getTargetClientsDetails")
+// const updateTargetClientsDetails = require("../../database/queries/editProfile/updateTargetClients")
+const updateProfileSection = require("../../database/queries/editProfile/updateProfileSection")
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const profileID = req.originalUrl.split("/")[3]
-  updateTargetClientsDetails(profileID, req.body)
+  const storedAnswers = await getTargetClientsDetails(profileID)
+
+  updateProfileSection(profileID, req.body, storedAnswers)
     .then(() => {
       res.status(200)
       res.send()

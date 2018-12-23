@@ -56,7 +56,7 @@ class TargetClients extends Component {
       .post(`/update-profile/target/${id}`, targetAnswers)
       .then(result => {
         console.log("RESULT", result)
-        swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
+        swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))
       })
       .catch(err =>
         swal({

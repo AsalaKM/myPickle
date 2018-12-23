@@ -1,8 +1,13 @@
 const express = require("express")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
+const bodyParser = require("body-parser")
+const fileUpload = require("express-fileupload")
 
-const controllers = require("./api/controllers/index")
+const controllers = require("./api/controllers")
+
+const dbConnection = require("./database/db_connection")
+dbConnection()
 
 const app = express()
 
@@ -26,6 +31,9 @@ app
     }
     next()
   })
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.json())
+  .use(fileUpload())
   .use(controllers)
 
 module.exports = app

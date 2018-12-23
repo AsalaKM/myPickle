@@ -3,6 +3,8 @@ import axios from "axios"
 import swal from "sweetalert"
 import { Button, Answers, Intro } from "../Register/Register.style"
 import { CheckboxField } from "../../Common/Questions/Questions.style"
+const pathName = window.location.pathname
+const id = pathName.split("/")[3]
 
 class TargetClients extends Component {
   state = {
@@ -12,9 +14,6 @@ class TargetClients extends Component {
   }
 
   componentDidMount() {
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
-
     axios
       .get(`/get-questions/target-clients/${id}`)
       .then(questions =>
@@ -54,12 +53,17 @@ class TargetClients extends Component {
     const { history } = this.props
     const { targetAnswers } = this.state
     axios
-      .post("/update-profile/target/profileId", targetAnswers)
+      .post(`/update-profile/target/${id}`, targetAnswers)
       .then(result => {
         console.log("RESULT", result)
         swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
       })
-      .catch(err => console.log(err))
+      .catch(err =>
+        swal({
+          icon: "error",
+          title: "An error occurred, sorry",
+        })
+      )
   }
 
   render() {

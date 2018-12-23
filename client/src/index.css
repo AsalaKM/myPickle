@@ -21,11 +21,13 @@ html {
 }
 body {
   font-family: "Merriweather Sans", sans-serif;
+  color: var(--black);
 }
 
 html {
   background-color: var(--white);
 }
+
 /* Colors */
 
 /* the below are the core colours if needed if classes below don't cover what you need */
@@ -35,7 +37,7 @@ html {
   --lightPrimary: #91e9a1;
   --secondary: #f7f161;
   --alert: #ff0022;
-  --white: #f8fbfa;
+  --white: hsla(0,0%,100%,.8);
   --black: #2a2b2e;
   --gray: #e8ede9;
 }

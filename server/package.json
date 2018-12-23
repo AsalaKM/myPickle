@@ -36,7 +36,11 @@
       "!**/node_modules/**",
       "!**/app.js",
       "!**/coverage/**",
-      "!**/bin/**"
+      "!**/bin/**",
+      "!**/dummy_data_build.js",
+      "!**/buildProfileQuestions.js",
+      "!**/models/**",
+      "!**/db_connection.js"
     ]
   },
   "dependencies": {
@@ -46,6 +50,8 @@
     "debug": "~2.6.9",
     "env2": "^2.2.2",
     "express": "~4.16.0",
+    "express-fileupload": "^1.0.0",
+    "mongoose": "^5.3.16",
     "morgan": "~1.9.0"
   },
   "devDependencies": {

@@ -9,7 +9,6 @@ class TargetClients extends Component {
     profileId: "",
     targetAnswers: null,
     targetQuestions: null,
-    unanswered: [],
     errors: {},
   }
 
@@ -30,6 +29,25 @@ class TargetClients extends Component {
       .get(`/edit-profile/target/${id}`)
       .then(answers => this.setState({ targetAnswers: answers.data, profileId: id }))
       .catch(err => console.log(err))
+  }
+
+  handleChange = option => {
+    // grab question id of checkbox option (set as name attribute)
+    const questionId = option.target.name
+    const newAnswerState = this.state.targetAnswers
+    let answer = option.target.value
+    // check if questionId key exists in newAnswerState
+    // if not create key value pair with questionId and new answer array
+    // if answer doesn't exist yet in array, put it in
+    if (!newAnswerState[questionId]) {
+      newAnswerState[questionId] = [answer]
+    } else if (!newAnswerState[questionId].includes(answer)) {
+      newAnswerState[questionId].push(answer)
+    } else if (newAnswerState[questionId].includes(answer)) {
+      const index = newAnswerState[questionId].indexOf(answer)
+      newAnswerState[questionId].splice(index, 1)
+    }
+    this.setState({ targetAnswers: newAnswerState })
   }
 
   render() {
@@ -69,6 +87,7 @@ class TargetClients extends Component {
                           type="checkbox"
                           id={uniqueId}
                           name={question._id}
+                          onChange={this.handleChange}
                           checked={
                             targetAnswers[question._id] &&
                             targetAnswers[question._id].includes(option)

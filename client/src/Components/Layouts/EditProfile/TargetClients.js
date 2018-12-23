@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
-
+import swal from "sweetalert"
 import { Button, Answers, Intro } from "../Register/Register.style"
 import { CheckboxField } from "../../Common/Questions/Questions.style"
 
@@ -9,7 +9,6 @@ class TargetClients extends Component {
     profileId: "",
     targetAnswers: null,
     targetQuestions: null,
-    errors: {},
   }
 
   componentDidMount() {
@@ -38,7 +37,7 @@ class TargetClients extends Component {
     let answer = option.target.value
     // check if questionId key exists in newAnswerState
     // if not create key value pair with questionId and new answer array
-    // if answer doesn't exist yet in array, put it in
+    // if answer doesn't exist yet in array, push it in, if duplicate, splice
     if (!newAnswerState[questionId]) {
       newAnswerState[questionId] = [answer]
     } else if (!newAnswerState[questionId].includes(answer)) {
@@ -48,6 +47,19 @@ class TargetClients extends Component {
       newAnswerState[questionId].splice(index, 1)
     }
     this.setState({ targetAnswers: newAnswerState })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { history } = this.props
+    const { targetAnswers } = this.state
+    axios
+      .post("/update-profile/target/profileId", targetAnswers)
+      .then(result => {
+        console.log("RESULT", result)
+        swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -102,6 +114,11 @@ class TargetClients extends Component {
               </CheckboxField>
             ))}
         </Answers>
+        <div className="flex items-center justify-between w-100 mb4">
+          <Button className="submit" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+        </div>
       </React.Fragment>
     )
   }

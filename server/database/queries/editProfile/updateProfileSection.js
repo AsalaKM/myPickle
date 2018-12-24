@@ -38,6 +38,7 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
         })
         await newEntry.save()
       }
+      return "updated successfully"
     }
   }
 }

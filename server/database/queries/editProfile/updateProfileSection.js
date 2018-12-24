@@ -4,6 +4,7 @@
 // load the mongo models
 const Profile = require("../../models/Profile")
 const ProfileAnswer = require("../../models/ProfileAnswer")
+const ProfileQuestion = require("../../models/ProfileQuestion")
 
 const updateProfileSection = async (profileID, requestObject, storedAnswers) => {
   //get profile ID
@@ -24,13 +25,19 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
         { answer: requestObject[key] }
       )
     } else {
-      // insert new entry in db
-      const newTargetEntry = new ProfileAnswer({
-        profile: profile._id,
-        question: key,
-        answer: requestObject[key],
-      })
-      await newTargetEntry.save()
+      // check if question exists in question model
+      const validQuestion = await ProfileQuestion.findById(key)
+      if (!validQuestion) {
+        throw new Error("bad request")
+      } else {
+        // insert new entry in db
+        const newEntry = new ProfileAnswer({
+          profile: profile._id,
+          question: key,
+          answer: requestObject[key],
+        })
+        await newEntry.save()
+      }
     }
   }
 }

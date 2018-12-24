@@ -13,7 +13,7 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
   //check if request and stored obj are the same - if so end function
   // stringify is an easy way to compare two objects fast
   if (JSON.stringify(storedAnswers) === JSON.stringify(requestObject)) {
-    return
+    return "nothing to update"
   }
   // loop over request obj
   for (key in requestObject) {

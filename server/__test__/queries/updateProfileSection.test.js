@@ -47,14 +47,10 @@ describe("can update profile section target clients", () => {
     const foundProfile = await Profile.find({ user: foundUser._id })
     // get stored answers of that profile section related to user
     const profileID = foundProfile[0]._id
-
     const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
-
     const storedTargetClientsKeys = Object.keys(storedTargetClientsAnswers).map(i => i)
-
     // create mock model different from dummy data for that user
     // differecnes key1: 2 entries less, key2: does not exist in data base yet, key3: 3 totally different entries
-
     const mockAnswerRequest = {
       [storedTargetClientsKeys[10]]: ["Family without children", "I have been adopted or fostered"],
       [storedTargetClientsKeys[11]]: ["All – no preference"],
@@ -75,5 +71,25 @@ describe("can update profile section target clients", () => {
       "Parkinsons",
       "Terminal diagnosis",
     ])
+  })
+  test("no update if no changes made within request", async () => {
+    // get profile ID
+    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundProfile = await Profile.find({ user: foundUser._id })
+    // get stored answers of that profile section related to user
+    const profileID = foundProfile[0]._id
+    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    // create mock model no different from dummy data for that user
+    const mockAnswerRequest = storedTargetClientsAnswers
+    // run update
+    const updateTargetClientsDetails = await updateProfileSection(
+      profileID,
+      mockAnswerRequest,
+      storedTargetClientsAnswers
+    )
+
+    expect(updateTargetClientsDetails).toBeDefined()
+    expect(typeof updateTargetClientsDetails).toBe("string")
+    expect(updateTargetClientsDetails).toEqual("nothing to update")
   })
 })

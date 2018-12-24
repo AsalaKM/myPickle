@@ -12,6 +12,7 @@ const ProfileAnswer = require("../../database/models/ProfileAnswer")
 //load queries
 const updateProfileSection = require("../../database/queries/editProfile/updateProfileSection")
 const getTargetClientsAnswers = require("../../database/queries/editProfile/getTargetClientsDetails")
+const getQuestions = require("../../database/queries/editProfile/getQuestions")
 
 // connect
 dbConnection()
@@ -72,6 +73,61 @@ describe("can update profile section target clients", () => {
       "Terminal diagnosis",
     ])
   })
+  test("success by inserting valid data by multiple requests if no data in database", async () => {
+    // get profile ID
+    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundProfile = await Profile.find({ user: foundUser._id })
+    const profileID = foundProfile[0]._id
+    // get question_ids for profile section
+    const questionsTargetClientsSection = await getQuestions("target-clients", profileID)
+    const questionIDs = questionsTargetClientsSection.map(i => i._id)
+
+    // delete dummy data for that profile section
+    await ProfileAnswer.deleteMany({ profile: profileID })
+    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+
+    // create mock answers for questionIDs to be updated
+    const mockAnswerRequest1 = {
+      [questionIDs[0]]: ["All – no preference"],
+    }
+    const mockAnswerRequest2 = {
+      [questionIDs[2]]: "Family without children",
+    }
+    // run update
+    await updateProfileSection(profileID, mockAnswerRequest1, storedTargetClientsAnswers)
+    // run update
+    await updateProfileSection(profileID, mockAnswerRequest2, storedTargetClientsAnswers)
+    // check new answers
+    const newTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    expect(newTargetClientsAnswers).toBeDefined()
+    expect(typeof newTargetClientsAnswers).toBe("object")
+    expect(newTargetClientsAnswers).toEqual({
+      [questionIDs[0]]: ["All – no preference"],
+      [questionIDs[2]]: "Family without children",
+    })
+  })
+  test("no update if invalid question coming from request", async () => {
+    // get profile ID
+    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundProfile = await Profile.find({ user: foundUser._id })
+    // get stored answers of that profile section related to user
+    const profileID = foundProfile[0]._id
+    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    // create mock model no different from dummy data for that user
+    const mockAnswerRequest = {
+      "Not a valid Key": "Family without children",
+    }
+    // run update
+    const updateTargetClientsDetails = await updateProfileSection(
+      profileID,
+      mockAnswerRequest,
+      storedTargetClientsAnswers
+    ).catch(err => {
+      expect(err).toBeDefined()
+      expect(err.value).toEqual("Not a valid Key")
+    })
+  })
+
   test("no update if no changes made within request", async () => {
     // get profile ID
     const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })

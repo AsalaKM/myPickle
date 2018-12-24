@@ -27,8 +27,7 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
     } else {
       // check if question exists in question model
       const validQuestion = await ProfileQuestion.findById(key)
-      if (!validQuestion) {
-      } else {
+      if (validQuestion) {
         // insert new entry in db
         const newEntry = new ProfileAnswer({
           profile: profile._id,

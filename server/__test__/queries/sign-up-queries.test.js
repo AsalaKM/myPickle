@@ -182,7 +182,7 @@ describe("Tests for registerUser.js", () => {
     })
   })
   describe("Tests for storeProfileAnswers.js", () => {
-    test("check if function filters user schema details and only return profile related answers", async () => {
+    test("check if profile answers coming from request can be stored in database", async () => {
       const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
       const foundProfile = await Profile.find({ user: foundTherapist._id })
       const mockReq = {
@@ -196,7 +196,7 @@ describe("Tests for registerUser.js", () => {
       }
       // run function on req object
       const storedProfileAnswers = await storeProfileAnswers(foundProfile._id, mockReq)
-      console.log(storedProfileAnswers)
+
       expect(storedProfileAnswers).toBeDefined()
       expect(typeof storedProfileAnswers).toEqual("object")
       expect(storedProfileAnswers[0].answer).toEqual(["Social"])

@@ -15,6 +15,7 @@ const registerUser = require("../../database/queries/registerUser")
 const getSupportType = require("../../database/queries/getSupportType")
 const registerProfile = require("../../database/queries/registerProfile")
 const getProfileAnswers = require("../../database/queries/getProfileAnswers")
+const storeProfileAnswers = require("../../database/queries/storeProfileAnswers")
 
 // connect
 dbConnection()
@@ -135,7 +136,6 @@ describe("Tests for registerUser.js", () => {
     })
     test("can't register a profile for same user twice", async () => {
       const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
-
       // give user a supportType
       const supportType = await SupportType.findOne({ type: "General" })
       // register Profile
@@ -179,6 +179,27 @@ describe("Tests for registerUser.js", () => {
       expect(typeof profileAnswers).toEqual("object")
       expect(profileAnswers.email).toBeUndefined()
       expect(profileAnswers["5c201073b5f9fb24f6c5708e"]).toEqual(["Social"])
+    })
+  })
+  describe("Tests for storeProfileAnswers.js", () => {
+    test("check if function filters user schema details and only return profile related answers", async () => {
+      const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
+      const foundProfile = await Profile.find({ user: foundTherapist._id })
+      const mockReq = {
+        "5c201073b5f9fb24f6c5708e": ["Social"],
+        "5c201073b5f9fb24f6c5708f": "test",
+        "5c201073b5f9fb24f6c57090": "test",
+        "5c201073b5f9fb24f6c57093": "afasfsaf",
+        "5c201073b5f9fb24f6c57095": "safsfsaf",
+        "5c201073b5f9fb24f6c57097": "asffsafasf",
+        "5c201073b5f9fb24f6c57092": "test",
+      }
+      // run function on req object
+      const storedProfileAnswers = await storeProfileAnswers(foundProfile._id, mockReq)
+      console.log(storedProfileAnswers)
+      expect(storedProfileAnswers).toBeDefined()
+      expect(typeof storedProfileAnswers).toEqual("object")
+      expect(storedProfileAnswers[0].answer).toEqual(["Social"])
     })
   })
 })

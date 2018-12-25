@@ -14,7 +14,7 @@ const registerProfile = async (supportType, userId, approved) => {
     const profileId = newProfile._id
     return profileId
   } else {
-    throw new Error("error registering profile for this user")
+    throw new Error("Error registering profile for this user")
   }
 }
 

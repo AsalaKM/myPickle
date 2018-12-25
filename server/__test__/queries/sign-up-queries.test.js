@@ -14,6 +14,7 @@ const getRegisterQuestions = require("../../database/queries/getRegisterQuestion
 const registerUser = require("../../database/queries/registerUser")
 const getSupportType = require("../../database/queries/getSupportType")
 const registerProfile = require("../../database/queries/registerProfile")
+const getProfileAnswers = require("../../database/queries/getProfileAnswers")
 
 // connect
 dbConnection()
@@ -134,7 +135,6 @@ describe("Tests for registerUser.js", () => {
     })
     test("can't register a profile for same user twice", async () => {
       const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
-      console.log(foundTherapist._id)
 
       // give user a supportType
       const supportType = await SupportType.findOne({ type: "General" })
@@ -154,6 +154,31 @@ describe("Tests for registerUser.js", () => {
       const registeredProfile = await registerProfile(supportType._id, false).catch(err => {
         expect(err).toBeDefined()
       })
+    })
+  })
+
+  describe("Tests for getProfileAnswers.js", () => {
+    test("check if function filters user schema details and only return profile related answers", async () => {
+      const mockReq = {
+        "5c201073b5f9fb24f6c5708e": ["Social"],
+        name: "Tester",
+        email: "tester@gmail.com",
+        phone: "4415756370866",
+        "5c201073b5f9fb24f6c5708f": "test",
+        "5c201073b5f9fb24f6c57090": "test",
+        password: "123456",
+        password2: "123456",
+        "5c201073b5f9fb24f6c57093": "afasfsaf",
+        "5c201073b5f9fb24f6c57095": "safsfsaf",
+        "5c201073b5f9fb24f6c57097": "asffsafasf",
+        "5c201073b5f9fb24f6c57092": "test",
+      }
+      // run function on req object
+      const profileAnswers = await getProfileAnswers(mockReq)
+      expect(profileAnswers).toBeDefined()
+      expect(typeof profileAnswers).toEqual("object")
+      expect(profileAnswers.email).toBeUndefined()
+      expect(profileAnswers["5c201073b5f9fb24f6c5708e"]).toEqual(["Social"])
     })
   })
 })

@@ -13,6 +13,8 @@ const ProfileAnswer = require("../../database/models/ProfileAnswer")
 const getRegisterQuestions = require("../../database/queries/getRegisterQuestions")
 const registerUser = require("../../database/queries/registerUser")
 const getSupportType = require("../../database/queries/getSupportType")
+const registerProfile = require("../../database/queries/registerProfile")
+
 // connect
 dbConnection()
 
@@ -104,6 +106,54 @@ describe("Tests for registerUser.js", () => {
     test("can't get support type by inserting invalid request", async () => {
       const requestObj = {}
       await getSupportType(requestObj).catch(err => expect(err).toBeDefined())
+    })
+  })
+
+  describe("Tests for registerProfile.js", () => {
+    test("can register a profile with valid user", async () => {
+      const testUser = {
+        name: "testMeBabyOneMoreTime",
+        phone: "004407566683",
+        email: "test@testme.co.uk",
+        address: "666 highway to test E50DW London",
+        password: "123456",
+      }
+      const { name, email, phone, password } = testUser
+      const registeredUser = await registerUser(name, email, phone, password)
+      const foundUser = await User.findById(registeredUser)
+
+      // give user a supportType
+      const supportType = await SupportType.findOne({ type: "General" })
+      // register Profile
+      const registeredProfile = await registerProfile(supportType._id, foundUser._id, false)
+      const foundProfile = await Profile.findById(registeredProfile)
+
+      expect(foundProfile).toBeDefined()
+      expect(typeof foundProfile).toEqual("object")
+      expect(foundProfile._id).toEqual(registeredProfile)
+    })
+    test("can't register a profile for same user twice", async () => {
+      const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
+      console.log(foundTherapist._id)
+
+      // give user a supportType
+      const supportType = await SupportType.findOne({ type: "General" })
+      // register Profile
+      const registeredProfile = await registerProfile(
+        supportType._id,
+        foundTherapist._id,
+        false
+      ).catch(err => {
+        expect(err).toBeDefined()
+      })
+    })
+    test("can't register a profile with data missing", async () => {
+      // give user a supportType
+      const supportType = await SupportType.findOne({ type: "General" })
+      // register Profile
+      const registeredProfile = await registerProfile(supportType._id, false).catch(err => {
+        expect(err).toBeDefined()
+      })
     })
   })
 })

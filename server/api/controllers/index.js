@@ -13,7 +13,8 @@ const editProfileSection = require("./editProfileSection")
 const getQuestions = require("./getQuestions")
 
 // update profile controllers
-const updateTargetClientsDetails = require("./updateTargetClientsDetails")
+// const updateTargetClientsDetails = require("./updateTargetClientsDetails")
+const updateProfileSection = require("./updateProfileSection")
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -34,6 +35,7 @@ router.use("/get-questions/:section/:id", getQuestions)
 router.use("/edit-profile/:section/:id", editProfileSection)
 
 // update profile routes
-router.use("/update-profile/target/:id", updateTargetClientsDetails)
+// router.use("/update-profile/target/:id", updateTargetClientsDetails)
+router.use("/update-profile/:section/:id", updateProfileSection)
 
 module.exports = router

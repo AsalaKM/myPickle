@@ -53,7 +53,7 @@ class TargetClients extends Component {
     const { history } = this.props
     const { targetAnswers } = this.state
     axios
-      .post(`/update-profile/target/${id}`, targetAnswers)
+      .post(`/update-profile/target-clients/${id}`, targetAnswers)
       .then(result => {
         console.log("RESULT", result)
         swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))

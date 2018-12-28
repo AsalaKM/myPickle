@@ -76,9 +76,9 @@ export default class SupportDetails extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
-    const { targetAnswers } = this.state
+    const { supportAnswers } = this.state
     axios
-      .post(`/update-profile/target/${id}`, targetAnswers)
+      .post(`/update-profile/support-details/${id}`, supportAnswers)
       .then(result => {
         console.log("RESULT", result)
         swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))

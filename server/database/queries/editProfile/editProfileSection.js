@@ -31,7 +31,7 @@ const editProfileSection = async (section, profileID) => {
   ])
   let profileSectionAnswers = {}
 
-  profileSection.map(answer => (profileSectionAnswers[answer.question._id] = answer.answer))
+  profileSection.forEach(answer => (profileSectionAnswers[answer.question._id] = answer.answer))
 
   return profileSectionAnswers
 }

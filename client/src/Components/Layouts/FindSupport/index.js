@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import Profiles from "./Profiles"
 
 import axios from "axios"
-import { log } from "util"
 
 class FindSupport extends Component {
   state = {
@@ -17,10 +16,10 @@ class FindSupport extends Component {
       .then(result => this.setState({ profiles: result.data }))
       .catch(err => console.log(err))
     // get blog posts
-    axios
-      .get("/find-support-blogposts")
-      .then(result => this.setState({ profiles: result.data }))
-      .catch(err => console.log(err))
+    // axios
+    //   .get("/find-support-blogposts")
+    //   .then(result => this.setState({ profiles: result.data }))
+    //   .catch(err => console.log(err))
   }
   render() {
     return (

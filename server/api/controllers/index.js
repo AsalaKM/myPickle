@@ -7,8 +7,8 @@ const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
 
 // edit profle controllers
-const editSupportDetails = require("./editSupportDetails")
-const editTargetClientsDetails = require("./editTargetClientsDetails")
+// const editSupportDetails = require("./editSupportDetails")
+// const editTargetClientsDetails = require("./editTargetClientsDetails")
 const editProfileSection = require("./editProfileSection")
 const getQuestions = require("./getQuestions")
 

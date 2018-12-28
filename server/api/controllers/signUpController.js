@@ -24,6 +24,7 @@ router.post("/", async (req, res) => {
   )
   // create profile answers object
   const profileAnswers = await getProfileAnswers(req.body)
+
   // store those answers in database
   const saveProfileAnswers = await storeAnswers(newProfileID, profileAnswers)
 

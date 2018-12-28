@@ -22,20 +22,33 @@ const findSupportProfiles = async () => {
   // const getImageArr = await getImageNames(filePath)
 
   for (let i = 0; i < profileIDs.length; i++) {
+    // query to get all answers for profile related to section target clients (thats why involving question details for each answer is necessary)
+
+    // const profileAnswersAndQuestions = await ProfileAnswer.aggregate([
+    //   { $match: { profile: profileIDs[i] } },
+    //   {
+    //     $lookup: { from: "questions", localField: "question", foreignField: "_id", as: "question" },
+    //   },
+    //   { $unwind: "$question" },
+    // ])
+
     const profileAnswers = await ProfileAnswer.find({ profile: profileIDs[i] })
     console.log(profileAnswers)
 
-    // for (let k = 0; k < profileAnswers.length; k++) {
-    //   const profile = {
-    //     profileID: profileIDs[i],
-    //     name: "",
-    //     wellnessArea: "",
-    //     imgURL: "",
-    //   }
-    //   console.log(profileAnswers[k].question === nameQuestion._id)
+    for (let k = 0; k < profileAnswers.length; k++) {
+      // const profile = {
+      //   profileID: profileIDs[i],
+      //   name: "",
+      //   wellnessArea: "",
+      //   imgURL: "",
+      // }
 
-    //   // const name = profileAnswers.question[nameQuestion._id]
-    // }
+      const questionDetails = await ProfileQuestion.find({ _id: profileAnswers[k]._id })
+
+      console.log(questionDetails)
+
+      // const name = profileAnswers.question[nameQuestion._id]
+    }
   }
 }
 

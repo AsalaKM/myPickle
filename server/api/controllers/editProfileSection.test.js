@@ -30,8 +30,6 @@ describe("Tests for editProfileSection controller", () => {
 
     const response = await request(app).get(`/edit-profile/support-details/${profile._id}`)
 
-    console.log("BODY!", response.body)
-
     expect(response.statusCode).toBe(200)
     expect(response.body).toBeDefined()
     expect(typeof response.body).toBe("object")
@@ -39,8 +37,6 @@ describe("Tests for editProfileSection controller", () => {
 
   test("No answers load if user doesn't exist", async () => {
     const response = await request(app).get(`/edit-profile/support-details/monkey`)
-
-    console.log("response", response.body)
 
     const size = Object.keys(response.body).length
 

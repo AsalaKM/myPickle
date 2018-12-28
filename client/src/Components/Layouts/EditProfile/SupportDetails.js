@@ -12,11 +12,13 @@ export default class SupportDetails extends Component {
     const pathName = window.location.pathname
     const id = pathName.split("/")[3]
 
+    // get questions for the support-details section
     axios
       .get(`/get-questions/support-details/${id}`)
       .then(questions => this.setState({ supportQuestions: questions.data }))
       .catch(err => console.log(err))
 
+    // get the answers the user has provided for this section
     axios
       .get(`/edit-profile/support/${id}`)
       .then(supportDetails => this.setState({ supportAnswers: supportDetails.data, profileId: id }))

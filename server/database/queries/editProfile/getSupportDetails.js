@@ -20,11 +20,7 @@ const getSupportDetails = async profileID => {
     { $unwind: "$question" },
     { $match: { "question.section": "Support Details" } },
   ])
-
   let supportAnswers = {}
-  // const filteredDetails = questions.map(
-  //   answer => (obj[answer.question.question._id] = answer.answer)
-  // )
 
   supportDetails.map(answer => (supportAnswers[answer.question._id] = answer.answer))
 

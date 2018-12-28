@@ -3,11 +3,13 @@ const router = express.Router()
 
 const getQuestions = require("../../database/queries/editProfile/getQuestions")
 
+// function that will feed in the section to then get the questions for that section
+
 router.get("/", (req, res) => {
   const section = req.originalUrl.split("/")[2]
-  const profileID = req.originalUrl.split("/")[3]
 
-  // function that will feed in the section to then get the questions for that section
+  // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
+  const profileID = req.originalUrl.split("/")[3]
 
   getQuestions(section, profileID)
     .then(questions => {

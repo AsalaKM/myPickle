@@ -18,6 +18,9 @@ router.get("/", (req, res, next) => {
 router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
+
+// NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
+
 router.use("/get-questions/:section/:id", getQuestions)
 
 // edit profile routes

@@ -20,7 +20,7 @@ export default class SupportDetails extends Component {
 
     // get the answers the user has provided for this section
     axios
-      .get(`/edit-profile/support/${id}`)
+      .get(`/edit-profile/support-details/${id}`)
       .then(supportDetails => this.setState({ supportAnswers: supportDetails.data, profileId: id }))
       .catch(err => console.log(err))
   }

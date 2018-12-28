@@ -24,7 +24,7 @@ class TargetClients extends Component {
       .catch(err => console.log(err))
 
     axios
-      .get(`/edit-profile/target/${id}`)
+      .get(`/edit-profile/target-clients/${id}`)
       .then(answers => this.setState({ targetAnswers: answers.data, profileId: id }))
       .catch(err => console.log(err))
   }

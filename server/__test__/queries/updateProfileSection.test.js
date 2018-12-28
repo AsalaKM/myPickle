@@ -118,14 +118,12 @@ describe("can update profile section target clients", () => {
       "Not a valid Key": "Family without children",
     }
     // run update
-    const updateTargetClientsDetails = await updateProfileSection(
-      profileID,
-      mockAnswerRequest,
-      storedTargetClientsAnswers
-    ).catch(err => {
-      expect(err).toBeDefined()
-      expect(err.value).toEqual("Not a valid Key")
-    })
+    await updateProfileSection(profileID, mockAnswerRequest, storedTargetClientsAnswers).catch(
+      err => {
+        expect(err).toBeDefined()
+        expect(err.value).toEqual("Not a valid Key")
+      }
+    )
   })
 
   test("no update if no changes made within request", async () => {

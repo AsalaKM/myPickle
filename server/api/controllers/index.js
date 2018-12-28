@@ -9,6 +9,7 @@ const uploadImage = require("./uploadImage")
 // edit profle controllers
 const editSupportDetails = require("./editSupportDetails")
 const editTargetClientsDetails = require("./editTargetClientsDetails")
+const editProfileSection = require("./editProfileSection")
 const getQuestions = require("./getQuestions")
 
 // update profile controllers
@@ -28,8 +29,9 @@ router.use("/upload-image", uploadImage)
 router.use("/get-questions/:section/:id", getQuestions)
 
 // edit profile routes
-router.use("/edit-profile/support/:id", editSupportDetails)
-router.use("/edit-profile/target/:id", editTargetClientsDetails)
+// router.use("/edit-profile/support/:id", editSupportDetails)
+// router.use("/edit-profile/target/:id", editTargetClientsDetails)
+router.use("/edit-profile/:section/:id", editProfileSection)
 
 // update profile routes
 router.use("/update-profile/target/:id", updateTargetClientsDetails)

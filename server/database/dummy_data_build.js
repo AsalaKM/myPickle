@@ -1,7 +1,7 @@
 // load the mongo models
 const ProfileQuestion = require("./models/ProfileQuestion")
 const SupportType = require("./models/SupportType")
-const User = require("./models/user")
+const User = require("./models/User")
 const Profile = require("./models/Profile")
 const ProfileAnswer = require("./models/ProfileAnswer")
 

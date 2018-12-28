@@ -7,6 +7,7 @@ const SupportType = require("../../models/SupportType")
 // general query function to get the questions for each edit profile section
 
 const getQuestions = async (section, profileID) => {
+  // get the section from the URL and then cerate the write label to find it in the db
   let sectionType = ""
 
   if (section === "support-details") sectionType = "Support Details"

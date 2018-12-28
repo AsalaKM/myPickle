@@ -343,12 +343,12 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[38]._id,
-      answer: ["All - no preference"],
+      answer: ["All – no preference"],
     },
     {
       profile: therapistProfile._id,
       question: generalQuestions[39]._id,
-      answer: ["All – no preference"],
+      answer: ["Mental health problem(s)"],
     },
     // END OF TARGET CLIENT SECTION
     // START OF QUESTIONS SPECIFICALLY FOR THERAPISTS

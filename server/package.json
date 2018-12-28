@@ -42,7 +42,8 @@
       "!**/buildProfileQuestions.js",
       "!**/models/**",
       "!**/db_connection.js"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

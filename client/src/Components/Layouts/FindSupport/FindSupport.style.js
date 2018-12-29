@@ -9,9 +9,9 @@ const SupportContainer = styled.div.attrs({
 const ProfilePhoto = styled.img.attrs({
   className: "br-100 h3 w3 dib tl",
   alt: "avatar",
-  src: "https://mdbootstrap.com/images/avatars/img%20(1).jpg",
 })`
   width: 100px;
   height: auto;
 `
+
 export { SupportContainer, ProfilePhoto }

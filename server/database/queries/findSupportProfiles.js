@@ -5,7 +5,7 @@ const Profile = require("../models/Profile")
 const ProfileAnswer = require("../models/ProfileAnswer")
 // load queries
 const getImageNames = require("./getImageNames")
-
+// start function
 const findSupportProfiles = async () => {
   // get all profiles
   const profiles = await Profile.find({})
@@ -26,7 +26,7 @@ const findSupportProfiles = async () => {
   // insert file path of profile pictures folder
   const filePath =
     "/Users/simondupree/Documents/Web_Development/myPickle/client/src/assets/images/profiles"
-  // get all image paths
+  // get all image file names
   const getImageArr = await getImageNames(filePath)
 
   // loop over profileIDs array

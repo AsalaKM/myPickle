@@ -2,18 +2,28 @@ import React, { Component } from "react"
 
 import { SupportContainer, ProfilePhoto } from "./FindSupport.style"
 
-export default class Profiles extends Component {
+class Profile extends Component {
   render() {
+    const { organisation, wellnessType, avatar } = this.props
+
+    const checkAvatar = () =>
+      avatar ? (
+        <ProfilePhoto src={require(`../../../assets/images/profiles/${avatar}`)} />
+      ) : (
+        <ProfilePhoto src={require("../../../assets/images/profiles/placeholder.jpg")} />
+      )
+
     return (
       <div>
-        <h2>Support Providers</h2>
         <SupportContainer>
-          <h3>Johanna Doeski</h3>
-          <h3>Hypnotherapist with youth and family</h3>
-          <h3>Emotional</h3>
-          <ProfilePhoto />
+          <h3>{organisation}</h3>
+          {wellnessType.map(item => {
+            return <li>{item}</li>
+          })}
+          {checkAvatar()}
         </SupportContainer>
       </div>
     )
   }
 }
+export default Profile

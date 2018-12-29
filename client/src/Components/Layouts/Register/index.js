@@ -2,10 +2,16 @@ import React, { Component } from "react"
 import swal from "sweetalert"
 import validator from "validator"
 
+// components
 import RegisterIntro from "./RegisterIntro"
 import RegisterStepOne from "./RegisterStepOne"
 import RegisterStepTwo from "./RegisterStepTwo"
 import RegisterStepThree from "./RegisterStepThree"
+
+// utils
+import handleChangeUtil from "../../../Utils/handleChangeUtil"
+import checkRequiredAnswersUtil from "../../../Utils/checkRequiredAnswersUtil"
+import filterQuestionsUtil from "../../../Utils/filterQuestionsUtil"
 
 import axios from "axios"
 
@@ -80,34 +86,9 @@ class Register extends Component {
   }
 
   checkRequiredAnswers = question => {
-    // get the value that's been input
-    const value = question.target.value
+    const { unanswered, registerQuestions } = this.state
 
-    // get the questionId from the input name
-    const questionId = question.target.name
-
-    let isRequired
-    // deal with user questions
-    const userArray = ["name", "password", "email", "password2", "phone"]
-    if (userArray.includes(questionId)) {
-      isRequired = true
-    } else {
-      // deal with any other question
-      const questions = this.state.registerQuestions
-      isRequired = questions.filter(question => question._id === questionId)[0].isRequired
-    }
-
-    // get our list of unanswered questions in state
-    const newUnanswered = this.state.unanswered
-
-    if (isRequired && !value) {
-      newUnanswered.push(questionId)
-    } else {
-      if (isRequired && newUnanswered.includes(questionId)) {
-        const index = newUnanswered.indexOf(questionId)
-        newUnanswered.splice(index, 1)
-      }
-    }
+    const newUnanswered = checkRequiredAnswersUtil(question, registerQuestions, unanswered)
 
     this.setState({ unanswered: newUnanswered })
   }
@@ -177,30 +158,11 @@ class Register extends Component {
   }
 
   handleChange = option => {
-    // set up id of input field as the name attribute of that input
-    const questionId = option.target.name
-    const newAnswerState = this.state.registerAnswers
-    const newUnanswered = this.state.unanswered
-    let answer
+    const answerState = this.state.registerAnswers
+    const unanswered = this.state.unanswered
 
-    if (option.target.type === "checkbox") {
-      if (newUnanswered.includes(questionId)) {
-        const index = newUnanswered.indexOf(questionId)
-        newUnanswered.splice(index, 1)
-      }
-      answer = option.target.value
-      if (!newAnswerState[questionId]) {
-        newAnswerState[questionId] = [answer]
-      } else if (!newAnswerState[questionId].includes(answer)) {
-        newAnswerState[questionId].push(answer)
-      } else if (newAnswerState[questionId].includes(answer)) {
-        const index = newAnswerState[questionId].indexOf(answer)
-        newAnswerState[questionId].splice(index, 1)
-      }
-    } else {
-      answer = option.target.value
-      newAnswerState[questionId] = answer
-    }
+    const { newAnswerState, newUnanswered } = handleChangeUtil(option, answerState, unanswered)
+
     this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
@@ -211,15 +173,6 @@ class Register extends Component {
   handlePrevious = e => {
     e.preventDefault()
     this.setState({ position: this.state.position - 1 })
-  }
-
-  filterQuestions = (array, string) => {
-    return array.filter(e => {
-      if (e.section.includes(string)) {
-        return e
-      }
-      return ""
-    })
   }
 
   handleSubmit = e => {
@@ -314,7 +267,7 @@ class Register extends Component {
             answers={this.state.registerAnswers}
             adminQuestions={
               this.state.registerQuestions &&
-              this.filterQuestions(this.state.registerQuestions, "Admin Info")
+              filterQuestionsUtil(this.state.registerQuestions, "Admin Info")
             }
             validateInput={this.validateInput}
             checkRequiredAnswers={this.checkRequiredAnswers}
@@ -335,7 +288,7 @@ class Register extends Component {
             answers={this.state.registerAnswers}
             basicInfoQuestions={
               this.state.registerQuestions &&
-              this.filterQuestions(this.state.registerQuestions, "Basic Info")
+              filterQuestionsUtil(this.state.registerQuestions, "Basic Info")
             }
             handleSubmit={this.handleSubmit}
             validateInput={this.validateInput}

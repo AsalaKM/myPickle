@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
-import swal from "sweetalert"
+// import swal from "sweetalert"
 
 // import styled components
 import { Intro } from "../../Common/Headings"
@@ -16,6 +16,7 @@ import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
+import updateProfileUtil from "../../../Utils/updateProfileUtil"
 
 // get id from url
 // NOTE: this is until cookies are implemented
@@ -73,18 +74,8 @@ export default class SupportDetails extends Component {
     e.preventDefault()
     const { history } = this.props
     const { supportAnswers } = this.state
-    axios
-      .post(`/update-profile/support-details/${id}`, supportAnswers)
-      .then(result => {
-        console.log("RESULT", result)
-        swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))
-      })
-      .catch(err =>
-        swal({
-          icon: "error",
-          title: "An error occurred, sorry",
-        })
-      )
+
+    updateProfileUtil(history, supportAnswers, "support-details", id)
   }
 
   render() {

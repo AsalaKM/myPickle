@@ -12,6 +12,7 @@ import { CheckboxField } from "../../Common/Questions/Questions.style"
 
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
+import updateProfileUtil from "../../../Utils/updateProfileUtil"
 
 // get id from url
 // NOTE: this is until cookies are implemented
@@ -54,18 +55,8 @@ class TargetClients extends Component {
     e.preventDefault()
     const { history } = this.props
     const { targetAnswers } = this.state
-    axios
-      .post(`/update-profile/target-clients/${id}`, targetAnswers)
-      .then(result => {
-        console.log("RESULT", result)
-        swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))
-      })
-      .catch(err =>
-        swal({
-          icon: "error",
-          title: "An error occurred, sorry",
-        })
-      )
+
+    updateProfileUtil(history, targetAnswers, "target-clients", id)
   }
 
   render() {

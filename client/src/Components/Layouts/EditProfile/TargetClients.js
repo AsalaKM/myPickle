@@ -1,8 +1,17 @@
 import React, { Component } from "react"
 import axios from "axios"
 import swal from "sweetalert"
-import { Button, Answers, Intro } from "../Register/Register.style"
+
+// import styled components
+import { Intro } from "../../Common/Headings"
+import { Button } from "../../Common/Buttons"
+import { Answers } from "../../Common/Answers"
+
+// import common components
 import { CheckboxField } from "../../Common/Questions/Questions.style"
+
+// get id from url
+// NOTE: this is until cookies are implemented
 const pathName = window.location.pathname
 const id = pathName.split("/")[3]
 

@@ -1,8 +1,12 @@
 import React from "react"
 
-import { Intro, Button, Answers } from "./Register.style"
+// import styled components
+import { Intro } from "../../Common/Headings"
+import { Button } from "../../Common/Buttons"
+import { Answers } from "../../Common/Answers"
 import { ErrorMsg } from "../../Common/Questions/Questions.style"
 
+// import common components
 import CheckboxInput from "../../Common/Questions/CheckboxInput"
 
 export default class RegisterStepOne extends React.Component {

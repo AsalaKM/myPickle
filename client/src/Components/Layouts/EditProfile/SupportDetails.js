@@ -14,6 +14,9 @@ import CheckboxInput from "../../Common/Questions/CheckboxInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
+// import util functions
+import handleChangeUtil from "../../../Utils/handleChangeUtil"
+
 // get id from url
 // NOTE: this is until cookies are implemented
 const pathName = window.location.pathname
@@ -25,6 +28,7 @@ export default class SupportDetails extends Component {
     supportAnswers: null,
     supportQuestions: null,
     file: {},
+    unanswered: [],
   }
 
   componentDidMount() {
@@ -46,26 +50,11 @@ export default class SupportDetails extends Component {
   }
 
   handleChange = option => {
-    // set up id of input field as the name attribute of that input
-    const questionId = option.target.name
-    const newAnswerState = this.state.supportAnswers
-    let answer
+    const { supportAnswers, unanswered } = this.state
 
-    if (option.target.type === "checkbox") {
-      answer = option.target.value
-      if (!newAnswerState[questionId]) {
-        newAnswerState[questionId] = [answer]
-      } else if (!newAnswerState[questionId].includes(answer)) {
-        newAnswerState[questionId].push(answer)
-      } else if (newAnswerState[questionId].includes(answer)) {
-        const index = newAnswerState[questionId].indexOf(answer)
-        newAnswerState[questionId].splice(index, 1)
-      }
-    } else {
-      answer = option.target.value
-      newAnswerState[questionId] = answer
-    }
-    this.setState({ supportAnswers: newAnswerState })
+    const { newAnswerState, newUnanswered } = handleChangeUtil(option, supportAnswers, unanswered)
+
+    this.setState({ supportAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
   imageUpload = file => {

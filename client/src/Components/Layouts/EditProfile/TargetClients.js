@@ -10,6 +10,9 @@ import { Answers } from "../../Common/Answers"
 // import common components
 import { CheckboxField } from "../../Common/Questions/Questions.style"
 
+// import util functions
+import handleChangeUtil from "../../../Utils/handleChangeUtil"
+
 // get id from url
 // NOTE: this is until cookies are implemented
 const pathName = window.location.pathname
@@ -20,6 +23,7 @@ class TargetClients extends Component {
     profileId: "",
     targetAnswers: null,
     targetQuestions: null,
+    unanswered: [],
   }
 
   componentDidMount() {
@@ -39,22 +43,11 @@ class TargetClients extends Component {
   }
 
   handleChange = option => {
-    // grab question id of checkbox option (set as name attribute)
-    const questionId = option.target.name
-    const newAnswerState = this.state.targetAnswers
-    let answer = option.target.value
-    // check if questionId key exists in newAnswerState
-    // if not create key value pair with questionId and new answer array
-    // if answer doesn't exist yet in array, push it in, if duplicate, splice
-    if (!newAnswerState[questionId]) {
-      newAnswerState[questionId] = [answer]
-    } else if (!newAnswerState[questionId].includes(answer)) {
-      newAnswerState[questionId].push(answer)
-    } else if (newAnswerState[questionId].includes(answer)) {
-      const index = newAnswerState[questionId].indexOf(answer)
-      newAnswerState[questionId].splice(index, 1)
-    }
-    this.setState({ targetAnswers: newAnswerState })
+    const { targetAnswers, unanswered } = this.state
+
+    const { newAnswerState, newUnanswered } = handleChangeUtil(option, targetAnswers, unanswered)
+
+    this.setState({ targetAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
   handleSubmit = e => {

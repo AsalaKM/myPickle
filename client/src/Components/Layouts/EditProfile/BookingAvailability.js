@@ -57,7 +57,7 @@ export default class BookingDetails extends Component {
     const { history } = this.props
     const { bookingAnswers } = this.state
 
-    updateProfileUtil(history, bookingAnswers, "support-details", id)
+    updateProfileUtil(history, bookingAnswers, "availability-booking", id)
   }
 
   render() {
@@ -74,7 +74,7 @@ export default class BookingDetails extends Component {
     return (
       <React.Fragment>
         <Intro>
-          <h2 className="tc mp-primary-color">Support Details</h2>
+          <h2 className="tc mp-primary-color">Booking & Availability</h2>
         </Intro>
         <QuestionSection
           questions={bookingQuestions}

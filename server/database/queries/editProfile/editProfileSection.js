@@ -14,6 +14,7 @@ const editProfileSection = async (section, profileID) => {
   if (section === "availability-booking") sectionType = "Availability & Booking"
   if (section === "admin-info") sectionType = "Admin Info"
   if (section === "target-clients") sectionType = "Target Clients"
+  if (section === "social-media") sectionType = "Social Media"
 
   // get the profile with the ID
   // you need to do this to make sure the id you feed into the mongoose query below is an object not a string

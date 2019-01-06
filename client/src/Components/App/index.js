@@ -6,6 +6,7 @@ import Login from "../Layouts/Login/index"
 import EditSupportDetails from "../Layouts/EditProfile/SupportDetails"
 import EditTargetClients from "../Layouts/EditProfile/TargetClients"
 import EditBookingDetails from "../Layouts/EditProfile/BookingAvailability"
+import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
       <Route path="/edit-profile/support-details/:id" exact component={EditSupportDetails} />
       <Route path="/edit-profile/target-clients/:id" exact component={EditTargetClients} />
       <Route path="/edit-profile/availability-booking/:id" exact component={EditBookingDetails} />
+      <Route path="/edit-profile/social-media/:id" exact component={EditSocialMedia} />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

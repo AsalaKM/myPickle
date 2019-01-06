@@ -15,6 +15,7 @@ const getQuestions = async (section, profileID) => {
   if (section === "availability-booking") sectionType = "Availability & Booking"
   if (section === "admin-info") sectionType = "Admin Info"
   if (section === "target-clients") sectionType = "Target Clients"
+  if (section === "social-media") sectionType = "Social Media"
 
   // get the profile details
   const profile = await Profile.findById(profileID)

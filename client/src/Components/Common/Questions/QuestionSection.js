@@ -8,6 +8,7 @@ import FileUploadInput from "../../Common/Questions/FileUploadInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 import DropdownInput from "../../Common/Questions/DropdownInput"
 import MatrixInput from "../../Common/Questions/MatrixInput"
+import CalendarInput from "../../Common/Questions/CalendarInput"
 
 // import styled components
 import { Answers } from "../../Common/Answers"
@@ -23,6 +24,7 @@ export default class QuestionSection extends Component {
       dropdownRemove,
       dropdownSelect,
       handleMatrix,
+      handleDate,
     } = this.props
 
     return (
@@ -97,6 +99,16 @@ export default class QuestionSection extends Component {
                 key={index}
                 question={question}
                 handleMatrix={handleMatrix}
+                answers={answers}
+              />
+            ))}
+          {questions
+            .filter(question => question.inputType === "calendar")
+            .map((question, index) => (
+              <CalendarInput
+                key={index}
+                question={question}
+                handleDate={handleDate}
                 answers={answers}
               />
             ))}

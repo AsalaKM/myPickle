@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
+import moment from "moment"
 // import swal from "sweetalert"
 
 // import styled components
@@ -95,6 +96,15 @@ export default class BookingDetails extends Component {
     }))
   }
 
+  handleDate = (date, questionId) => {
+    const { bookingAnswers } = this.state
+
+    const newAnswerState = bookingAnswers
+
+    newAnswerState[questionId] = moment(date).format("YYYY-MM-DD")
+    this.setState({ bookingAnswers: newAnswerState })
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
@@ -127,6 +137,7 @@ export default class BookingDetails extends Component {
           dropdownRemove={this.dropdownRemove}
           dropdownSelect={this.dropdownSelect}
           handleMatrix={this.handleMatrix}
+          handleDate={this.handleDate}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

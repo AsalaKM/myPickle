@@ -7,6 +7,7 @@ import CheckboxInput from "../../Common/Questions/CheckboxInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 import DropdownInput from "../../Common/Questions/DropdownInput"
+import MatrixInput from "../../Common/Questions/MatrixInput"
 
 // import styled components
 import { Answers } from "../../Common/Answers"
@@ -21,6 +22,7 @@ export default class QuestionSection extends Component {
       imageUpload,
       dropdownRemove,
       dropdownSelect,
+      handleMatrix,
     } = this.props
 
     return (
@@ -85,6 +87,16 @@ export default class QuestionSection extends Component {
                 question={question}
                 dropdownSelect={dropdownSelect}
                 dropdownRemove={dropdownRemove}
+                answers={answers}
+              />
+            ))}
+          {questions
+            .filter(question => question.inputType === "matrix")
+            .map((question, index) => (
+              <MatrixInput
+                key={index}
+                question={question}
+                handleMatrix={handleMatrix}
                 answers={answers}
               />
             ))}

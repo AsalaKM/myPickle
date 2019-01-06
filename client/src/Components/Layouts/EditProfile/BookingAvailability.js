@@ -75,6 +75,26 @@ export default class BookingDetails extends Component {
     this.setState({ bookingAnswers: state })
   }
 
+  handleMatrix = (row, answer, question) => {
+    const state = this.state.bookingAnswers
+
+    if (!state[question]) {
+      state[question] = {}
+      state[question][row] = answer
+    } else if (!state[question][row]) {
+      state[question][row] = answer
+    } else if (!state[question][row].includes(answer)) {
+      state[question][row].push(answer)
+    } else if (state[question][row].includes(answer)) {
+      const index = state[question][row].indexOf(answer)
+      state[question][row].splice(index, 1)
+    }
+
+    this.setState(() => ({
+      bookingAnswers: state,
+    }))
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
@@ -106,6 +126,7 @@ export default class BookingDetails extends Component {
           unanswered={unanswered}
           dropdownRemove={this.dropdownRemove}
           dropdownSelect={this.dropdownSelect}
+          handleMatrix={this.handleMatrix}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

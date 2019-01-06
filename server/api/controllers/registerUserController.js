@@ -3,8 +3,6 @@ const router = express.Router()
 
 const registerUser = require("../../database/queries/registerUser")
 
-const ProfileQuestion = require("../../database/models/ProfileQuestion")
-
 router.post("/", async (req, res) => {
   console.log(req.body)
   // create user object

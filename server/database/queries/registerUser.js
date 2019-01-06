@@ -1,4 +1,4 @@
-const User = require("../models/user")
+const User = require("../models/User")
 
 const registerUser = async (name, email, phone, password) => {
   const userExists = await User.findOne({ email })

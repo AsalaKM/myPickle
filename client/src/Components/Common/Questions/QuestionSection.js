@@ -6,13 +6,22 @@ import RadioInput from "../../Common/Questions/RadioInput"
 import CheckboxInput from "../../Common/Questions/CheckboxInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
+import DropdownInput from "../../Common/Questions/DropdownInput"
 
 // import styled components
 import { Answers } from "../../Common/Answers"
 
 export default class QuestionSection extends Component {
   render() {
-    const { questions, handleChange, answers, unanswered, imageUpload } = this.props
+    const {
+      questions,
+      handleChange,
+      answers,
+      unanswered,
+      imageUpload,
+      dropdownRemove,
+      dropdownSelect,
+    } = this.props
 
     return (
       <React.Fragment>
@@ -66,6 +75,17 @@ export default class QuestionSection extends Component {
                 handleChange={handleChange}
                 answers={answers}
                 imageUpload={imageUpload}
+              />
+            ))}
+          {questions
+            .filter(question => question.inputType === "dropdown")
+            .map((question, index) => (
+              <DropdownInput
+                key={index}
+                question={question}
+                dropdownSelect={dropdownSelect}
+                dropdownRemove={dropdownRemove}
+                answers={answers}
               />
             ))}
         </Answers>

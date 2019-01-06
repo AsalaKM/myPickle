@@ -52,6 +52,29 @@ export default class BookingDetails extends Component {
     this.setState({ bookingAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
+  dropdownSelect = e => {
+    const questionId = e.target.className
+    const selected = e.target.textContent
+    const state = this.state.bookingAnswers
+    if (!state[questionId]) {
+      state[questionId] = [selected]
+    } else if (!state[questionId].includes(selected)) {
+      state[questionId].push(selected)
+    }
+    this.setState({ bookingAnswers: state })
+  }
+
+  dropdownRemove = e => {
+    const questionId = e.target.className
+    const selected = e.target.textContent
+    const state = this.state.bookingAnswers
+    if (state[questionId].includes(selected)) {
+      const index = state[questionId].indexOf(selected)
+      state[questionId].splice(index, 1)
+    }
+    this.setState({ bookingAnswers: state })
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
@@ -81,6 +104,8 @@ export default class BookingDetails extends Component {
           handleChange={this.handleChange}
           answers={bookingAnswers}
           unanswered={unanswered}
+          dropdownRemove={this.dropdownRemove}
+          dropdownSelect={this.dropdownSelect}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

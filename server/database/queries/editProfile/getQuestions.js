@@ -44,13 +44,31 @@ const getQuestions = async (section, profileID) => {
 
   // if general they only get the general questions
   if (profileSupportType === "General") {
-    questions = await ProfileQuestion.find({
-      $and: [{ section: sectionType }, { supportType: generalSupportType._id }],
-    })
+    // if section is Basic Info we need to get Basic and Admin info
+    if (sectionType === "Basic Info") {
+      console.log("general reached")
+      questions = await ProfileQuestion.find({
+        $and: [
+          { supportType: generalSupportType._id },
+          { $or: [{ section: "Admin Info" }, { section: "Basic Info" }] },
+        ],
+      })
+    } else {
+      questions = await ProfileQuestion.find({
+        $and: [{ section: sectionType }, { supportType: generalSupportType._id }],
+      })
+    }
   }
   // if therapist they get all the questions
   else {
-    questions = await ProfileQuestion.find({ section: sectionType })
+    if (sectionType === "Basic Info") {
+      console.log("therapist reached")
+      questions = await ProfileQuestion.find({
+        $or: [{ section: "Admin Info" }, { section: "Basic Info" }],
+      })
+    } else {
+      questions = await ProfileQuestion.find({ section: sectionType })
+    }
   }
   return questions
 }

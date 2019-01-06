@@ -22,14 +22,36 @@ const editProfileSection = async (section, profileID) => {
 
   // get all the answers for this profile
   // add the question details for each question
-  // filter out any question/answers that aren't Support Details
+  // filter out any question/answers that aren't for this section type
 
-  const profileSection = await ProfileAnswer.aggregate([
-    { $match: { profile: profile._id } },
-    { $lookup: { from: "questions", localField: "question", foreignField: "_id", as: "question" } },
-    { $unwind: "$question" },
-    { $match: { "question.section": sectionType } },
-  ])
+  // if Basic Info then need to get answers from admin and basic
+
+  let profileSection
+
+  if (sectionType === "Basic Info") {
+    profileSection = await ProfileAnswer.aggregate([
+      { $match: { profile: profile._id } },
+      {
+        $lookup: { from: "questions", localField: "question", foreignField: "_id", as: "question" },
+      },
+      { $unwind: "$question" },
+      {
+        $match: {
+          $or: [{ "question.section": "Admin Info" }, { "question.section": "Basic Info" }],
+        },
+      },
+    ])
+  } else {
+    profileSection = await ProfileAnswer.aggregate([
+      { $match: { profile: profile._id } },
+      {
+        $lookup: { from: "questions", localField: "question", foreignField: "_id", as: "question" },
+      },
+      { $unwind: "$question" },
+      { $match: { "question.section": sectionType } },
+    ])
+  }
+
   let profileSectionAnswers = {}
 
   profileSection.forEach(answer => (profileSectionAnswers[answer.question._id] = answer.answer))

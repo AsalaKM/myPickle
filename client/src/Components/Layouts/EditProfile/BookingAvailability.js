@@ -1,14 +1,10 @@
 import React, { Component } from "react"
 import axios from "axios"
-import swal from "sweetalert"
+// import swal from "sweetalert"
 
 // import styled components
 import { Intro } from "../../Common/Headings"
 import { Button } from "../../Common/Buttons"
-import { Answers } from "../../Common/Answers"
-
-// // import common components
-// import { CheckboxField } from "../../Common/Questions/Questions.style"
 
 // import common components
 import QuestionSection from "../../Common/Questions/QuestionSection"
@@ -22,49 +18,52 @@ import updateProfileUtil from "../../../Utils/updateProfileUtil"
 const pathName = window.location.pathname
 const id = pathName.split("/")[3]
 
-class TargetClients extends Component {
+export default class BookingDetails extends Component {
   state = {
     profileId: "",
-    targetAnswers: null,
-    targetQuestions: null,
+    bookingAnswers: null,
+    bookingQuestions: null,
     unanswered: [],
   }
 
   componentDidMount() {
+    // NOTE: until we implement cookies, we are getting the profile id from the url
+    const pathName = window.location.pathname
+    const id = pathName.split("/")[3]
+
+    // get questions for the support-details section
     axios
-      .get(`/get-questions/target-clients/${id}`)
-      .then(questions =>
-        this.setState({
-          targetQuestions: questions.data,
-        })
-      )
+      .get(`/get-questions/availability-booking/${id}`)
+      .then(questions => this.setState({ bookingQuestions: questions.data }))
       .catch(err => console.log(err))
 
+    // get the answers the user has provided for this section
     axios
-      .get(`/edit-profile/target-clients/${id}`)
-      .then(answers => this.setState({ targetAnswers: answers.data, profileId: id }))
+      .get(`/edit-profile/availability-booking/${id}`)
+      .then(supportDetails => this.setState({ bookingAnswers: supportDetails.data, profileId: id }))
       .catch(err => console.log(err))
   }
 
   handleChange = option => {
-    const { targetAnswers, unanswered } = this.state
+    const { bookingAnswers, unanswered } = this.state
 
-    const { newAnswerState, newUnanswered } = handleChangeUtil(option, targetAnswers, unanswered)
+    const { newAnswerState, newUnanswered } = handleChangeUtil(option, bookingAnswers, unanswered)
 
-    this.setState({ targetAnswers: newAnswerState, unanswered: newUnanswered })
+    this.setState({ bookingAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
-    const { targetAnswers } = this.state
+    const { bookingAnswers } = this.state
 
-    updateProfileUtil(history, targetAnswers, "target-clients", id)
+    updateProfileUtil(history, bookingAnswers, "support-details", id)
   }
 
   render() {
-    const { targetQuestions, targetAnswers, unanswered } = this.state
-    if (targetQuestions === null || targetAnswers === null) {
+    const { bookingAnswers, bookingQuestions, unanswered } = this.state
+
+    if (bookingQuestions === null || bookingAnswers === null) {
       return (
         <Intro>
           <h2 className="tc mp-primary-color">Loading Your Details...</h2>
@@ -75,12 +74,12 @@ class TargetClients extends Component {
     return (
       <React.Fragment>
         <Intro>
-          <h2 className="tc mp-primary-color">Your Details</h2>
+          <h2 className="tc mp-primary-color">Support Details</h2>
         </Intro>
         <QuestionSection
-          questions={targetQuestions}
+          questions={bookingQuestions}
           handleChange={this.handleChange}
-          answers={targetAnswers}
+          answers={bookingAnswers}
           unanswered={unanswered}
         />
         <div className="flex items-center justify-between w-100 mb4">
@@ -92,5 +91,3 @@ class TargetClients extends Component {
     )
   }
 }
-
-export default TargetClients

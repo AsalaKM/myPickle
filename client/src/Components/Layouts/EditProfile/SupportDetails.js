@@ -5,14 +5,17 @@ import axios from "axios"
 // import styled components
 import { Intro } from "../../Common/Headings"
 import { Button } from "../../Common/Buttons"
-import { Answers } from "../../Common/Answers"
+// import { Answers } from "../../Common/Answers"
+
+// // import common components
+// import TextInput from "../../Common/Questions/TextInput"
+// import RadioInput from "../../Common/Questions/RadioInput"
+// import CheckboxInput from "../../Common/Questions/CheckboxInput"
+// import FileUploadInput from "../../Common/Questions/FileUploadInput"
+// import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
 // import common components
-import TextInput from "../../Common/Questions/TextInput"
-import RadioInput from "../../Common/Questions/RadioInput"
-import CheckboxInput from "../../Common/Questions/CheckboxInput"
-import FileUploadInput from "../../Common/Questions/FileUploadInput"
-import TextFieldInput from "../../Common/Questions/TextFieldInput"
+import QuestionSection from "../../Common/Questions/QuestionSection"
 
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
@@ -79,7 +82,7 @@ export default class SupportDetails extends Component {
   }
 
   render() {
-    const { supportAnswers, supportQuestions } = this.state
+    const { supportAnswers, supportQuestions, unanswered } = this.state
 
     if (supportQuestions === null || supportAnswers === null) {
       return (
@@ -94,7 +97,14 @@ export default class SupportDetails extends Component {
         <Intro>
           <h2 className="tc mp-primary-color">Support Details</h2>
         </Intro>
-        <Answers>
+        <QuestionSection
+          questions={supportQuestions}
+          handleChange={this.handleChange}
+          answers={supportAnswers}
+          unanswered={unanswered}
+          imageUpload={this.imageUpload}
+        />
+        {/* <Answers>
           {supportQuestions
             .filter(question => question.inputType === "text" || question.inputType === "url")
             .map((question, index) => (
@@ -146,7 +156,7 @@ export default class SupportDetails extends Component {
                 imageUpload={this.imageUpload}
               />
             ))}
-        </Answers>
+        </Answers> */}
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>
             Submit

@@ -81,9 +81,9 @@ export default class BookingDetails extends Component {
 
     if (!state[question]) {
       state[question] = {}
-      state[question][row] = answer
+      state[question][row] = [answer]
     } else if (!state[question][row]) {
-      state[question][row] = answer
+      state[question][row] = [answer]
     } else if (!state[question][row].includes(answer)) {
       state[question][row].push(answer)
     } else if (state[question][row].includes(answer)) {

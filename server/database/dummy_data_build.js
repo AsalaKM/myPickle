@@ -678,6 +678,8 @@ const buildDb = async () => {
       ],
     },
   ])
+
+
   // Check if questions and answers arrays are of the same length
   console.log("therapist questions length", therapistQuestions.length)
   console.log("therapist answers length", therapistAnswers.length)

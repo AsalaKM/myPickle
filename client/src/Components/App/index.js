@@ -4,7 +4,6 @@ import PageNotFound from '../Layouts/PageNotFound/index';
 import Register from '../Layouts/Register/index';
 import Login from '../Layouts/Login';
 import Dashboard from '../Layouts/Dashboard';
-import BrowsProfiles from '../Layouts/BrowsProfiles';
 
 
 const App = () => (
@@ -13,7 +12,7 @@ const App = () => (
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/browsprofiles" exact component={BrowsProfiles} />
+
       <Route component={PageNotFound} />
     </Switch>
   </Router>

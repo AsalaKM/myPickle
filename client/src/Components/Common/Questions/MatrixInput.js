@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { CheckboxField, ErrorMsg } from "./Questions.style"
+import { MatrixField, ErrorMsg } from "./Questions.style"
 
 export default class MatrixInput extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class MatrixInput extends Component {
     const { questionText, _id: questionId, options, helperText, isRequired } = question
     return (
       <React.Fragment>
-        <div>
+        <MatrixField>
           <header>
             <h4>
               {questionText}
@@ -55,7 +55,7 @@ export default class MatrixInput extends Component {
           ) : (
             ""
           )}
-        </div>
+        </MatrixField>
       </React.Fragment>
     )
   }

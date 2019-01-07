@@ -175,7 +175,7 @@ const buildProfileQuestions = async () => {
     {
       supportType: generalType._id,
       questionText: "What areas does your support relate to (max 5)?",
-      inputType: "checkbox",
+      inputType: "dropdown",
       options: [
         "Emergency help & support",
         "Children & Families",
@@ -365,7 +365,7 @@ const buildProfileQuestions = async () => {
         "70-79",
         "80+",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Target Clients",
     },
     {
@@ -402,7 +402,7 @@ const buildProfileQuestions = async () => {
         "Arab",
         "Other",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Target Clients",
     },
     {
@@ -419,7 +419,7 @@ const buildProfileQuestions = async () => {
         "Sikh",
         "Other",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Target Clients",
     },
     {
@@ -484,7 +484,7 @@ const buildProfileQuestions = async () => {
         "Student",
         "Transport and logistics",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Target Clients",
     },
     {
@@ -663,7 +663,7 @@ const buildProfileQuestions = async () => {
         "Yoga therapy",
         "Other",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Support Details",
     },
     {
@@ -711,7 +711,7 @@ const buildProfileQuestions = async () => {
         "Tardive dyskinesia",
         "Other",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Support Details",
     },
     // END OF SUPPORT DETAILS SECTION
@@ -754,7 +754,7 @@ const buildProfileQuestions = async () => {
         "WPA",
         "Other",
       ],
-      inputType: "checkbox",
+      inputType: "dropdown",
       section: "Availability & Booking",
     },
     {

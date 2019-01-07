@@ -103,10 +103,26 @@ const CheckboxField = styled(RadioField)`
   }
 `
 
+const MatrixField = styled(CheckboxField)`
+  .answers {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+  }
+`
+
 const ErrorMsg = styled.div.attrs({
   className: "mp-alert-color",
 })`
   text-align: center;
 `
 
-export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField }
+export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField, MatrixField }

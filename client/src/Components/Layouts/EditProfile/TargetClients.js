@@ -54,6 +54,13 @@ class TargetClients extends Component {
     this.setState({ targetAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
+  handleDropdown = (answers, questionId) => {
+    const filteredAnswers = answers.map(answer => answer.value)
+    const state = this.state.targetAnswers
+    state[questionId] = filteredAnswers
+    this.setState({ targetAnswers: state })
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
@@ -82,6 +89,7 @@ class TargetClients extends Component {
           handleChange={this.handleChange}
           answers={targetAnswers}
           unanswered={unanswered}
+          handleDropdown={this.handleDropdown}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

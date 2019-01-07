@@ -61,6 +61,13 @@ export default class SupportDetails extends Component {
     this.setState({ supportAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
+  handleDropdown = (answers, questionId) => {
+    const filteredAnswers = answers.map(answer => answer.value)
+    const state = this.state.supportAnswers
+    state[questionId] = filteredAnswers
+    this.setState({ supportAnswers: state })
+  }
+
   imageUpload = file => {
     const newAnswerState = this.state.supportAnswers
     const questionId = file.target.name
@@ -103,6 +110,7 @@ export default class SupportDetails extends Component {
           answers={supportAnswers}
           unanswered={unanswered}
           imageUpload={this.imageUpload}
+          handleDropdown={this.handleDropdown}
         />
         {/* <Answers>
           {supportQuestions

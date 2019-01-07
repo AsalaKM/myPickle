@@ -77,15 +77,9 @@ export default class BookingDetails extends Component {
   }
 
   handleDropdown = (answers, questionId) => {
-    console.log("REACHED", answers)
-
     const filteredAnswers = answers.map(answer => answer.value)
-
-    console.log("FILTERED", filteredAnswers)
     const state = this.state.bookingAnswers
-
     state[questionId] = filteredAnswers
-
     this.setState({ bookingAnswers: state })
   }
 

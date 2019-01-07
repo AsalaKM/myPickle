@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { ErrorMsg } from "./Questions.style"
+import { ErrorMsg, TextField } from "./Questions.style"
 
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -11,7 +11,7 @@ export default class CalendarInput extends Component {
 
     return (
       <React.Fragment>
-        <div>
+        <TextField>
           <header>
             <h4>
               {questionText}
@@ -23,6 +23,7 @@ export default class CalendarInput extends Component {
             id="date"
             onChange={date => handleDate(date, questionId)}
             selected={answers[questionId] ? new Date(answers[questionId]) : null}
+            placeholderText="Select date here"
             // dateFormat="YYYY-MM-DD"
             type="date"
           />
@@ -33,7 +34,7 @@ export default class CalendarInput extends Component {
           ) : (
             ""
           )}
-        </div>
+        </TextField>
       </React.Fragment>
     )
   }

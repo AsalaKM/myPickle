@@ -6,7 +6,10 @@ import {
   TwoButton,
   LeftButton,
   RightButton,
+  ProfileContainer,
 } from "./EditProfile.style"
+
+import eyeIcon from "../../../assets/images/remove_red_eye.svg"
 
 class EditProfile extends Component {
   render() {
@@ -35,6 +38,10 @@ class EditProfile extends Component {
           </LeftButton>
           <RightButton to={`/edit-profile/social-media`}>Social</RightButton>
         </TwoButton>
+        <ProfileContainer to={`/profile`}>
+          <img src={eyeIcon} alt="eye-icon" />
+          View profile
+        </ProfileContainer>
       </EditContainer>
     )
   }

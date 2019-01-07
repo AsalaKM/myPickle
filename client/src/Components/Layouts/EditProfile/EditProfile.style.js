@@ -11,7 +11,7 @@ export const EditContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 470px;
+  height: 100vh;
   padding: 1rem;
   margin-top: 3rem;
 `
@@ -61,4 +61,18 @@ export const RightButton = styled(Button)`
 
 export const TwoButton = styled.div`
   display: flex;
+`
+
+export const ProfileContainer = styled(Link)`
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  color: var(--primary);
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  img {
+    margin: 0.5rem;
+  }
 `

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose")
-const dbConnection = require("../../database/db_connection")
-const buildDb = require("../../database/dummy_data_build")
 
 //load models
 const User = require("../../database/models/User")
@@ -11,8 +9,11 @@ const ProfileAnswer = require("../../database/models/ProfileAnswer")
 
 //load queries
 const updateProfileSection = require("../../database/queries/editProfile/updateProfileSection")
-const getTargetClientsAnswers = require("../../database/queries/editProfile/getTargetClientsDetails")
+const editProfileSection = require("../../database/queries/editProfile/editProfileSection")
 const getQuestions = require("../../database/queries/editProfile/getQuestions")
+
+const dbConnection = require("../../database/db_connection")
+const buildDb = require("../../database/dummy_data_build")
 
 // connect
 dbConnection()
@@ -34,8 +35,8 @@ describe("can build dummy data correctly", () => {
     expect(Profile).toBeDefined()
     expect(ProfileAnswer).toBeDefined()
     // check if therapist user gets created
-    const foundTherapist = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
-    const expected = "Josephine@the-therapists.co.uk"
+    const foundTherapist = await User.findOne({ email: "josephine@the-therapists.co.uk" })
+    const expected = "josephine@the-therapists.co.uk"
     const actual = foundTherapist.email
     expect(actual).toBe(expected)
   })
@@ -44,11 +45,11 @@ describe("can build dummy data correctly", () => {
 describe("can update profile section target clients", () => {
   test("success by inserting valid data", async () => {
     // get profile ID
-    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundUser = await User.findOne({ email: "josephine@the-therapists.co.uk" })
     const foundProfile = await Profile.find({ user: foundUser._id })
     // get stored answers of that profile section related to user
     const profileID = foundProfile[0]._id
-    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const storedTargetClientsAnswers = await editProfileSection("target-clients", profileID)
     const storedTargetClientsKeys = Object.keys(storedTargetClientsAnswers).map(i => i)
     // create mock model different from dummy data for that user
     // differecnes key1: 2 entries less, key2: does not exist in data base yet, key3: 3 totally different entries
@@ -60,7 +61,7 @@ describe("can update profile section target clients", () => {
     // run update
     await updateProfileSection(profileID, mockAnswerRequest, storedTargetClientsAnswers)
     // check new answers
-    const newTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const newTargetClientsAnswers = await editProfileSection("target-clients", profileID)
     expect(newTargetClientsAnswers).toBeDefined()
     expect(typeof newTargetClientsAnswers).toBe("object")
     // check for difference before and after update for 1 key
@@ -75,7 +76,7 @@ describe("can update profile section target clients", () => {
   })
   test("success by inserting valid data by multiple requests if no data in database", async () => {
     // get profile ID
-    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundUser = await User.findOne({ email: "josephine@the-therapists.co.uk" })
     const foundProfile = await Profile.find({ user: foundUser._id })
     const profileID = foundProfile[0]._id
     // get question_ids for profile section
@@ -84,7 +85,7 @@ describe("can update profile section target clients", () => {
 
     // delete dummy data for that profile section
     await ProfileAnswer.deleteMany({ profile: profileID })
-    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const storedTargetClientsAnswers = await editProfileSection("target-clients", profileID)
 
     // create mock answers for questionIDs to be updated
     const mockAnswerRequest1 = {
@@ -98,7 +99,7 @@ describe("can update profile section target clients", () => {
     // run update
     await updateProfileSection(profileID, mockAnswerRequest2, storedTargetClientsAnswers)
     // check new answers
-    const newTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const newTargetClientsAnswers = await editProfileSection("target-clients", profileID)
     expect(newTargetClientsAnswers).toBeDefined()
     expect(typeof newTargetClientsAnswers).toBe("object")
     expect(newTargetClientsAnswers).toEqual({
@@ -108,11 +109,11 @@ describe("can update profile section target clients", () => {
   })
   test("no update if invalid question coming from request", async () => {
     // get profile ID
-    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundUser = await User.findOne({ email: "josephine@the-therapists.co.uk" })
     const foundProfile = await Profile.find({ user: foundUser._id })
     // get stored answers of that profile section related to user
     const profileID = foundProfile[0]._id
-    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const storedTargetClientsAnswers = await editProfileSection("target-clients", profileID)
     // create mock model no different from dummy data for that user
     const mockAnswerRequest = {
       "Not a valid Key": "Family without children",
@@ -128,11 +129,11 @@ describe("can update profile section target clients", () => {
 
   test("no update if no changes made within request", async () => {
     // get profile ID
-    const foundUser = await User.findOne({ email: "Josephine@the-therapists.co.uk" })
+    const foundUser = await User.findOne({ email: "josephine@the-therapists.co.uk" })
     const foundProfile = await Profile.find({ user: foundUser._id })
     // get stored answers of that profile section related to user
     const profileID = foundProfile[0]._id
-    const storedTargetClientsAnswers = await getTargetClientsAnswers(profileID)
+    const storedTargetClientsAnswers = await editProfileSection("target-clients", profileID)
     // create mock model no different from dummy data for that user
     const mockAnswerRequest = storedTargetClientsAnswers
     // run update

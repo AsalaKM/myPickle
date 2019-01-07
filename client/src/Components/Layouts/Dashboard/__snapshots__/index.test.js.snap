@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa dCcmtV"
+>
+  <h2>
+    Welcome back, Haneen
+  </h2>
+  <button
+    className="sc-bwzfXH hfIVGL"
+    onClick={[Function]}
+  >
+     Edit Profile 
+  </button>
+  <br />
+  <button
+    className="sc-bwzfXH hfIVGL"
+    onClick={[Function]}
+  >
+     Create Blog Post 
+  </button>
+  <br />
+  <button
+    className="sc-bwzfXH hfIVGL"
+    onClick={[Function]}
+  >
+     Browse Profiles
+  </button>
+  <br />
+  <button
+    className="sc-bwzfXH hfIVGL"
+    onClick={[Function]}
+  >
+    Browse Blog Posts
+  </button>
+  <br />
+  <button
+    className="sc-htpNat uAZkr"
+  >
+    Logout
+  </button>
+</div>
+`;

@@ -1,11 +1,9 @@
 import React, { Component } from "react"
 import axios from "axios"
-import swal from "sweetalert"
 
 // import styled components
 import { Intro } from "../../Common/Headings"
 import { Button } from "../../Common/Buttons"
-import { Answers } from "../../Common/Answers"
 
 // // import common components
 // import { CheckboxField } from "../../Common/Questions/Questions.style"

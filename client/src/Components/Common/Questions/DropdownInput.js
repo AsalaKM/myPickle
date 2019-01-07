@@ -32,12 +32,11 @@ export default class DropdownInput extends Component {
             name={questionId}
             options={selectOptions}
             // className="basic-multi-select"
-            classNamePrefix="select"
+            classNamePrefix="select dropdown"
             onChange={e => handleDropdown(e, questionId)}
             defaultValue={selected}
             components={makeAnimated()}
             className="dropdown-container"
-            classNamePrefix="dropdown"
             theme={theme => ({
               ...theme,
               colors: {

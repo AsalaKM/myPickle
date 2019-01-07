@@ -23,7 +23,7 @@ exports[`Register matches snapshot 1`] = `
      with your query and contact details.
   </p>
   <button
-    className="sc-bwzfXH mp-bg-white mp-b--primary-color kPAatI"
+    className="sc-bwzfXH mp-bg-white mp-b--primary-color hoVcxS"
   >
     Next
   </button>

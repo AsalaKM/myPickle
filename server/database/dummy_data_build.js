@@ -30,7 +30,7 @@ const buildDb = async () => {
   const therapist = new User({
     name: "Josephine Doeski",
     phone: "004407566683",
-    email: "Josephine@the-therapists.co.uk",
+    email: "josephine@the-therapists.co.uk",
     address: "66 Moaning Road E50DW London",
     password: "123456",
   })
@@ -56,7 +56,7 @@ const buildDb = async () => {
 
   // create new profile for user with support type therapist and user_id as foreign keys
   const therapistProfile = new Profile({
-    SupportType: supportTypeTherapist._id,
+    supportType: supportTypeTherapist._id,
     user: therapist._id,
     approved: true,
   })
@@ -66,7 +66,7 @@ const buildDb = async () => {
 
   // create new profile for user with support type general and user_id as foreign keys
   const generalProfile = new Profile({
-    SupportType: supportTypeGeneral._id,
+    supportType: supportTypeGeneral._id,
     user: generalUser._id,
     approved: true,
   })
@@ -678,6 +678,11 @@ const buildDb = async () => {
       ],
     },
   ])
+  // Check if questions and answers arrays are of the same length
+  console.log("therapist questions length", therapistQuestions.length)
+  console.log("therapist answers length", therapistAnswers.length)
+  console.log("general questions length", generalQuestions.length)
+  console.log("general answers length", generalUserAnswers.length)
 }
 
 buildDb().catch(err => console.log(err))

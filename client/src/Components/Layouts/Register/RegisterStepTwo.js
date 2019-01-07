@@ -1,7 +1,12 @@
 import React from "react"
 
-import { Button, Answers, Intro } from "./Register.style"
+// import styled components
+import { Intro } from "../../Common/Headings"
+import { Button } from "../../Common/Buttons"
+import { Answers } from "../../Common/Answers"
 import { TextField, ErrorMsg } from "../../Common/Questions/Questions.style"
+
+// import common components
 import TextInput from "../../Common/Questions/TextInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
 

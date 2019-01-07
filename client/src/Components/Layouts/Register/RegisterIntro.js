@@ -1,6 +1,7 @@
 import React from "react"
 
-import { Intro, Button } from "./Register.style"
+import { Intro } from "../../Common/Headings"
+import { Button } from "../../Common/Buttons"
 
 export default class RegisterIntro extends React.Component {
   render() {

@@ -1,5 +1,6 @@
 const express = require("express")
 const cookieParser = require("cookie-parser")
+const path = require("path")
 const logger = require("morgan")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
@@ -34,6 +35,7 @@ app
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
   .use(fileUpload())
+  .use("/static", express.static(path.join(__dirname, "./public")))
   .use(controllers)
 
 module.exports = app

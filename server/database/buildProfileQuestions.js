@@ -9,9 +9,9 @@ const SupportType = require("./models/SupportType")
 // dbConnection()
 
 const buildProfileQuestions = async () => {
-  // clear profile model
-  await ProfileQuestion.deleteMany({})
-  await SupportType.deleteMany({})
+  // // clear profile model
+  // await ProfileQuestion.deleteMany({})
+  // await SupportType.deleteMany({})
 
   // insert types of support
   await SupportType.insertMany([

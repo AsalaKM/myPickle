@@ -12,6 +12,9 @@ const buildDb = require("../../database/dummy_data_build")
 
 describe("Test for getQuestions controller", () => {
   afterAll(async () => {
+    // Clear and rebuild the dummy data
+    await buildDb()
+
     // Close the connection
     await mongoose.connection.close()
   })

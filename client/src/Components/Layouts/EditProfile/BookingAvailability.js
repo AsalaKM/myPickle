@@ -76,6 +76,19 @@ export default class BookingDetails extends Component {
     this.setState({ bookingAnswers: state })
   }
 
+  handleDropdown = (answers, questionId) => {
+    console.log("REACHED", answers)
+
+    const filteredAnswers = answers.map(answer => answer.value)
+
+    console.log("FILTERED", filteredAnswers)
+    const state = this.state.bookingAnswers
+
+    state[questionId] = filteredAnswers
+
+    this.setState({ bookingAnswers: state })
+  }
+
   handleMatrix = (row, answer, question) => {
     const state = this.state.bookingAnswers
 
@@ -138,6 +151,7 @@ export default class BookingDetails extends Component {
           dropdownSelect={this.dropdownSelect}
           handleMatrix={this.handleMatrix}
           handleDate={this.handleDate}
+          handleDropdown={this.handleDropdown}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

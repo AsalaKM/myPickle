@@ -24,6 +24,26 @@ const TextField = styled(CommonStyles)`
   }
 `
 
+const DropdownField = styled(CommonStyles)`
+  .dropdown__control {
+    border: 1px solid var(--lightPrimary);
+    border-radius: 24px;
+
+    :hover {
+      border: 1px solid var(--primary);
+    }
+  }
+
+  .dropdown__multi-value {
+    border-radius: 24px;
+    background-color: var(--gray);
+  }
+
+  .dropdown__multi-value__remove {
+    border-radius: 50%;
+  }
+`
+
 const RadioField = styled(CommonStyles)`
   .answers {
     display: flex;
@@ -89,4 +109,4 @@ const ErrorMsg = styled.div.attrs({
   text-align: center;
 `
 
-export { TextField, RadioField, CheckboxField, ErrorMsg }
+export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField }

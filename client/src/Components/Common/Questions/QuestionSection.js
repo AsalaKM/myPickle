@@ -26,6 +26,7 @@ export default class QuestionSection extends Component {
       handleMatrix,
       handleDate,
       addImage,
+      handleDropdown,
     } = this.props
 
     return (
@@ -88,8 +89,7 @@ export default class QuestionSection extends Component {
               <DropdownInput
                 key={index}
                 question={question}
-                dropdownSelect={dropdownSelect}
-                dropdownRemove={dropdownRemove}
+                handleDropdown={handleDropdown}
                 answers={answers}
               />
             ))}

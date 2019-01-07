@@ -24,6 +24,7 @@ export default class BasicInfo extends Component {
     basicAnswers: null,
     basicQuestions: null,
     unanswered: [],
+    file: {},
   }
 
   componentDidMount() {
@@ -52,12 +53,40 @@ export default class BasicInfo extends Component {
     this.setState({ basicAnswers: newAnswerState, unanswered: newUnanswered })
   }
 
+  addImage = file => {
+    console.log("REACHED", file)
+    const newAnswerState = this.state.basicAnswers
+    const questionId = file.target.name
+    const filename = file.target.files[0].name
+    const newFile = this.state.file
+    newFile[questionId] = file.target.files[0]
+
+    newAnswerState[questionId] = filename
+
+    this.setState({ basicAnswers: newAnswerState, file: newFile })
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
-    const { basicAnswers } = this.state
+    const { basicAnswers, profileId, file } = this.state
 
-    updateProfileUtil(history, basicAnswers, "basic-info", id)
+    if (Object.keys(file).length > 0) {
+      this.uploadImage(profileId)
+        .then(updateProfileUtil(history, basicAnswers, "basic-info", id))
+        .catch(err => console.log(err))
+    } else {
+      updateProfileUtil(history, basicAnswers, "basic-info", id)
+    }
+  }
+
+  uploadImage = async profileId => {
+    const { file } = this.state
+    const formData = new FormData()
+    for (let key in file) {
+      formData.append(profileId, file[key])
+    }
+    await axios.post("/upload-image", formData).catch(err => console.log(err))
   }
 
   render() {
@@ -81,6 +110,7 @@ export default class BasicInfo extends Component {
           handleChange={this.handleChange}
           answers={basicAnswers}
           unanswered={unanswered}
+          addImage={this.addImage}
         />
         <div className="flex items-center justify-between w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>

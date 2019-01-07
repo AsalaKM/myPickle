@@ -25,6 +25,7 @@ export default class QuestionSection extends Component {
       dropdownSelect,
       handleMatrix,
       handleDate,
+      addImage,
     } = this.props
 
     return (
@@ -78,7 +79,7 @@ export default class QuestionSection extends Component {
                 question={question}
                 handleChange={handleChange}
                 answers={answers}
-                imageUpload={imageUpload}
+                imageUpload={addImage}
               />
             ))}
           {questions

@@ -214,7 +214,7 @@ class Register extends Component {
       .post("/register-user", registerAnswers)
       .then(profileId => {
         if (Object.keys(file).length > 0) {
-          this.uploadImage(profileId)
+          this.uploadImage(profileId.data)
         }
       })
       .then(result => {
@@ -228,7 +228,7 @@ class Register extends Component {
     const { file } = this.state
     const formData = new FormData()
     for (let key in file) {
-      formData.append(profileId.data, file[key])
+      formData.append(profileId, file[key])
     }
     axios.post("/upload-image", formData).catch(err => console.log(err))
   }

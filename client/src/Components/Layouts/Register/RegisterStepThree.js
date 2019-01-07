@@ -1,6 +1,11 @@
 import React from "react"
 
-import { Button, Answers, Intro } from "./Register.style"
+// import styled components
+import { Intro } from "../../Common/Headings"
+import { Button } from "../../Common/Buttons"
+import { Answers } from "../../Common/Answers"
+
+// import common components
 import TextInput from "../../Common/Questions/TextInput"
 import RadioInput from "../../Common/Questions/RadioInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"

@@ -24,6 +24,8 @@ const TextField = styled(CommonStyles)`
   }
 `
 
+const FileField = styled(CommonStyles)``
+
 const DropdownField = styled(CommonStyles)`
   .dropdown__control {
     border: 1px solid var(--lightPrimary);
@@ -125,4 +127,4 @@ const ErrorMsg = styled.div.attrs({
   text-align: center;
 `
 
-export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField, MatrixField }
+export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField, MatrixField, FileField }

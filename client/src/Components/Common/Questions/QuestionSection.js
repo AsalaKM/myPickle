@@ -43,7 +43,9 @@ export default class QuestionSection extends Component {
               />
             ))}
           {questions
-            .filter(question => question.inputType === "textarea")
+            .filter(
+              question => question.inputType === "textarea" || question.inputType === "address"
+            )
             .map((question, index) => (
               <TextFieldInput
                 key={index}

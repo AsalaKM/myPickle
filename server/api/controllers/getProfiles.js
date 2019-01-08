@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const findSupportProfiles = require("../../database/queries/findSupportProfiles")
+const getProfiles = require("../../database/queries/getProfiles")
 
 router.get("/", (req, res) => {
-  findSupportProfiles()
+  getProfiles()
     .then(result => res.status(200).send(result))
     .catch(err => res.status(401).err(err))
 })

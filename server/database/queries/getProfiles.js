@@ -24,8 +24,8 @@ const findSupportProfiles = async () => {
 
   const profileArray = []
   // insert file path of profile pictures folder
-  const filePath =
-    "/Users/simondupree/Documents/Web_Development/myPickle/client/src/assets/images/profiles"
+  const filePath = `${__dirname}/../../public`
+
   // get all image file names
   const getImageArr = await getImageNames(filePath)
 

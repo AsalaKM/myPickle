@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
+import { Button } from "./BrowseProfiles.style"
 
 import axios from "axios"
 
@@ -13,7 +14,7 @@ class FindSupport extends Component {
   componentDidMount() {
     // get profiles
     axios
-      .get("/find-support-profiles")
+      .get("/profiles")
       .then(result => this.setState({ profiles: result.data, loaded: true }))
       .catch(err => console.log(err))
     // get blog posts
@@ -32,10 +33,11 @@ class FindSupport extends Component {
     } else {
       return (
         <React.Fragment>
-          <h2>Support Providers</h2>
+          <div>
+            <Button>FILTER</Button>
+          </div>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL } = profile
-
             return (
               <div>
                 <Profile

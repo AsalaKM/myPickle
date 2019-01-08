@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { SupportContainer, ProfilePhoto } from "./FindSupport.style"
+import { SupportContainer, ProfilePhoto } from "./BrowseProfiles.style"
 
 class Profile extends Component {
   render() {
@@ -8,9 +8,9 @@ class Profile extends Component {
 
     const checkAvatar = () =>
       avatar ? (
-        <ProfilePhoto src={require(`../../../assets/images/profiles/${avatar}`)} />
+        <ProfilePhoto src={`/static/${avatar}`} />
       ) : (
-        <ProfilePhoto src={require("../../../assets/images/profiles/placeholder.jpg")} />
+        <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
     return (

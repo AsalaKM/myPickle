@@ -10,6 +10,7 @@ import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
+import BrowseProfiles from "../Layouts/BrowseProfiles"
 
 const App = () => (
   <Router>
@@ -23,6 +24,7 @@ const App = () => (
       <Route path="/edit-profile/social-media/:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/profiles" exact component={BrowseProfiles} />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

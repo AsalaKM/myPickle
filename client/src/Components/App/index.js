@@ -12,10 +12,12 @@ import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
+import Landing from "../Layouts/LandingPage/index"
 
 const App = () => (
   <Router history={history}>
     <Switch>
+      <Route path="/" exact component={Landing} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />

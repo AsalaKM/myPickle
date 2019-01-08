@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { Box, Container, ProfilePhoto, Details } from "./BrowseProfiles.style"
+import { Box, Container, ProfilePhoto, Details, Name, WellnessList } from "./BrowseProfiles.style"
 
 class Profile extends Component {
   render() {
@@ -18,12 +18,12 @@ class Profile extends Component {
         <Container>
           {checkAvatar()}
           <Details>
-            <span>{organisation} </span>
-            <span>
-              {wellnessType.map(item => {
-                return <li>{item}</li>
-              })}{" "}
-            </span>
+            <Name>{organisation} </Name>
+          </Details>
+          <Details>
+            {wellnessType.map(item => {
+              return <WellnessList>{item}</WellnessList>
+            })}
           </Details>
         </Container>
       </Box>

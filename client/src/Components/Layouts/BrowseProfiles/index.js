@@ -26,8 +26,6 @@ class FindSupport extends Component {
 
   render() {
     const { loaded, profiles, articles } = this.state
-    // const { organisation, wellnessType, avatarURL } = profiles
-    console.log(profiles)
     if (!loaded) {
       return <div>loading...</div>
     } else {

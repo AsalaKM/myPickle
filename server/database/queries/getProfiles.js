@@ -11,6 +11,7 @@ const findSupportProfiles = async () => {
   const profiles = await Profile.find({})
   // create profile ID array
   const profileIDs = await profiles.map(e => e._id)
+
   // find wellnessQuestion ID
   const wellnessQuestion = await ProfileQuestion.findOne({
     questionText: "Please select your area(s) of wellness",

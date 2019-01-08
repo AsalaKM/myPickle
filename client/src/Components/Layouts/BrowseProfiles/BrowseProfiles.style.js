@@ -31,10 +31,18 @@ const ProfilePhoto = styled.img.attrs({
 })``
 
 const Details = styled.div.attrs({
-  className: "flex flex-column",
+  className: "flex flex-column ml3",
+})``
+const Name = styled.h2.attrs({ className: "mp-primary-color-dark fw6 mt0" })`
+  font-size: 20px;
+`
+const WellnessList = styled.p.attrs({
+  className: "mp-b--primary-color br3",
 })`
-  background: gray;
-  font-size: 15px;
+  margin-top: -10px;
+  text-align: center;
+  border-style: dotted;
+  border-width: 1.8px;
 `
 
-export { Button, Box, Container, ProfilePhoto, Details }
+export { Button, Box, Container, ProfilePhoto, Details, Name, WellnessList }

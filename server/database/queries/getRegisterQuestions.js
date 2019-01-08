@@ -1,6 +1,5 @@
 // load the mongo models
 const ProfileQuestion = require("../models/ProfileQuestion")
-// const User = require("../models/User")
 
 // INITIAL SIGNUP
 // get questions for admin-info plus basic-info plus wellness-areas question from support-details

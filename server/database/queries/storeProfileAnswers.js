@@ -6,7 +6,7 @@ const storeAnswers = async (profileId, answerObj) => {
   for (const key in answerObj) {
     let profileAnswer = new ProfileAnswer({
       profile: profileId,
-      question: answerObj.key,
+      question: key,
       answer: answerObj[key],
     })
 

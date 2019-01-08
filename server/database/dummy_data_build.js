@@ -19,8 +19,9 @@ const buildDb = async () => {
   await SupportType.deleteMany({})
   await Profile.deleteMany({})
   await ProfileQuestion.deleteMany({})
+  await ProfileAnswer.deleteMany({})
 
-  console.log("collections deleted")
+  // console.log("collections deleted")
 
   // insert profile questions
   await buildProfileQuestions()
@@ -35,7 +36,7 @@ const buildDb = async () => {
     password: "123456",
   })
   await therapist.save()
-  console.log("user (therapist) added")
+  // console.log("user (therapist) added")
 
   // general user
   const generalUser = new User({
@@ -46,7 +47,7 @@ const buildDb = async () => {
     password: "123456",
   })
   await generalUser.save()
-  console.log("user (general) added")
+  // console.log("user (general) added")
 
   // get support type of therapists
   const supportTypeTherapist = await SupportType.findOne({ type: "Therapist" })
@@ -62,7 +63,7 @@ const buildDb = async () => {
   })
 
   await therapistProfile.save()
-  console.log("therapist profile added")
+  // console.log("therapist profile added")
 
   // create new profile for user with support type general and user_id as foreign keys
   const generalProfile = new Profile({
@@ -72,7 +73,7 @@ const buildDb = async () => {
   })
 
   await generalProfile.save()
-  console.log("general profile added")
+  // console.log("general profile added")
 
   // get all profile questions related to therapist type
   const therapistQuestions = await ProfileQuestion.find({ supportType: supportTypeTherapist._id })
@@ -224,11 +225,11 @@ const buildDb = async () => {
       profile: therapistProfile._id,
       question: generalQuestions[23]._id,
       answer: {
-        Monday: "Morning, Evening",
-        Tuesday: "Morning, Afternoon, Evening",
-        Thursday: "Morning, Afternoon, Evening",
-        Friday: "Morning, Afternoon, Evening",
-        Saturday: "Overnight",
+        Monday: ["Morning", "Evening"],
+        Tuesday: ["Morning", "Afternoon", "Evening"],
+        Thursday: ["Morning"],
+        Friday: ["Morning", "Evening"],
+        Saturday: ["Overnight"],
       },
     },
     {
@@ -342,12 +343,12 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[38]._id,
-      answer: ["All - no preference"],
+      answer: ["All – no preference"],
     },
     {
       profile: therapistProfile._id,
       question: generalQuestions[39]._id,
-      answer: ["All – no preference"],
+      answer: ["Mental health problem(s)"],
     },
     // END OF TARGET CLIENT SECTION
     // START OF QUESTIONS SPECIFICALLY FOR THERAPISTS
@@ -557,12 +558,11 @@ const buildDb = async () => {
       profile: generalProfile._id,
       question: generalQuestions[23]._id,
       answer: {
-        Monday: "Morning, Afternoon, Evening",
-        Tuesday: "Morning, Afternoon, Evening",
-        Wednesday: "Morning, Afternoon, Evening",
-        Thursday: "Morning, Afternoon, Evening",
-        Friday: "Morning, Afternoon, Evening",
-        Saturday: "Overnight",
+        Monday: ["Morning", "Evening"],
+        Tuesday: ["Morning", "Afternoon", "Evening"],
+        Thursday: ["Morning"],
+        Friday: ["Morning", "Evening"],
+        Saturday: ["Overnight"],
       },
     },
     {

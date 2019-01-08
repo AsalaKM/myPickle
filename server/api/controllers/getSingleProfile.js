@@ -11,14 +11,7 @@
    const profileId = await Profile.find({user:ObjectId(userId)},{_id:1});
 
    //return the answers for one profile
-   const result = await ProfileAnswer.find({profile:ObjectId(profileId)},{answer:1});
-   res.send({result})
- }
-
- //return Basic information from user collection
- exports.getBasicInfo =  async(req,res)=> {
-   const {userId}= req.body;
-
- Users.find({_id:ObjectId("userId")},{name:1,phone:1,email:1})
- res.send({result})
+   const answers = await ProfileAnswer.find({profile:ObjectId(profileId)},{answer:1});
+   const BasicInfo = await Users.find({_id:ObjectId("userId")},{name:1,phone:1,email:1})
+   res.send({answers, BasicInfo})
  }

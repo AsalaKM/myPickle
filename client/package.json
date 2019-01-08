@@ -3,27 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.23.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-burger-menu": "^2.5.4",
+    "react-datepicker": "^2.0.0",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "react-select": "^2.1.2",
+    "react-scripts": "^2.1.3",
+    "react-select": "^2.2.0",
     "react-test-renderer": "^16.6.3",
     "styled-components": "^4.1.2",
     "sweetalert": "^2.1.2",
     "validator": "^10.9.0"
   },
   "devDependencies": {
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "enzyme-to-json": "^3.3.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "react-testing-library": "^5.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,9 +45,6 @@
       "!**/src/index.js",
       "!**/src/Components/App/index.js",
       "!**/src/serviceWorker.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
     ]
   },
   "browserslist": [

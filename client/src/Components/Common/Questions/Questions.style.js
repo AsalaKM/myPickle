@@ -24,6 +24,28 @@ const TextField = styled(CommonStyles)`
   }
 `
 
+const FileField = styled(CommonStyles)``
+
+const DropdownField = styled(CommonStyles)`
+  .dropdown__control {
+    border: 1px solid var(--lightPrimary);
+    border-radius: 24px;
+
+    :hover {
+      border: 1px solid var(--primary);
+    }
+  }
+
+  .dropdown__multi-value {
+    border-radius: 24px;
+    background-color: var(--gray);
+  }
+
+  .dropdown__multi-value__remove {
+    border-radius: 50%;
+  }
+`
+
 const RadioField = styled(CommonStyles)`
   .answers {
     display: flex;
@@ -83,10 +105,26 @@ const CheckboxField = styled(RadioField)`
   }
 `
 
+const MatrixField = styled(CheckboxField)`
+  .answers {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+  }
+`
+
 const ErrorMsg = styled.div.attrs({
   className: "mp-alert-color",
 })`
   text-align: center;
 `
 
-export { TextField, RadioField, CheckboxField, ErrorMsg }
+export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField, MatrixField, FileField }

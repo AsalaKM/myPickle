@@ -38,6 +38,6 @@ router.use("/edit-profile/:section/:id", editProfileSection)
 // update profile routes
 // router.use("/update-profile/target/:id", updateTargetClientsDetails)
 router.use("/update-profile/:section/:id", updateProfileSection)
-router.use("/single-profile/:id",getSingleProfile)
+router.use("/single-profile/:id",getAnswersProfile)
 
 module.exports = router

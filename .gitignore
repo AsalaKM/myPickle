@@ -61,3 +61,10 @@ config.env
 
 # next.js build output
 .next
+# vscode
+.vscode
+
+# assestes
+server/assetes
+# my computer file 
+.desktopfolder

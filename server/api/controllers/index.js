@@ -5,6 +5,7 @@ const router = express.Router()
 const getRegisterQuestionsController = require("./getRegisterQuestionsController")
 const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
+const checkEmail = require("./checkEmail")
 
 // edit profle controllers
 // const editSupportDetails = require("./editSupportDetails")
@@ -24,6 +25,7 @@ router.get("/", (req, res, next) => {
 router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
+router.use("/check-email", checkEmail)
 
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 

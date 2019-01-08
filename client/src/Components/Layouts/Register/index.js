@@ -23,6 +23,7 @@ class Register extends Component {
     unanswered: [],
     errors: [],
     file: {},
+    serverErrors: {},
   }
 
   componentDidMount() {
@@ -93,7 +94,7 @@ class Register extends Component {
     this.setState({ unanswered: newUnanswered })
   }
 
-  checkStage = () => {
+  checkStage = async () => {
     const answerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
     const errorState = this.state.errors
@@ -139,8 +140,19 @@ class Register extends Component {
         if (!errorState.includes("password2")) errorState.push("password2")
         counter += 1
       }
+
+      // check the server to see if the email already exists
+      else {
+        await axios.post("/check-email", { email: answerState.email }).catch(err => {
+          console.log("EMAIL", err.response.data)
+          this.setState({ serverErrors: err.response.data })
+          counter += 1
+        })
+      }
     }
     if (counter === 0) {
+      // reset serverErrors
+      this.setState({ serverErrors: {} })
       this.handleNext()
     } else this.setState({ unanswered: newUnanswered, errors: errorState })
   }
@@ -274,6 +286,7 @@ class Register extends Component {
             errors={this.state.errors}
             unanswered={this.state.unanswered}
             checkStage={this.checkStage}
+            serverErrors={this.state.serverErrors}
           />
         </React.Fragment>
       )

@@ -1,48 +1,61 @@
 import styled from "styled-components"
 
-const Button = styled.button`
-  display: flex;
-  margin: 0 auto;
-  margin-top: 100px;
-  height: 40px;
-  width: 105px;
-  margin-right: 37px;
-  border-radius: 20px;
-  border-color: #6eeb2e;
-  background: #ffffff;
-  border-width: 0.5px;
-  color: #6eeb2e;
+const Button = styled.button.attrs({
+  className: "f4 button-reset bg-white ba mp-b--primary-light dim pointer pv1 black-60",
+})`
+  margin-top: 20px;
 `
-const Box = styled.div.attrs({
-  className: "flex items-center justify-center",
+
+const Box = styled.main.attrs({
+  className: "mw6 center",
 })``
 
-const Container = styled.div.attrs({
-  className: "flex flex-row items-center ph3",
+const Container = styled.article.attrs({
+  className: "dt center bb b--black-05 pb2 mt2",
 })`
-  width: 90%;
-  border-radius: 20px;
-  background: #cccccca3;
-  margin-top: 25px;
+  width: 95%;
 `
+const Avatar = styled.div.attrs({
+  className: "dtc w3 w3-ns v-mid",
+})``
+
 const ProfilePhoto = styled.img.attrs({
-  className: "br-100 h4 w4 dib tl",
+  className: "ba b--black-10 db br-100 w3 w3-ns h3 h3-ns",
   alt: "avatar",
 })``
 
-const Details = styled.div.attrs({
-  className: "flex flex-column ml3",
+const DetailsOne = styled.div.attrs({
+  className: "dtc v-mid pl3",
 })``
-const Name = styled.h2.attrs({ className: "mp-primary-color-dark fw6 mt0" })`
-  font-size: 20px;
-`
-const WellnessList = styled.p.attrs({
-  className: "mp-b--primary-color br3",
-})`
-  margin-top: -10px;
-  text-align: center;
-  border-style: dotted;
-  border-width: 1.8px;
-`
 
-export { Button, Box, Container, ProfilePhoto, Details, Name, WellnessList }
+const Name = styled.h2.attrs({ className: "f5 f5-ns fw6 lh-title mp-black-color mv0" })``
+
+const WellnessList = styled.p.attrs({
+  className: "f6 fw4 mt0 mb0 black-60",
+})``
+
+const DetailsTwo = styled.div.attrs({
+  className: "dtc v-mid",
+})``
+
+const Form = styled.form.attrs({
+  className: "w-100 tr",
+})``
+
+const More = styled.button.attrs({
+  className: "f6 button-reset bg-white ba mp-b--primary-light dim pointer pv1 black-60",
+})``
+
+export {
+  Button,
+  Box,
+  Container,
+  ProfilePhoto,
+  DetailsOne,
+  DetailsTwo,
+  Name,
+  WellnessList,
+  Avatar,
+  More,
+  Form,
+}

@@ -4,10 +4,9 @@ import { Button } from "./BrowseProfiles.style"
 
 import axios from "axios"
 
-class FindSupport extends Component {
+class BrowseProfiles extends Component {
   state = {
     profiles: null,
-    articles: null,
     loaded: false,
   }
 
@@ -17,15 +16,10 @@ class FindSupport extends Component {
       .get("/profiles")
       .then(result => this.setState({ profiles: result.data, loaded: true }))
       .catch(err => console.log(err))
-    // get blog posts
-    // axios
-    //   .get("/find-support-blogposts")
-    //   .then(result => this.setState({ profiles: result.data }))
-    //   .catch(err => console.log(err))
   }
 
   render() {
-    const { loaded, profiles, articles } = this.state
+    const { loaded, profiles } = this.state
     if (!loaded) {
       return <div>loading...</div>
     } else {
@@ -35,15 +29,15 @@ class FindSupport extends Component {
             <Button>FILTER</Button>
           </div>
           {profiles.map(profile => {
-            const { organisation, wellnessType, avatarURL } = profile
+            const { organisation, wellnessType, avatarURL, profileID } = profile
             return (
-              <div>
-                <Profile
-                  organisation={organisation}
-                  wellnessType={wellnessType}
-                  avatar={avatarURL}
-                />
-              </div>
+              <Profile
+                key={Math.random()}
+                organisation={organisation}
+                wellnessType={wellnessType}
+                avatar={avatarURL}
+                profileID={profileID}
+              />
             )
           })}
         </React.Fragment>
@@ -52,4 +46,4 @@ class FindSupport extends Component {
   }
 }
 
-export default FindSupport
+export default BrowseProfiles

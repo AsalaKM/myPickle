@@ -6,7 +6,7 @@ const ProfileAnswer = require("../models/ProfileAnswer")
 // load queries
 const getImageNames = require("./getImageNames")
 // start function
-const findSupportProfiles = async () => {
+const getProfiles = async () => {
   // get all profiles
   const profiles = await Profile.find({})
   // create profile ID array
@@ -60,4 +60,4 @@ const findSupportProfiles = async () => {
   return profileArray
 }
 
-module.exports = findSupportProfiles
+module.exports = getProfiles

@@ -1,10 +1,23 @@
 import React, { Component } from "react"
 
-import { Box, Container, ProfilePhoto, Details, Name, WellnessList } from "./BrowseProfiles.style"
+import {
+  Box,
+  Container,
+  ProfilePhoto,
+  DetailsOne,
+  DetailsTwo,
+  Name,
+  WellnessList,
+  Avatar,
+  More,
+  Form,
+} from "./BrowseProfiles.style"
+
+import history from "../../../history"
 
 class Profile extends Component {
   render() {
-    const { organisation, wellnessType, avatar } = this.props
+    const { organisation, wellnessType, avatar, profileID } = this.props
 
     const checkAvatar = () =>
       avatar ? (
@@ -13,18 +26,26 @@ class Profile extends Component {
         <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
+    const viewProfile = e => {
+      e.preventDefault()
+      history.push(`profile/${profileID}`)
+    }
+
     return (
       <Box>
         <Container>
-          {checkAvatar()}
-          <Details>
+          <Avatar>{checkAvatar()}</Avatar>
+          <DetailsOne>
             <Name>{organisation} </Name>
-          </Details>
-          <Details>
             {wellnessType.map(item => {
-              return <WellnessList>{item}</WellnessList>
+              return <WellnessList key={Math.random()}>{item}</WellnessList>
             })}
-          </Details>
+          </DetailsOne>
+          <DetailsTwo>
+            <Form>
+              <More onClick={viewProfile}>View Profile</More>
+            </Form>
+          </DetailsTwo>
         </Container>
       </Box>
     )

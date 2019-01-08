@@ -1,5 +1,6 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch } from "react-router-dom"
+import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
 import EditProfile from "../Layouts/EditProfile/index"
@@ -13,7 +14,7 @@ import Dashboard from "../Layouts/Dashboard"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <Switch>
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />

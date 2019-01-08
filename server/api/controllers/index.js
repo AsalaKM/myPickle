@@ -6,6 +6,7 @@ const getRegisterQuestionsController = require("./getRegisterQuestionsController
 const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
 const checkEmail = require("./checkEmail")
+const loginUser = require("./loginUser")
 
 // edit profle controllers
 // const editSupportDetails = require("./editSupportDetails")
@@ -26,6 +27,7 @@ router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
 router.use("/check-email", checkEmail)
+router.use("/login-user", loginUser)
 
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 

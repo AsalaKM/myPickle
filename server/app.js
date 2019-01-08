@@ -4,6 +4,7 @@ const path = require("path")
 const logger = require("morgan")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
+const passport = require("passport")
 
 const controllers = require("./api/controllers")
 
@@ -11,6 +12,12 @@ const dbConnection = require("./database/db_connection")
 dbConnection()
 
 const app = express()
+
+// passport middleware
+app.use(passport.initialize())
+
+// passport config
+require("./passport")(passport)
 
 app
   .use(logger("dev"))

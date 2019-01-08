@@ -26,5 +26,6 @@ const dbConnection = () => {
     { useNewUrlParser: true }
   )
 }
+mongoose.set("useCreateIndex", true)
 
 module.exports = dbConnection

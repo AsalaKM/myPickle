@@ -73,5 +73,8 @@ const TextArea = styled.textarea.attrs({
   }
   resize: vertical;
 `
-
-export { Form, Input, Label, Title, TextArea }
+const Text = styled.p`
+  font-family: "Raleway", sans-serif;
+  color: ${props => props.color || "#4d4d4d"};
+`
+export { Form, Input, Label, Title, TextArea, Text }

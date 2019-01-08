@@ -15,13 +15,13 @@ const fillWidly = y => keyframes`
 const ProgressBarDiv = styled.div`
   background: #ff0000;
   height: 100%;
-  animation: ${props => props.fill} 5s linear 20; //will animate 20 times
+  animation: ${props => fillWidly(props.fill)} 3s linear; //will animate 20 times
   position: relative;
 `
 const PrograssBar = props => {
   return (
     <ProgressBarWrapper>
-      <ProgressBarDiv fill={() => fillWidly(props.fill)} />
+      <ProgressBarDiv fill={props.fill} />
     </ProgressBarWrapper>
   )
 }

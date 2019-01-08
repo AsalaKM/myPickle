@@ -23,7 +23,6 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.89.0",
     "prettier": "^1.15.3"
   },
   "scripts": {
@@ -31,12 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:client": "react-scripts test --coverage",
-    "flow": "flow",
-    "flow start": "flow start",
-    "flow stop": "flow stop",
-    "flow status": "flow status",
-    "flow coverage": "flow coverage"
+    "test:client": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

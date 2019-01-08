@@ -26,7 +26,7 @@ class Dashboard extends Component {
   }
 
   editProfile = () => {
-    this.props.history.push("/")
+    this.props.history.push("/edit-profile")
   }
   browseProfiles = () => {
     this.props.history.push("/")

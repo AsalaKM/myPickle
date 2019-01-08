@@ -12,6 +12,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
+import setAuthToken from "../../../Utils/setAuthToken"
 
 // get id from url
 // NOTE: this is until cookies are implemented
@@ -20,7 +21,7 @@ const id = pathName.split("/")[3]
 
 export default class BasicInfo extends Component {
   state = {
-    profileId: "",
+    // profileId: this.state.profileId,
     basicAnswers: null,
     basicQuestions: null,
     unanswered: [],
@@ -28,21 +29,27 @@ export default class BasicInfo extends Component {
   }
 
   componentDidMount() {
+    console.log("state", this.state)
+
     // NOTE: until we implement cookies, we are getting the profile id from the url
     const pathName = window.location.pathname
     const id = pathName.split("/")[3]
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/basic-info/${id}`)
-      .then(questions => this.setState({ basicQuestions: questions.data }))
-      .catch(err => console.log(err))
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
 
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/basic-info/${id}`)
-      .then(basicDetails => this.setState({ basicAnswers: basicDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/basic-info`)
+        .then(questions => this.setState({ basicQuestions: questions.data }))
+        .catch(err => console.log(err))
+
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/basic-info`)
+        .then(basicDetails => this.setState({ basicAnswers: basicDetails.data, profileId: id }))
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {

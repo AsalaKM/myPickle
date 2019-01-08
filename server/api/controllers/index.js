@@ -31,12 +31,12 @@ router.use("/login-user", loginUser)
 
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 
-router.use("/get-questions/:section/:id", getQuestions)
+router.use("/get-questions/:section", getQuestions)
 
 // edit profile routes
 // router.use("/edit-profile/support/:id", editSupportDetails)
 // router.use("/edit-profile/target/:id", editTargetClientsDetails)
-router.use("/edit-profile/:section/:id", editProfileSection)
+router.use("/edit-profile/:section", editProfileSection)
 
 // update profile routes
 // router.use("/update-profile/target/:id", updateTargetClientsDetails)

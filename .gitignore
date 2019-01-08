@@ -63,4 +63,4 @@ config.env
 .next
 
 # profile pictures
-/server/public/
+server/public/

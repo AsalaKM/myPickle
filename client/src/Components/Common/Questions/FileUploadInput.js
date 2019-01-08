@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { FileField } from "./Questions.style"
+
 export default class FileUploadInput extends Component {
   render() {
     const { question, answers, imageUpload } = this.props
@@ -7,7 +9,7 @@ export default class FileUploadInput extends Component {
     // this will need to get the file from the database and assign to value
     return (
       <React.Fragment>
-        <div>
+        <FileField>
           <header>
             <h4>{questionText}</h4>
             <p>{helperText}</p>
@@ -24,7 +26,7 @@ export default class FileUploadInput extends Component {
             />
           </label>
           <p>Current File: {answers[questionId] ? answers[questionId] : "None"}</p>
-        </div>
+        </FileField>
       </React.Fragment>
     )
   }

@@ -4,7 +4,7 @@ import { RadioField, ErrorMsg } from "./Questions.style"
 
 export default class RadioInput extends Component {
   render() {
-    const { question, handleChange, unanswered, checkRequiredAnswers } = this.props
+    const { question, answers, handleChange, unanswered, checkRequiredAnswers } = this.props
     const { questionText, _id: questionId, options, helperText, isRequired } = question
     return (
       <React.Fragment>
@@ -28,6 +28,7 @@ export default class RadioInput extends Component {
                     type="radio"
                     onChange={handleChange}
                     onBlur={checkRequiredAnswers}
+                    checked={answers[questionId] && answers[questionId].includes(option)}
                   />
                   <span className="checkmark" />
                   <p>{option}</p>

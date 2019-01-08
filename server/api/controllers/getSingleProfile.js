@@ -1,7 +1,7 @@
  // load the mongo models
- const Profile = require("../models/Profile")
- const ProfileAnswer = require("../../models/ProfileAnswer")
- const Users = require("../models/User")
+ const Profile = require("../../database/models/Profile")
+ const ProfileAnswer = require("../../database/models/ProfileAnswer")
+ const Users = require("../../database/models/User")
  require("../db_connection")()
 
 

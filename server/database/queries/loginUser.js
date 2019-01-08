@@ -21,7 +21,17 @@ const loginTrainer = (email, password, errors) =>
             Profile.findOne({ user: user._id })
               .then(profile => {
                 console.log("profile found", profile._id)
-                resolve(profile)
+
+                // create the payload ie what's in the token
+                const payload = { id: user._id, profileId: profile._id }
+
+                // set up the token by signing
+                jwt.sign(payload, process.env.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                  resolve({
+                    success: true,
+                    token: `Bearer ${token}`,
+                  })
+                })
               })
               .catch(err => reject(err))
           } else {

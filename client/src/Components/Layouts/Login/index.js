@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import axios from "axios"
 
+import setAuthToken from "../../../Utils/setAuthToken"
+
 import home from "../../../assets/images/home.svg"
 import logo from "../../../assets/images/logo.jpg"
 
@@ -44,7 +46,17 @@ class Login extends Component {
 
     axios
       .post("/login-user", user)
-      .then(res => console.log("result", res))
+      .then(async res => {
+        // get the token from the response
+        const { token } = res.data
+
+        // set token to local storage (only stores strings)
+        await localStorage.setItem("jwtToken", token)
+        // set token to auth header
+        await setAuthToken(token)
+        console.log("token", token)
+      })
+      .then(() => (window.location.href = "/dashboard"))
       .catch(err => this.setState({ errors: err.response.data }))
   }
 

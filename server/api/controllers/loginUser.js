@@ -9,7 +9,10 @@ router.post("/", (req, res) => {
   let errors = {}
 
   loginUser(email, password, errors)
-    .then(result => res.status(200).json(result))
+    .then(token => {
+      res.status(200).json(token)
+    })
+
     .catch(err => res.status(400).json(err))
 })
 

@@ -23,7 +23,7 @@ const loginTrainer = (email, password, errors) =>
                 console.log("profile found", profile._id)
 
                 // create the payload ie what's in the token
-                const payload = { id: user._id, profileId: profile._id }
+                const payload = { id: user._id, profileId: profile._id, name: user.name }
 
                 // set up the token by signing
                 jwt.sign(payload, process.env.secretOrKey, { expiresIn: 3600 }, (err, token) => {

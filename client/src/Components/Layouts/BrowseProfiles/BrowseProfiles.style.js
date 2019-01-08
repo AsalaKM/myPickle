@@ -13,19 +13,28 @@ const Button = styled.button`
   border-width: 0.5px;
   color: #6eeb2e;
 `
+const Box = styled.div.attrs({
+  className: "flex items-center justify-center",
+})``
 
-const SupportContainer = styled.div.attrs({
-  className: "flex flex-row items-center ph3 mp-primary-color",
+const Container = styled.div.attrs({
+  className: "flex flex-row items-center ph3",
 })`
-  padding-top: 2rem;
+  width: 90%;
+  border-radius: 20px;
+  background: #cccccca3;
+  margin-top: 25px;
 `
-
 const ProfilePhoto = styled.img.attrs({
-  className: "br-100 h3 w3 dib tl",
+  className: "br-100 h4 w4 dib tl",
   alt: "avatar",
+})``
+
+const Details = styled.div.attrs({
+  className: "flex flex-column",
 })`
-  width: 100px;
-  height: auto;
+  background: gray;
+  font-size: 15px;
 `
 
-export { Button, SupportContainer, ProfilePhoto }
+export { Button, Box, Container, ProfilePhoto, Details }

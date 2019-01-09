@@ -7,7 +7,7 @@ router.post("/", (req, res) => {
   const fileArr = Object.entries(files)
   console.log("FILE", fileArr)
   fileArr.forEach(file => {
-    file[1].mv(`${__dirname}/../../public/${file[0]}-${file[1].name}`, err => {
+    file[1].mv(`${__dirname}/../../assets/profile-images/${file[0]}-${file[1].name}`, err => {
       if (err) {
         return res.status(500).send(err)
       }

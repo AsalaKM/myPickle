@@ -25,10 +25,11 @@ const getProfiles = async () => {
 
   const profileArray = []
   // insert file path of profile pictures folder
-  const filePath = `${__dirname}/../../public`
+  const filePath = `${__dirname}/../../assets/profile-images`
 
   // get all image file names
   const getImageArr = await getImageNames(filePath)
+  console.log(getImageArr)
 
   // loop over profileIDs array
   for (let i = 0; i < profileIDs.length; i++) {

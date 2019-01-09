@@ -18,6 +18,7 @@ import history from "../../../history"
 class Profile extends Component {
   render() {
     const { organisation, wellnessType, avatar, profileID } = this.props
+    console.log(avatar)
 
     const checkAvatar = () =>
       avatar ? (

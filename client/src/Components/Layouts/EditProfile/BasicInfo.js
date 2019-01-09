@@ -123,11 +123,11 @@ export default class BasicInfo extends Component {
           addImage={this.addImage}
         />
         <div className="flex items-center justify-center w-100 mb4">
-          <Button className="submit" onClick={this.handleSubmit}>
-            Save Changes
-          </Button>
           <Button className="submit" onClick={this.handleBack}>
             Go Back
+          </Button>
+          <Button className="submit" onClick={this.handleSubmit}>
+            Save Changes
           </Button>
         </div>
       </React.Fragment>

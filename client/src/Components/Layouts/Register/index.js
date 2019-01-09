@@ -231,7 +231,9 @@ class Register extends Component {
       })
       .then(result => {
         console.log("RESULT", result)
-        swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
+        swal("Done!", "Thanks for creating a profile!", "success").then(() =>
+          history.push("/newlogin")
+        )
       })
       .catch(err => console.log(err))
   }

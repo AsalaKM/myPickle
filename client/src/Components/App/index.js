@@ -16,6 +16,7 @@ import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
+import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
 
 // import common components
 import PrivateRoute from "../Common/PrivateRoute/PrivateRoute"
@@ -72,6 +73,7 @@ class App extends Component {
           {/* Public routes to go here */}
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={Login} />
+          <Route path="/newlogin" exact component={FirstTimeLogin} />
 
           {/* Private routes to go here */}
           <PrivateRoute

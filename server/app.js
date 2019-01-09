@@ -36,6 +36,7 @@ app
   .use(bodyParser.json())
   .use(fileUpload())
   .use("/static", express.static(path.join(__dirname, "./assets/profile-images")))
+  .use("/static", express.static(path.join(__dirname, "./assets/articleupload")))
   .use(controllers)
 
 module.exports = app

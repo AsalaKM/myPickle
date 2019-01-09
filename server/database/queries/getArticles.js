@@ -38,7 +38,7 @@ const getArticles = async () => {
     // insert imageURL
     getImageArr.forEach(imageURL => {
       const articleID = imageURL.split("-")[0]
-      articles[i]._id == articleID ? (articleObj.avatarURL = imageURL) : ""
+      articles[i]._id == articleID ? (articleObj.pictureURL = imageURL) : ""
     })
     articlesArr.push(articleObj)
   }

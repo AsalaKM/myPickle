@@ -1,24 +1,21 @@
-//  // load the mongo models
-// const Profile = require("../models/Profile")
-// const ProfileAnswer = require("../../models/ProfileAnswer")
-// const Users = require("../models/User")
-// require("../db_connection")()
+ // load the mongo models
+const ProfileAnswer = require("../../database/models/ProfileAnswer")
+require("../../database/db_connection")()
 
 
-// //return profileID from userId
-// exports.getAnswersProfile = async(req, res) => {
-// const {userId} = req.body;
-//   const profileId = await Profile.find({user:ObjectId(userId)},{_id:1});
+exports.getAnswersProfile = async (req,res) => {
+ const profileID = req.params;
+const allAnswers = await ProfileAnswer.aggregate([{ $match : { profile : profileID } },
+ { $lookup: {
+ from:"questions",
+ localField:"question",
+ foreignField:"_id",
+ as:"question",
 
-//   //return the answers for one profile
-//   const result = await ProfileAnswer.find({profile:ObjectId(profileId)},{answer:1});
-//   res.send({result})
-// }
+ }}])
 
-// //return Basic information from user collection
-// exports.getBasicInfo =  async(req,res)=> {
-//   const {userId}= req.body;
+// const BasicInfo = await Users.find({_id:id},{name:1,phone:1,email:1})
+// console.log(res);
+res.send({allAnswers})
+}
 
-// Users.find({_id:ObjectId("userId")},{name:1,phone:1,email:1})
-// res.send({result})
-// }

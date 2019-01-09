@@ -88,7 +88,7 @@ class App extends Component {
             profileId={profileId}
           />
           <Route
-            path="/edit-profile/social-media/:id"
+            path="/edit-profile/social-media"
             exact
             component={EditSocialMedia}
             profileId={profileId}

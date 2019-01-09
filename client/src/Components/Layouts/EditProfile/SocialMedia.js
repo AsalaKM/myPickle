@@ -12,6 +12,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
+import setAuthToken from "../../../Utils/setAuthToken"
 
 // get id from url
 // NOTE: this is until cookies are implemented
@@ -31,17 +32,25 @@ export default class SocialMedia extends Component {
     const pathName = window.location.pathname
     const id = pathName.split("/")[3]
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/social-media/${id}`)
-      .then(questions => this.setState({ socialQuestions: questions.data }))
-      .catch(err => console.log(err))
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/social-media`)
+        .then(questions => this.setState({ socialQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/social-media/${id}`)
-      .then(socialDetails => this.setState({ socialAnswers: socialDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/social-media`)
+        .then(socialDetails =>
+          this.setState({
+            socialAnswers: socialDetails.data.questions,
+            profileId: socialDetails.data.profileId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -57,7 +66,7 @@ export default class SocialMedia extends Component {
     const { history } = this.props
     const { socialAnswers } = this.state
 
-    updateProfileUtil(history, socialAnswers, "social-media", id)
+    updateProfileUtil(history, socialAnswers, "social-media")
   }
 
   render() {

@@ -6,7 +6,9 @@ const updateProfileUtil = (history, answerState, sectionType) => {
     .post(`/update-profile/${sectionType}`, answerState)
     .then(result => {
       console.log("RESULT", result)
-      swal("Done!", "Thanks for updating your profile!", "success").then(() => history.push("/"))
+      swal("Done!", "Thanks for updating your profile!", "success").then(() =>
+        history.push("/edit-profile")
+      )
     })
     .catch(err =>
       swal({

@@ -11,17 +11,15 @@ const storeArticle = async articleObj => {
   })
 
   const Store = await article.save().then(result => {
-    const { title, categoriesSelected, text, _id } = result
-    const response = {
-      msg: "create article successfully",
-      createdArticele: {
-        title,
-        categoriesSelected,
-        text,
-        _id,
-        request: { type: "GET", url: `http://localhost:3001/article/${_id}` },
-      },
+    const { _id } = result
+    const createdArticele = {
+      title: result.title,
+      categoriesSelected: result.category,
+      text: result.content,
+      _id,
+      request: { type: "GET", url: `http://localhost:3001/article/${_id}` },
     }
+    const response = { msg: "create article successfully", createdArticele }
     return response
   })
   return Store

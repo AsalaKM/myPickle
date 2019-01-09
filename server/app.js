@@ -5,7 +5,7 @@ const logger = require("morgan")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
 
-const controllers = require("./api/controllers")
+const controllers = require("./api/controllers/index.js")
 
 const dbConnection = require("./database/db_connection")
 dbConnection()

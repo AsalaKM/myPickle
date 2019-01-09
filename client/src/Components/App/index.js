@@ -11,6 +11,7 @@ import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import Landing from "../Layouts/LandingPage/index"
+import SingleProfile from "../Layouts/SingleProfile"
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />
       <Route path="/edit-profile/support-details/:id" exact component={EditSupportDetails} />
+      <Route path="/SingleProfile" exact component={SingleProfile} />
       <Route path="/edit-profile/target-clients/:id" exact component={EditTargetClients} />
       <Route path="/edit-profile/availability-booking/:id" exact component={EditBookingDetails} />
       <Route path="/edit-profile/social-media/:id" exact component={EditSocialMedia} />

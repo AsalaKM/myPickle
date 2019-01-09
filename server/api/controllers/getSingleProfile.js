@@ -1,10 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const { getAnswersProfile } = require("../../database/queries/getSingleProfile")
+const getSingleProfile = require("../../database/queries/getSingleProfile")
 
- router.get("/", (req, res) => {
-  getAnswersProfile(profileID)
-    .then(result => res.status(200).send(result))
-    .catch(err => res.status(401).err(err))
+ router.get("/:id", (req, res) => {
+  console.log("req.params.id", req.params.id);
+  getSingleProfile(req.params.id)
+  .then(result => res.status(200).send(result))
+  .catch(err => res.status(401).send(err))
 })
 module.exports = router
+
+
+

@@ -13,6 +13,7 @@ const storeAnswers = async (profileId, answerObj) => {
     await profileAnswer.save()
   }
   const profileAnswers = await ProfileAnswer.find({ profile: profileId })
+
   return profileAnswers
 }
 

@@ -35,7 +35,7 @@ app
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
   .use(fileUpload())
-  .use("/static", express.static(path.join(__dirname, "./public")))
+  .use("/static", express.static(path.join(__dirname, "./assets/profile-images")))
   .use(controllers)
 
 module.exports = app

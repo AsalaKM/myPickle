@@ -7,7 +7,7 @@ const createArticle = async (req, res) => {
   if (fileType === "image/jpeg" || fileType === "image/png" || fileType === "image/gif") {
     try {
       const date = new Date().toISOString()
-      const uploadPath = `${__dirname}/../../../assetes/articleupload/'${date}-${image.name}`
+      const uploadPath = `${__dirname}/../../../assets/articleupload/'${date}-${image.name}`
       await image.mv(uploadPath)
 
       const article = {

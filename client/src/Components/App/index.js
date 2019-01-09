@@ -1,5 +1,6 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch } from "react-router-dom"
+import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
 import PostArticles from "../Layouts/PostAtricle"
@@ -11,10 +12,13 @@ import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
+import BrowseProfiles from "../Layouts/BrowseProfiles"
+import Landing from "../Layouts/LandingPage/index"
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <Switch>
+      <Route path="/" exact component={Landing} />
       <Route path="/postarticles" exact component={PostArticles} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
@@ -25,6 +29,7 @@ const App = () => (
       <Route path="/edit-profile/social-media/:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/profiles" exact component={BrowseProfiles} />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

@@ -70,3 +70,6 @@ server/assetes
 .desktopfolder
 # package-lock
 package-lock.json
+
+# profile pictures
+server/assets/profile-images/

@@ -8,6 +8,7 @@ const getAnswersProfile = async profileID => {
   // get the profile with the ID
   // you need to do this to make sure the id you feed into the mongoose query below is an object not a string
 const profile = await Profile.findById(profileID)
+
 const allAnswers = await ProfileAnswer.aggregate([
     { $match: { profile: profile._id } },
     {
@@ -18,6 +19,7 @@ const allAnswers = await ProfileAnswer.aggregate([
         as: "question",
       },
     },
+
   ])
 
   const BasicInfo = await Profile.aggregate([{
@@ -31,8 +33,7 @@ const allAnswers = await ProfileAnswer.aggregate([
         as:'BsicInfo'
 }}])
 
-
-  return allAnswers,BasicInfo;
+return {...BasicInfo[0],...allAnswers};
 }
 
 module.exports = getAnswersProfile

@@ -100,7 +100,6 @@ export default class BasicInfo extends Component {
 
   render() {
     const { basicAnswers, basicQuestions, unanswered } = this.state
-    const { history } = this.props
 
     if (basicQuestions === null || basicAnswers === null) {
       return (

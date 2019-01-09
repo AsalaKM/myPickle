@@ -43,7 +43,6 @@ class FirstTimeLogin extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { email, password } = this.state
-    const { history } = this.props
     const user = { email: email, password: password }
 
     axios

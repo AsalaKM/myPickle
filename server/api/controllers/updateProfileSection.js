@@ -1,16 +1,19 @@
 const express = require("express")
 const router = express.Router()
+const passport = require("passport")
 // load query
 const getTargetClientsDetails = require("../../database/queries/editProfile/getTargetClientsDetails")
 const editProfileSection = require("../../database/queries/editProfile/editProfileSection")
 // const updateTargetClientsDetails = require("../../database/queries/editProfile/updateTargetClients")
 const updateProfileSection = require("../../database/queries/editProfile/updateProfileSection")
 
-router.post("/", async (req, res) => {
+router.post("/", passport.authenticate("jwt", { session: false }), async (req, res) => {
   const section = req.originalUrl.split("/")[2]
 
   // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
-  const profileID = req.originalUrl.split("/")[3]
+  // const profileID = req.originalUrl.split("/")[3]
+
+  const profileID = req.user.profileId
 
   const storedAnswers = await editProfileSection(section, profileID)
 

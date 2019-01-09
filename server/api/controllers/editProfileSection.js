@@ -14,8 +14,9 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
 
   editProfileSection(section, profileID)
     .then(questions => {
-      console.log("QUESTIONS", questions)
-      res.status(200).json(questions)
+      const response = { questions: questions, profileId: profileID }
+      console.log("QUESTIONS", response)
+      res.status(200).json(response)
     })
     .catch(err => res.status(500).send("Server Error"))
 })

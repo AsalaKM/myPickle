@@ -21,7 +21,7 @@ const id = pathName.split("/")[3]
 
 export default class BasicInfo extends Component {
   state = {
-    // profileId: this.state.profileId,
+    profileId: "",
     basicAnswers: null,
     basicQuestions: null,
     unanswered: [],
@@ -29,8 +29,6 @@ export default class BasicInfo extends Component {
   }
 
   componentDidMount() {
-    console.log("state", this.state)
-
     // NOTE: until we implement cookies, we are getting the profile id from the url
     const pathName = window.location.pathname
     const id = pathName.split("/")[3]
@@ -47,7 +45,13 @@ export default class BasicInfo extends Component {
       // get the answers the user has provided for this section
       axios
         .get(`/edit-profile/basic-info`)
-        .then(basicDetails => this.setState({ basicAnswers: basicDetails.data, profileId: id }))
+        .then(basicDetails => {
+          console.log("data", basicDetails.data)
+          this.setState({
+            basicAnswers: basicDetails.data.questions,
+            profileId: basicDetails.data.profileId,
+          })
+        })
         .catch(err => console.log(err))
     }
   }
@@ -80,10 +84,10 @@ export default class BasicInfo extends Component {
 
     if (Object.keys(file).length > 0) {
       this.uploadImage(profileId)
-        .then(updateProfileUtil(history, basicAnswers, "basic-info", id))
+        .then(updateProfileUtil(history, basicAnswers, "basic-info"))
         .catch(err => console.log(err))
     } else {
-      updateProfileUtil(history, basicAnswers, "basic-info", id)
+      updateProfileUtil(history, basicAnswers, "basic-info")
     }
   }
 

@@ -94,7 +94,7 @@ class App extends Component {
             profileId={profileId}
           />
           <Route
-            path="/edit-profile/basic-info/:id"
+            path="/edit-profile/basic-info"
             exact
             component={EditBasicInfo}
             profileId={profileId}

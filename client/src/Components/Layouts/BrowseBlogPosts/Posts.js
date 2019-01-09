@@ -1,17 +1,17 @@
 import React, { Component } from "react"
 
+import { ArticlePhoto } from "./BrowseBlogPosts.style"
 import {
   Box,
   Container,
-  ProfilePhoto,
   DetailsOne,
   DetailsTwo,
   Name,
-  WellnessList,
+  List,
   Avatar,
   More,
   Form,
-} from "./BrowseBlogPosts.style"
+} from "../../Common/BrowseSections/CommonStyles"
 
 import history from "../../../history"
 
@@ -21,9 +21,9 @@ class Post extends Component {
 
     const checkPicture = () =>
       pictureURL ? (
-        <ProfilePhoto src={`/static/${pictureURL}`} />
+        <ArticlePhoto src={`/static/${pictureURL}`} />
       ) : (
-        <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
+        <ArticlePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
     const viewArticle = e => {
@@ -38,7 +38,7 @@ class Post extends Component {
           <DetailsOne>
             <Name>{title} </Name>
             {categories.map(item => {
-              return <WellnessList key={Math.random()}>{item}</WellnessList>
+              return <List key={Math.random()}>{item}</List>
             })}
           </DetailsOne>
           <DetailsTwo>

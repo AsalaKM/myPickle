@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
-import { Button } from "./BrowseProfiles.style"
 
 import axios from "axios"
 
@@ -25,9 +24,6 @@ class BrowseProfiles extends Component {
     } else {
       return (
         <React.Fragment>
-          <div>
-            <Button>FILTER</Button>
-          </div>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL, profileID } = profile
             return (

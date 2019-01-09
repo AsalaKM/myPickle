@@ -1,17 +1,18 @@
 import React, { Component } from "react"
 
+import { ProfilePhoto } from "./BrowseProfiles.style"
+
 import {
   Box,
   Container,
-  ProfilePhoto,
   DetailsOne,
   DetailsTwo,
   Name,
-  WellnessList,
+  List,
   Avatar,
   More,
   Form,
-} from "./BrowseProfiles.style"
+} from "../../Common/BrowseSections/CommonStyles"
 
 import history from "../../../history"
 
@@ -39,7 +40,7 @@ class Profile extends Component {
           <DetailsOne>
             <Name>{organisation} </Name>
             {wellnessType.map(item => {
-              return <WellnessList key={Math.random()}>{item}</WellnessList>
+              return <List key={Math.random()}>{item}</List>
             })}
           </DetailsOne>
           <DetailsTwo>

@@ -9,10 +9,6 @@ const getArticles = async () => {
   // get all articles
   const articles = await Article.find({})
   const articlesArr = []
-  // insert file path of profile pictures folder
-  const filePath = `${__dirname}/../../assets/articleUpload`
-  // get all image file names
-  const getImageArr = await getImageNames(filePath)
 
   // gets all category-types
   const getCategory = async arr => {
@@ -32,14 +28,11 @@ const getArticles = async () => {
     articleObj.articleID = articles[i]._id
     // insert title
     articleObj.title = articles[i].title
+    // insert imageURL
+    articleObj.pictureURL = articles[i].image
     // insert categories
     articleObj.categories = await getCategory(articles[i].category)
-    // loop over imageFileNames and check if profileID is included
-    // insert imageURL
-    getImageArr.forEach(imageURL => {
-      const articleID = imageURL.split("-")[0]
-      articles[i]._id == articleID ? (articleObj.pictureURL = imageURL) : ""
-    })
+
     articlesArr.push(articleObj)
   }
   return articlesArr

@@ -7,6 +7,9 @@ const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
 const checkEmail = require("./checkEmail")
 const loginUser = require("./loginUser")
+const article = require("./Article")
+const categories = require("./categories")
+const getProfiles = require("./getProfiles")
 
 // edit profle controllers
 // const editSupportDetails = require("./editSupportDetails")
@@ -28,6 +31,10 @@ router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
 router.use("/check-email", checkEmail)
 router.use("/login-user", loginUser)
+router.use("/articles", article)
+router.use("/categories", categories)
+
+router.use("/profiles", getProfiles)
 
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 

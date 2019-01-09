@@ -9,6 +9,7 @@ const passport = require("passport")
 const controllers = require("./api/controllers")
 
 const dbConnection = require("./database/db_connection")
+
 dbConnection()
 
 const app = express()
@@ -21,6 +22,11 @@ require("./passport")(passport)
 
 app
   .use(logger("dev"))
+  .use(
+    fileUpload({
+      createParentPath: true,
+    })
+  )
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
   .use(cookieParser())
@@ -41,8 +47,7 @@ app
   })
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
-  .use(fileUpload())
-  .use("/static", express.static(path.join(__dirname, "./public")))
+  .use("/static", express.static(path.join(__dirname, "./assets/profile-images")))
   .use(controllers)
 
 module.exports = app

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-"use strict"
 
 const mongoose = require("mongoose")
 
@@ -25,5 +24,6 @@ const dbConnection = () => {
     { useNewUrlParser: true }
   )
 }
+mongoose.set("useCreateIndex", true)
 
 module.exports = dbConnection

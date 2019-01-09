@@ -229,8 +229,7 @@ class Register extends Component {
           this.uploadImage(profileId.data)
         }
       })
-      .then(result => {
-        console.log("RESULT", result)
+      .then(() => {
         swal("Done!", "Thanks for creating a profile!", "success").then(() =>
           history.push("/newlogin")
         )

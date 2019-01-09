@@ -1,13 +1,15 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch } from "react-router-dom"
 
 // set up authorization
 import jwt_decode from "jwt-decode"
 import setAuthToken from "../../Utils/setAuthToken"
 
 // import layouts
+import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
+import PostArticles from "../Layouts/PostAtricle"
 import EditProfile from "../Layouts/EditProfile/index"
 import EditSupportDetails from "../Layouts/EditProfile/SupportDetails"
 import EditTargetClients from "../Layouts/EditProfile/TargetClients"
@@ -17,6 +19,8 @@ import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
+import BrowseProfiles from "../Layouts/BrowseProfiles"
+import Landing from "../Layouts/LandingPage/index"
 
 // import common components
 import PrivateRoute from "../Common/PrivateRoute/PrivateRoute"
@@ -68,12 +72,15 @@ class App extends Component {
     // make sure component has mounted before loading
     if (!loaded) return null
     return (
-      <Router>
+      <Router history={history}>
         <Switch>
           {/* Public routes to go here */}
+          <Route path="/" exact component={Landing} />
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={Login} />
           <Route path="/newlogin" exact component={FirstTimeLogin} />
+          <Route path="/profiles" exact component={BrowseProfiles} />
+          <Route path="/postarticles" exact component={PostArticles} />
 
           {/* Private routes to go here */}
           <PrivateRoute

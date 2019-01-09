@@ -13,6 +13,7 @@ const getProfileAnswers = async dataObj => {
       profleAnswers[key] = dataObj[key]
     }
   }
+
   return profleAnswers
 }
 

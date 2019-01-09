@@ -13,6 +13,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
+import setAuthToken from "../../../Utils/setAuthToken"
 
 // get id from url
 // NOTE: this is until cookies are implemented
@@ -32,17 +33,25 @@ export default class BookingDetails extends Component {
     const pathName = window.location.pathname
     const id = pathName.split("/")[3]
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/availability-booking/${id}`)
-      .then(questions => this.setState({ bookingQuestions: questions.data }))
-      .catch(err => console.log(err))
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/availability-booking`)
+        .then(questions => this.setState({ bookingQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/availability-booking/${id}`)
-      .then(supportDetails => this.setState({ bookingAnswers: supportDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/availability-booking`)
+        .then(supportDetails =>
+          this.setState({
+            bookingAnswers: supportDetails.data.questions,
+            profileId: supportDetails.data.profiledId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -117,7 +126,7 @@ export default class BookingDetails extends Component {
     const { history } = this.props
     const { bookingAnswers } = this.state
 
-    updateProfileUtil(history, bookingAnswers, "availability-booking", id)
+    updateProfileUtil(history, bookingAnswers, "availability-booking")
   }
 
   render() {

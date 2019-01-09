@@ -5,10 +5,10 @@ import makeAnimated from "react-select/lib/animated"
 import { FormContainer, Wrapper } from "../../Generic-helpers/layoutpack"
 import { Button } from "../../Generic-helpers/BlockBox"
 import PrograssBar from "./PrograssBar"
-import { Form, Input, Label, Title, TextArea, Text } from "./StyledElm"
+import { Form, Input, Label, Title, TextArea } from "./StyledElm"
 
 const ArticleForm = props => {
-  const { title, image, text, categoriesSelected } = props.data.article
+  const { title, text, categoriesSelected } = props.data.article
   const { categoryOptions, uploading, errors } = props.data
   return (
     <Wrapper>

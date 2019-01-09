@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import ArticleForm from "./ArticleForm"
+import swal from "sweetalert"
 
 class PostArticle extends Component {
   state = {
@@ -58,25 +59,30 @@ class PostArticle extends Component {
   handleSubmit = async e => {
     e.preventDefault()
     const { article } = this.state
+    const { history } = this.props
     const formData = new FormData()
     for (let key in article) {
       if (key === "categoriesSelected") {
-        let obj = []
         let categoriesSelected = article[key].map(item => {
           return item.value
         })
         formData.append(key, categoriesSelected)
-        console.log(formData.get(key))
       } else {
         formData.append(key, article[key])
-        console.log(formData.get(key))
       }
     }
     try {
       const success = await axios.post("/articles/", formData)
-      console.log(success)
+      swal(
+        "Great!",
+        `Article ${success.data.createdArticele.title} Created Successfully!`,
+        "success"
+      ).then(() => history.push("/"))
     } catch (error) {
-      console.log(error)
+      swal({
+        icon: "error",
+        title: "Oops!! something happen, sorry",
+      })
     }
   }
   render() {

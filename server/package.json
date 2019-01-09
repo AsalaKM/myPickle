@@ -48,10 +48,10 @@
     "async": "^2.6.1",
     "async-walker": "0.0.4",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
     "codecov": "^3.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "env2": "^2.2.2",
     "express": "~4.16.0",
     "express-fileupload": "^1.0.0",
     "mongoose": "^5.3.16",
@@ -60,8 +60,9 @@
     "walker": "^1.0.7"
   },
   "devDependencies": {
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb": "^17.1.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "istanbul": "^0.4.5",
     "jest": "^23.6.0",
     "nodemon": "^1.18.7",

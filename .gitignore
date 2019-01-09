@@ -61,6 +61,16 @@ config.env
 
 # next.js build output
 .next
+# vscode
+.vscode
+
+# assestes
+server/assetes
+# my computer file 
+.desktopfolder
+# package-lock
+package-lock.json
 
 # profile pictures
 server/assets/profile-images/
+server/assets/articleupload/

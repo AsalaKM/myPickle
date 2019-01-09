@@ -120,6 +120,13 @@ export default class BookingDetails extends Component {
     updateProfileUtil(history, bookingAnswers, "availability-booking")
   }
 
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
+  }
+
   render() {
     const { bookingAnswers, bookingQuestions, unanswered } = this.state
 
@@ -147,9 +154,12 @@ export default class BookingDetails extends Component {
           handleDate={this.handleDate}
           handleDropdown={this.handleDropdown}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>
             Submit
+          </Button>
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
           </Button>
         </div>
       </React.Fragment>

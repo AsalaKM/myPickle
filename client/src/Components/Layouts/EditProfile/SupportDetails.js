@@ -80,6 +80,13 @@ export default class SupportDetails extends Component {
     updateProfileUtil(history, supportAnswers, "support-details")
   }
 
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
+  }
+
   render() {
     const { supportAnswers, supportQuestions, unanswered } = this.state
 
@@ -157,9 +164,12 @@ export default class SupportDetails extends Component {
               />
             ))}
         </Answers> */}
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>
             Submit
+          </Button>
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
           </Button>
         </div>
       </React.Fragment>

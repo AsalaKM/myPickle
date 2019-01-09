@@ -82,6 +82,13 @@ export default class BasicInfo extends Component {
     }
   }
 
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
+  }
+
   uploadImage = async profileId => {
     const { file } = this.state
     const formData = new FormData()
@@ -93,6 +100,7 @@ export default class BasicInfo extends Component {
 
   render() {
     const { basicAnswers, basicQuestions, unanswered } = this.state
+    const { history } = this.props
 
     if (basicQuestions === null || basicAnswers === null) {
       return (
@@ -114,9 +122,12 @@ export default class BasicInfo extends Component {
           unanswered={unanswered}
           addImage={this.addImage}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>
-            Submit
+            Save Changes
+          </Button>
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
           </Button>
         </div>
       </React.Fragment>

@@ -60,6 +60,13 @@ export default class SocialMedia extends Component {
     updateProfileUtil(history, socialAnswers, "social-media")
   }
 
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
+  }
+
   render() {
     const { socialAnswers, socialQuestions, unanswered } = this.state
 
@@ -82,9 +89,12 @@ export default class SocialMedia extends Component {
           answers={socialAnswers}
           unanswered={unanswered}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
           <Button className="submit" onClick={this.handleSubmit}>
             Submit
+          </Button>
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
           </Button>
         </div>
       </React.Fragment>

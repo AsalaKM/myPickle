@@ -10,10 +10,12 @@ import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
+import Landing from "../Layouts/LandingPage/index"
 
 const App = () => (
   <Router>
     <Switch>
+      <Route path="/" exact component={Landing} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />

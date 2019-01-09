@@ -57,7 +57,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+config.env
 
 # next.js build output
 .next
@@ -68,3 +68,5 @@ typings/
 server/assetes
 # my computer file 
 .desktopfolder
+# package-lock
+package-lock.json

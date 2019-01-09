@@ -17,10 +17,10 @@ const createArticle = async (req, res) => {
         image: uploadPath,
         profile: profileId,
       }
-      const newArticle = await storeArticle(article).catch(error => res.status(400).json({ error }))
+      const newArticle = await storeArticle(article)
       return res.status(201).json(newArticle)
     } catch (error) {
-      res.status(400).json({ error })
+      return res.status(400).json({ error })
     }
   }
   return res.status(406).json({ msg: "the file you uploaded is not image" })

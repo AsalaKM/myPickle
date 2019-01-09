@@ -40,7 +40,6 @@ app
   })
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
-  .use(fileUpload())
   .use("/static", express.static(path.join(__dirname, "./public")))
   .use(controllers)
 

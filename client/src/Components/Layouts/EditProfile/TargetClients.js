@@ -5,20 +5,13 @@ import axios from "axios"
 import { Intro } from "../../Common/Headings"
 import { Button } from "../../Common/Buttons"
 
-// // import common components
-// import { CheckboxField } from "../../Common/Questions/Questions.style"
-
 // import common components
 import QuestionSection from "../../Common/Questions/QuestionSection"
 
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
-
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
+import setAuthToken from "../../../Utils/setAuthToken"
 
 class TargetClients extends Component {
   state = {
@@ -29,19 +22,28 @@ class TargetClients extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`/get-questions/target-clients/${id}`)
-      .then(questions =>
-        this.setState({
-          targetQuestions: questions.data,
-        })
-      )
-      .catch(err => console.log(err))
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/target-clients`)
+        .then(questions =>
+          this.setState({
+            targetQuestions: questions.data,
+          })
+        )
+        .catch(err => console.log(err))
 
-    axios
-      .get(`/edit-profile/target-clients/${id}`)
-      .then(answers => this.setState({ targetAnswers: answers.data, profileId: id }))
-      .catch(err => console.log(err))
+      axios
+        .get(`/edit-profile/target-clients`)
+        .then(answers =>
+          this.setState({
+            targetAnswers: answers.data.questions,
+            profileId: answers.data.profileId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -64,7 +66,7 @@ class TargetClients extends Component {
     const { history } = this.props
     const { targetAnswers } = this.state
 
-    updateProfileUtil(history, targetAnswers, "target-clients", id)
+    updateProfileUtil(history, targetAnswers, "target-clients")
   }
 
   render() {

@@ -70,13 +70,13 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/edit-profile" exact component={EditProfile} profileId={profileId} />
           <Route
-            path="/edit-profile/support-details/:id"
+            path="/edit-profile/support-details"
             exact
             component={EditSupportDetails}
             profileId={profileId}
           />
           <Route
-            path="/edit-profile/target-clients/:id"
+            path="/edit-profile/target-clients"
             exact
             component={EditTargetClients}
             profileId={profileId}

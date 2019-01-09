@@ -14,11 +14,6 @@ import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
 import setAuthToken from "../../../Utils/setAuthToken"
 
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
-
 export default class BasicInfo extends Component {
   state = {
     profileId: "",
@@ -29,10 +24,6 @@ export default class BasicInfo extends Component {
   }
 
   componentDidMount() {
-    // NOTE: until we implement cookies, we are getting the profile id from the url
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
-
     if (localStorage.jwtToken) {
       setAuthToken(localStorage.jwtToken)
 

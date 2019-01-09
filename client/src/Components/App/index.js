@@ -3,6 +3,7 @@ import { Router, Route, Switch } from "react-router-dom"
 import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
+import PostArticles from "../Layouts/PostAtricle"
 import EditProfile from "../Layouts/EditProfile/index"
 import EditSupportDetails from "../Layouts/EditProfile/SupportDetails"
 import EditTargetClients from "../Layouts/EditProfile/TargetClients"
@@ -20,6 +21,7 @@ const App = () => (
   <Router history={history}>
     <Switch>
       <Route path="/" exact component={Landing} />
+      <Route path="/postarticles" exact component={PostArticles} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />

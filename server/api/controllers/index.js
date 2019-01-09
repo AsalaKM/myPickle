@@ -5,6 +5,8 @@ const router = express.Router()
 const getRegisterQuestionsController = require("./getRegisterQuestionsController")
 const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
+const article = require("./Article")
+const categories = require("./categories")
 const getProfiles = require("./getProfiles")
 const getPosts = require("./getPosts")
 
@@ -26,6 +28,8 @@ router.get("/", (req, res, next) => {
 router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
+router.use("/articles", article)
+router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
 router.use("/blog", getPosts)

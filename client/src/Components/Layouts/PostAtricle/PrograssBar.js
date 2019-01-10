@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-
+// crearte prograss bar for image upload
 const ProgressBarWrapper = styled.div`
   background-color: #ccc;
   margin-top: 5px;

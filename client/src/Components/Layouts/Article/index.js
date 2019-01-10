@@ -27,6 +27,13 @@ class BlogPost extends Component {
       .catch(err => console.log(err))
   }
 
+  checkPicture = () =>
+    this.state.profileImage ? (
+      <img src={`/static/${this.state.profileImage}`} alt="profile" />
+    ) : (
+      <img src={require("../../../assets/images/logo_bw.jpg")} alt="profile" />
+    )
+
   render() {
     // const { title } = this.props
     const { article, author, profileImage, loaded } = this.state
@@ -40,12 +47,14 @@ class BlogPost extends Component {
         <h1>{article.title}</h1>
         <div>{article.image && article.image}</div>
         <div>
-          <img src={profileImage && profileImage} alt="profile" />
+          {this.checkPicture()}
           <p>{author}</p>
           <p>Link to view profile</p>
         </div>
         <div>
-          <p>{article.content}</p>
+          {article.content.split("\n").map((i, key) => {
+            return <p key={key}>{i}</p>
+          })}
         </div>
         <div>FOOTER TO SHOW BLOG POSTS OR PROFILES</div>
       </React.Fragment>

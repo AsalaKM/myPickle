@@ -5,11 +5,11 @@ const Box = styled.section.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "bt bb b--black-10",
+  className: "bt bb b--black-10 pv3 ph2 ph0-l",
 })``
 
 const Link = styled.a.attrs({
-  className: "db pv4 ph3 ph0-l no-underline black dim",
+  className: "db no-underline black dim",
 })``
 
 const Wrapper = styled.div.attrs({
@@ -42,7 +42,7 @@ const List = styled.p.attrs({
 })``
 
 const Author = styled.p.attrs({
-  className: "f6 lh-copy mv0",
+  className: "f6 lh-copy mv0 mp-primary-color",
 })``
 
 export {

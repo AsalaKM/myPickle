@@ -18,7 +18,8 @@ import history from "../../../history"
 
 class Post extends Component {
   render() {
-    const { articleID, pictureURL, categories, title, content } = this.props
+    const { articleID, pictureURL, categories, title, content, profileID, userName } = this.props
+    console.log(profileID)
 
     const checkPicture = () =>
       pictureURL ? (
@@ -37,25 +38,36 @@ class Post extends Component {
 
     const viewArticle = e => {
       e.preventDefault()
-      history.push(`profile/${articleID}`)
+      history.push(`blog/${articleID}`)
+    }
+    const handleAuthor = e => {
+      e.preventDefault()
+      history.push(`profile/${profileID}`)
     }
 
     return (
       <Box>
         <Container>
-          <Link onClick={viewArticle}>
-            <Wrapper>
-              <ImageContainer>{checkPicture()}</ImageContainer>
-              <Content>
-                <Title>{title}</Title>
-                <TextContent>{createTeaser() + " ... read more"}</TextContent>
-                {categories.map(item => {
-                  return <List key={Math.random()}>{item}</List>
-                })}
-                <Author>By ... </Author>
-              </Content>
-            </Wrapper>
-          </Link>
+          <Wrapper>
+            <ImageContainer>{checkPicture()}</ImageContainer>
+            <Content>
+              <Title>{title}</Title>
+              <Link onClick={viewArticle}>
+                <TextContent>
+                  {createTeaser() + " ..."}
+                  <span className="mp-primary-color fw3">read more</span>
+                </TextContent>
+              </Link>
+              {categories.map(item => {
+                return <List key={Math.random()}>{item}</List>
+              })}
+
+              <Author onClick={handleAuthor}>
+                <span className="mp-black-color">By </span>
+                {userName}
+              </Author>
+            </Content>
+          </Wrapper>
         </Container>
       </Box>
     )

@@ -53,11 +53,13 @@ const getArticles = async () => {
     articleObj.pictureURL = articles[i].image
     // insert categories
     articleObj.categories = await getCategory(articles[i].category)
+    // insert profileID
+    articleObj.profileID = articles[i].profile
+    // get userName and insert it
     const userName = await getUserName(articles[i].profile)
     articleObj.userName = userName[0].user[0].name
     articlesArr.push(articleObj)
   }
-  console.log(articlesArr)
 
   return articlesArr
 }

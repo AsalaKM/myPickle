@@ -25,7 +25,7 @@ class BrowseBlogPosts extends Component {
       return (
         <React.Fragment>
           {blogPosts.map(post => {
-            const { articleID, pictureURL, categories, title, content } = post
+            const { articleID, pictureURL, categories, title, content, profileID, userName } = post
             return (
               <Post
                 key={Math.random()}
@@ -34,6 +34,8 @@ class BrowseBlogPosts extends Component {
                 categories={categories}
                 title={title}
                 content={content}
+                profileID={profileID}
+                userName={userName}
               />
             )
           })}

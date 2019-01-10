@@ -1,7 +1,9 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch } from "react-router-dom"
+import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
+import PostArticles from "../Layouts/PostAtricle"
 import EditProfile from "../Layouts/EditProfile/index"
 import EditSupportDetails from "../Layouts/EditProfile/SupportDetails"
 import EditTargetClients from "../Layouts/EditProfile/TargetClients"
@@ -10,13 +12,15 @@ import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
+import BrowseProfiles from "../Layouts/BrowseProfiles"
 import Landing from "../Layouts/LandingPage/index"
 import SingleProfile from "../Layouts/SingleProfile"
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <Switch>
       <Route path="/" exact component={Landing} />
+      <Route path="/postarticles" exact component={PostArticles} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />
@@ -27,7 +31,11 @@ const App = () => (
       <Route path="4:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
+<<<<<<< HEAD
 
+=======
+      <Route path="/profiles" exact component={BrowseProfiles} />
+>>>>>>> 1f06c873b1ffc725bef33dc34d94a24e56377f0e
       <Route component={PageNotFound} />
     </Switch>
   </Router>

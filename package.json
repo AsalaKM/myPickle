@@ -43,6 +43,8 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "codecov": "^3.1.0",
+    "env2": "^2.2.2",
+    "express-fileupload": "^1.0.0",
     "jest": "^23.6.0"
   }
 }

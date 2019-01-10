@@ -30,11 +30,11 @@ const Content = styled.div.attrs({
 })``
 
 const Title = styled.h2.attrs({
-  className: "f3 fw1 baskerville mt0 lh-title",
+  className: "f3 fw1 mt0 lh-title mp-black-color",
 })``
 
 const TextContent = styled.p.attrs({
-  className: "f3 fw1 baskerville mt0 lh-title",
+  className: "f5 fw1 mt0 lh-title",
 })``
 
 const List = styled.p.attrs({

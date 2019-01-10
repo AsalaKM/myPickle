@@ -2,8 +2,7 @@
 // load mongo models
 const Article = require("../models/Articles")
 const Category = require("../models/Category")
-// load queries
-const getImageNames = require("./getImageNames")
+const Profiles = require("../models/Profile")
 // start function
 const getArticles = async () => {
   // get all articles
@@ -19,6 +18,24 @@ const getArticles = async () => {
     }
     return articleTypes
   }
+
+  // gets usersName
+
+  const getUserName = async id => {
+    const userName = Profile.aggregate([
+      { $match: { _id: id } },
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+    ])
+    return userName
+  }
+
   // loop over articles array
   for (let i = 0; i < articles.length; i++) {
     // create obj for each article

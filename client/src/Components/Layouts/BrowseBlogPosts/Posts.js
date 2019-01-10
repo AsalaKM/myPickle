@@ -27,6 +27,14 @@ class Post extends Component {
         <ArticlePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
+    const createTeaser = () => {
+      const teaserLength = 100
+      if (content.length > teaserLength) {
+        let newContent = content.substring(0, teaserLength)
+        return newContent
+      }
+    }
+
     const viewArticle = e => {
       e.preventDefault()
       history.push(`profile/${articleID}`)
@@ -40,11 +48,11 @@ class Post extends Component {
               <ImageContainer>{checkPicture()}</ImageContainer>
               <Content>
                 <Title>{title}</Title>
-                <TextContent>{content}</TextContent>
+                <TextContent>{createTeaser() + " ... read more"}</TextContent>
                 {categories.map(item => {
                   return <List key={Math.random()}>{item}</List>
                 })}
-                <Author>By ...</Author>
+                <Author>By ... </Author>
               </Content>
             </Wrapper>
           </Link>

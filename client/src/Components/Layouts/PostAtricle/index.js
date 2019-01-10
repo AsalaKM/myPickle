@@ -26,6 +26,8 @@ class PostArticle extends Component {
         .replace("]", "")
       if (type === "Array") {
         let categoryOptions = success.data.map(item => {
+          console.log(item)
+
           return { value: item._id, label: item.article_type }
         })
         if (categoryOptions.length > 0) {
@@ -64,6 +66,8 @@ class PostArticle extends Component {
     for (let key in article) {
       if (key === "categoriesSelected") {
         let categoriesSelected = article[key].map(item => {
+          console.log("heloooooo", item)
+
           return item.value
         })
         formData.append(key, categoriesSelected)

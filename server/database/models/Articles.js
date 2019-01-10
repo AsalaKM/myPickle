@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+
 const Schema = mongoose.Schema
 
 const articleSchema = new Schema({
@@ -17,11 +18,13 @@ const articleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "profiles",
   },
-  category: {
-    type: Array,
-    ref: "categories",
-    required: true,
-  },
+  category: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "categories",
+      required: true,
+    },
+  ],
 })
 
 module.exports = Article = mongoose.model("articles", articleSchema)

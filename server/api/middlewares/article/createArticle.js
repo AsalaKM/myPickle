@@ -1,6 +1,8 @@
 const storeArticle = require("../../../database/queries/storeArticle")
 
 const createArticle = async (req, res) => {
+  console.log("reqqqq", req.body)
+
   const { title, categoriesSelected, text, profileId } = req.body
   const { image } = req.files
   const fileType = image.mimetype
@@ -12,7 +14,7 @@ const createArticle = async (req, res) => {
 
       const article = {
         title,
-        category: categoriesSelected,
+        category: [categoriesSelected],
         content: text,
         image: uploadPath,
         profile: profileId,

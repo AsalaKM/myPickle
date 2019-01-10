@@ -13,9 +13,11 @@ export default class DropdownInput extends Component {
       return { value: item, label: item }
     })
 
-    const selected = answers[questionId].map((item, index) => {
-      return { value: item, label: item }
-    })
+    const selected =
+      answers[questionId] &&
+      answers[questionId].map((item, index) => {
+        return { value: item, label: item }
+      })
 
     return (
       <React.Fragment>

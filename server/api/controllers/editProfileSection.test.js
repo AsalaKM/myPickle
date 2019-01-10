@@ -10,6 +10,9 @@ const dbConnection = require("../../database/db_connection")
 // build dummy data
 const buildDb = require("../../database/dummy_data_build")
 
+// login function needed
+const loginUser = require("../../database/queries/loginUser")
+
 describe("Tests for editProfileSection controller", () => {
   afterAll(async () => {
     // Clear and rebuild the dummy data
@@ -28,10 +31,16 @@ describe("Tests for editProfileSection controller", () => {
 
   // Test with everything ok
   test("Test we get the answers correctly", async () => {
-    // get user from database
-    const profile = await Profile.findOne()
+    // // get user from database
+    // const profile = await Profile.findOne()
 
-    const response = await request(app).get(`/edit-profile/support-details/${profile._id}`)
+    // get the token for the default user
+    const token = await loginUser("josephine@the-therapists.co.uk", "123456", {})
+
+    const response = await request(app)
+      .get(`/edit-profile/support-details`)
+      // set the token in the request header
+      .set({ Authorization: token.token })
 
     expect(response.statusCode).toBe(200)
     expect(response.body).toBeDefined()

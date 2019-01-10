@@ -12,11 +12,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
-
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
+import setAuthToken from "../../../Utils/setAuthToken"
 
 export default class SocialMedia extends Component {
   state = {
@@ -27,21 +23,25 @@ export default class SocialMedia extends Component {
   }
 
   componentDidMount() {
-    // NOTE: until we implement cookies, we are getting the profile id from the url
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/social-media`)
+        .then(questions => this.setState({ socialQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/social-media/${id}`)
-      .then(questions => this.setState({ socialQuestions: questions.data }))
-      .catch(err => console.log(err))
-
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/social-media/${id}`)
-      .then(socialDetails => this.setState({ socialAnswers: socialDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/social-media`)
+        .then(socialDetails =>
+          this.setState({
+            socialAnswers: socialDetails.data.questions,
+            profileId: socialDetails.data.profileId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -57,7 +57,14 @@ export default class SocialMedia extends Component {
     const { history } = this.props
     const { socialAnswers } = this.state
 
-    updateProfileUtil(history, socialAnswers, "social-media", id)
+    updateProfileUtil(history, socialAnswers, "social-media")
+  }
+
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
   }
 
   render() {
@@ -82,9 +89,12 @@ export default class SocialMedia extends Component {
           answers={socialAnswers}
           unanswered={unanswered}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
+          </Button>
           <Button className="submit" onClick={this.handleSubmit}>
-            Submit
+            Save Changes
           </Button>
         </div>
       </React.Fragment>

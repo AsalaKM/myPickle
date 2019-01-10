@@ -34,7 +34,7 @@ const buildProfileQuestions = async () => {
   // insert all the questions!
   await ProfileQuestion.insertMany([
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Please select your area(s) of wellness",
       inputType: "checkbox",
       helperText: "You can select as many as you like",
@@ -52,28 +52,28 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Registered organisation name",
       inputType: "text",
       isRequired: true,
       section: "Admin Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Registered address",
       inputType: "address",
       isRequired: true,
       section: "Admin Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText:
         "Please list all relevant regulation, registration and membership bodies and numbers",
       inputType: "textarea",
       section: "Admin Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "What best describes your core service offering?",
       helperText: "Check all that apply to your core offering",
       options: [
@@ -94,7 +94,7 @@ const buildProfileQuestions = async () => {
       section: "Basic Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Known organisation name",
       helperText: "How is your organisation generally referred?",
       inputType: "text",
@@ -102,7 +102,7 @@ const buildProfileQuestions = async () => {
       section: "Basic Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Organisation Type",
       options: [
         "Public sector",
@@ -115,21 +115,21 @@ const buildProfileQuestions = async () => {
       section: "Basic Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Organisation URL",
       helperText: "Please include full URL (i.e. including https://)",
       inputType: "url",
       section: "Basic Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Organisation photo or logo",
       helperText: "Please no larger than 1mb and ideally square",
       inputType: "file-upload",
       section: "Basic Info",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Please provide a brief description of the organisation",
       helperText:
         "Keep it fact based and just describe what the organisation is, why it exists and what it does",
@@ -140,25 +140,25 @@ const buildProfileQuestions = async () => {
     // END OF THE INITIAL REGISTRATION PROCESS
     // START OF SOCIAL SECTION
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Facebook",
       inputType: "url",
       section: "Social Media",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Twitter",
       inputType: "url",
       section: "Social Media",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Instagram",
       inputType: "url",
       section: "Social Media",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "LinkedIn",
       inputType: "url",
       section: "Social Media",
@@ -166,14 +166,14 @@ const buildProfileQuestions = async () => {
     // END OF SOCIAL SECTION
     // START OF SUPPORT DETAILS
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Service strapline",
       helperText: "3-5 words describing your service. This will be shown in the results page.",
       inputType: "text",
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "What areas does your support relate to (max 5)?",
       inputType: "dropdown",
       options: [
@@ -214,7 +214,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Who is this service for?",
       helperText:
         "This is public information on who your service is designed for. Please summarise or include 'Everyone'. You will still be able to specify your target audience critera to help people fitting those categories be directed to your listing.",
@@ -222,7 +222,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Delivery method(s)",
       options: [
         "Face to face & local",
@@ -236,20 +236,20 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Service requirement /restriction",
       options: ["None", "Referral only", "Other"],
       inputType: "radio",
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Service photo or image",
       inputType: "file-upload",
       section: "Support Details",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Service verification",
       helperText:
         "If your service is recommended by a public or chairty body, please include the URL of your listing on their webpage.",
@@ -259,21 +259,21 @@ const buildProfileQuestions = async () => {
     // END OF SUPPORT DETAILS SECTION
     // START OF AVAILABILITY AND BOOKING SECTION
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Where does this service operate?",
       options: ["Local", "National", "Online"],
       inputType: "checkbox",
       section: "Availability & Booking",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Free or paid?",
       options: ["Free", "Paid", "Mix of free and paid"],
       inputType: "radio",
       section: "Availability & Booking",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "When is this service available?",
       helperText:
         "Please tick all that apply across the week and morning, afternoon, evening, overnight.",
@@ -285,14 +285,14 @@ const buildProfileQuestions = async () => {
       section: "Availability & Booking",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Expiry",
       helperText: "If there's a date when this service will expire, please select the date below",
       inputType: "calendar",
       section: "Availability & Booking",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Language availability",
       options: [
         "Arabic",
@@ -326,7 +326,7 @@ const buildProfileQuestions = async () => {
       section: "Availability & Booking",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "How to book / access",
       helperText: "Describe how people can book or access this service",
       inputType: "textarea",
@@ -335,21 +335,21 @@ const buildProfileQuestions = async () => {
     // END OF AVAILABILITY & BOOKING
     // START OF TARGET CLIENTS
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Which services does your support apply to?",
       options: ["All", "More data to go here"],
       inputType: "checkbox",
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Who can make use of this support?",
       options: ["All - no preference", "Individuals", "Groups", "Couples"],
       inputType: "checkbox",
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Age",
       options: [
         "All – no preference",
@@ -369,21 +369,21 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Gender",
       options: ["All – no preference", "Female", "Male", "Non-binary"],
       inputType: "checkbox",
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Sexual Orientation",
       options: ["All – no preference", "Asexual", "Bisexual", "Heterosexual", "Homosexual"],
       inputType: "checkbox",
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Ethnicity",
       options: [
         "All – no preference",
@@ -406,7 +406,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Religion",
       options: [
         "All – no preference",
@@ -423,7 +423,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Disability",
       options: [
         "All – no preference",
@@ -436,7 +436,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Employment status",
       options: [
         "All – no preference",
@@ -451,7 +451,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Occupation Area",
       options: [
         "All – no preference",
@@ -488,7 +488,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Family status",
       options: [
         "All - no preference",
@@ -505,7 +505,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Relationship status",
       options: [
         "All – no preference",
@@ -520,7 +520,7 @@ const buildProfileQuestions = async () => {
       section: "Target Clients",
     },
     {
-      supportType: generalType._id,
+      supportType: generalType.id,
       questionText: "Health conditions",
       options: [
         "All - no preference",
@@ -542,7 +542,7 @@ const buildProfileQuestions = async () => {
     // START OF QUESTIONS SPECIFICALLY FOR THERAPISTS
     // START OF SUPPORT DETAILS
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "About me",
       helperText:
         "Briefly explain who you are. Later you will be asked for your key clientele are and areas of specialty",
@@ -550,13 +550,13 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Years in practice",
       inputType: "text",
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Membership(s)",
       helperText:
         "Please list any membership bodys and numbers (please include one membership per line)",
@@ -564,7 +564,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Training",
       helperText:
         "Please list any qualification details (please include one qualification per line)",
@@ -572,7 +572,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Type(s) of therapy",
       helperText: "Max 5. Please select most relevant",
       options: [
@@ -667,7 +667,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Area of speciality",
       helperText:
         "Please briefly describe your specialty area e.g. key characteristics of your clientele. This will be  visible on your profile",
@@ -675,7 +675,7 @@ const buildProfileQuestions = async () => {
       section: "Support Details",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Mental health diagnosis",
       helperText: "Max 5. Please select most relevant.",
       options: [
@@ -717,7 +717,7 @@ const buildProfileQuestions = async () => {
     // END OF SUPPORT DETAILS SECTION
     // START OF AVAILABILITY & BOOKING SECTION
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Cost per session (per hour approx)",
       options: [
         "Free",
@@ -734,7 +734,7 @@ const buildProfileQuestions = async () => {
       section: "Availability & Booking",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Accepted insurance plans",
       options: [
         "None",
@@ -758,7 +758,7 @@ const buildProfileQuestions = async () => {
       section: "Availability & Booking",
     },
     {
-      supportType: therapistType._id,
+      supportType: therapistType.id,
       questionText: "Average wait time",
       options: [
         "Immediate or same day",

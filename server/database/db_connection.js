@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-"use strict"
 
 const mongoose = require("mongoose")
 
 // read "config.env" file and add it's variable to "process.env"
 if (!process.env.TRAVIS) {
-  require("env2")("./../config.env")
+  require("env2")("./config.env")
 }
 
 const dbConnection = () => {

@@ -21,9 +21,12 @@ const ImageContainer = styled.div.attrs({
 })``
 
 const ArticlePhoto = styled.img.attrs({
-  className: "db",
+  className: "db center",
   alt: "blog post image",
-})``
+})`
+  object-fit: cover;
+  height: 200px;
+`
 
 const Content = styled.div.attrs({
   className: "w-100 w-60-ns pl3-ns",

@@ -15,7 +15,7 @@ const Form = styled.form.attrs({
 })``
 
 const Link = styled.a.attrs({
-  className: "f6 button-reset bg-white ba mp-b--primary-light dim pointer pa2 black-60",
+  className: "f6 bg-white dim pointer pv2 black-60",
 })``
 
 const DetailsOne = styled.div.attrs({
@@ -27,13 +27,15 @@ const DetailsTwo = styled.div.attrs({
 })``
 
 const ImageContainer = styled.div.attrs({
-  className: "dtc w3 w3-ns v-mid",
+  className: "dtc w4 w4-ns ",
 })``
 
 const ArticlePhoto = styled.img.attrs({
-  className: "ba b--black-10 db w3 w3-ns h3 h3-ns",
+  className: "ba b--black-10 db",
   alt: "blog post image",
-})``
+})`
+  object-fit: cover;
+`
 
 const Title = styled.h2.attrs({
   className: "f5 f5-ns fw6 lh-title mp-black-color mv0",

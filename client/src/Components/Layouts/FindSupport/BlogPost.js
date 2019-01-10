@@ -18,7 +18,7 @@ import history from "../../../history"
 
 class Post extends Component {
   render() {
-    const { articleID, pictureURL, categories, title, profileID, userName } = this.props
+    const { articleID, pictureURL, categories, title, profileID } = this.props
 
     // checks if article contains image
     const checkPicture = () =>
@@ -32,10 +32,6 @@ class Post extends Component {
       e.preventDefault()
       history.push(`blog/${articleID}`)
     }
-    const handleAuthor = e => {
-      e.preventDefault()
-      history.push(`profile/${profileID}`)
-    }
 
     return (
       <Box>
@@ -46,10 +42,6 @@ class Post extends Component {
             {categories.map(item => {
               return <List key={Math.random()}>{item}</List>
             })}
-            <Author onClick={handleAuthor}>
-              <span className="mp-black-color">By </span>
-              {userName}
-            </Author>
           </DetailsOne>
           <DetailsTwo>
             <Form>

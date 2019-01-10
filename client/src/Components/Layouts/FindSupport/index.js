@@ -33,6 +33,7 @@ class BrowseProfiles extends Component {
     } else {
       return (
         <React.Fragment>
+          <h2 className="mp-primary-color">Find Support</h2>
           {profiles
             .filter((e, index) => index < 4)
             .map(profile => {
@@ -47,6 +48,7 @@ class BrowseProfiles extends Component {
                 />
               )
             })}
+          <h2 className="mp-primary-color">Latest Blog Posts</h2>
           {blogPosts
             .filter((e, index) => index < 4)
             .map(post => {

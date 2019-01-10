@@ -13,6 +13,8 @@ import {
   ProfileLink,
 } from "./Article.style"
 
+import Footer from "../../Common/Footer/index"
+
 class BlogPost extends Component {
   state = {
     article: null,
@@ -62,29 +64,32 @@ class BlogPost extends Component {
     }
 
     return (
-      <Article>
-        <Header>
-          <Title>{article.title}</Title>
-          {this.checkArticlePicture()}
-        </Header>
+      <React.Fragment>
+        <Article>
+          <Header>
+            <Title>{article.title}</Title>
+            {this.checkArticlePicture()}
+          </Header>
 
-        <ProfileWrapper>
-          <ProfileLink to={`/profile/${article.profile}`}>
-            <div className="profile">
-              {this.checkProfilePicture()}
-              <p>{author}</p>
-            </div>
-            <p className="view-profile">View profile</p>
-            <img src={require("../../../assets/images/arrow.svg")} alt="arrow" />
-          </ProfileLink>
-        </ProfileWrapper>
-        <Content>
-          {article.content.split("\n").map((i, key) => {
-            return <p key={key}>{i}</p>
-          })}
-        </Content>
-        <div>FOOTER TO SHOW BLOG POSTS OR PROFILES</div>
-      </Article>
+          <ProfileWrapper>
+            <ProfileLink to={`/profile/${article.profile}`}>
+              <div className="profile">
+                {this.checkProfilePicture()}
+                <p>{author}</p>
+              </div>
+              <p className="view-profile">View profile</p>
+              <img src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+            </ProfileLink>
+          </ProfileWrapper>
+          <Content>
+            {article.content.split("\n").map((i, key) => {
+              return <p key={key}>{i}</p>
+            })}
+          </Content>
+          <div>FOOTER TO SHOW BLOG POSTS OR PROFILES</div>
+        </Article>
+        <Footer />
+      </React.Fragment>
     )
   }
 }

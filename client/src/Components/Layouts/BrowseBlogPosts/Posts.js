@@ -19,7 +19,7 @@ import history from "../../../history"
 class Post extends Component {
   render() {
     const { articleID, pictureURL, categories, title, content, profileID, userName } = this.props
-    console.log(profileID)
+    console.log(content)
 
     const checkPicture = () =>
       pictureURL ? (
@@ -33,6 +33,8 @@ class Post extends Component {
       if (content.length > teaserLength) {
         let newContent = content.substring(0, teaserLength)
         return newContent
+      } else {
+        return content
       }
     }
 

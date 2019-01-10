@@ -31,11 +31,7 @@ const App = () => (
       <Route path="4:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
-<<<<<<< HEAD
-
-=======
       <Route path="/profiles" exact component={BrowseProfiles} />
->>>>>>> 1f06c873b1ffc725bef33dc34d94a24e56377f0e
       <Route component={PageNotFound} />
     </Switch>
   </Router>

@@ -21,7 +21,7 @@ import Dashboard from "../Layouts/Dashboard"
 import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
 import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
-
+import FindSupport from "../Layouts/FindSupport/index"
 import Landing from "../Layouts/LandingPage/index"
 
 // import common components
@@ -83,7 +83,7 @@ class App extends Component {
           <Route path="/newlogin" exact component={FirstTimeLogin} />
           <Route path="/profiles" exact component={BrowseProfiles} />
           <Route path="/blog" exact component={BrowseBlogPosts} />
-          {/* <Route path="/postarticles" exact component={PostArticles} /> */}
+          <Route path="/find-support" exact component={FindSupport} />
 
           {/* Private routes to go here */}
           <PrivateRoute

@@ -1,6 +1,60 @@
 import styled from "styled-components"
 
-export const ArticlePhoto = styled.img.attrs({
-  className: "ba b--black-10 db w3 w3-ns h3 h3-ns",
-  alt: "avatar",
+const Box = styled.section.attrs({
+  className: "mw7 center avenir",
 })``
+
+const Container = styled.article.attrs({
+  className: "bt bb b--black-10",
+})``
+
+const Link = styled.a.attrs({
+  className: "db pv4 ph3 ph0-l no-underline black dim",
+})``
+
+const Wrapper = styled.div.attrs({
+  className: "flex flex-column flex-row-ns",
+})``
+
+const ImageContainer = styled.div.attrs({
+  className: "pr3-ns mb4 mb0-ns w-100 w-40-ns",
+})``
+
+const ArticlePhoto = styled.img.attrs({
+  className: "db",
+  alt: "blog post image",
+})``
+
+const Content = styled.div.attrs({
+  className: "w-100 w-60-ns pl3-ns",
+})``
+
+const Title = styled.h2.attrs({
+  className: "f3 fw1 baskerville mt0 lh-title",
+})``
+
+const TextContent = styled.p.attrs({
+  className: "f3 fw1 baskerville mt0 lh-title",
+})``
+
+const List = styled.p.attrs({
+  className: "f6 fw4 mt0 mb0 black-60",
+})``
+
+const Author = styled.p.attrs({
+  className: "f6 lh-copy mv0",
+})``
+
+export {
+  Box,
+  Container,
+  Link,
+  Wrapper,
+  ImageContainer,
+  ArticlePhoto,
+  Content,
+  Title,
+  TextContent,
+  List,
+  Author,
+}

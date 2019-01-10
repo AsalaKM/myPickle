@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 
-import { ProfilePhoto } from "./BrowseProfiles.style"
-
 import {
   Box,
   Container,
+  ProfilePhoto,
   DetailsOne,
   DetailsTwo,
   Name,
@@ -12,7 +11,7 @@ import {
   Avatar,
   More,
   Form,
-} from "../../Common/BrowseSections/CommonStyles"
+} from "./BrowseProfiles.style"
 
 import history from "../../../history"
 

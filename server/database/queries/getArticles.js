@@ -28,6 +28,8 @@ const getArticles = async () => {
     articleObj.articleID = articles[i]._id
     // insert title
     articleObj.title = articles[i].title
+    // insert content
+    articleObj.content = articles[i].content
     // insert imageURL
     articleObj.pictureURL = articles[i].image
     // insert categories

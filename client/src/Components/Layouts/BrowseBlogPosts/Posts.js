@@ -1,23 +1,24 @@
 import React, { Component } from "react"
 
-import { ArticlePhoto } from "./BrowseBlogPosts.style"
 import {
   Box,
   Container,
-  DetailsOne,
-  DetailsTwo,
-  Name,
+  Link,
+  Wrapper,
+  ImageContainer,
+  ArticlePhoto,
+  Content,
+  Title,
+  TextContent,
+  Author,
   List,
-  Avatar,
-  More,
-  Form,
-} from "../../Common/BrowseSections/CommonStyles"
+} from "./BrowseBlogPosts.style"
 
 import history from "../../../history"
 
 class Post extends Component {
   render() {
-    const { articleID, pictureURL, categories, title } = this.props
+    const { articleID, pictureURL, categories, title, content } = this.props
 
     const checkPicture = () =>
       pictureURL ? (
@@ -34,18 +35,19 @@ class Post extends Component {
     return (
       <Box>
         <Container>
-          <Avatar>{checkPicture()}</Avatar>
-          <DetailsOne>
-            <Name>{title} </Name>
-            {categories.map(item => {
-              return <List key={Math.random()}>{item}</List>
-            })}
-          </DetailsOne>
-          <DetailsTwo>
-            <Form>
-              <More onClick={viewArticle}>View Article</More>
-            </Form>
-          </DetailsTwo>
+          <Link onClick={viewArticle}>
+            <Wrapper>
+              <ImageContainer>{checkPicture()}</ImageContainer>
+              <Content>
+                <Title>{title}</Title>
+                <TextContent>{content}</TextContent>
+                {categories.map(item => {
+                  return <List key={Math.random()}>{item}</List>
+                })}
+                <Author>By ...</Author>
+              </Content>
+            </Wrapper>
+          </Link>
         </Container>
       </Box>
     )

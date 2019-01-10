@@ -4,7 +4,8 @@ const router = express.Router()
 const getBlogPost = require("../../database/queries/getBlogPost")
 
 router.get("/", (req, res) => {
-  getBlogPost("5c37420f4d651e0ee1efddbf").then(result =>
+  const articleId = req.originalUrl.split("/")[2]
+  getBlogPost(articleId).then(result =>
     res
       .status(200)
       .send(result)

@@ -32,7 +32,7 @@ const getBlogPost = async articleId => {
   console.log("imageName", profileImage)
 
   // add user name and article to articleDetails
-  const articleDetails = { article, author: profile[0].user[0].name }
+  const articleDetails = { article, author: profile[0].user[0].name, profileImage: profileImage[0] }
 
   return articleDetails
 }

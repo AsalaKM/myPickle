@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {
   Box,
   Container,
-  Link,
+  Article,
   Wrapper,
   ImageContainer,
   ArticlePhoto,
@@ -36,10 +36,10 @@ class Post extends Component {
       }
     }
 
-    const viewArticle = e => {
-      e.preventDefault()
-      history.push(`blog/${articleID}`)
-    }
+    // const viewArticle = e => {
+    //   e.preventDefault()
+    //   history.push(`blog/${articleID}`)
+    // }
     const handleAuthor = e => {
       e.preventDefault()
       history.push(`profile/${profileID}`)
@@ -52,12 +52,12 @@ class Post extends Component {
             <ImageContainer>{checkPicture()}</ImageContainer>
             <Content>
               <Title>{title}</Title>
-              <Link onClick={viewArticle}>
+              <Article to={{ pathname: `blog/${articleID}` }}>
                 <TextContent>
                   {createTeaser() + " ..."}
                   <span className="mp-primary-color fw3">read more</span>
                 </TextContent>
-              </Link>
+              </Article>
               {categories.map(item => {
                 return <List key={Math.random()}>{item}</List>
               })}

@@ -34,7 +34,7 @@ router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
 
-router.use("/blog/:id", getBlogPost)
+router.use("/get-blog-post/:id", getBlogPost)
 
 router.use("/blog", getPosts)
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user

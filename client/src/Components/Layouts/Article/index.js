@@ -13,8 +13,6 @@ import {
   ProfileLink,
 } from "./Article.style"
 
-import Footer from "../../Common/Footer/index"
-
 class BlogPost extends Component {
   state = {
     article: null,
@@ -86,9 +84,7 @@ class BlogPost extends Component {
               return <p key={key}>{i}</p>
             })}
           </Content>
-          <div>FOOTER TO SHOW BLOG POSTS OR PROFILES</div>
         </Article>
-        <Footer />
       </React.Fragment>
     )
   }

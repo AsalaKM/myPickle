@@ -18,12 +18,14 @@ import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
 import Landing from "../Layouts/LandingPage/index"
 import BlogPost from "../Layouts/Article/index"
 
+import PublicRoute from "../Common/PublicRoutes/index"
+
 const App = () => (
   <Router history={history}>
     <Switch>
       <Route path="/" exact component={Landing} />
       <Route path="/postarticles" exact component={PostArticles} />
-      <Route path="/blog/:id" exact component={BlogPost} />
+      <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />
@@ -33,8 +35,8 @@ const App = () => (
       <Route path="/edit-profile/social-media/:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/profiles" exact component={BrowseProfiles} />
-      <Route path="/blog" exact component={BrowseBlogPosts} />
+      <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
+      <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

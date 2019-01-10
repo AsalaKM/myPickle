@@ -5,8 +5,8 @@ export const Article = styled.div.attrs({
   className: "pb5",
 })``
 
-export const Header = styled.h1.attrs({
-  className: "tc-1 ph3 pt4 pt5-ns",
+export const Header = styled.div.attrs({
+  className: "tc-1 ph3 pt4 pt5-ns pb3",
 })``
 
 export const Title = styled.h1.attrs({

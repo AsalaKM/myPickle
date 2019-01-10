@@ -55,7 +55,6 @@ class FirstTimeLogin extends Component {
         await localStorage.setItem("jwtToken", token)
         // set token to auth header
         await setAuthToken(token)
-        console.log("token", token)
       })
       .then(() => {
         swal(

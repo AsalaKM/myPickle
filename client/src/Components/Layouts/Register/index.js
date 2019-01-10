@@ -105,7 +105,6 @@ class Register extends Component {
       if (!answerState[wellnessQuestion._id] || answerState[wellnessQuestion._id].length < 1) {
         if (!newUnanswered.includes(wellnessQuestion._id)) newUnanswered.push(wellnessQuestion._id)
         counter += 1
-        console.log(newUnanswered)
       } else {
         if (newUnanswered.includes(wellnessQuestion._id)) {
           const index = newUnanswered.indexOf(wellnessQuestion._id)

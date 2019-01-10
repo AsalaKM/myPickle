@@ -1,4 +1,5 @@
 const express = require("express")
+
 const router = express.Router()
 const passport = require("passport")
 
@@ -12,7 +13,6 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
   // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
   // const profileID = req.originalUrl.split("/")[3]
   // const profileID = req.user.profileId
-  console.log("REQ", req.user)
 
   const profileID = req.user.profileId
 

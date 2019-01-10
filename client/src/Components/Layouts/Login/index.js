@@ -54,7 +54,6 @@ class Login extends Component {
         await localStorage.setItem("jwtToken", token)
         // set token to auth header
         await setAuthToken(token)
-        console.log("token", token)
       })
       .then(() => (window.location.href = "/dashboard"))
       .catch(err => this.setState({ errors: err.response.data }))

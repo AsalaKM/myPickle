@@ -2,7 +2,7 @@
 // load mongo models
 const Article = require("../models/Articles")
 const Category = require("../models/Category")
-const Profiles = require("../models/Profile")
+const Profile = require("../models/Profile")
 // start function
 const getArticles = async () => {
   // get all articles
@@ -22,7 +22,9 @@ const getArticles = async () => {
   // gets usersName
 
   const getUserName = async id => {
-    const userName = Profile.aggregate([
+    console.log(id)
+
+    const userName = await Profile.aggregate([
       { $match: { _id: id } },
       {
         $lookup: {
@@ -51,9 +53,12 @@ const getArticles = async () => {
     articleObj.pictureURL = articles[i].image
     // insert categories
     articleObj.categories = await getCategory(articles[i].category)
-
+    const userName = await getUserName(articles[i].profile)
+    articleObj.userName = userName[0].user[0].name
     articlesArr.push(articleObj)
   }
+  console.log(articlesArr)
+
   return articlesArr
 }
 

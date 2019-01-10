@@ -2,13 +2,14 @@ const mongoose = require("mongoose")
 const storeArticle = require("../../../database/queries/storeArticle")
 
 const createArticle = async (req, res) => {
-  console.log("reqqqq", req.body)
-
   const { title, categoriesSelected, text, profileId } = req.body
   const { image } = req.files
   const fileType = image.mimetype
   if (fileType === "image/jpeg" || fileType === "image/png" || fileType === "image/gif") {
     try {
+      // create array of strings for categories
+      const newCategories = categoriesSelected.split(",")
+
       // create new id for Article
       const id = mongoose.Types.ObjectId()
       // create a path for image
@@ -19,13 +20,15 @@ const createArticle = async (req, res) => {
       const article = {
         _id: id,
         title,
-        category: [categoriesSelected],
+        category: newCategories,
         content: text,
         image: uploadPath,
         profile: profileId,
       }
       // query for store article in DB
       const newArticle = await storeArticle(article)
+      console.log("article", newArticle)
+
       return res.status(201).json(newArticle)
     } catch (error) {
       return res.status(400).json({ error })

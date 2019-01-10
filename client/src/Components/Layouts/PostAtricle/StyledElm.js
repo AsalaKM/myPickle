@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+// create styled component for the article
 const Title = styled.h1`
   font-weight: 600;
   color: #4d4d4d;

@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import axios from "axios"
+// import the form compenent
 import ArticleForm from "./ArticleForm"
+
 import swal from "sweetalert"
 
 class PostArticle extends Component {

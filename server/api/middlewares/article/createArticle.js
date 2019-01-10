@@ -7,12 +7,13 @@ const createArticle = async (req, res) => {
   const fileType = image.mimetype
   if (fileType === "image/jpeg" || fileType === "image/png" || fileType === "image/gif") {
     try {
+      // create new id for Article
       const id = mongoose.Types.ObjectId()
-      console.log(id)
+      // create a path for image
       const uploadPath = `${__dirname}/../../../assets/articleupload/${id}-${image.name}`
-      console.log(uploadPath)
+      // sotre image in the spacific path
       await image.mv(uploadPath)
-
+      // declare new article obj
       const article = {
         _id: id,
         title,
@@ -21,8 +22,7 @@ const createArticle = async (req, res) => {
         image: uploadPath,
         profile: profileId,
       }
-      console.log(id)
-
+      // query for store article in DB
       const newArticle = await storeArticle(article)
       return res.status(201).json(newArticle)
     } catch (error) {

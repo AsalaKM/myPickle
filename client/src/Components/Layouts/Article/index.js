@@ -1,6 +1,18 @@
 import React, { Component } from "react"
 import axios from "axios"
 
+// load styled components
+import {
+  Article,
+  Header,
+  Title,
+  Content,
+  Image,
+  ProfilePhoto,
+  ProfileWrapper,
+  ProfileLink,
+} from "./Article.style"
+
 class BlogPost extends Component {
   state = {
     article: null,
@@ -27,37 +39,52 @@ class BlogPost extends Component {
       .catch(err => console.log(err))
   }
 
-  checkPicture = () =>
+  checkProfilePicture = () =>
     this.state.profileImage ? (
-      <img src={`/static/${this.state.profileImage}`} alt="profile" />
+      <ProfilePhoto src={`/static/${this.state.profileImage}`} alt="profile" />
     ) : (
-      <img src={require("../../../assets/images/logo_bw.jpg")} alt="profile" />
+      <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} alt="profile" />
+    )
+
+  checkArticlePicture = () =>
+    this.state.article.image ? (
+      <Image src={`/static/${this.state.article.image}`} alt="profile" />
+    ) : (
+      <Image src={require("../../../assets/images/logo_bw.jpg")} alt="profile" />
     )
 
   render() {
     // const { title } = this.props
-    const { article, author, profileImage, loaded } = this.state
+    const { article, author, loaded } = this.state
 
     if (!loaded) {
       return <div>loading...</div>
     }
 
     return (
-      <React.Fragment>
-        <h1>{article.title}</h1>
-        <div>{article.image && article.image}</div>
-        <div>
-          {this.checkPicture()}
-          <p>{author}</p>
-          <p>Link to view profile</p>
-        </div>
-        <div>
+      <Article>
+        <Header>
+          <Title>{article.title}</Title>
+          {this.checkArticlePicture()}
+        </Header>
+
+        <ProfileWrapper>
+          <ProfileLink to={`/profile/${article.profile}`}>
+            <div className="profile">
+              {this.checkProfilePicture()}
+              <p>{author}</p>
+            </div>
+            <p className="view-profile">View profile</p>
+            <img src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+          </ProfileLink>
+        </ProfileWrapper>
+        <Content>
           {article.content.split("\n").map((i, key) => {
             return <p key={key}>{i}</p>
           })}
-        </div>
+        </Content>
         <div>FOOTER TO SHOW BLOG POSTS OR PROFILES</div>
-      </React.Fragment>
+      </Article>
     )
   }
 }

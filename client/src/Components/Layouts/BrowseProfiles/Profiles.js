@@ -7,7 +7,7 @@ import {
   DetailsOne,
   DetailsTwo,
   Name,
-  WellnessList,
+  List,
   Avatar,
   More,
   Form,
@@ -39,7 +39,7 @@ class Profile extends Component {
           <DetailsOne>
             <Name>{organisation} </Name>
             {wellnessType.map(item => {
-              return <WellnessList key={Math.random()}>{item}</WellnessList>
+              return <List key={Math.random()}>{item}</List>
             })}
           </DetailsOne>
           <DetailsTwo>

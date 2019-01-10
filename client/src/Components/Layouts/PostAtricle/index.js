@@ -12,7 +12,7 @@ class PostArticle extends Component {
       categoriesSelected: [],
       text: "",
       image: null,
-      profileId: "5c2b3694a87ed7376361bcf3",
+      profileId: "5c373bcb9a1c495623d61b89",
     },
     categoryOptions: [],
     errors: [],

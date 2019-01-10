@@ -30,7 +30,7 @@ const DetailsOne = styled.div.attrs({
 
 const Name = styled.h2.attrs({ className: "f5 f5-ns fw6 lh-title mp-black-color mv0" })``
 
-const WellnessList = styled.p.attrs({
+const List = styled.p.attrs({
   className: "f6 fw4 mt0 mb0 black-60",
 })``
 
@@ -54,7 +54,7 @@ export {
   DetailsOne,
   DetailsTwo,
   Name,
-  WellnessList,
+  List,
   Avatar,
   More,
   Form,

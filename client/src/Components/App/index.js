@@ -13,6 +13,8 @@ import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
+import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
+
 import Landing from "../Layouts/LandingPage/index"
 import BlogPost from "../Layouts/Article/index"
 
@@ -32,6 +34,7 @@ const App = () => (
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/profiles" exact component={BrowseProfiles} />
+      <Route path="/blog" exact component={BrowseBlogPosts} />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

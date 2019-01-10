@@ -23,8 +23,10 @@ const storeArticle = async articleObj => {
       request: { type: "GET", url: `http://localhost:3001/article/${_id}` },
     }
     const response = { msg: "create article successfully", createdArticele }
+
     return response
   })
+
   return Store
 }
 

@@ -15,11 +15,12 @@ import {
   Button,
   RegisterLink,
   Branding,
-} from "./Login.style.js"
+} from "../Login/Login.style"
 
 import { ErrorMsg } from "../../Common/Questions/Questions.style"
+import swal from "sweetalert"
 
-class Login extends Component {
+class FirstTimeLogin extends Component {
   state = {
     email: "",
     password: "",
@@ -55,7 +56,41 @@ class Login extends Component {
         // set token to auth header
         await setAuthToken(token)
       })
-      .then(() => (window.location.href = "/dashboard"))
+      .then(() => {
+        swal(
+          "Welcome!",
+          "Add more details to your profile to increase awareness even further",
+          "success",
+          {
+            buttons: {
+              skip: {
+                text: "Skip",
+                value: "skip",
+                className: "bg-moon-gray",
+              },
+              edit: {
+                text: "Add to Profile",
+                value: "edit",
+                className: "",
+              },
+            },
+          }
+        ).then(value => {
+          switch (value) {
+            case "skip": {
+              window.location.href = "/profile"
+              break
+            }
+
+            case "edit":
+              window.location.href = "/edit-profile"
+              break
+
+            default:
+              window.location.href = "/edit-profile"
+          }
+        })
+      })
       .catch(err => this.setState({ errors: err.response.data }))
   }
 
@@ -101,4 +136,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default FirstTimeLogin

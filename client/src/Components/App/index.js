@@ -14,12 +14,14 @@ import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
 import Landing from "../Layouts/LandingPage/index"
+import BlogPost from "../Layouts/Article/index"
 
 const App = () => (
   <Router history={history}>
     <Switch>
       <Route path="/" exact component={Landing} />
       <Route path="/postarticles" exact component={PostArticles} />
+      <Route path="/blog/:id" exact component={BlogPost} />
       <Route path="/register" exact component={Register} />
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />

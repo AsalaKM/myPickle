@@ -4,7 +4,7 @@ const registerUser = async (name, email, phone, password) => {
   const userExists = await User.findOne({ email })
   if (userExists) {
     console.log("user exists")
-    return
+    
   } else {
     const newUser = new User({
       name,

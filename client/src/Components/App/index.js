@@ -25,13 +25,13 @@ const App = () => (
       <Route path="/login" exact component={Login} />
       <Route path="/edit-profile" exact component={EditProfile} />
       <Route path="/edit-profile/support-details/:id" exact component={EditSupportDetails} />
-      <Route path="/SingleProfile/" exact component={SingleProfile} />
       <Route path="/edit-profile/target-clients/:id" exact component={EditTargetClients} />
       <Route path="/edit-profile/availability-booking/:id" exact component={EditBookingDetails} />
       <Route path="4:id" exact component={EditSocialMedia} />
       <Route path="/edit-profile/basic-info/:id" exact component={EditBasicInfo} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/profiles" exact component={BrowseProfiles} />
+      <Route path="/profiles/:profileID" exact component={SingleProfile} />
       <Route component={PageNotFound} />
     </Switch>
   </Router>

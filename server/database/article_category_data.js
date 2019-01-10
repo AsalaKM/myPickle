@@ -61,7 +61,7 @@ const buildArticleCategory = async () => {
       const Articles = await Article.insertMany([
         {
           title: "Low mood and depression",
-          image: "",
+          image: "low-mood.jpg",
           content: `But a low mood will tend to lift after a few days or weeks.
         Making some small changes in your life, such as resolving a difficult situation, talking about your problems or getting more sleep, can usually improve your mood.
 
@@ -83,7 +83,7 @@ const buildArticleCategory = async () => {
         },
         {
           title: "Anxiety in children",
-          image: "",
+          image: "anxietyChildren.jpg",
           content: `Children tend to feel anxious about different things at different ages.
         Many of these worries are a normal part of growing up.
 
@@ -118,7 +118,7 @@ const buildArticleCategory = async () => {
         },
         {
           title: "I used to hit my husband",
-          image: "",
+          image: "fist_husband.jpeg",
           content: `Intense anger caused Florence Terry to hit her husband. An anger-management course helped her regain control, and changed her life.
 
         "The first time I hit my husband was about 14 years ago. I was cross with him and lost my temper.

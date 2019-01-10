@@ -14,6 +14,7 @@ const createArticle = async (req, res) => {
       const id = mongoose.Types.ObjectId()
       // create a path for image
       const uploadPath = `${__dirname}/../../../assets/articleupload/${id}-${image.name}`
+      const imageURL = `${id}-${image.name}`
       // sotre image in the spacific path
       await image.mv(uploadPath)
       // declare new article obj
@@ -22,7 +23,7 @@ const createArticle = async (req, res) => {
         title,
         category: newCategories,
         content: text,
-        image: uploadPath,
+        image: imageURL,
         profile: profileId,
       }
       // query for store article in DB

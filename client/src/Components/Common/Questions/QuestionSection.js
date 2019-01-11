@@ -9,6 +9,7 @@ import TextFieldInput from "../../Common/Questions/TextFieldInput"
 import DropdownInput from "../../Common/Questions/DropdownInput"
 import MatrixInput from "../../Common/Questions/MatrixInput"
 import CalendarInput from "../../Common/Questions/CalendarInput"
+import AddressInput from "./AddressInput"
 
 // import styled components
 import { Answers } from "../../Common/Answers"
@@ -23,6 +24,7 @@ export default class QuestionSection extends Component {
       handleDate,
       addImage,
       handleDropdown,
+      handleAddress,
     } = this.props
 
     return (
@@ -39,9 +41,7 @@ export default class QuestionSection extends Component {
               />
             ))}
           {questions
-            .filter(
-              question => question.inputType === "textarea" || question.inputType === "address"
-            )
+            .filter(question => question.inputType === "textarea")
             .map((question, index) => (
               <TextFieldInput
                 key={index}
@@ -109,6 +109,17 @@ export default class QuestionSection extends Component {
                 question={question}
                 handleDate={handleDate}
                 answers={answers}
+              />
+            ))}
+          {questions
+            .filter(question => question.inputType === "address")
+            .map((question, index) => (
+              <AddressInput
+                key={index}
+                question={question}
+                handleAddress={handleAddress}
+                answers={answers}
+                // checkRequiredAnswers={checkRequiredAnswers}
               />
             ))}
         </Answers>

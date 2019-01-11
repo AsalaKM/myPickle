@@ -10,6 +10,7 @@ const loginUser = require("./loginUser")
 const article = require("./Article")
 const categories = require("./categories")
 const getProfiles = require("./getProfiles")
+const getBlogPost = require("./getBlogPost")
 const getPosts = require("./getPosts")
 
 // edit profle controllers
@@ -36,6 +37,9 @@ router.use("/articles", article)
 router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
+
+router.use("/get-blog-post/:id", getBlogPost)
+
 router.use("/blog", getPosts)
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 

@@ -9,6 +9,9 @@ import setAuthToken from "../../Utils/setAuthToken"
 import history from "../../history"
 import PageNotFound from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
+import Login from "../Layouts/Login"
+import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
+import Dashboard from "../Layouts/Dashboard"
 import PostArticles from "../Layouts/PostAtricle"
 import EditProfile from "../Layouts/EditProfile/index"
 import EditSupportDetails from "../Layouts/EditProfile/SupportDetails"
@@ -16,16 +19,15 @@ import EditTargetClients from "../Layouts/EditProfile/TargetClients"
 import EditBookingDetails from "../Layouts/EditProfile/BookingAvailability"
 import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
-import Login from "../Layouts/Login"
-import Dashboard from "../Layouts/Dashboard"
-import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
+import Landing from "../Layouts/LandingPage/index"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
 import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
 import FindSupport from "../Layouts/FindSupport/index"
-import Landing from "../Layouts/LandingPage/index"
+import BlogPost from "../Layouts/Article/index"
 
 // import common components
 import PrivateRoute from "../Common/PrivateRoute/PrivateRoute"
+import PublicRoute from "../Common/PublicRoutes/index"
 
 class App extends Component {
   state = {
@@ -81,9 +83,11 @@ class App extends Component {
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={Login} />
           <Route path="/newlogin" exact component={FirstTimeLogin} />
-          <Route path="/profiles" exact component={BrowseProfiles} />
-          <Route path="/blog" exact component={BrowseBlogPosts} />
           <Route path="/find-support" exact component={FindSupport} />
+
+          <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
+          <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
+          <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
 
           {/* Private routes to go here */}
           <PrivateRoute

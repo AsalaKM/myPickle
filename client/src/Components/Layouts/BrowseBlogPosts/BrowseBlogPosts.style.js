@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Box = styled.section.attrs({
   className: "mw7 center avenir",
@@ -8,7 +9,7 @@ const Container = styled.article.attrs({
   className: "bt bb b--black-10 pv3 ph2 ph0-l",
 })``
 
-const Link = styled.a.attrs({
+const Article = styled(Link).attrs({
   className: "db no-underline black dim",
 })``
 
@@ -51,7 +52,7 @@ const Author = styled.p.attrs({
 export {
   Box,
   Container,
-  Link,
+  Article,
   Wrapper,
   ImageContainer,
   ArticlePhoto,

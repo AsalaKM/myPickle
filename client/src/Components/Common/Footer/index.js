@@ -26,11 +26,19 @@ class Footer extends Component {
     return (
       <FooterWrapper>
         <Buttons>
-          <LinkLeft to={"/blog"} selected={blog}>
+          <LinkLeft
+            to={"/blog"}
+            selected={blog}
+            onClick={() => this.setState({ blog: true, profiles: false })}
+          >
             <img src={require("../../../assets/images/blog-icon.svg")} alt="blog" />
             Blog posts
           </LinkLeft>
-          <LinkRight to={"/profiles"} selected={profiles}>
+          <LinkRight
+            to={"/profiles"}
+            selected={profiles}
+            onClick={() => this.setState({ blog: false, profiles: true })}
+          >
             Profiles
             <img src={require("../../../assets/images/user_Icon.svg")} alt="blog" />
           </LinkRight>

@@ -11,6 +11,7 @@ import {
   Heading,
   AllButton,
   Container,
+  Box,
 } from "./FindSupport.style"
 
 class BrowseProfiles extends Component {
@@ -41,7 +42,7 @@ class BrowseProfiles extends Component {
       return <div>loading...</div>
     } else {
       return (
-        <React.Fragment>
+        <Box>
           <Container>
             <ColumnContainer>
               <ColumnOne>
@@ -101,7 +102,7 @@ class BrowseProfiles extends Component {
                 />
               )
             })}
-        </React.Fragment>
+        </Box>
       )
     }
   }

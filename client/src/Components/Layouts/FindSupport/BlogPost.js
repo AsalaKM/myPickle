@@ -11,6 +11,7 @@ import {
   Title,
   List,
   Form,
+  Arrow,
 } from "./BlogPost.style"
 
 import history from "../../../history"
@@ -34,20 +35,22 @@ class Post extends Component {
 
     return (
       <Box>
-        <Container>
-          <ImageContainer>{checkPicture()}</ImageContainer>
-          <DetailsOne>
-            <Title>{title}</Title>
-            {categories.map(item => {
-              return <List key={Math.random()}>{item}</List>
-            })}
-          </DetailsOne>
-          <DetailsTwo>
-            <Form>
-              <Link onClick={viewArticle}>read more</Link>
-            </Form>
-          </DetailsTwo>
-        </Container>
+        <Link onClick={viewArticle}>
+          <Container>
+            <ImageContainer>{checkPicture()}</ImageContainer>
+            <DetailsOne>
+              <Title>{title}</Title>
+              {categories.map(item => {
+                return <List key={Math.random()}>{item}</List>
+              })}
+            </DetailsOne>
+            <DetailsTwo>
+              <Form>
+                <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+              </Form>
+            </DetailsTwo>
+          </Container>
+        </Link>
       </Box>
     )
   }

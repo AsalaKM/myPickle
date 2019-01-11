@@ -11,11 +11,11 @@ const Container = styled.article.attrs({
 `
 
 const Form = styled.form.attrs({
-  className: "w-100 tr",
+  className: " mr1 dib",
 })``
 
 const Link = styled.a.attrs({
-  className: "f6 bg-white dim pointer pv2 black-60",
+  className: "pointer",
 })``
 
 const DetailsOne = styled.div.attrs({
@@ -36,6 +36,13 @@ const ArticlePhoto = styled.img.attrs({
 })`
   object-fit: cover;
   height: 100px;
+`
+const Arrow = styled.img.attrs({
+  className: "",
+})`
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
 `
 
 const Title = styled.h2.attrs({
@@ -62,4 +69,5 @@ export {
   List,
   Author,
   Form,
+  Arrow,
 }

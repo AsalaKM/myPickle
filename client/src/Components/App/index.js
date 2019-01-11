@@ -83,7 +83,7 @@ class App extends Component {
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={Login} />
           <Route path="/newlogin" exact component={FirstTimeLogin} />
-          <Route path="/find-support" exact component={FindSupport} />
+          <PublicRoute path="/find-support" exact component={FindSupport} footer />
 
           <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
           <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />

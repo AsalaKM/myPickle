@@ -129,6 +129,16 @@ class Register extends Component {
           if (!newUnanswered.includes(item)) newUnanswered.push(item)
           counter += 1
         }
+        // check all fields for address are filled in
+        if (
+          answerState[item] &&
+          answerState[item].hasOwnProperty("address" || "city" || "postcode")
+        ) {
+          if (!answerState[item].hasOwnProperty("address" && "city" && "postcode")) {
+            if (!newUnanswered.includes(item)) newUnanswered.push(item)
+            counter += 1
+          }
+        }
         if (errorState.length > 0) {
           counter += 1
         }
@@ -137,6 +147,10 @@ class Register extends Component {
       // final check of password
       if (answerState.password !== answerState.password2) {
         if (!errorState.includes("password2")) errorState.push("password2")
+        counter += 1
+      }
+
+      if (newUnanswered.length > 0) {
         counter += 1
       }
 
@@ -175,6 +189,21 @@ class Register extends Component {
     const { newAnswerState, newUnanswered } = handleChangeUtil(option, answerState, unanswered)
 
     this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
+  }
+
+  handleAddress = (row, answer, question) => {
+    const state = this.state.registerAnswers
+
+    if (!state[question]) {
+      state[question] = {}
+      state[question][row] = answer
+    } else {
+      state[question][row] = answer
+    }
+
+    this.setState(() => ({
+      bookingAnswers: state,
+    }))
   }
 
   handleNext = () => {
@@ -276,6 +305,7 @@ class Register extends Component {
             handleNext={this.handleNext}
             handlePrevious={this.handlePrevious}
             handleChange={this.handleChange}
+            handleAddress={this.handleAddress}
             answers={this.state.registerAnswers}
             adminQuestions={
               this.state.registerQuestions &&

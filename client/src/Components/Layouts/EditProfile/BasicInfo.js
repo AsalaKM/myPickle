@@ -13,6 +13,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
 import setAuthToken from "../../../Utils/setAuthToken"
+import checkRequiredAnswersUtil from "../../../Utils/checkRequiredAnswersUtil"
 
 export default class BasicInfo extends Component {
   state = {
@@ -53,6 +54,29 @@ export default class BasicInfo extends Component {
     const { newAnswerState, newUnanswered } = handleChangeUtil(option, basicAnswers, unanswered)
 
     this.setState({ basicAnswers: newAnswerState, unanswered: newUnanswered })
+  }
+
+  checkRequiredAnswers = question => {
+    const { unanswered, registerQuestions } = this.state
+
+    const newUnanswered = checkRequiredAnswersUtil(question, registerQuestions, unanswered)
+
+    this.setState({ unanswered: newUnanswered })
+  }
+
+  handleAddress = (row, answer, question) => {
+    const state = this.state.basicAnswers
+
+    if (!state[question]) {
+      state[question] = {}
+      state[question][row] = answer
+    } else {
+      state[question][row] = answer
+    }
+
+    this.setState(() => ({
+      bookingAnswers: state,
+    }))
   }
 
   addImage = file => {
@@ -120,6 +144,8 @@ export default class BasicInfo extends Component {
           answers={basicAnswers}
           unanswered={unanswered}
           addImage={this.addImage}
+          handleAddress={this.handleAddress}
+          checkRequiredAnswers={this.checkRequiredAnswers}
         />
         <div className="flex items-center justify-center w-100 mb4">
           <Button className="submit" onClick={this.handleBack}>

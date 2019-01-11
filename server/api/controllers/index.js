@@ -6,9 +6,13 @@ const getRegisterQuestionsController = require("./getRegisterQuestionsController
 const getSingleProfile = require("./getSingleProfile")
 const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
+const checkEmail = require("./checkEmail")
+const loginUser = require("./loginUser")
 const article = require("./Article")
 const categories = require("./categories")
 const getProfiles = require("./getProfiles")
+const getBlogPost = require("./getBlogPost")
+const getPosts = require("./getPosts")
 
 // edit profle controllers
 // const editSupportDetails = require("./editSupportDetails")
@@ -28,23 +32,29 @@ router.get("/", (req, res, next) => {
 router.use("/get-register-questions", getRegisterQuestionsController)
 router.use("/register-user", signUpController)
 router.use("/upload-image", uploadImage)
+router.use("/check-email", checkEmail)
+router.use("/login-user", loginUser)
 router.use("/articles", article)
 router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
 
+router.use("/get-blog-post/:id", getBlogPost)
+
+router.use("/blog", getPosts)
 // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
 
-router.use("/get-questions/:section/:id", getQuestions)
+router.use("/get-questions/:section", getQuestions)
 
 // edit profile routes
 // router.use("/edit-profile/support/:id", editSupportDetails)
 // router.use("/edit-profile/target/:id", editTargetClientsDetails)
-router.use("/edit-profile/:section/:id", editProfileSection)
+router.use("/edit-profile/:section", editProfileSection)
 
 // update profile routes
 // router.use("/update-profile/target/:id", updateTargetClientsDetails)
 router.use("/update-profile/:section/:id", updateProfileSection)
 router.use("/single-profile/", getSingleProfile)
+router.use("/update-profile/:section", updateProfileSection)
 
 module.exports = router

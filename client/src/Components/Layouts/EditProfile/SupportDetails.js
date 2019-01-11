@@ -5,14 +5,6 @@ import axios from "axios"
 // import styled components
 import { Intro } from "../../Common/Headings"
 import { Button } from "../../Common/Buttons"
-// import { Answers } from "../../Common/Answers"
-
-// // import common components
-// import TextInput from "../../Common/Questions/TextInput"
-// import RadioInput from "../../Common/Questions/RadioInput"
-// import CheckboxInput from "../../Common/Questions/CheckboxInput"
-// import FileUploadInput from "../../Common/Questions/FileUploadInput"
-// import TextFieldInput from "../../Common/Questions/TextFieldInput"
 
 // import common components
 import QuestionSection from "../../Common/Questions/QuestionSection"
@@ -20,11 +12,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
-
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
+import setAuthToken from "../../../Utils/setAuthToken"
 
 export default class SupportDetails extends Component {
   state = {
@@ -36,21 +24,25 @@ export default class SupportDetails extends Component {
   }
 
   componentDidMount() {
-    // NOTE: until we implement cookies, we are getting the profile id from the url
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/support-details`)
+        .then(questions => this.setState({ supportQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/support-details/${id}`)
-      .then(questions => this.setState({ supportQuestions: questions.data }))
-      .catch(err => console.log(err))
-
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/support-details/${id}`)
-      .then(supportDetails => this.setState({ supportAnswers: supportDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/support-details`)
+        .then(supportDetails =>
+          this.setState({
+            supportAnswers: supportDetails.data.questions,
+            profileId: supportDetails.data.profileId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -85,7 +77,14 @@ export default class SupportDetails extends Component {
     const { history } = this.props
     const { supportAnswers } = this.state
 
-    updateProfileUtil(history, supportAnswers, "support-details", id)
+    updateProfileUtil(history, supportAnswers, "support-details")
+  }
+
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
   }
 
   render() {
@@ -165,9 +164,12 @@ export default class SupportDetails extends Component {
               />
             ))}
         </Answers> */}
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
+          </Button>
           <Button className="submit" onClick={this.handleSubmit}>
-            Submit
+            Save Changes
           </Button>
         </div>
       </React.Fragment>

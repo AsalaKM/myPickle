@@ -13,11 +13,7 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
-
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
+import setAuthToken from "../../../Utils/setAuthToken"
 
 export default class BookingDetails extends Component {
   state = {
@@ -28,21 +24,25 @@ export default class BookingDetails extends Component {
   }
 
   componentDidMount() {
-    // NOTE: until we implement cookies, we are getting the profile id from the url
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/availability-booking`)
+        .then(questions => this.setState({ bookingQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/availability-booking/${id}`)
-      .then(questions => this.setState({ bookingQuestions: questions.data }))
-      .catch(err => console.log(err))
-
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/availability-booking/${id}`)
-      .then(supportDetails => this.setState({ bookingAnswers: supportDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/availability-booking`)
+        .then(supportDetails =>
+          this.setState({
+            bookingAnswers: supportDetails.data.questions,
+            profileId: supportDetails.data.profiledId,
+          })
+        )
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -117,7 +117,14 @@ export default class BookingDetails extends Component {
     const { history } = this.props
     const { bookingAnswers } = this.state
 
-    updateProfileUtil(history, bookingAnswers, "availability-booking", id)
+    updateProfileUtil(history, bookingAnswers, "availability-booking")
+  }
+
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
   }
 
   render() {
@@ -147,9 +154,12 @@ export default class BookingDetails extends Component {
           handleDate={this.handleDate}
           handleDropdown={this.handleDropdown}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
+          </Button>
           <Button className="submit" onClick={this.handleSubmit}>
-            Submit
+            Save Changes
           </Button>
         </div>
       </React.Fragment>

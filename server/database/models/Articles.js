@@ -20,7 +20,7 @@ const articleSchema = new Schema({
     ref: "profiles",
   },
   category: {
-    type: String,
+    type: Array,
     ref: "categories",
     required: true,
   },

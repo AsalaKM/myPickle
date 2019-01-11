@@ -23,7 +23,7 @@ class BrowseProfiles extends Component {
       return <div>loading...</div>
     } else {
       return (
-        <React.Fragment>
+        <React.Fragment style={`padding-bottom: 3rem`}>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL, profileID } = profile
             return (

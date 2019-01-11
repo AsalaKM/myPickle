@@ -25,7 +25,6 @@ class BlogPost extends Component {
     const pathName = window.location.pathname
     const articleId = pathName.split("/")[2]
 
-    console.log("ID", articleId)
     axios
       .get(`/get-blog-post/${articleId}`)
       .then(articleDetails =>

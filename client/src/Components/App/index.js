@@ -87,7 +87,7 @@ class App extends Component {
           <PublicRoute path="/find-support" exact component={FindSupport} footer />
 
           <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
-          <Route path="/profiles/:profileID" exact component={profile} />
+          <Route path="/profile/:profileID" exact component={profile} />
           <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
           <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
 

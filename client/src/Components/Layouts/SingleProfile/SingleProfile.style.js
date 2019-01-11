@@ -53,3 +53,9 @@ export const Booking = styled.section`
   height: 200px;
   margin-left: 15px;
 `
+export const Contact = styled.section`
+  background: blue;
+  width: 90%;
+  height: 150px;
+  margin-left: 15px;
+`

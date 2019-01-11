@@ -15,6 +15,7 @@ import {
   help,
   Delivery,
   Booking,
+  Contact,
 } from "./SingleProfile.style"
 
 class SinflePforile extends Component {
@@ -29,8 +30,8 @@ class SinflePforile extends Component {
     axios
       .get(`/single-profile/${id}`)
       // .then(result => this.setState({ answers: result.data }))
-      .then(res => {
-        console.log(res)
+      .then(result => {
+        this.setState({ answers: result.data })
       })
       .catch(err => console.log(err))
   }
@@ -78,7 +79,7 @@ class SinflePforile extends Component {
           <h4>Cost per session (per hour): £80-99</h4>
           <h4>Hours of operation </h4>
         </Booking>
-        <section>Contact</section>
+        <Contact>Contact</Contact>
       </React.Fragment>
     )
   }

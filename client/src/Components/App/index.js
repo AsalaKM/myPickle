@@ -20,6 +20,8 @@ import Login from "../Layouts/Login"
 import Dashboard from "../Layouts/Dashboard"
 import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
+import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
+
 import Landing from "../Layouts/LandingPage/index"
 
 // import common components
@@ -80,7 +82,8 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/newlogin" exact component={FirstTimeLogin} />
           <Route path="/profiles" exact component={BrowseProfiles} />
-          <Route path="/postarticles" exact component={PostArticles} />
+          <Route path="/blog" exact component={BrowseBlogPosts} />
+          {/* <Route path="/postarticles" exact component={PostArticles} /> */}
 
           {/* Private routes to go here */}
           <PrivateRoute
@@ -129,6 +132,13 @@ class App extends Component {
             path="/dashboard"
             exact
             component={Dashboard}
+            profileId={profileId}
+            isAuthenticated={isAuthenticated}
+          />
+          <PrivateRoute
+            path="/postarticles"
+            exact
+            component={PostArticles}
             profileId={profileId}
             isAuthenticated={isAuthenticated}
           />

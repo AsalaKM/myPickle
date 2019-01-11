@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+
 const Schema = mongoose.Schema
 
 const articleSchema = new Schema({
@@ -19,7 +20,7 @@ const articleSchema = new Schema({
     ref: "profiles",
   },
   category: {
-    type: String,
+    type: Array,
     ref: "categories",
     required: true,
   },

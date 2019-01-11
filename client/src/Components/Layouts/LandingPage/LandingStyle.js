@@ -9,7 +9,6 @@ const Container = styled.div`
   margin: 0 auto;
   text-align: center;
   height: 100%;
-  margin-top: 80px;
 `
 
 const Logo = styled.div`

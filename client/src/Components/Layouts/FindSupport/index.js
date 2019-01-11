@@ -4,7 +4,14 @@ import BlogPost from "./BlogPost"
 
 import axios from "axios"
 
-import { ColumnContainer, ColumnOne, ColumnTwo, Heading } from "./FindSupport.style"
+import {
+  ColumnContainer,
+  ColumnOne,
+  ColumnTwo,
+  Heading,
+  AllButton,
+  Container,
+} from "./FindSupport.style"
 
 class BrowseProfiles extends Component {
   state = {
@@ -35,14 +42,16 @@ class BrowseProfiles extends Component {
     } else {
       return (
         <React.Fragment>
-          <ColumnContainer>
-            <ColumnOne>
-              <Heading>Support Providers</Heading>
-            </ColumnOne>
-            <ColumnTwo>
-              <Heading>See All</Heading>
-            </ColumnTwo>
-          </ColumnContainer>
+          <Container>
+            <ColumnContainer>
+              <ColumnOne>
+                <Heading>Support Providers</Heading>
+              </ColumnOne>
+              <ColumnTwo>
+                <AllButton to={"/profiles"}>See All</AllButton>
+              </ColumnTwo>
+            </ColumnContainer>
+          </Container>
           {profiles
             .filter((e, index) => index < 4)
             .map(profile => {
@@ -57,14 +66,16 @@ class BrowseProfiles extends Component {
                 />
               )
             })}
-          <ColumnContainer>
-            <ColumnOne>
-              <Heading>Blog Posts</Heading>
-            </ColumnOne>
-            <ColumnTwo>
-              <Heading>See All</Heading>
-            </ColumnTwo>
-          </ColumnContainer>
+          <Container>
+            <ColumnContainer>
+              <ColumnOne>
+                <Heading>Blog Posts</Heading>
+              </ColumnOne>
+              <ColumnTwo>
+                <AllButton to={"/blog"}>See All</AllButton>
+              </ColumnTwo>
+            </ColumnContainer>
+          </Container>
           {blogPosts
             .filter((e, index) => index < 4)
             .map(post => {

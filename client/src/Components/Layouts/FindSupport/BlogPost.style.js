@@ -5,7 +5,7 @@ const Box = styled.section.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "dt center bb b--black-05 pb2 mt2",
+  className: "dt center bb b--black-05 pb2 mt2 mp-bg-white shadow-5",
 })`
   width: 95%;
 `
@@ -31,10 +31,11 @@ const ImageContainer = styled.div.attrs({
 })``
 
 const ArticlePhoto = styled.img.attrs({
-  className: "ba b--black-10 db",
+  className: "br1 b--black-10 db",
   alt: "blog post image",
 })`
   object-fit: cover;
+  height: 100px;
 `
 
 const Title = styled.h2.attrs({
@@ -42,7 +43,7 @@ const Title = styled.h2.attrs({
 })``
 
 const List = styled.p.attrs({
-  className: "f6 fw4 mt0 mb0 black-60",
+  className: "f7 fw4 mt0 mb0 black-60",
 })``
 
 const Author = styled.p.attrs({

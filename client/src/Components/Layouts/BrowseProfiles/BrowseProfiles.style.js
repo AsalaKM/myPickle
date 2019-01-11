@@ -11,7 +11,7 @@ const Box = styled.main.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "dt center bb b--black-05 pb2 mt2",
+  className: "dt center bb b--black-05 pb2 mt2 mp-bg-white br2 shadow-5",
 })`
   width: 95%;
 `
@@ -20,7 +20,7 @@ const Avatar = styled.div.attrs({
 })``
 
 const ProfilePhoto = styled.img.attrs({
-  className: "ba b--black-10 db br-100 w3 w3-ns h3 h3-ns",
+  className: "b--black-10 db br-100 w3 w3-ns h3 h3-ns",
   alt: "avatar",
 })`
   object-fit: cover;
@@ -33,7 +33,7 @@ const DetailsOne = styled.div.attrs({
 const Name = styled.h2.attrs({ className: "f5 f5-ns fw6 lh-title mp-black-color mv0" })``
 
 const List = styled.p.attrs({
-  className: "f6 fw4 mt0 mb0 black-60",
+  className: "f7 fw4 mt0 mb0 black-60",
 })``
 
 const DetailsTwo = styled.div.attrs({

@@ -21,6 +21,8 @@ class BrowseProfiles extends Component {
     const { loaded, profiles } = this.state
     if (!loaded) {
       return <div>loading...</div>
+    } else if (profiles.length === 0) {
+      return <div>currently there are no profiles</div>
     } else {
       return (
         <React.Fragment style={`padding-bottom: 3rem`}>

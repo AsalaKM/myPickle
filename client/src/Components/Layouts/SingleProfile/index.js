@@ -1,8 +1,10 @@
 import React, { Component } from "react"
 import work from "./../../../assets/images/work.jpeg"
 
-import { BasicInfo, Avatar } from "./SingleProfile.style"
+// import { BasicInfo, Avatar } from "./SingleProfile.style"
 import axios from "axios"
+// import profileComponent from "./SingleProfile"
+import { BasicInfo, Avatar, Informations, Bio, Navigate, Button } from "./SingleProfile.style"
 
 class SinflePforile extends Component {
   state = {
@@ -23,21 +25,33 @@ class SinflePforile extends Component {
   }
 
   render() {
+    const { name, phone } = this.state.data.BasicInfo
+
     return (
-      <div>
+      <React.Fragment>
         <BasicInfo>
           <Avatar src={work} alt="" />
-          <h4>{this.state.answers.Data.BasicInfo[0].name}</h4>
-          <h4>Location</h4>
-          <button>Contact</button>
+          <Informations>
+            <h4> Haneen</h4>
+            <h4> Gaza</h4>
+            <h4>wellnes area</h4>
+            <button>Contact </button>
+          </Informations>
         </BasicInfo>
 
-        {/* <section>Bio</section>
-        <section>buttons</section>
+        <Bio>
+          <h2> Bio</h2>
+          Hello myPikle
+        </Bio>
+        <Navigate>
+          <Button>view blog</Button>
+          <Button>services</Button>
+          <Button>Booking</Button>
+        </Navigate>
         <section>services</section>
         <section>Booking</section>
-        <section>contact</section> */}
-      </div>
+        <section>Contact</section>
+      </React.Fragment>
     )
   }
 }

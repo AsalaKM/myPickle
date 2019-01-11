@@ -7,10 +7,10 @@ const ProfileAnswer = require("../../models/ProfileAnswer")
 const ProfileQuestion = require("../../models/ProfileQuestion")
 
 const updateProfileSection = async (profileID, requestObject, storedAnswers) => {
-  //get profile ID
+  // get profile ID
   const profile = await Profile.findById(profileID)
 
-  //check if request and stored obj are the same - if so end function
+  // check if request and stored obj are the same - if so end function
   // stringify is an easy way to compare two objects fast
   if (JSON.stringify(storedAnswers) === JSON.stringify(requestObject)) {
     return "nothing to update"
@@ -25,6 +25,7 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
         { answer: requestObject[key] }
       )
     } else {
+      console.log("reached")
       // check if question exists in question model
       const validQuestion = await ProfileQuestion.findById(key)
       if (validQuestion) {
@@ -36,9 +37,9 @@ const updateProfileSection = async (profileID, requestObject, storedAnswers) => 
         })
         await newEntry.save()
       }
-      return "updated successfully"
     }
   }
+  return "updated successfully"
 }
 
 module.exports = updateProfileSection

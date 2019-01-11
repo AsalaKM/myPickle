@@ -24,6 +24,24 @@ const TextField = styled(CommonStyles)`
   }
 `
 
+const AddressField = styled(TextField)`
+  label {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      align-self: flex-start;
+    }
+  }
+  input,
+  textarea {
+    border-radius: 1rem;
+    border: 1px solid var(--primary);
+    width: 100%;
+    padding: 8px;
+  }
+`
+
 const FileField = styled(CommonStyles)``
 
 const DropdownField = styled(CommonStyles)`
@@ -127,4 +145,13 @@ const ErrorMsg = styled.div.attrs({
   text-align: center;
 `
 
-export { TextField, RadioField, CheckboxField, ErrorMsg, DropdownField, MatrixField, FileField }
+export {
+  TextField,
+  RadioField,
+  CheckboxField,
+  ErrorMsg,
+  DropdownField,
+  MatrixField,
+  FileField,
+  AddressField,
+}

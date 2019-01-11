@@ -4,6 +4,8 @@ import BlogPost from "./BlogPost"
 
 import axios from "axios"
 
+import { ColumnContainer, ColumnOne, ColumnTwo, Heading } from "./FindSupport.style"
+
 class BrowseProfiles extends Component {
   state = {
     profiles: null,
@@ -33,7 +35,14 @@ class BrowseProfiles extends Component {
     } else {
       return (
         <React.Fragment>
-          <h2 className="mp-primary-color">Find Support</h2>
+          <ColumnContainer>
+            <ColumnOne>
+              <Heading>Support Providers</Heading>
+            </ColumnOne>
+            <ColumnTwo>
+              <Heading>See All</Heading>
+            </ColumnTwo>
+          </ColumnContainer>
           {profiles
             .filter((e, index) => index < 4)
             .map(profile => {
@@ -48,7 +57,14 @@ class BrowseProfiles extends Component {
                 />
               )
             })}
-          <h2 className="mp-primary-color">Latest Blog Posts</h2>
+          <ColumnContainer>
+            <ColumnOne>
+              <Heading>Blog Posts</Heading>
+            </ColumnOne>
+            <ColumnTwo>
+              <Heading>See All</Heading>
+            </ColumnTwo>
+          </ColumnContainer>
           {blogPosts
             .filter((e, index) => index < 4)
             .map(post => {

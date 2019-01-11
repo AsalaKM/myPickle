@@ -53,11 +53,11 @@ const Button = styled(Link).attrs({
 })`
   display: flex
   line-height: 35px;
-  margin: 40px 30px;
+  margin: 5px 5px;
   border-radius: 7px;
   border-style: solid
   text-decoration: none;
-  padding: 15px;
+  padding: 12px;
   font-weight: 100;
   :hover {
     background-color: var(--primary);

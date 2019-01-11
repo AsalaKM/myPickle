@@ -9,7 +9,6 @@ import {
   ImageContainer,
   ArticlePhoto,
   Title,
-  Author,
   List,
   Form,
 } from "./BlogPost.style"
@@ -18,7 +17,7 @@ import history from "../../../history"
 
 class Post extends Component {
   render() {
-    const { articleID, pictureURL, categories, title, profileID } = this.props
+    const { articleID, pictureURL, categories, title } = this.props
 
     // checks if article contains image
     const checkPicture = () =>

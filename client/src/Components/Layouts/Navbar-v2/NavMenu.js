@@ -1,15 +1,17 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { sizes } from "../../Generic-helpers//variables"
 import { ReactComponent as Close } from "../../../assets//images/baseline-close-24px.svg"
 
-const MenuItem = styled.div`
+const MenuItem = styled(Link)`
   width: 75%;
   color: var(--black);
   background-color: var(--whiet);
   padding: 5px;
   border-top: 2px solid #c4c4c4;
   font-size: ${sizes.xl};
+  text-decoration: none;
 `
 
 const MenuSlider = styled.div`
@@ -47,11 +49,11 @@ const NavMenu = props => {
   return (
     <MenuSlider className={toggle ? "show" : "hide"}>
       {toggle ? <Close className="nav-index-offset" onMouseDown={props.handleMouseDown} /> : null}
-      <MenuItem>Home</MenuItem>
-      <MenuItem>Find Article</MenuItem>
-      <MenuItem>Find Therapiest</MenuItem>
-      <MenuItem>Ismail</MenuItem>
-      <MenuItem>Logout</MenuItem>
+      <MenuItem to="/">Home</MenuItem>
+      <MenuItem to="/">Find Article</MenuItem>
+      <MenuItem to="/profiles">Find Therapiest</MenuItem>
+      <MenuItem to="/">Ismail</MenuItem>
+      <MenuItem to="/">Logout</MenuItem>
     </MenuSlider>
   )
 }

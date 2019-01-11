@@ -21,7 +21,7 @@ const LandingPage = () => (
     </Paragraph>
     <TextLink to="/">Find out more about My Pickle</TextLink>
     <ButtonWrapper>
-      <Button to="/">Find Support</Button>
+      <Button to="/find-support">Find Support</Button>
       <Button to="/register">Offer Support</Button>
     </ButtonWrapper>
   </Container>

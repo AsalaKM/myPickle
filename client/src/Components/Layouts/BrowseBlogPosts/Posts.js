@@ -19,7 +19,7 @@ import history from "../../../history"
 class Post extends Component {
   render() {
     const { articleID, pictureURL, categories, title, content, profileID, userName } = this.props
-    console.log(content)
+
     // checks if article contains image
     const checkPicture = () =>
       pictureURL ? (

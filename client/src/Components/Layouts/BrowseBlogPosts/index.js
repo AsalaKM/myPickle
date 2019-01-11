@@ -3,6 +3,7 @@ import Post from "./Posts"
 
 import axios from "axios"
 
+import { Box } from "../FindSupport/FindSupport.style"
 class BrowseBlogPosts extends Component {
   state = {
     blogPosts: null,
@@ -23,7 +24,7 @@ class BrowseBlogPosts extends Component {
       return <div>loading...</div>
     } else {
       return (
-        <React.Fragment>
+        <Box>
           {blogPosts.map(post => {
             const { articleID, pictureURL, categories, title, content, profileID, userName } = post
             return (
@@ -39,7 +40,7 @@ class BrowseBlogPosts extends Component {
               />
             )
           })}
-        </React.Fragment>
+        </Box>
       )
     }
   }

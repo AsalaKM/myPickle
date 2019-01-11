@@ -37,16 +37,22 @@ const List = styled.p.attrs({
 })``
 
 const DetailsTwo = styled.div.attrs({
-  className: "dtc v-mid",
+  className: "fr",
+})`
+  margin-top: 15px;
+`
+
+const Link = styled.a.attrs({
+  className: "pointer",
 })``
 
-const Form = styled.form.attrs({
-  className: "w-100 tr",
-})``
-
-const More = styled.button.attrs({
-  className: "f6 button-reset bg-white ba mp-b--primary-light dim pointer pv1 black-60",
-})``
+const Arrow = styled.img.attrs({
+  className: "",
+})`
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+`
 
 export {
   Button,
@@ -58,6 +64,6 @@ export {
   Name,
   List,
   Avatar,
-  More,
-  Form,
+  Arrow,
+  Link,
 }

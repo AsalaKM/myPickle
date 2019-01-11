@@ -10,7 +10,6 @@ import {
   ArticlePhoto,
   Title,
   List,
-  Form,
   Arrow,
 } from "./BlogPost.style"
 
@@ -45,9 +44,7 @@ class Post extends Component {
               })}
             </DetailsOne>
             <DetailsTwo>
-              <Form>
-                <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
-              </Form>
+              <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
             </DetailsTwo>
           </Container>
         </Link>

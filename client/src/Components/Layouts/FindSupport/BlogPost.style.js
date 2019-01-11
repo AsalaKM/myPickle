@@ -10,10 +10,6 @@ const Container = styled.article.attrs({
   width: 95%;
 `
 
-const Form = styled.form.attrs({
-  className: " mr1 dib",
-})``
-
 const Link = styled.a.attrs({
   className: "pointer",
 })``
@@ -23,8 +19,10 @@ const DetailsOne = styled.div.attrs({
 })``
 
 const DetailsTwo = styled.div.attrs({
-  className: "dtc v-mid",
-})``
+  className: "fr",
+})`
+  margin-bottom: 20px;
+`
 
 const ImageContainer = styled.div.attrs({
   className: "dtc w4 w4-ns ",
@@ -68,6 +66,5 @@ export {
   Title,
   List,
   Author,
-  Form,
   Arrow,
 }

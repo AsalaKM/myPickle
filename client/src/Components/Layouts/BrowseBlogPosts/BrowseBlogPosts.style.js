@@ -2,11 +2,11 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Box = styled.section.attrs({
-  className: "mw7 center avenir",
+  className: "mw7 center",
 })``
 
 const Container = styled.article.attrs({
-  className: "bt bb b--black-10 pv3 ph2 ph0-l",
+  className: "bt bb b--black-10 pv3 ph2 ph0-l shadow-5 br2",
 })``
 
 const Article = styled(Link).attrs({
@@ -22,7 +22,7 @@ const ImageContainer = styled.div.attrs({
 })``
 
 const ArticlePhoto = styled.img.attrs({
-  className: "db center",
+  className: "db center br1",
   alt: "blog post image",
 })`
   object-fit: cover;

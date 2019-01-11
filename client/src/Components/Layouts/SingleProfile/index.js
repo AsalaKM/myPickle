@@ -4,7 +4,18 @@ import work from "./../../../assets/images/work.jpeg"
 // import { BasicInfo, Avatar } from "./SingleProfile.style"
 import axios from "axios"
 // import profileComponent from "./SingleProfile"
-import { BasicInfo, Avatar, Informations, Bio, Navigate, Button } from "./SingleProfile.style"
+import {
+  BasicInfo,
+  Avatar,
+  Informations,
+  Bio,
+  Navigate,
+  Button,
+  Services,
+  help,
+  Delivery,
+  Booking,
+} from "./SingleProfile.style"
 
 class SinflePforile extends Component {
   state = {
@@ -17,15 +28,15 @@ class SinflePforile extends Component {
 
     axios
       .get(`/single-profile/${id}`)
-      .then(result => this.setState({ answers: result.data }))
-      // .then(res => {
-      //   console.log(res)
-      // })
+      // .then(result => this.setState({ answers: result.data }))
+      .then(res => {
+        console.log(res)
+      })
       .catch(err => console.log(err))
   }
 
   render() {
-    const { name, phone } = this.state.data.BasicInfo
+    // const { name, phone } = this.state.data.BasicInfo
 
     return (
       <React.Fragment>
@@ -48,8 +59,25 @@ class SinflePforile extends Component {
           <Button>services</Button>
           <Button>Booking</Button>
         </Navigate>
-        <section>services</section>
-        <section>Booking</section>
+        <Services>
+          <help>
+            <h4> I have 7 years in practic</h4>
+            <h4>At a high level, what do i help with? </h4>
+            <button>Managing feelings & behaviours </button>
+            <button>Coping with life challenges</button>
+            <button>Mental illness diagnosis & treatment</button>
+          </help>
+          <Delivery>
+            <h4> Method of delivery </h4>
+            <button>Face-to-face therapy</button>
+            <button>Home visits therapy</button>
+          </Delivery>
+        </Services>
+        <Booking>
+          <h3>Booking </h3>
+          <h4>Cost per session (per hour): £80-99</h4>
+          <h4>Hours of operation </h4>
+        </Booking>
         <section>Contact</section>
       </React.Fragment>
     )

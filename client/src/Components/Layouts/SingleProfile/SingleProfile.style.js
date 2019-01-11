@@ -37,3 +37,19 @@ export const Button = styled.button`
   height: 40px;
   background: green;
 `
+export const Services = styled.section`
+  background: yellow;
+  width: 90%;
+  height: 320px;
+  margin-left: 15px;
+`
+export const help = styled.div``
+
+export const Delivery = styled.div``
+
+export const Booking = styled.section`
+  background: gray;
+  width: 90%;
+  height: 200px;
+  margin-left: 15px;
+`

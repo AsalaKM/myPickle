@@ -25,7 +25,6 @@ export default class QuestionSection extends Component {
       addImage,
       handleDropdown,
       handleAddress,
-      checkRequiredAnswers,
     } = this.props
 
     return (

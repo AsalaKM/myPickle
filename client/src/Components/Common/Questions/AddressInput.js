@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import { TextField, ErrorMsg, AddressField } from "./Questions.style"
+import { ErrorMsg, AddressField } from "./Questions.style"
 
 export default class AddressInput extends Component {
   render() {

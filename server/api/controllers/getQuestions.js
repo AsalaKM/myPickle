@@ -1,15 +1,20 @@
 const express = require("express")
+
 const router = express.Router()
+const passport = require("passport")
 
 const getQuestions = require("../../database/queries/editProfile/getQuestions")
 
 // function that will feed in the section to then get the questions for that section
 
-router.get("/", (req, res) => {
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
   const section = req.originalUrl.split("/")[2]
 
   // NOTE: until we set up cookies I'm putting the profile ID into the URL so we can grab it and use it to get the right information for that user
-  const profileID = req.originalUrl.split("/")[3]
+  // const profileID = req.originalUrl.split("/")[3]
+  // const profileID = req.user.profileId
+
+  const profileID = req.user.profileId
 
   getQuestions(section, profileID)
     .then(questions => {

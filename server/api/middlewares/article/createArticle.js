@@ -28,8 +28,6 @@ const createArticle = async (req, res) => {
       }
       // query for store article in DB
       const newArticle = await storeArticle(article)
-      console.log("article", newArticle)
-
       return res.status(201).json(newArticle)
     } catch (error) {
       return res.status(400).json({ error })

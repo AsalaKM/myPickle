@@ -19,20 +19,22 @@ import history from "../../../history"
 class Post extends Component {
   render() {
     const { articleID, pictureURL, categories, title, content, profileID, userName } = this.props
-    console.log(profileID)
-
+    console.log(content)
+    // checks if article contains image
     const checkPicture = () =>
       pictureURL ? (
         <ArticlePhoto src={`/static/${pictureURL}`} />
       ) : (
         <ArticlePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
-
+    // shortens article content
     const createTeaser = () => {
       const teaserLength = 100
       if (content.length > teaserLength) {
         let newContent = content.substring(0, teaserLength)
         return newContent
+      } else {
+        return content
       }
     }
 

@@ -10,6 +10,9 @@ const dbConnection = require("../../database/db_connection")
 // build dummy data
 const buildDb = require("../../database/dummy_data_build")
 
+// login function needed
+const loginUser = require("../../database/queries/loginUser")
+
 describe("Tests for editSupportDetails controller", () => {
   afterAll(async () => {
     // Clear and rebuild the dummy data
@@ -28,10 +31,16 @@ describe("Tests for editSupportDetails controller", () => {
 
   // Test with everything ok
   test("Test we get the questions correctly", async () => {
-    // get user from database
-    const profile = await Profile.findOne()
+    // // get user from database
+    // const profile = await Profile.findOne()
 
-    const response = await request(app).get(`/edit-profile/support-details/${profile._id}`)
+    // get the token for the default user
+    const token = await loginUser("josephine@the-therapists.co.uk", "123456", {})
+
+    const response = await request(app)
+      .get(`/edit-profile/support-details`)
+      // set the token in the request header
+      .set({ Authorization: token.token })
 
     expect(response.statusCode).toBe(200)
     expect(response.body).toBeDefined()
@@ -39,7 +48,7 @@ describe("Tests for editSupportDetails controller", () => {
   })
 
   test("No questions load if user doesn't exist", async () => {
-    const response = await request(app).get(`/edit-profile/support-details/monkey`)
+    const response = await request(app).get(`/edit-profile/support-details`)
 
     const size = Object.keys(response.body).length
 

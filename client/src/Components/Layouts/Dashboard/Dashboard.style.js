@@ -19,6 +19,7 @@ export const Button = styled.button`
   background: #f8fbfa;
   box-shadow: 1px 1px green;
   font-size: 18px;
+  cursor: pointer;
 `
 export const Logout = styled.button`
   height: 50px;

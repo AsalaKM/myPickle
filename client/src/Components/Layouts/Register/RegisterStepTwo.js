@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 // import styled components
 import { Intro } from "../../Common/Headings"
@@ -24,6 +25,7 @@ export default class RegisterStepTwo extends React.Component {
       errors,
       unanswered,
       checkStage,
+      serverErrors,
     } = this.props
     return (
       <React.Fragment>
@@ -74,6 +76,15 @@ export default class RegisterStepTwo extends React.Component {
             {errors && errors.includes("email") ? (
               <ErrorMsg>
                 <p>Email is invalid</p>
+              </ErrorMsg>
+            ) : (
+              ""
+            )}
+            {serverErrors && serverErrors.email ? (
+              <ErrorMsg>
+                <p>
+                  Email already exists. <Link to={`/login`}>Click here to log in</Link>
+                </p>
               </ErrorMsg>
             ) : (
               ""

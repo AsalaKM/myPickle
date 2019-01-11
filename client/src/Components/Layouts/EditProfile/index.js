@@ -33,8 +33,8 @@ class EditProfile extends Component {
         </TwoButton>
         <br />
         <TwoButton>
-          <LeftButton to={`/edit-profile/target-audience`}>
-            <p>Target Audience</p>
+          <LeftButton to={`/edit-profile/target-clients`}>
+            <p>Target Clients</p>
           </LeftButton>
           <RightButton to={`/edit-profile/social-media`}>Social</RightButton>
         </TwoButton>

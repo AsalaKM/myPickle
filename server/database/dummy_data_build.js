@@ -11,10 +11,13 @@ const buildProfileQuestions = require("./buildProfileQuestions")
 // load dbConnection
 const dbConnection = require("./db_connection")
 
+// load required functions
+const registerUser = require("./queries/registerUser")
+
 dbConnection()
 
 const buildDb = async () => {
-  //clear collections
+  // clear collections
   await User.deleteMany({})
   await SupportType.deleteMany({})
   await Profile.deleteMany({})
@@ -27,26 +30,46 @@ const buildDb = async () => {
   await buildProfileQuestions()
 
   // insert users
+
   // therapist
-  const therapist = new User({
-    name: "Josephine Doeski",
-    phone: "004407566683",
-    email: "josephine@the-therapists.co.uk",
-    address: "66 Moaning Road E50DW London",
-    password: "123456",
-  })
-  await therapist.save()
+  const therapist = await registerUser(
+    "Josephine Doeski",
+    "josephine@the-therapists.co.uk",
+    "004407566683",
+    "123456"
+  )
+
+  console.log("new user", therapist)
+
+  const generalUser = await registerUser(
+    "Henry Poundinger",
+    "henry@financial-advice.co.uk",
+    "004407565473",
+    "123456"
+  )
+
+  console.log("new user", generalUser)
+
+  // // therapist
+  // const therapist = new User({
+  //   name: "Josephine Doeski",
+  //   phone: "004407566683",
+  //   email: "josephine@the-therapists.co.uk",
+  //   address: "66 Moaning Road E50DW London",
+  //   password: "123456",
+  // })
+  // await therapist.save()
   // console.log("user (therapist) added")
 
   // general user
-  const generalUser = new User({
-    name: "Henry Poundinger",
-    phone: "004407565473",
-    email: "henry@financial-advice.co.uk",
-    address: "66 Chelsea Lane W2893W London",
-    password: "123456",
-  })
-  await generalUser.save()
+  // const generalUser = new User({
+  //   name: "Henry Poundinger",
+  //   phone: "004407565473",
+  //   email: "henry@financial-advice.co.uk",
+  //   address: "66 Chelsea Lane W2893W London",
+  //   password: "123456",
+  // })
+  // await generalUser.save()
   // console.log("user (general) added")
 
   // get support type of therapists
@@ -128,7 +151,7 @@ const buildDb = async () => {
       question: generalQuestions[7]._id,
       answer: "https://www.therapists-london.co.uk",
     },
-    //profile picture to be dealt with later
+    // profile picture to be dealt with later
     {
       profile: therapistProfile._id,
       question: generalQuestions[8]._id,
@@ -464,7 +487,7 @@ const buildDb = async () => {
       question: generalQuestions[7]._id,
       answer: "https://www.fa-london.co.uk",
     },
-    //profile picture to be dealt with later
+    // profile picture to be dealt with later
     {
       profile: generalProfile._id,
       question: generalQuestions[8]._id,

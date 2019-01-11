@@ -15,11 +15,12 @@ router.post("/", async (req, res) => {
   // get support type id (either therapist or general)
   const supportTypeID = await getSupportType(req.body).catch(err => res.status(400).json(err))
   // register a new user
-  const newUserID = await registerUser(name, email, phone, password).catch(err =>
+  const newUser = await registerUser(name, email, phone, password).catch(err => {
     res.status(400).json(err)
-  )
+  })
+  console.log(newUser)
   // register new profile
-  const newProfileID = await registerProfile(supportTypeID, newUserID, false).catch(err =>
+  const newProfileID = await registerProfile(supportTypeID, newUser, false).catch(err =>
     res.status(400).json(err)
   )
   // create profile answers object

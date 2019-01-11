@@ -5,31 +5,32 @@ exports[`Dashboard matches snapshot 1`] = `
   className="sc-bdVaJa ghaVeV"
 >
   <h2>
-    Welcome back, Haneen
+    Welcome back
+    
   </h2>
   <button
-    className="sc-bwzfXH hrgWOU"
+    className="sc-bwzfXH hHxWVr"
     onClick={[Function]}
   >
      Edit Profile 
   </button>
   <br />
   <button
-    className="sc-bwzfXH hrgWOU"
+    className="sc-bwzfXH hHxWVr"
     onClick={[Function]}
   >
      Create Blog Post 
   </button>
   <br />
   <button
-    className="sc-bwzfXH hrgWOU"
+    className="sc-bwzfXH hHxWVr"
     onClick={[Function]}
   >
      Browse Profiles
   </button>
   <br />
   <button
-    className="sc-bwzfXH hrgWOU"
+    className="sc-bwzfXH hHxWVr"
     onClick={[Function]}
   >
     Browse Blog Posts

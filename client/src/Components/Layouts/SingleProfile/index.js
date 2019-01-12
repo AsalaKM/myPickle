@@ -19,10 +19,18 @@ import {
   SupportAnswers,
 } from "./SingleProfile.style"
 
+import ProfileSections from "./ProfileSections"
+
+import AnswerSection from "../../Common/Answers/AnswerSection"
+
 class SinflePforile extends Component {
   state = {
-    BasicInfo: {},
+    userInfo: {},
     loading: false,
+    basicInfoAnswers: [],
+    bookingDetails: [],
+    socialMedia: [],
+    supportDetails: [],
   }
 
   componentDidMount() {
@@ -43,21 +51,18 @@ class SinflePforile extends Component {
             }
           }
         })
+        const { basicInfoAnswers, bookingDetails, socialMedia, supportDetails } = result.data
         this.setState({
           questionsAndAnswers,
-          BasicInfo: result.data.BsicInfo[0],
+          userInfo: result.data.BsicInfo[0],
           loading: true,
+          basicInfoAnswers,
+          bookingDetails,
+          socialMedia,
+          supportDetails,
         })
       })
       .catch(err => console.log(err))
-
-    axios.get(`/single-profile/${id}`).then(profile => {
-      const basicInfo = Object.keys(profile.data).map(answer => {
-        console.log("amswer", answer.question && answer.question)
-        return answer.question
-      })
-      console.log("basicInfo", basicInfo)
-    })
   }
 
   getAnswers = qs => {
@@ -81,14 +86,14 @@ class SinflePforile extends Component {
     if (!loading) {
       return <div>loading</div>
     } else {
-      console.log(this.state)
+      const { basicInfoAnswers, supportDetails, bookingDetails, socialMedia } = this.state
 
       return (
         <Container>
           <BasicInfo>
             <Avatar src={this.getAnswers("Organisation photo or logo")} />
             <Informations>
-              <h4> {this.state.BasicInfo.name} </h4>
+              <h4> {this.getAnswers("Known organisation name")} </h4>
               {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
               <ul>
                 {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
@@ -106,7 +111,13 @@ class SinflePforile extends Component {
           </BasicInfo>
 
           <Bio>
-            <h3> Bio</h3>
+            <div>
+              <h4>Core offering: </h4>
+              {this.getAnswers("What best describes your core service offering?").map(item => (
+                <div>{item}</div>
+              ))}
+            </div>
+            <h3>Bio</h3>
             {this.getAnswers("Please provide a brief description of the organisation")}
           </Bio>
           <Navigate>
@@ -114,53 +125,18 @@ class SinflePforile extends Component {
             <Button>services</Button>
             <Button>Booking</Button>
           </Navigate>
-          <Services>
-            <help>
-              {this.state.questionsAndAnswers.map(elem => {
-                if (elem) {
-                  return (
-                    <div>
-                      {/* <h4>{elem.question}</h4> */}
-                      {Array.isArray(elem.answers) ? (
-                        elem.answers.map(ans => <div>{/* <h4>{ans}</h4> */}</div>)
-                      ) : (
-                        <h4>{elem.answer}</h4>
-                      )}
-                    </div>
-                  )
-                }
-              })}
-              <h4> I have {this.getAnswers("Years in practice")} years in practice</h4>
-              <h4>At a high level, what do i help with? </h4>
-              <div>
-                <SupportAnswers>
-                  {Array.isArray(
-                    this.getAnswers("What areas does your support relate to (max 5)?")
-                  ) !== false ? (
-                    this.getAnswers("What areas does your support relate to (max 5)?").map(item => (
-                      <OptionsOfSupport>{item}</OptionsOfSupport>
-                    ))
-                  ) : (
-                    <h4>{this.getAnswers("What areas does your support relate to (max 5)?")}</h4>
-                  )}
-                </SupportAnswers>
-              </div>
-            </help>
-            <Delivery>
-              <h4>Method of delivery </h4>
-              <OptionsOfSupport> {this.getAnswers("Delivery method(s)")} </OptionsOfSupport>
-            </Delivery>
-          </Services>
-          <Booking>
-            <h3>Booking </h3>
-            <h4>
-              Cost per session (per hour):{this.getAnswers("Cost per session (per hour approx)")}
-            </h4>
-            <h4>{this.getAnswers("Average wait time")} </h4>
-          </Booking>
+          <div>NEW STUFF</div>
+
+          <ProfileSections
+            supportDetails={supportDetails}
+            basicInfoAnswers={basicInfoAnswers}
+            bookingDetails={bookingDetails}
+            socialMedia={socialMedia}
+          />
+
           <Contact>
-            <h4>phone: {this.state.BasicInfo.phone}</h4>
-            <h4>Email: {this.state.BasicInfo.email}</h4>
+            <h4>phone: {this.state.userInfo.phone}</h4>
+            <h4>Email: {this.state.userInfo.email}</h4>
           </Contact>
         </Container>
       )

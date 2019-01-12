@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Container = styled.div`
   background: #e8ede9;
-  font-family: cursive;
 `
 
 export const BasicInfo = styled.section`

@@ -12,6 +12,7 @@ const categories = require("./categories")
 const getProfiles = require("./getProfiles")
 const getBlogPost = require("./getBlogPost")
 const getPosts = require("./getPosts")
+const approveProfile = require("./approveProfile")
 
 // edit profle controllers
 // const editSupportDetails = require("./editSupportDetails")
@@ -37,6 +38,7 @@ router.use("/articles", article)
 router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
+router.use("/approve", approveProfile)
 
 router.use("/get-blog-post/:id", getBlogPost)
 

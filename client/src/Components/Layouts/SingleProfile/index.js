@@ -97,8 +97,6 @@ class SinflePforile extends Component {
           <Services>
             <help>
               {this.state.questionsAndAnswers.map(elem => {
-                // console.log(elem,'ssss')
-
                 if (elem) {
                   return (
                     <div>
@@ -114,14 +112,23 @@ class SinflePforile extends Component {
               })}
               <h4> I have {this.getAnswers("Years in practice")} years in practice</h4>
               <h4>At a high level, what do i help with? </h4>
-              <button>Managing feelings & behaviours </button>
-              <button>Coping with life challenges</button>
-              <button>Mental illness diagnosis & treatment</button>
+              <div>
+                <ul>
+                  {Array.isArray(
+                    this.getAnswers("What areas does your support relate to (max 5)?")
+                  ) !== false ? (
+                    this.getAnswers("What areas does your support relate to (max 5)?").map(item => (
+                      <li>{item}</li>
+                    ))
+                  ) : (
+                    <li>{this.getAnswers("What areas does your support relate to (max 5)?")}</li>
+                  )}
+                </ul>
+              </div>
             </help>
             <Delivery>
-              <h4> Method of delivery </h4>
-              <button>Face-to-face therapy</button>
-              <button>Home visits therapy</button>
+              <h4>Method of delivery </h4>
+              <h4> {this.getAnswers("Delivery method(s)")} </h4>
             </Delivery>
           </Services>
           <Booking>

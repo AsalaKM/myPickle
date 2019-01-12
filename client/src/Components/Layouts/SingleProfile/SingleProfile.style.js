@@ -40,7 +40,7 @@ export const Button = styled.button`
 export const Services = styled.section`
   background: yellow;
   width: 90%;
-  height: 320px;
+  height: 375px;
   margin-left: 15px;
 `
 export const help = styled.div``

@@ -34,7 +34,29 @@ const getAnswersProfile = async profileID => {
     },
   ])
 
-  return { ...BasicInfo[0], ...allAnswers }
+  const basicInfoAnswers = allAnswers.filter(
+    answer =>
+      answer.question[0].section === "Admin Info" || answer.question[0].section === "Basic Info"
+  )
+
+  const supportDetails = allAnswers.filter(
+    answer => answer.question[0].section === "Support Details"
+  )
+
+  const socialMedia = allAnswers.filter(answer => answer.question[0].section === "Social Media")
+
+  const bookingDetails = allAnswers.filter(
+    answer => answer.question[0].section === "Availability & Booking"
+  )
+
+  return {
+    ...BasicInfo[0],
+    ...allAnswers,
+    basicInfoAnswers,
+    supportDetails,
+    socialMedia,
+    bookingDetails,
+  }
 }
 
 module.exports = getAnswersProfile

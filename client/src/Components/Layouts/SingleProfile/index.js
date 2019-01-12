@@ -32,6 +32,7 @@ class SinflePforile extends Component {
     axios
       .get(`/single-profile/${id}`)
       .then(result => {
+        console.log("RESULT", result)
         const questionsAndAnswers = Object.keys(result.data).map(element => {
           if (result.data[element].question) {
             console.log(result.data[element].question[0].questionText)
@@ -49,6 +50,14 @@ class SinflePforile extends Component {
         })
       })
       .catch(err => console.log(err))
+
+    axios.get(`/single-profile/${id}`).then(profile => {
+      const basicInfo = Object.keys(profile.data).map(answer => {
+        console.log("amswer", answer.question && answer.question)
+        return answer.question
+      })
+      console.log("basicInfo", basicInfo)
+    })
   }
 
   getAnswers = qs => {

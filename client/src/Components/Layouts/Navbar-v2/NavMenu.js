@@ -12,6 +12,12 @@ const MenuItem = styled(Link)`
   border-top: 2px solid #c4c4c4;
   font-size: ${sizes.xl};
   text-decoration: none;
+  &:active {
+    color: var(--primary);
+  }
+  &.active {
+    color: var(--primary);
+  }
 `
 
 const MenuSlider = styled.div`
@@ -49,11 +55,21 @@ const NavMenu = props => {
   return (
     <MenuSlider className={toggle ? "show" : "hide"}>
       {toggle ? <Close className="nav-index-offset" onMouseDown={props.handleMouseDown} /> : null}
-      <MenuItem to="/">Home</MenuItem>
-      <MenuItem to="/">Find Article</MenuItem>
-      <MenuItem to="/profiles">Find Therapiest</MenuItem>
-      <MenuItem to="/">Ismail</MenuItem>
-      <MenuItem to="/">Logout</MenuItem>
+      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
+        Home
+      </MenuItem>
+      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
+        Find Article
+      </MenuItem>
+      <MenuItem to="/profiles" onMouseDown={props.handleMouseDown}>
+        Find Therapiest
+      </MenuItem>
+      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
+        Ismail
+      </MenuItem>
+      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
+        Logout
+      </MenuItem>
     </MenuSlider>
   )
 }

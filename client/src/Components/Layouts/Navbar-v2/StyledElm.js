@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { Wrapper } from "../../Generic-helpers/layoutpack"
 import img from "../../../assets/pickle_logo.svg"
+import { Link } from "react-router-dom"
+import { sizes } from "../../Generic-helpers/variables"
 
 const Line = styled.span`
   width: 35px;
@@ -68,4 +70,62 @@ const ColoredWrapper = styled(Wrapper)`
   }
 `
 
-export { BurgerButton, Logo, LogoBox, ColoredWrapper }
+const MenuLink = styled(Link)`
+  width: 100%;
+  color: var(--black);
+  background-color: var(--whiet);
+  padding: 5px;
+  font-size: ${sizes.xl};
+  text-decoration: none;
+  &:active {
+    color: var(--primary);
+  }
+  &.active {
+    color: var(--primary);
+  }
+`
+const MenuItem = styled.li`
+  width: 90%;
+  border-top: 2px solid #c4c4c4;
+  list-style: none;
+  padding: 10px 0;
+  &.sub-menu-dropdown {
+    border-top: none !important;
+  }
+`
+const MenuList = styled.ul`
+  width: 100%;
+`
+const MenuSlider = styled.div`
+  display: inline-block;
+  &.show {
+    transform: translate3d(0vw, 0, 0);
+    overflow: hidden;
+  }
+  &.hide {
+    transform: translate3d(-100vw, 0, 0);
+  }
+  transition: transform 0.5s ease;
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 100%, 1);
+  position: fixed;
+  top: 50px;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .nav-index-offset {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: ${sizes.xxxxl};
+    height: ${sizes.xxxxl};
+    fill: var(--primary);
+    cursor: pointer;
+  }
+`
+
+export { BurgerButton, Logo, LogoBox, ColoredWrapper, MenuLink, MenuSlider, MenuItem, MenuList }

@@ -12,7 +12,6 @@ class PostArticle extends Component {
       categoriesSelected: [],
       text: "",
       image: null,
-      profileId: "5c373bcb9a1c495623d61b89",
     },
     categoryOptions: [],
     errors: [],
@@ -77,7 +76,7 @@ class PostArticle extends Component {
       const success = await axios.post("/articles/", formData)
       swal(
         "Great!",
-        `Article ${success.data.createdArticele.title} Created Successfully!`,
+        `Article ${success.data.createdArticele.title} created Successfully!`,
         "success"
       ).then(() => history.push("/"))
     } catch (error) {

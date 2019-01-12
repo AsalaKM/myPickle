@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 
 import {
+  Container,
   BasicInfo,
   Avatar,
   Informations,
@@ -13,6 +14,9 @@ import {
   Delivery,
   Booking,
   Contact,
+  ContactButton,
+  OptionsOfSupport,
+  SupportAnswers,
 } from "./SingleProfile.style"
 
 class SinflePforile extends Component {
@@ -62,7 +66,7 @@ class SinflePforile extends Component {
       const ans = question.answers
       return ans
     } else {
-      return <div>"data not availabe"</div>
+      return <div>""</div>
     }
   }
 
@@ -75,19 +79,29 @@ class SinflePforile extends Component {
       console.log(this.state)
 
       return (
-        <React.Fragment>
+        <Container>
           <BasicInfo>
             <Avatar src={this.getAnswers("Organisation photo or logo")} />
             <Informations>
               <h4> {this.state.BasicInfo.name} </h4>
-              <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4>
+              {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
+              <ul>
+                {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
+                false ? (
+                  this.getAnswers("Please select your area(s) of wellness").map(item => (
+                    <li>{item}</li>
+                  ))
+                ) : (
+                  <li>{this.getAnswers("Please select your area(s) of wellness")}</li>
+                )}
+              </ul>
               <h4> {this.getAnswers("Registered address")}</h4>
-              <button>Contact </button>
+              <ContactButton>Contact </ContactButton>
             </Informations>
           </BasicInfo>
 
           <Bio>
-            <h2> Bio</h2>
+            <h3> Bio</h3>
             {this.getAnswers("Please provide a brief description of the organisation")}
           </Bio>
           <Navigate>
@@ -114,17 +128,17 @@ class SinflePforile extends Component {
               <h4> I have {this.getAnswers("Years in practice")} years in practice</h4>
               <h4>At a high level, what do i help with? </h4>
               <div>
-                <ul>
+                <SupportAnswers>
                   {Array.isArray(
                     this.getAnswers("What areas does your support relate to (max 5)?")
                   ) !== false ? (
                     this.getAnswers("What areas does your support relate to (max 5)?").map(item => (
-                      <li>{item}</li>
+                      <OptionsOfSupport>{item}</OptionsOfSupport>
                     ))
                   ) : (
-                    <li>{this.getAnswers("What areas does your support relate to (max 5)?")}</li>
+                    <h4>{this.getAnswers("What areas does your support relate to (max 5)?")}</h4>
                   )}
-                </ul>
+                </SupportAnswers>
               </div>
             </help>
             <Delivery>
@@ -140,10 +154,10 @@ class SinflePforile extends Component {
             <h4>{this.getAnswers("Average wait time")} </h4>
           </Booking>
           <Contact>
-            <h4>{this.state.BasicInfo.phone}</h4>
-            <h4>{this.state.BasicInfo.email}</h4>
+            <h4>phone: {this.state.BasicInfo.phone}</h4>
+            <h4>Email: {this.state.BasicInfo.email}</h4>
           </Contact>
-        </React.Fragment>
+        </Container>
       )
     }
   }

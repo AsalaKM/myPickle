@@ -17,12 +17,12 @@ const NavMenu = props => {
         </MenuItem>
         <MenuItem>
           <MenuLink to="/blog" onClick={props.handleMouseDown}>
-            Find Article
+            Blog Posts
           </MenuLink>
         </MenuItem>
         <MenuItem>
           <MenuLink to="/profiles" onClick={props.handleMouseDown}>
-            Find Therapiest
+            Browse Profiles
           </MenuLink>
         </MenuItem>
         {isAuthenticated ? (

@@ -60,7 +60,7 @@ const LogoBox = styled.div`
   justify-content: center;
 `
 const ColoredWrapper = styled(Wrapper)`
-  background-color: ${props => props.background || "var(--white)"};
+  background-color: var(--white);
   box-shadow: ${props => props.shadow || ""};
   &.active {
     position: fixed;
@@ -73,7 +73,7 @@ const ColoredWrapper = styled(Wrapper)`
 const MenuLink = styled(Link)`
   width: 100%;
   color: var(--black);
-  background-color: var(--whiet);
+  background-color: var(--white);
   padding: 5px;
   font-size: ${sizes.xl};
   text-decoration: none;
@@ -108,7 +108,7 @@ const MenuSlider = styled.div`
   transition: transform 0.5s ease;
   width: 100vw;
   height: 100vh;
-  background-color: hsla(0, 0%, 100%, 1);
+  background-color: var(--white);
   position: fixed;
   top: 50px;
   left: 0;

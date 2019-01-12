@@ -38,7 +38,7 @@ router.use("/articles", article)
 router.use("/categories", categories)
 
 router.use("/profiles", getProfiles)
-router.use("/approve", approveProfile)
+router.use("/approve/:id", approveProfile)
 
 router.use("/get-blog-post/:id", getBlogPost)
 

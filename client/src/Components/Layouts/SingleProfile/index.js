@@ -32,19 +32,15 @@ class SinflePforile extends Component {
     axios
       .get(`/single-profile/${id}`)
       .then(result => {
-        console.log(result, "lfsl")
-
         const questionsAndAnswers = Object.keys(result.data).map(element => {
           if (result.data[element].question) {
             console.log(result.data[element].question[0].questionText)
             console.log(result.data[element].answers || [])
-
             return {
               question: result.data[element].question[0].questionText,
               answers: result.data[element].answer || [],
             }
           }
-          // return {}
         })
         this.setState({
           questionsAndAnswers,
@@ -66,7 +62,7 @@ class SinflePforile extends Component {
       const ans = question.answers
       return ans
     } else {
-      return <div>""</div>
+      return "no result"
     }
   }
 
@@ -143,7 +139,7 @@ class SinflePforile extends Component {
             </help>
             <Delivery>
               <h4>Method of delivery </h4>
-              <h4> {this.getAnswers("Delivery method(s)")} </h4>
+              <OptionsOfSupport> {this.getAnswers("Delivery method(s)")} </OptionsOfSupport>
             </Delivery>
           </Services>
           <Booking>

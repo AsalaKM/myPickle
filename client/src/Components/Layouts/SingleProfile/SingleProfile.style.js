@@ -55,6 +55,7 @@ export const Button = styled.button`
   background: #59bf15;
   border: none;
   color: white;
+  border-radius: 5px;
 `
 export const Services = styled.section`
   background: white;
@@ -68,6 +69,9 @@ export const OptionsOfSupport = styled.button`
   background: #59bf15;
   border: none;
   color: white;
+  height: 50px;
+  border-radius: 5px;
+  width: 130px;
 `
 export const SupportAnswers = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ const Title = styled.h1`
   font-weight: 600;
   color: #4d4d4d;
   font-size: 2.2em;
-  align-text: center;
+  text-align: center;
 `
 const Form = styled.form`
   width: 100%;
@@ -77,4 +77,18 @@ const Text = styled.p`
   font-family: "Raleway", sans-serif;
   color: ${props => props.color || "#4d4d4d"};
 `
-export { Form, Input, Label, Title, TextArea, Text }
+const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  margin: 15px auto 15px auto;
+  background: var(--primary);
+  color: var(--black);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+`
+
+export { Form, Input, Label, Title, TextArea, Text, Button }

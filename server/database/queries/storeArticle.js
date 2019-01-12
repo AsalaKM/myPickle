@@ -20,7 +20,7 @@ const storeArticle = async articleObj => {
       categoriesSelected: result.category,
       content: result.content,
       _id: result._id,
-      request: { type: "GET", url: `http://localhost:3001/article/${_id}` },
+      url: `/blog/${result._id}`,
     }
     const response = { msg: "create article successfully", createdArticele }
 

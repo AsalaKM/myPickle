@@ -33,13 +33,7 @@ const NavMenu = props => {
             </MenuLink>
             <DropDownList handleMouseDown={props.handleMouseDown} profileId={user} />
           </MenuItem>
-        ) : (
-          <MenuItem>
-            <MenuLink to="/" onClick={props.handleMouseDown}>
-              {userName}
-            </MenuLink>
-          </MenuItem>
-        )}
+        ) : null}
         {isAuthenticated ? null : (
           <div>
             <MenuItem>

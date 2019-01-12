@@ -76,7 +76,7 @@ class SinflePforile extends Component {
       return (
         <React.Fragment>
           <BasicInfo>
-            <Avatar src={work} alt="" />
+            <Avatar src={this.getAnswers("Organisation photo or logo")} />
             <Informations>
               <h4> {this.state.BasicInfo.name} </h4>
               <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4>
@@ -102,13 +102,9 @@ class SinflePforile extends Component {
                 if (elem) {
                   return (
                     <div>
-                      <h4>{elem.question}</h4>
+                      {/* <h4>{elem.question}</h4> */}
                       {Array.isArray(elem.answers) ? (
-                        elem.answers.map(ans => (
-                          <div>
-                            <h4>{ans}</h4>
-                          </div>
-                        ))
+                        elem.answers.map(ans => <div>{/* <h4>{ans}</h4> */}</div>)
                       ) : (
                         <h4>{elem.answer}</h4>
                       )}
@@ -116,6 +112,7 @@ class SinflePforile extends Component {
                   )
                 }
               })}
+              <h4> I have {this.getAnswers("Years in practice")} years in practice</h4>
               <h4>At a high level, what do i help with? </h4>
               <button>Managing feelings & behaviours </button>
               <button>Coping with life challenges</button>
@@ -129,8 +126,10 @@ class SinflePforile extends Component {
           </Services>
           <Booking>
             <h3>Booking </h3>
-            <h4>Cost per session (per hour): £80-99</h4>
-            <h4>Hours of operation </h4>
+            <h4>
+              Cost per session (per hour):{this.getAnswers("Cost per session (per hour approx)")}
+            </h4>
+            <h4>{this.getAnswers("Average wait time")} </h4>
           </Booking>
           <Contact>
             <h4>{this.state.BasicInfo.phone}</h4>

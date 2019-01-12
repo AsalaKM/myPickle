@@ -20,6 +20,8 @@ class PostArticle extends Component {
   }
   async componentDidMount() {
     try {
+      const { profileId } = this.props
+      const { article } = this.state
       const success = await axios.get("/categories")
       const type = Object.prototype.toString
         .call(success.data)
@@ -33,6 +35,7 @@ class PostArticle extends Component {
           this.setState({ categoryOptions })
         }
       }
+      this.setState({ article: { ...article, profileId } })
     } catch (error) {
       console.log(error)
     }
@@ -74,11 +77,12 @@ class PostArticle extends Component {
     }
     try {
       const success = await axios.post("/articles/", formData)
+      const { url } = success.data.createdArticele
       swal(
         "Great!",
         `Article ${success.data.createdArticele.title} created Successfully!`,
         "success"
-      ).then(() => history.push("/"))
+      ).then(() => history.push(url))
     } catch (error) {
       swal({
         icon: "error",

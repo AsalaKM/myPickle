@@ -3,9 +3,8 @@ import Select from "react-select"
 import makeAnimated from "react-select/lib/animated"
 
 import { FormContainer, Wrapper } from "../../Generic-helpers/layoutpack"
-import { Button } from "../../Generic-helpers/BlockBox"
 import PrograssBar from "./PrograssBar"
-import { Form, Input, Label, Title, TextArea } from "./StyledElm"
+import { Form, Input, Label, Title, TextArea, Button } from "./StyledElm"
 
 const ArticleForm = props => {
   const { title, text, categoriesSelected } = props.data.article

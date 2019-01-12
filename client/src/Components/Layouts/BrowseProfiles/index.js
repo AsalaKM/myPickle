@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
-import { Button } from "./BrowseProfiles.style"
 
 import axios from "axios"
 
@@ -24,10 +23,7 @@ class BrowseProfiles extends Component {
       return <div>loading...</div>
     } else {
       return (
-        <React.Fragment>
-          <div>
-            <Button>FILTER</Button>
-          </div>
+        <React.Fragment style={`padding-bottom: 3rem`}>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL, profileID } = profile
             return (

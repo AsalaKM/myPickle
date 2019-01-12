@@ -45,6 +45,7 @@ exports[`Login matches snapshot 1`] = `
   <br />
   <button
     className="sc-EHOje iUMJbr"
+    onClick={[Function]}
   >
     Login
   </button>

@@ -7,10 +7,10 @@ import {
   DetailsOne,
   DetailsTwo,
   Name,
-  WellnessList,
+  List,
   Avatar,
-  More,
-  Form,
+  Link,
+  Arrow,
 } from "./BrowseProfiles.style"
 
 import history from "../../../history"
@@ -18,7 +18,6 @@ import history from "../../../history"
 class Profile extends Component {
   render() {
     const { organisation, wellnessType, avatar, profileID } = this.props
-    console.log(avatar)
 
     const checkAvatar = () =>
       avatar ? (
@@ -34,20 +33,20 @@ class Profile extends Component {
 
     return (
       <Box>
-        <Container>
-          <Avatar>{checkAvatar()}</Avatar>
-          <DetailsOne>
-            <Name>{organisation} </Name>
-            {wellnessType.map(item => {
-              return <WellnessList key={Math.random()}>{item}</WellnessList>
-            })}
-          </DetailsOne>
-          <DetailsTwo>
-            <Form>
-              <More onClick={viewProfile}>View Profile</More>
-            </Form>
-          </DetailsTwo>
-        </Container>
+        <Link onClick={viewProfile}>
+          <Container>
+            <Avatar>{checkAvatar()}</Avatar>
+            <DetailsOne>
+              <Name>{organisation} </Name>
+              {wellnessType.map(item => {
+                return <List key={Math.random()}>{item}</List>
+              })}
+            </DetailsOne>
+            <DetailsTwo>
+              <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+            </DetailsTwo>
+          </Container>
+        </Link>
       </Box>
     )
   }

@@ -4,12 +4,11 @@ import styled from "styled-components"
 import { sizes } from "../../Generic-helpers//variables"
 import { ReactComponent as Close } from "../../../assets//images/baseline-close-24px.svg"
 
-const MenuItem = styled(Link)`
-  width: 75%;
+const MenuLink = styled(Link)`
+  width: 100%;
   color: var(--black);
   background-color: var(--whiet);
   padding: 5px;
-  border-top: 2px solid #c4c4c4;
   font-size: ${sizes.xl};
   text-decoration: none;
   &:active {
@@ -19,7 +18,18 @@ const MenuItem = styled(Link)`
     color: var(--primary);
   }
 `
-
+const MenuItem = styled.li`
+  width: 90%;
+  border-top: 2px solid #c4c4c4;
+  list-style: none;
+  padding: 5px;
+  &.sub-menu-dropdown {
+    border-top: none !important;
+  }
+`
+const MenuList = styled.ul`
+  width: 100%;
+`
 const MenuSlider = styled.div`
   display: inline-block;
   &.show {
@@ -43,33 +53,73 @@ const MenuSlider = styled.div`
   justify-content: center;
   .nav-index-offset {
     position: absolute;
-    right: 0;
+    right: 40px;
     top: 0;
-    width: ${sizes.xxxl};
-    height: ${sizes.xxxl};
+    width: ${sizes.xxxxl};
+    height: ${sizes.xxxxl};
     fill: var(--primary);
+    cursor: pointer;
   }
 `
+const DropDownList = props => {
+  return (
+    <MenuList className="sub-menu">
+      <MenuItem className="sub-menu-dropdown">
+        <MenuLink to="/dashboard">DashBoard</MenuLink>
+      </MenuItem>
+      <MenuItem className="sub-menu-dropdown">
+        <MenuLink to={`/profiles/${props.id}`}>DashBoard</MenuLink>
+      </MenuItem>
+      <MenuItem className="sub-menu-dropdown">
+        <MenuLink to="/edit-profile">DashBoard</MenuLink>
+      </MenuItem>
+      <MenuItem className="sub-menu-dropdown">
+        <MenuLink to="/postarticles">DashBoard</MenuLink>
+      </MenuItem>
+    </MenuList>
+  )
+}
 const NavMenu = props => {
   const { toggle } = props
+  const { user, isAuthenticated } = props.userAuthData
   return (
     <MenuSlider className={toggle ? "show" : "hide"}>
       {toggle ? <Close className="nav-index-offset" onMouseDown={props.handleMouseDown} /> : null}
-      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
-        Home
-      </MenuItem>
-      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
-        Find Article
-      </MenuItem>
-      <MenuItem to="/profiles" onMouseDown={props.handleMouseDown}>
-        Find Therapiest
-      </MenuItem>
-      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
-        Ismail
-      </MenuItem>
-      <MenuItem to="/" onMouseDown={props.handleMouseDown}>
-        Logout
-      </MenuItem>
+      <MenuList>
+        <MenuItem>
+          <MenuLink to="/" onMouseDown={props.handleMouseDown}>
+            Home
+          </MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to="/blog" onMouseDown={props.handleMouseDown}>
+            Find Article
+          </MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to="/profiles" onMouseDown={props.handleMouseDown}>
+            Find Therapiest
+          </MenuLink>
+        </MenuItem>
+        {isAuthenticated ? (
+          <MenuItem>
+            <MenuLink to={`/profiles/${user}`} />
+            <DropDownList />
+          </MenuItem>
+        ) : (
+          <MenuItem>
+            {" "}
+            <MenuLink to="/">Guest</MenuLink>
+          </MenuItem>
+        )}
+        <MenuItem>
+          {isAuthenticated ? (
+            <MenuLink to="/" onMouseDown={props.handleMouseDown}>
+              Logout
+            </MenuLink>
+          ) : null}
+        </MenuItem>
+      </MenuList>
     </MenuSlider>
   )
 }

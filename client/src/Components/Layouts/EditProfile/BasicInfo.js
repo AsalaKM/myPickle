@@ -12,11 +12,8 @@ import QuestionSection from "../../Common/Questions/QuestionSection"
 // import util functions
 import handleChangeUtil from "../../../Utils/handleChangeUtil"
 import updateProfileUtil from "../../../Utils/updateProfileUtil"
-
-// get id from url
-// NOTE: this is until cookies are implemented
-const pathName = window.location.pathname
-const id = pathName.split("/")[3]
+import setAuthToken from "../../../Utils/setAuthToken"
+import checkRequiredAnswersUtil from "../../../Utils/checkRequiredAnswersUtil"
 
 export default class BasicInfo extends Component {
   state = {
@@ -28,21 +25,27 @@ export default class BasicInfo extends Component {
   }
 
   componentDidMount() {
-    // NOTE: until we implement cookies, we are getting the profile id from the url
-    const pathName = window.location.pathname
-    const id = pathName.split("/")[3]
+    if (localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken)
 
-    // get questions for the support-details section
-    axios
-      .get(`/get-questions/basic-info/${id}`)
-      .then(questions => this.setState({ basicQuestions: questions.data }))
-      .catch(err => console.log(err))
+      // get questions for the support-details section
+      axios
+        .get(`/get-questions/basic-info`)
+        .then(questions => this.setState({ basicQuestions: questions.data }))
+        .catch(err => console.log(err))
 
-    // get the answers the user has provided for this section
-    axios
-      .get(`/edit-profile/basic-info/${id}`)
-      .then(basicDetails => this.setState({ basicAnswers: basicDetails.data, profileId: id }))
-      .catch(err => console.log(err))
+      // get the answers the user has provided for this section
+      axios
+        .get(`/edit-profile/basic-info`)
+        .then(basicDetails => {
+          console.log("data", basicDetails.data)
+          this.setState({
+            basicAnswers: basicDetails.data.questions,
+            profileId: basicDetails.data.profileId,
+          })
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   handleChange = option => {
@@ -51,6 +54,29 @@ export default class BasicInfo extends Component {
     const { newAnswerState, newUnanswered } = handleChangeUtil(option, basicAnswers, unanswered)
 
     this.setState({ basicAnswers: newAnswerState, unanswered: newUnanswered })
+  }
+
+  checkRequiredAnswers = question => {
+    const { unanswered, registerQuestions } = this.state
+
+    const newUnanswered = checkRequiredAnswersUtil(question, registerQuestions, unanswered)
+
+    this.setState({ unanswered: newUnanswered })
+  }
+
+  handleAddress = (row, answer, question) => {
+    const state = this.state.basicAnswers
+
+    if (!state[question]) {
+      state[question] = {}
+      state[question][row] = answer
+    } else {
+      state[question][row] = answer
+    }
+
+    this.setState(() => ({
+      bookingAnswers: state,
+    }))
   }
 
   addImage = file => {
@@ -73,11 +99,18 @@ export default class BasicInfo extends Component {
 
     if (Object.keys(file).length > 0) {
       this.uploadImage(profileId)
-        .then(updateProfileUtil(history, basicAnswers, "basic-info", id))
+        .then(updateProfileUtil(history, basicAnswers, "basic-info"))
         .catch(err => console.log(err))
     } else {
-      updateProfileUtil(history, basicAnswers, "basic-info", id)
+      updateProfileUtil(history, basicAnswers, "basic-info")
     }
+  }
+
+  handleBack = e => {
+    e.preventDefault()
+    const { history } = this.props
+
+    history.push("/edit-profile")
   }
 
   uploadImage = async profileId => {
@@ -111,10 +144,15 @@ export default class BasicInfo extends Component {
           answers={basicAnswers}
           unanswered={unanswered}
           addImage={this.addImage}
+          handleAddress={this.handleAddress}
+          checkRequiredAnswers={this.checkRequiredAnswers}
         />
-        <div className="flex items-center justify-between w-100 mb4">
+        <div className="flex items-center justify-center w-100 mb4">
+          <Button className="submit" onClick={this.handleBack}>
+            Go Back
+          </Button>
           <Button className="submit" onClick={this.handleSubmit}>
-            Submit
+            Save Changes
           </Button>
         </div>
       </React.Fragment>

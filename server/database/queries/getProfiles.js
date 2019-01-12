@@ -1,4 +1,4 @@
-// creates profile objects for the find support section
+// creates profile objects for the browse profiles component
 // load the mongo models
 const ProfileQuestion = require("../models/ProfileQuestion")
 const Profile = require("../models/Profile")
@@ -29,7 +29,6 @@ const getProfiles = async () => {
 
   // get all image file names
   const getImageArr = await getImageNames(filePath)
-  console.log(getImageArr)
 
   // loop over profileIDs array
   for (let i = 0; i < profileIDs.length; i++) {

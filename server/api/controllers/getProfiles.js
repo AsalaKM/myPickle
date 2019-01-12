@@ -5,6 +5,6 @@ const getProfiles = require("../../database/queries/getProfiles")
 router.get("/", (req, res) => {
   getProfiles()
     .then(result => res.status(200).send(result))
-    .catch(err => res.status(401).err(err))
+    .catch(err => res.status(401).json(err))
 })
 module.exports = router

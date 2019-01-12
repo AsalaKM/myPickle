@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 // import styled components
 import { Intro } from "../../Common/Headings"
@@ -9,6 +10,7 @@ import { TextField, ErrorMsg } from "../../Common/Questions/Questions.style"
 // import common components
 import TextInput from "../../Common/Questions/TextInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
+import AddressInput from "../../Common/Questions/AddressInput"
 
 export default class RegisterStepTwo extends React.Component {
   componentDidMount() {
@@ -24,6 +26,8 @@ export default class RegisterStepTwo extends React.Component {
       errors,
       unanswered,
       checkStage,
+      serverErrors,
+      handleAddress,
     } = this.props
     return (
       <React.Fragment>
@@ -74,6 +78,15 @@ export default class RegisterStepTwo extends React.Component {
             {errors && errors.includes("email") ? (
               <ErrorMsg>
                 <p>Email is invalid</p>
+              </ErrorMsg>
+            ) : (
+              ""
+            )}
+            {serverErrors && serverErrors.email ? (
+              <ErrorMsg>
+                <p>
+                  Email already exists. <Link to={`/login`}>Click here to log in</Link>
+                </p>
               </ErrorMsg>
             ) : (
               ""
@@ -166,14 +179,24 @@ export default class RegisterStepTwo extends React.Component {
               />
             ))}
           {adminQuestions
-            .filter(
-              question => question.inputType === "textarea" || question.inputType === "address"
-            )
+            .filter(question => question.inputType === "textarea")
             .map((question, index) => (
               <TextFieldInput
                 key={index}
                 question={question}
                 handleChange={handleChange}
+                answers={answers}
+                unanswered={unanswered}
+                checkRequiredAnswers={checkRequiredAnswers}
+              />
+            ))}
+          {adminQuestions
+            .filter(question => question.inputType === "address")
+            .map((question, index) => (
+              <AddressInput
+                key={index}
+                question={question}
+                handleAddress={handleAddress}
                 answers={answers}
                 unanswered={unanswered}
                 checkRequiredAnswers={checkRequiredAnswers}

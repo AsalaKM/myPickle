@@ -23,6 +23,7 @@ class Register extends Component {
     unanswered: [],
     errors: [],
     file: {},
+    serverErrors: {},
   }
 
   componentDidMount() {
@@ -93,7 +94,7 @@ class Register extends Component {
     this.setState({ unanswered: newUnanswered })
   }
 
-  checkStage = () => {
+  checkStage = async () => {
     const answerState = this.state.registerAnswers
     const newUnanswered = this.state.unanswered
     const errorState = this.state.errors
@@ -104,7 +105,6 @@ class Register extends Component {
       if (!answerState[wellnessQuestion._id] || answerState[wellnessQuestion._id].length < 1) {
         if (!newUnanswered.includes(wellnessQuestion._id)) newUnanswered.push(wellnessQuestion._id)
         counter += 1
-        console.log(newUnanswered)
       } else {
         if (newUnanswered.includes(wellnessQuestion._id)) {
           const index = newUnanswered.indexOf(wellnessQuestion._id)
@@ -129,6 +129,16 @@ class Register extends Component {
           if (!newUnanswered.includes(item)) newUnanswered.push(item)
           counter += 1
         }
+        // check all fields for address are filled in
+        if (
+          answerState[item] &&
+          answerState[item].hasOwnProperty("address" || "city" || "postcode")
+        ) {
+          if (!answerState[item].hasOwnProperty("address" && "city" && "postcode")) {
+            if (!newUnanswered.includes(item)) newUnanswered.push(item)
+            counter += 1
+          }
+        }
         if (errorState.length > 0) {
           counter += 1
         }
@@ -139,8 +149,23 @@ class Register extends Component {
         if (!errorState.includes("password2")) errorState.push("password2")
         counter += 1
       }
+
+      if (newUnanswered.length > 0) {
+        counter += 1
+      }
+
+      // check the server to see if the email already exists
+      else {
+        await axios.post("/check-email", { email: answerState.email }).catch(err => {
+          console.log("EMAIL", err.response.data)
+          this.setState({ serverErrors: err.response.data })
+          counter += 1
+        })
+      }
     }
     if (counter === 0) {
+      // reset serverErrors
+      this.setState({ serverErrors: {} })
       this.handleNext()
     } else this.setState({ unanswered: newUnanswered, errors: errorState })
   }
@@ -164,6 +189,21 @@ class Register extends Component {
     const { newAnswerState, newUnanswered } = handleChangeUtil(option, answerState, unanswered)
 
     this.setState({ registerAnswers: newAnswerState, unanswered: newUnanswered })
+  }
+
+  handleAddress = (row, answer, question) => {
+    const state = this.state.registerAnswers
+
+    if (!state[question]) {
+      state[question] = {}
+      state[question][row] = answer
+    } else {
+      state[question][row] = answer
+    }
+
+    this.setState(() => ({
+      bookingAnswers: state,
+    }))
   }
 
   handleNext = () => {
@@ -217,8 +257,10 @@ class Register extends Component {
           this.uploadImage(profileId.data)
         }
       })
-      .then(result => {
-        swal("Done!", "Thanks for creating a profile!", "success").then(() => history.push("/"))
+      .then(() => {
+        swal("Done!", "Thanks for creating a profile!", "success").then(() =>
+          history.push("/newlogin")
+        )
       })
       .catch(err => console.log(err))
   }
@@ -263,6 +305,7 @@ class Register extends Component {
             handleNext={this.handleNext}
             handlePrevious={this.handlePrevious}
             handleChange={this.handleChange}
+            handleAddress={this.handleAddress}
             answers={this.state.registerAnswers}
             adminQuestions={
               this.state.registerQuestions &&
@@ -273,6 +316,7 @@ class Register extends Component {
             errors={this.state.errors}
             unanswered={this.state.unanswered}
             checkStage={this.checkStage}
+            serverErrors={this.state.serverErrors}
           />
         </React.Fragment>
       )

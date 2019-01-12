@@ -1,9 +1,18 @@
 const checkRequiredAnswersUtil = (question, questionState, newUnanswered) => {
+  // set up value and questionId
+  let value
+  let questionId
+
+  // if (question.type === "address") {
+  //   value = question.value
+  //   questionId = question.questionId
+  // } else {
   // get the value that's been input
-  const value = question.target.value
+  value = question.target.value
 
   // get the questionId from the input name
-  const questionId = question.target.name
+  questionId = question.target.name
+  // }
 
   let isRequired
   // deal with user questions

@@ -1,9 +1,6 @@
 import React, { Component } from "react"
-import work from "./../../../assets/images/work.jpeg"
-
-// import { BasicInfo, Avatar } from "./SingleProfile.style"
 import axios from "axios"
-// import profileComponent from "./SingleProfile"
+
 import {
   BasicInfo,
   Avatar,
@@ -61,8 +58,12 @@ class SinflePforile extends Component {
         return elem.question === qs
       }
     })[0]
-    const ans = question.answers
-    return ans
+    if (question !== undefined) {
+      const ans = question.answers
+      return ans
+    } else {
+      return <div>"data not availabe"</div>
+    }
   }
 
   render() {

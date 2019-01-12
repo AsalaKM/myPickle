@@ -9,20 +9,22 @@ class Navbar extends Component {
   state = {
     isActive: false,
     dropDownActive: false,
-    user: "",
+    userName: "",
   }
   async componentDidMount() {
-    try {
-      // axios.post("")
-    } catch (err) {}
+    const { isAuthenticated, user } = this.props
+    if (isAuthenticated) {
+      const response = await axios.get(`/users/${user}`)
+      this.setState({ userName: response.data })
+    } else {
+      this.setState({ userName: "Guest" })
+    }
   }
   toggleMenu = () => {
     this.setState({ isActive: !this.state.isActive })
   }
   handleMouseDown = e => {
     this.toggleMenu()
-
-    console.log("clicked")
     e.stopPropagation()
   }
   render() {
@@ -31,7 +33,7 @@ class Navbar extends Component {
       width: "100%",
     }
     const Empty = { width: "10%" }
-    const { isActive } = this.state
+    const { isActive, userName } = this.state
     const { isAuthenticated, user } = this.props
     const userAuthData = {
       isAuthenticated,
@@ -56,6 +58,7 @@ class Navbar extends Component {
             toggle={isActive}
             handleMouseDown={this.handleMouseDown}
             userAuthData={userAuthData}
+            userName={userName}
           />
         </Container>
       </ColoredWrapper>

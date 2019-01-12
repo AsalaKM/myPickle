@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { sizes } from "../../Generic-helpers//variables"
+import { sizes } from "../../Generic-helpers/variables"
 import { ReactComponent as Close } from "../../../assets//images/baseline-close-24px.svg"
 
 const MenuLink = styled(Link)`
@@ -22,7 +22,7 @@ const MenuItem = styled.li`
   width: 90%;
   border-top: 2px solid #c4c4c4;
   list-style: none;
-  padding: 5px;
+  padding: 10px 0;
   &.sub-menu-dropdown {
     border-top: none !important;
   }
@@ -65,60 +65,79 @@ const DropDownList = props => {
   return (
     <MenuList className="sub-menu">
       <MenuItem className="sub-menu-dropdown">
-        <MenuLink to="/dashboard">DashBoard</MenuLink>
+        <MenuLink to="/dashboard" onClick={props.handleMouseDown}>
+          My dashboard
+        </MenuLink>
       </MenuItem>
       <MenuItem className="sub-menu-dropdown">
-        <MenuLink to={`/profiles/${props.id}`}>DashBoard</MenuLink>
+        <MenuLink to={`/profile/${props.profileId}`} onClick={props.handleMouseDown}>
+          View Profile{" "}
+        </MenuLink>
       </MenuItem>
       <MenuItem className="sub-menu-dropdown">
-        <MenuLink to="/edit-profile">DashBoard</MenuLink>
+        <MenuLink to="/edit-profile" onClick={props.handleMouseDown}>
+          Edit Profile
+        </MenuLink>
       </MenuItem>
       <MenuItem className="sub-menu-dropdown">
-        <MenuLink to="/postarticles">DashBoard</MenuLink>
+        <MenuLink to="/postarticles" onClick={props.handleMouseDown}>
+          Create Article
+        </MenuLink>
       </MenuItem>
     </MenuList>
   )
 }
 const NavMenu = props => {
-  const { toggle } = props
+  const { toggle, userName } = props
   const { user, isAuthenticated } = props.userAuthData
   return (
     <MenuSlider className={toggle ? "show" : "hide"}>
       {toggle ? <Close className="nav-index-offset" onMouseDown={props.handleMouseDown} /> : null}
       <MenuList>
         <MenuItem>
-          <MenuLink to="/" onMouseDown={props.handleMouseDown}>
+          <MenuLink to="/" onClick={props.handleMouseDown}>
             Home
           </MenuLink>
         </MenuItem>
         <MenuItem>
-          <MenuLink to="/blog" onMouseDown={props.handleMouseDown}>
+          <MenuLink to="/blog" onClick={props.handleMouseDown}>
             Find Article
           </MenuLink>
         </MenuItem>
         <MenuItem>
-          <MenuLink to="/profiles" onMouseDown={props.handleMouseDown}>
+          <MenuLink to="/profiles" onClick={props.handleMouseDown}>
             Find Therapiest
           </MenuLink>
         </MenuItem>
         {isAuthenticated ? (
           <MenuItem>
-            <MenuLink to={`/profiles/${user}`} />
-            <DropDownList />
+            {" "}
+            <MenuLink to={`/profile/${user}`} onClick={props.handleMouseDown}>
+              {userName}
+            </MenuLink>
+            <DropDownList handleMouseDown={props.handleMouseDown} profileId={user} />
           </MenuItem>
         ) : (
           <MenuItem>
-            {" "}
-            <MenuLink to="/">Guest</MenuLink>
+            <MenuLink to="/" onClick={props.handleMouseDown}>
+              {userName}
+            </MenuLink>
           </MenuItem>
         )}
-        <MenuItem>
-          {isAuthenticated ? (
-            <MenuLink to="/" onMouseDown={props.handleMouseDown}>
-              Logout
-            </MenuLink>
-          ) : null}
-        </MenuItem>
+        {isAuthenticated ? null : (
+          <div>
+            <MenuItem>
+              <MenuLink to="/login" onClick={props.handleMouseDown}>
+                LOG IN
+              </MenuLink>
+            </MenuItem>
+            <MenuItem>
+              <MenuLink to="/register" onClick={props.handleMouseDown}>
+                REGISTER
+              </MenuLink>
+            </MenuItem>
+          </div>
+        )}
       </MenuList>
     </MenuSlider>
   )

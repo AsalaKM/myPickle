@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Container, Logout } from "./Dashboard.style"
+import { Button, Container, Logout, Headline, Text } from "./Dashboard.style"
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 
@@ -43,8 +43,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { loaded, name } = this.state
-    console.log(this.state)
+    const { loaded, name, approved } = this.state
 
     if (!loaded) {
       return <h1>Loading your details...</h1>
@@ -52,6 +51,15 @@ class Dashboard extends Component {
 
     return (
       <Container>
+        {!approved && (
+          <div>
+            <Headline>Profile status: awaiting approval</Headline>
+            <Text>
+              Your profile has not been approved yet and will not be shown. You can still edit your
+              profile and create blog posts. Please check again later.
+            </Text>
+          </div>
+        )}
         <h2>Welcome back{name}</h2>
 
         <Button onClick={this.editProfile}> Edit Profile </Button>

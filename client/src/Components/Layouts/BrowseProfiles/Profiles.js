@@ -20,6 +20,7 @@ import history from "../../../history"
 class Profile extends Component {
   render() {
     const { organisation, wellnessType, avatar, profileID, adminStatus, approved } = this.props
+    console.log(this.props)
 
     const checkAvatar = () =>
       avatar ? (

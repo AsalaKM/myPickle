@@ -6,7 +6,7 @@ import { SectionCard } from "./SingleProfile.style.js"
 
 export default class ProfileSections extends Component {
   render() {
-    const { basicInfoAnswers, supportDetails, bookingDetails, socialMedia } = this.props
+    const { supportDetails, bookingDetails } = this.props
 
     console.log("booking", bookingDetails)
     return (

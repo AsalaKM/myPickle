@@ -16,12 +16,10 @@ import {
   BlogLink,
 } from "./SingleProfile.style"
 
-import { ContactButton, ProfileButton } from "../../Common/Buttons"
 import { MultiAnswer } from "../../Common/Answers/AnswerSection.style"
 
 import ProfileSections from "./ProfileSections"
 
-import AnswerSection from "../../Common/Answers/AnswerSection"
 import SocialSection from "../../Common/Answers/SocialSection"
 
 class SinflePforile extends Component {
@@ -49,7 +47,7 @@ class SinflePforile extends Component {
               question: result.data[element].question[0].questionText,
               answers: result.data[element].answer || [],
             }
-          }
+          } else return null
         })
         const {
           basicInfoAnswers,
@@ -81,11 +79,7 @@ class SinflePforile extends Component {
 
   getAnswers = qs => {
     const { questionsAndAnswers } = this.state
-    const question = questionsAndAnswers.filter(elem => {
-      if (elem) {
-        return elem.question === qs
-      }
-    })[0]
+    const question = questionsAndAnswers.filter(elem => elem && elem.question === qs)[0]
     if (question !== undefined) {
       const ans = question.answers
       return ans
@@ -102,7 +96,7 @@ class SinflePforile extends Component {
     )
 
   render() {
-    const { answers, loading } = this.state
+    const { loading } = this.state
 
     if (!loading) {
       return <div>loading</div>

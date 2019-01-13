@@ -24,7 +24,30 @@ const Button = styled.button.attrs({
 `
 
 const ApprovalButton = styled.button.attrs({
-  className: "f6 mp-bg-white mp-b--primary-color",
+  className: "f7 mp-bg-white mp-b--primary-color",
+})`
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 30vw;
+  height: 2rem;
+
+  :hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  :focus {
+    background-color: var(--darkPrimary);
+    color: var(--white);
+  }
+`
+
+const DisapprovalButton = styled.button.attrs({
+  className: "f7 mp-bg-white mp-b--alert",
 })`
   border-style: solid;
   border-width: 1px;
@@ -46,4 +69,4 @@ const ApprovalButton = styled.button.attrs({
   }
 `
 
-export { Button, ApprovalButton }
+export { Button, ApprovalButton, DisapprovalButton }

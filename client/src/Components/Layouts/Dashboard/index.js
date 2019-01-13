@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import { Button, Container, Logout } from "./Dashboard.style"
-
+import axios from "axios"
 import jwt_decode from "jwt-decode"
 
 class Dashboard extends Component {
   state = {
     name: "",
     loaded: false,
+    approved: null,
   }
 
   componentDidMount() {
@@ -14,9 +15,12 @@ class Dashboard extends Component {
       const decoded = jwt_decode(localStorage.jwtToken)
       const name = decoded.name
       const firstName = name.split(" ")[0]
-      this.setState({
-        name: `, ${firstName}`,
-        loaded: true,
+      axios.get("/check-approval").then(result => {
+        this.setState({
+          name: `, ${firstName}`,
+          loaded: true,
+          approved: result.data,
+        })
       })
     } else {
       this.setState({
@@ -40,6 +44,7 @@ class Dashboard extends Component {
 
   render() {
     const { loaded, name } = this.state
+    console.log(this.state)
 
     if (!loaded) {
       return <h1>Loading your details...</h1>

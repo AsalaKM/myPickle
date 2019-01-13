@@ -10,6 +10,21 @@ class BrowseProfiles extends Component {
     admin: false,
   }
 
+  componentDidMount() {
+    // get profiles
+    axios
+      .get("/profiles")
+      .then(result => this.setState({ profiles: result.data, loaded: true }))
+      .catch(err => console.log(err))
+
+    // check user
+    if (localStorage.jwtToken) {
+      const decoded = jwt_decode(localStorage.jwtToken)
+      const name = decoded.name
+      this.checkAmin(name)
+    }
+  }
+
   checkAmin = name => {
     if (name === "Admin") {
       this.setState({
@@ -60,25 +75,8 @@ class BrowseProfiles extends Component {
     )
   }
 
-  componentDidMount() {
-    // get profiles
-    axios
-      .get("/profiles")
-      .then(result => this.setState({ profiles: result.data, loaded: true }))
-      .catch(err => console.log(err))
-
-    // check user
-    if (localStorage.jwtToken) {
-      const decoded = jwt_decode(localStorage.jwtToken)
-      const name = decoded.name
-      this.checkAmin(name)
-    }
-  }
-
   render() {
     const { loaded, profiles } = this.state
-    console.log(this.state)
-
     if (!loaded) {
       return <div>loading...</div>
     }

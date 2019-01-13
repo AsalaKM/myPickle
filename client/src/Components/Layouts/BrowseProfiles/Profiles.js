@@ -13,6 +13,8 @@ import {
   Arrow,
 } from "./BrowseProfiles.style"
 
+import { ApprovalButton } from "../../Common/Buttons"
+
 import history from "../../../history"
 
 class Profile extends Component {
@@ -35,9 +37,9 @@ class Profile extends Component {
 
     const checkApproval = () => {
       if (approved) {
-        return <button onClick={handleApproval}>disapprove</button>
+        return <ApprovalButton onClick={handleApproval}>disapprove</ApprovalButton>
       } else {
-        return <button onClick={handleApproval}>approve</button>
+        return <ApprovalButton onClick={handleApproval}>approve</ApprovalButton>
       }
     }
 

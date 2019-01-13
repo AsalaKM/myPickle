@@ -3,7 +3,6 @@ import Profile from "./Profiles"
 import { Profiles } from "./BrowseProfiles.style"
 
 import axios from "axios"
-import { Container } from "./BrowseProfiles.style"
 
 class BrowseProfiles extends Component {
   state = {

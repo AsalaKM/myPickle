@@ -2,6 +2,8 @@ import React, { Component } from "react"
 
 import AnswerSection from "../../Common/Answers/AnswerSection"
 
+import { SectionCard } from "./SingleProfile.style.js"
+
 export default class ProfileSections extends Component {
   render() {
     const { basicInfoAnswers, supportDetails, bookingDetails, socialMedia } = this.props
@@ -10,22 +12,22 @@ export default class ProfileSections extends Component {
     return (
       <React.Fragment>
         {supportDetails.length > 0 ? (
-          <div>
+          <SectionCard>
             <h3>Support Details</h3>
             <AnswerSection answers={supportDetails} />
-          </div>
+          </SectionCard>
         ) : null}
         {bookingDetails.length > 0 ? (
-          <div>
+          <SectionCard>
             <h3>Availability & Booking</h3>
             <AnswerSection answers={bookingDetails} />
-          </div>
+          </SectionCard>
         ) : null}
         {socialMedia.length > 0 ? (
-          <div>
+          <SectionCard>
             <h3>Social Media:</h3>
             <AnswerSection answers={socialMedia} />
-          </div>
+          </SectionCard>
         ) : null}
       </React.Fragment>
     )

@@ -3,7 +3,7 @@ import axios from "axios"
 
 import {
   Container,
-  BasicInfo,
+  SectionCard,
   Avatar,
   Informations,
   Bio,
@@ -90,27 +90,27 @@ class SinflePforile extends Component {
 
       return (
         <Container>
-          <BasicInfo>
+          <SectionCard>
             <Avatar src={this.getAnswers("Organisation photo or logo")} />
             <Informations>
               <h4> {this.getAnswers("Known organisation name")} </h4>
               {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
-              <ul>
+              <div>
                 {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
                 false ? (
                   this.getAnswers("Please select your area(s) of wellness").map(item => (
-                    <li>{item}</li>
+                    <div>{item}</div>
                   ))
                 ) : (
-                  <li>{this.getAnswers("Please select your area(s) of wellness")}</li>
+                  <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
                 )}
-              </ul>
+              </div>
               <h4> {this.getAnswers("Registered address")}</h4>
               <ContactButton>Contact </ContactButton>
             </Informations>
-          </BasicInfo>
+          </SectionCard>
 
-          <Bio>
+          <SectionCard>
             <div>
               <h4>Core offering: </h4>
               {this.getAnswers("What best describes your core service offering?").map(item => (
@@ -119,14 +119,14 @@ class SinflePforile extends Component {
             </div>
             <h3>Bio</h3>
             {this.getAnswers("Please provide a brief description of the organisation")}
-          </Bio>
+          </SectionCard>
           <Navigate>
             <Button>view blog</Button>
             <Button>services</Button>
             <Button>Booking</Button>
           </Navigate>
           <div>NEW STUFF</div>
-
+          
           <ProfileSections
             supportDetails={supportDetails}
             basicInfoAnswers={basicInfoAnswers}
@@ -138,6 +138,8 @@ class SinflePforile extends Component {
             <h4>phone: {this.state.userInfo.phone}</h4>
             <h4>Email: {this.state.userInfo.email}</h4>
           </Contact>
+
+          
         </Container>
       )
     }

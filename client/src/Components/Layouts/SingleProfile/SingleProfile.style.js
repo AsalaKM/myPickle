@@ -1,18 +1,20 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  background: #e8ede9;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: center;
 `
 
-export const BasicInfo = styled.section`
+export const SectionCard = styled.section`
   background: white;
-  display: inline-block;
-  width: 90%;
-  margin-left: 50px;
-  height: 240px;
-  margin-top: 75px;
-  font-size: 15px;
-  border-radius: 12px;
+  display: flex;
+  border-radius: 1rem;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 1rem;
 `
 
 export const ContactButton = styled.button`
@@ -31,8 +33,7 @@ export const Avatar = styled.img`
 `
 
 export const Informations = styled.div`
-  margin-left: 113px;
-  margin-top: -115px;
+
 `
 export const Bio = styled.section`
   background: white;

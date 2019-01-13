@@ -48,10 +48,5 @@ exports[`Dashboard matches snapshot 1`] = `
     Browse Blog Posts
   </button>
   <br />
-  <button
-    className="sc-ifAKCX iSBrki"
-  >
-    Logout
-  </button>
 </div>
 `;

@@ -25,6 +25,7 @@ import BrowseProfiles from "../Layouts/BrowseProfiles"
 import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
 import FindSupport from "../Layouts/FindSupport/index"
 import BlogPost from "../Layouts/Article/index"
+import Profile from "../Layouts/SingleProfile/index"
 import AboutmyPikle from "../Layouts/About/index"
 
 // import common components
@@ -91,6 +92,7 @@ class App extends Component {
             <PublicRoute path="/find-support" exact component={FindSupport} footer />
 
             <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
+            <PublicRoute path="/profile/:profileID" exact component={Profile} footer />
             <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
             <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
 

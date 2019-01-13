@@ -12,10 +12,9 @@ const getSupportType = async dataObj => {
   if (supportTypeAnswer !== "Qualified therapy or counselling service") {
     const supportTypeElement = await SupportType.findOne({ type: "General" })
     return supportTypeElement._id
-  } else {
-    const supportTypeElement = await SupportType.findOne({ type: "Therapist" })
-    return supportTypeElement._id
   }
+  const supportTypeElement = await SupportType.findOne({ type: "Therapist" })
+  return supportTypeElement._id
 }
 
 module.exports = getSupportType

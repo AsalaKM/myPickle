@@ -22,6 +22,7 @@ const AnswerSchema = new Schema({
     type: Schema.Types.Mixed,
     required: true,
   },
+
 })
 
 module.exports = ProfileAnswer = mongoose.model("answers", AnswerSchema)

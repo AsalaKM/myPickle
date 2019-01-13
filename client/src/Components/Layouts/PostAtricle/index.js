@@ -93,19 +93,19 @@ class PostArticle extends Component {
         const { url } = success.data.createdArticele
         swal(
           "Great!",
-          `Article ${success.data.createdArticele.title} Created Successfully!`,
+          `Article ${success.data.createdArticele.title} created Successfully!`,
           "success"
         ).then(() => history.push(url))
       } catch (error) {
         swal({
           icon: "error",
-          title: `Oops!! something happen, ${error.msg} `,
+          title: `Oops!! something happened, ${error.msg} `,
         })
       }
     } else {
       swal({
         icon: "error",
-        title: "Oops!! Please complete fill the article form",
+        title: "Oops!! Please complete the article form",
       })
     }
   }

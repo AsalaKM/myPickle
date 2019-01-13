@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutmyPikle matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa eFPZsD"
+>
+  <h2
+    className="sc-bwzfXH kCppBb"
+  >
+    About My Pickle
+  </h2>
+  <div
+    className="sc-htpNat jYXKdb"
+  >
+    <h5>
+      WE STAND FOR WORLDWIDE WELLNESS
+    </h5>
+    <h5>
+      We want people to be better supported.
+    </h5>
+    <h5>
+      We care about access to services.
+    </h5>
+  </div>
+  <p
+    className="sc-bxivhb giIgxL"
+  >
+    Find health & wellbeing support that’s right for you. Be supported and have a better life. Feel happier, stronger and healthier.
+  </p>
+  <a
+    className="sc-ifAKCX gxTOri"
+    href="mailto:cat@mypickle.org"
+  >
+    Click here to contact us and find out more
+  </a>
+</div>
+`;

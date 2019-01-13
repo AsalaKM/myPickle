@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const Button = styled.button.attrs({
+export const Button = styled.button.attrs({
   className: "mp-bg-white mp-b--primary-color",
 })`
   border-style: solid;
@@ -23,4 +23,11 @@ const Button = styled.button.attrs({
   }
 `
 
-export { Button }
+export const ProfileButton = styled(Button)`
+  width: 30vw;
+  margin: 0;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+`

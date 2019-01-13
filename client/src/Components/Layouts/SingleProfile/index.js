@@ -4,11 +4,11 @@ import axios from "axios"
 import {
   Container,
   SectionCard,
+  TitleCard,
   Avatar,
   Informations,
   Bio,
   Navigate,
-  Button,
   Services,
   help,
   Delivery,
@@ -18,6 +18,8 @@ import {
   OptionsOfSupport,
   SupportAnswers,
 } from "./SingleProfile.style"
+
+import { ProfileButton } from "../../Common/Buttons"
 
 import ProfileSections from "./ProfileSections"
 
@@ -90,7 +92,7 @@ class SinflePforile extends Component {
 
       return (
         <Container>
-          <SectionCard>
+          <TitleCard>
             <Avatar src={this.getAnswers("Organisation photo or logo")} />
             <Informations>
               <h4> {this.getAnswers("Known organisation name")} </h4>
@@ -108,25 +110,25 @@ class SinflePforile extends Component {
               <h4> {this.getAnswers("Registered address")}</h4>
               <ContactButton>Contact </ContactButton>
             </Informations>
-          </SectionCard>
+          </TitleCard>
+
+          <Navigate>
+            <ProfileButton>Blog</ProfileButton>
+            <ProfileButton>Services</ProfileButton>
+            <ProfileButton>Booking</ProfileButton>
+          </Navigate>
 
           <SectionCard>
+            <h3>Bio</h3>
+            <p>{this.getAnswers("Please provide a brief description of the organisation")}</p>
             <div>
               <h4>Core offering: </h4>
               {this.getAnswers("What best describes your core service offering?").map(item => (
                 <div>{item}</div>
               ))}
             </div>
-            <h3>Bio</h3>
-            {this.getAnswers("Please provide a brief description of the organisation")}
           </SectionCard>
-          <Navigate>
-            <Button>view blog</Button>
-            <Button>services</Button>
-            <Button>Booking</Button>
-          </Navigate>
-          <div>NEW STUFF</div>
-          
+
           <ProfileSections
             supportDetails={supportDetails}
             basicInfoAnswers={basicInfoAnswers}
@@ -134,12 +136,10 @@ class SinflePforile extends Component {
             socialMedia={socialMedia}
           />
 
-          <Contact>
+          <SectionCard>
             <h4>phone: {this.state.userInfo.phone}</h4>
             <h4>Email: {this.state.userInfo.email}</h4>
-          </Contact>
-
-          
+          </SectionCard>
         </Container>
       )
     }

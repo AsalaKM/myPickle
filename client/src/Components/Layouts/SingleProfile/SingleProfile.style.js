@@ -4,17 +4,31 @@ export const Container = styled.div`
   background: var(--white);
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   align-items: center;
+  padding-top: 2rem;
 `
 
 export const SectionCard = styled.section`
   background: white;
   display: flex;
-  border-radius: 1rem;
   width: 100%;
-  justify-content: space-around;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    position: absolute;
+    top: -2rem;
+    color: var(--primary);
+    font-size: 1.25rem;
+  }
+`
+export const TitleCard = styled(SectionCard)`
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const ContactButton = styled.button`
@@ -32,9 +46,7 @@ export const Avatar = styled.img`
   margin-top: 23px;
 `
 
-export const Informations = styled.div`
-
-`
+export const Informations = styled.div``
 export const Bio = styled.section`
   background: white;
   width: 90%;
@@ -45,9 +57,10 @@ export const Bio = styled.section`
 
 export const Navigate = styled.div`
   display: flex;
-  padding: 16px;
+  padding: 0.5rem;
   justify-content: space-between;
-  margin-left: 50px;
+  width: 100%;
+  margin-bottom: 2.5rem;
 `
 export const Button = styled.button`
   width: 20%;

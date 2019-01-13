@@ -119,7 +119,7 @@ const buildDb = async () => {
     {
       profile: therapistProfile._id,
       question: generalQuestions[2]._id,
-      answer: "66 Moaning Road E50DW London",
+      answer: { address: "66 Moaning Road", city: "London", postcode: "E5 0DW" },
     },
     {
       profile: therapistProfile._id,
@@ -460,7 +460,7 @@ const buildDb = async () => {
     {
       profile: generalProfile._id,
       question: generalQuestions[2]._id,
-      answer: "66 Chelsea Lane W2893W London",
+      answer: { address: "66 Chelsea Lane", city: "London", postcode: "W28 93W" },
     },
     {
       profile: generalProfile._id,
@@ -701,7 +701,6 @@ const buildDb = async () => {
       ],
     },
   ])
-
 
   // Check if questions and answers arrays are of the same length
   console.log("therapist questions length", therapistQuestions.length)

@@ -18,6 +18,7 @@ import {
   OptionsOfSupport,
   SupportAnswers,
   TitleWrapper,
+  LocationWrapper,
 } from "./SingleProfile.style"
 
 import { ProfileButton } from "../../Common/Buttons"
@@ -36,6 +37,7 @@ class SinflePforile extends Component {
     socialMedia: [],
     supportDetails: [],
     profileImage: null,
+    address: null,
   }
 
   componentDidMount() {
@@ -63,6 +65,12 @@ class SinflePforile extends Component {
           supportDetails,
           profileImage,
         } = result.data
+
+        // get address from basicInfoAnswers
+        const addressDetails = basicInfoAnswers.filter(
+          answer => answer.question[0].questionText === "Registered address"
+        )
+
         this.setState({
           questionsAndAnswers,
           userInfo: result.data.BsicInfo[0],
@@ -72,6 +80,7 @@ class SinflePforile extends Component {
           socialMedia,
           supportDetails,
           profileImage,
+          address: addressDetails[0].answer,
         })
       })
       .catch(err => console.log(err))
@@ -105,8 +114,7 @@ class SinflePforile extends Component {
     if (!loading) {
       return <div>loading</div>
     } else {
-      const { basicInfoAnswers, supportDetails, bookingDetails, socialMedia } = this.state
-
+      const { basicInfoAnswers, supportDetails, bookingDetails, socialMedia, address } = this.state
       return (
         <Container>
           <TitleCard>
@@ -115,7 +123,10 @@ class SinflePforile extends Component {
               {this.checkAvatar()}
               <Informations>
                 {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
-                <h4> {this.getAnswers("Registered address")}</h4>
+                <LocationWrapper>
+                  <img src={require("../../../assets/images/location_Icon.svg")} alt="location" />
+                  <p>{address.city}</p>
+                </LocationWrapper>
                 <MultiAnswer>
                   {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
                   false ? (

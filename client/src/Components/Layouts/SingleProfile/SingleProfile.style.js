@@ -126,3 +126,15 @@ export const Contact = styled.section`
   border-radius: 12px;
   background: white;
 `
+export const LocationWrapper = styled.div`
+  display: flex;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    font-family: "Gosmick Sans", sans-serif;
+    font-size: 1.25rem;
+  }
+`

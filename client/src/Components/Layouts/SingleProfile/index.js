@@ -14,14 +14,13 @@ import {
   Delivery,
   Booking,
   Contact,
-  ContactButton,
   OptionsOfSupport,
   SupportAnswers,
   TitleWrapper,
   LocationWrapper,
 } from "./SingleProfile.style"
 
-import { ProfileButton } from "../../Common/Buttons"
+import { ContactButton, ProfileButton } from "../../Common/Buttons"
 import { MultiAnswer } from "../../Common/Answers/AnswerSection.style"
 
 import ProfileSections from "./ProfileSections"
@@ -137,7 +136,7 @@ class SinflePforile extends Component {
                     <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
                   )}
                 </MultiAnswer>
-                <ContactButton>Contact </ContactButton>
+                <ContactButton className="contact">Contact</ContactButton>
               </Informations>
             </TitleWrapper>
           </TitleCard>

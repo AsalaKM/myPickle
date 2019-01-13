@@ -31,9 +31,8 @@ export const TitleCard = styled(SectionCard)`
   margin-bottom: 1.5rem;
 
   h2 {
-    position: absolute;
-    top: -2.25rem;
     color: var(--primary);
+    margin: 0;
   }
 `
 
@@ -41,7 +40,6 @@ export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 1.5rem;
   align-items: center;
   width: 100%;
 `
@@ -63,7 +61,12 @@ export const Avatar = styled.img`
 
 export const Informations = styled.div`
   padding-left: 1rem;
-  padding-top: 1rem;
+
+  .contact {
+    align-self: center;
+    align-content: center;
+    margin-top: 1rem;
+  }
 `
 
 export const Bio = styled.section`

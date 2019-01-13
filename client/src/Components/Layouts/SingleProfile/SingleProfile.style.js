@@ -26,10 +26,24 @@ export const SectionCard = styled.section`
     font-size: 1.25rem;
   }
 `
+
 export const TitleCard = styled(SectionCard)`
-  flex-direction: row;
-  justify-content: space-between;
   margin-bottom: 1.5rem;
+
+  h2 {
+    position: absolute;
+    top: -2.25rem;
+    color: var(--primary);
+  }
+`
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  width: 100%;
 `
 
 export const ContactButton = styled.button`
@@ -47,7 +61,11 @@ export const Avatar = styled.img`
   margin-top: 23px;
 `
 
-export const Informations = styled.div``
+export const Informations = styled.div`
+  padding-left: 1rem;
+  padding-top: 1rem;
+`
+
 export const Bio = styled.section`
   background: white;
   width: 90%;

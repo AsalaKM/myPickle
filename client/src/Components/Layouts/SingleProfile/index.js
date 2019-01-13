@@ -17,6 +17,7 @@ import {
   ContactButton,
   OptionsOfSupport,
   SupportAnswers,
+  TitleWrapper,
 } from "./SingleProfile.style"
 
 import { ProfileButton } from "../../Common/Buttons"
@@ -108,23 +109,25 @@ class SinflePforile extends Component {
       return (
         <Container>
           <TitleCard>
-            {this.checkAvatar()}
-            <Informations>
-              <h4> {this.getAnswers("Known organisation name")} </h4>
-              {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
-              <div>
-                {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
-                false ? (
-                  this.getAnswers("Please select your area(s) of wellness").map(item => (
-                    <div>{item}</div>
-                  ))
-                ) : (
-                  <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
-                )}
-              </div>
-              <h4> {this.getAnswers("Registered address")}</h4>
-              <ContactButton>Contact </ContactButton>
-            </Informations>
+            <h2> {this.getAnswers("Known organisation name")} </h2>
+            <TitleWrapper>
+              {this.checkAvatar()}
+              <Informations>
+                {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
+                <div>
+                  {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
+                  false ? (
+                    this.getAnswers("Please select your area(s) of wellness").map(item => (
+                      <div>{item}</div>
+                    ))
+                  ) : (
+                    <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
+                  )}
+                </div>
+                <h4> {this.getAnswers("Registered address")}</h4>
+                <ContactButton>Contact </ContactButton>
+              </Informations>
+            </TitleWrapper>
           </TitleCard>
 
           <Navigate>

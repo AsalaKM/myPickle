@@ -1,5 +1,10 @@
 import React from "react"
-import { MenuLink, MenuItem, MenuList } from "./StyledElm"
+import { MenuLink, MenuItem, MenuList, Button } from "./StyledElm"
+
+const logout = () => {
+  localStorage.removeItem("jwtToken")
+  window.location.href = "/"
+}
 
 const DropDownList = props => {
   return (
@@ -23,6 +28,9 @@ const DropDownList = props => {
         <MenuLink to="/postarticles" onClick={props.handleMouseDown}>
           Create Article
         </MenuLink>
+      </MenuItem>
+      <MenuItem className="sub-menu-dropdown">
+        <Button onClick={logout}>Logout</Button>
       </MenuItem>
     </MenuList>
   )

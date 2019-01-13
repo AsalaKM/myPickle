@@ -19,7 +19,7 @@ const LandingPage = () => (
       My Pickle brings together therapists and those who want their help. Find therapists, read
       articles written by them, and get the support you need.
     </Paragraph>
-    <TextLink to="/">Find out more about My Pickle</TextLink>
+    <TextLink to="/about">Find out more about My Pickle</TextLink>
     <ButtonWrapper>
       <Button to="/find-support">Find Support</Button>
       <Button to="/register">Offer Support</Button>

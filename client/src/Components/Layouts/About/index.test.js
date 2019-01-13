@@ -2,13 +2,13 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { StaticRouter } from "react-router-dom"
 
-import Dashboard from "./index"
+import AboutmyPikle from "./index"
 
-test("Dashboard matches snapshot", () => {
+test("AboutmyPikle matches snapshot", () => {
   const context = {}
   const component = renderer.create(
     <StaticRouter context={context}>
-      <Dashboard />
+      <AboutmyPikle />
     </StaticRouter>
   )
   expect(component).toMatchSnapshot()

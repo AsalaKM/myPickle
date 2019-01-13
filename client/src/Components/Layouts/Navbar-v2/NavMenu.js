@@ -17,12 +17,12 @@ const NavMenu = props => {
         </MenuItem>
         <MenuItem>
           <MenuLink to="/blog" onClick={props.handleMouseDown}>
-            Find Article
+            Blog Posts
           </MenuLink>
         </MenuItem>
         <MenuItem>
           <MenuLink to="/profiles" onClick={props.handleMouseDown}>
-            Find Therapiest
+            Browse Profiles
           </MenuLink>
         </MenuItem>
         {isAuthenticated ? (
@@ -33,13 +33,7 @@ const NavMenu = props => {
             </MenuLink>
             <DropDownList handleMouseDown={props.handleMouseDown} profileId={user} />
           </MenuItem>
-        ) : (
-          <MenuItem>
-            <MenuLink to="/" onClick={props.handleMouseDown}>
-              {userName}
-            </MenuLink>
-          </MenuItem>
-        )}
+        ) : null}
         {isAuthenticated ? null : (
           <div>
             <MenuItem>

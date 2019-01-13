@@ -25,6 +25,7 @@ import BrowseProfiles from "../Layouts/BrowseProfiles"
 import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
 import FindSupport from "../Layouts/FindSupport/index"
 import BlogPost from "../Layouts/Article/index"
+import AboutmyPikle from "../Layouts/About/index"
 
 // import common components
 import PrivateRoute from "../Common/PrivateRoute/PrivateRoute"
@@ -83,6 +84,7 @@ class App extends Component {
           <Switch>
             {/* Public routes to go here */}
             <Route path="/" exact component={Landing} />
+            <Route path="/about" exact component={AboutmyPikle} />
             <Route path="/register" exact component={Register} />
             <Route path="/login" exact component={Login} />
             <Route path="/newlogin" exact component={FirstTimeLogin} />

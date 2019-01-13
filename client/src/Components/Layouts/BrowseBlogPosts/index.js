@@ -22,6 +22,8 @@ class BrowseBlogPosts extends Component {
     const { loaded, blogPosts } = this.state
     if (!loaded) {
       return <div>loading...</div>
+    } else if (blogPosts.length === 0) {
+      return <div>no blog posts are currently available</div>
     } else {
       return (
         <Box>

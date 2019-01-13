@@ -27,15 +27,20 @@ class BrowseProfiles extends Component {
       return (
         <React.Fragment style={`padding-bottom: 3rem`}>
           {profiles.map(profile => {
-            const { organisation, wellnessType, avatarURL, profileID } = profile
+            const { organisation, wellnessType, avatarURL, profileID, approved } = profile
+
             return (
-              <Profile
-                key={Math.random()}
-                organisation={organisation}
-                wellnessType={wellnessType}
-                avatar={avatarURL}
-                profileID={profileID}
-              />
+              <div>
+                {approved && (
+                  <Profile
+                    key={Math.random()}
+                    organisation={organisation}
+                    wellnessType={wellnessType}
+                    avatar={avatarURL}
+                    profileID={profileID}
+                  />
+                )}
+              </div>
             )
           })}
         </React.Fragment>

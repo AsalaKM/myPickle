@@ -6,9 +6,9 @@ const router = express.Router()
 // require query file here
 const approveProfile = require("../../database/queries/approveProfile")
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   const profileID = req.originalUrl.split("/")[2]
-  approveProfile(profileID)
+  approveProfile(profileID, req.body.approved)
     .then(approved => res.status(200).send("success approving profile"))
     .catch(err => {
       console.log("ERR", err)

@@ -1,7 +1,8 @@
 const Profile = require("../models/Profile")
 
-const approveProfile = async id => {
-  await Profile.findOneAndUpdate({ _id: id }, { approved: false })
+// checks approved true or false and sets value to opposite
+const approveProfile = async (id, bool) => {
+  await Profile.findOneAndUpdate({ _id: id }, { approved: (bool = !bool) })
 }
 
 module.exports = approveProfile

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import axios from "axios"
 import {
   Box,
   Container,
@@ -18,7 +18,6 @@ import history from "../../../history"
 class Profile extends Component {
   render() {
     const { organisation, wellnessType, avatar, profileID, adminStatus, approved } = this.props
-    console.log(this.props)
 
     const checkAvatar = () =>
       avatar ? (
@@ -27,38 +26,45 @@ class Profile extends Component {
         <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
+    const handleApproval = () => {
+      axios
+        .post(`/approve/${profileID}`, { approved: approved })
+        .then(result => window.location.reload())
+        .catch(err => console.log(err))
+    }
+
     const checkApproval = () => {
       if (approved) {
-        return <p>yes</p>
+        return <button onClick={handleApproval}>disapprove</button>
       } else {
-        return <p>no</p>
+        return <button onClick={handleApproval}>approve</button>
       }
     }
 
     const viewProfile = e => {
       e.preventDefault()
-      history.push(`profile/${profileID}`)
+      history.push(`/profile/${profileID}`)
     }
 
     return (
       <Box>
         {/* only render defined props --> prevent crash */}
         {organisation && wellnessType && (
-          <Link onClick={viewProfile}>
-            <Container>
-              <Avatar>{checkAvatar()}</Avatar>
-              <DetailsOne>
-                <Name>{organisation} </Name>
-                {wellnessType.map(item => {
-                  return <List key={Math.random()}>{item}</List>
-                })}
-              </DetailsOne>
-              <DetailsTwo>
+          <Container>
+            <Avatar>{checkAvatar()}</Avatar>
+            <DetailsOne>
+              <Name>{organisation} </Name>
+              {wellnessType.map(item => {
+                return <List key={Math.random()}>{item}</List>
+              })}
+            </DetailsOne>
+            <DetailsTwo>
+              <Link onClick={viewProfile}>
                 <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
-                {adminStatus && checkApproval()}
-              </DetailsTwo>
-            </Container>
-          </Link>
+              </Link>
+            </DetailsTwo>
+            {adminStatus && checkApproval()}
+          </Container>
         )}
       </Box>
     )

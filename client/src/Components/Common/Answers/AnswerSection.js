@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { MultiAnswer } from "./AnswerSection.style"
+
 export default class AnswerSection extends Component {
   render() {
     const { answers } = this.props
@@ -14,12 +16,12 @@ export default class AnswerSection extends Component {
                 answer.question[0].inputType === "dropdown"
             )
             .map((answer, index) => (
-              <div key={index}>
+              <MultiAnswer key={index}>
                 <h4>{answer.question[0].questionText}</h4>
                 {answer.answer.map((option, index) => (
                   <div key={index}>{option}</div>
                 ))}
-              </div>
+              </MultiAnswer>
             ))}
           {answers
             .filter(answer => {

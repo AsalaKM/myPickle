@@ -21,6 +21,7 @@ import {
 } from "./SingleProfile.style"
 
 import { ProfileButton } from "../../Common/Buttons"
+import { MultiAnswer } from "../../Common/Answers/AnswerSection.style"
 
 import ProfileSections from "./ProfileSections"
 
@@ -114,7 +115,8 @@ class SinflePforile extends Component {
               {this.checkAvatar()}
               <Informations>
                 {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
-                <div>
+                <h4> {this.getAnswers("Registered address")}</h4>
+                <MultiAnswer>
                   {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
                   false ? (
                     this.getAnswers("Please select your area(s) of wellness").map(item => (
@@ -123,8 +125,7 @@ class SinflePforile extends Component {
                   ) : (
                     <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
                   )}
-                </div>
-                <h4> {this.getAnswers("Registered address")}</h4>
+                </MultiAnswer>
                 <ContactButton>Contact </ContactButton>
               </Informations>
             </TitleWrapper>

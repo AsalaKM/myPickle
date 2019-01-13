@@ -41,14 +41,13 @@ class SinflePforile extends Component {
     axios
       .get(`/single-profile/${id}`)
       .then(result => {
-        const questionsAndAnswers = Object.keys(result.data).map(element => {
-          if (result.data[element].question) {
-            return {
+        const questionsAndAnswers = Object.keys(result.data).map(
+          (element, index) =>
+            result.data[element].question && {
               question: result.data[element].question[0].questionText,
               answers: result.data[element].answer || [],
             }
-          } else return null
-        })
+        )
         const {
           basicInfoAnswers,
           bookingDetails,
@@ -77,11 +76,19 @@ class SinflePforile extends Component {
       .catch(err => console.log(err))
   }
 
-  getAnswers = qs => {
-    const { questionsAndAnswers } = this.state
-    const question = questionsAndAnswers.filter(elem => elem && elem.question === qs)[0]
-    if (question !== undefined) {
-      const ans = question.answers
+  getAnswers = (section, question) => {
+    const { basicInfoAnswers, bookingDetails, supportDetails } = this.state
+    let filteredSection
+
+    if (section === "basicInfo") filteredSection = basicInfoAnswers
+    if (section === "supportDetails") filteredSection = supportDetails
+    if (section === "bookingDetails") filteredSection = bookingDetails
+
+    const questionDetails = filteredSection.filter(
+      elem => elem && elem.question[0].questionText === question
+    )[0]
+    if (questionDetails !== undefined) {
+      const ans = questionDetails.answer
       return ans
     } else {
       return "no result"
@@ -105,7 +112,7 @@ class SinflePforile extends Component {
       return (
         <Container>
           <TitleCard>
-            <h2> {this.getAnswers("Known organisation name")} </h2>
+            <h2> {this.getAnswers("basicInfo", "Known organisation name")} </h2>
             <TitleWrapper>
               {this.checkAvatar()}
               <Informations>
@@ -114,13 +121,16 @@ class SinflePforile extends Component {
                   <p>{address.city}</p>
                 </LocationWrapper>
                 <MultiAnswer>
-                  {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
-                  false ? (
-                    this.getAnswers("Please select your area(s) of wellness").map((item, index) => (
-                      <div key={index}>{item}</div>
-                    ))
+                  {Array.isArray(
+                    this.getAnswers("supportDetails", "Please select your area(s) of wellness")
+                  ) !== false ? (
+                    this.getAnswers("supportDetails", "Please select your area(s) of wellness").map(
+                      (item, index) => <div key={index}>{item}</div>
+                    )
                   ) : (
-                    <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
+                    <div>
+                      {this.getAnswers("supportDetails", "Please select your area(s) of wellness")}
+                    </div>
                   )}
                 </MultiAnswer>
                 <ContactLink
@@ -149,12 +159,22 @@ class SinflePforile extends Component {
 
           <SectionCard>
             <h3>Bio</h3>
-            <p>{this.getAnswers("Please provide a brief description of the organisation")}</p>
+            <p>
+              {this.getAnswers(
+                "basicInfo",
+                "Please provide a brief description of the organisation"
+              )}
+            </p>
             <div>
               <h4>Core offering: </h4>
-              {this.getAnswers("What best describes your core service offering?").map(item => (
-                <div>{item}</div>
-              ))}
+              <MultiAnswer>
+                {this.getAnswers(
+                  "basicInfo",
+                  "What best describes your core service offering?"
+                ).map((item, index) => (
+                  <div key={index}>{item}</div>
+                ))}
+              </MultiAnswer>
             </div>
           </SectionCard>
 

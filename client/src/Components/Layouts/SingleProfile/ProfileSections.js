@@ -8,7 +8,6 @@ export default class ProfileSections extends Component {
   render() {
     const { supportDetails, bookingDetails } = this.props
 
-    console.log("booking", bookingDetails)
     return (
       <React.Fragment>
         {supportDetails.length > 0 ? (

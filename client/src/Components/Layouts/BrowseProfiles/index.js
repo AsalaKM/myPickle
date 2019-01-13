@@ -1,12 +1,21 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
-
+import jwt_decode from "jwt-decode"
 import axios from "axios"
 
 class BrowseProfiles extends Component {
   state = {
     profiles: null,
     loaded: false,
+    admin: false,
+  }
+
+  checkAmin = name => {
+    if (name === "Admin") {
+      this.setState({
+        admin: true,
+      })
+    }
   }
 
   componentDidMount() {
@@ -15,6 +24,13 @@ class BrowseProfiles extends Component {
       .get("/profiles")
       .then(result => this.setState({ profiles: result.data, loaded: true }))
       .catch(err => console.log(err))
+
+    // check user
+    if (localStorage.jwtToken) {
+      const decoded = jwt_decode(localStorage.jwtToken)
+      const name = decoded.name
+      this.checkAmin(name)
+    }
   }
 
   render() {
@@ -28,7 +44,6 @@ class BrowseProfiles extends Component {
         <React.Fragment style={`padding-bottom: 3rem`}>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL, profileID, approved } = profile
-
             return (
               <div>
                 {approved && (

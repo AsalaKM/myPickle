@@ -14,7 +14,7 @@ export const SectionCard = styled.section`
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   padding: 1rem;
   position: relative;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -29,6 +29,7 @@ export const SectionCard = styled.section`
 export const TitleCard = styled(SectionCard)`
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 `
 
 export const ContactButton = styled.button`

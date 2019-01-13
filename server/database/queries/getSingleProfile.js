@@ -3,6 +3,9 @@ const ProfileAnswer = require("../models/ProfileAnswer")
 const Profile = require("../models/Profile")
 // const Users = require("../models/User")
 
+// load image function
+const getImageNames = require("../queries/getImageNames")
+
 const getAnswersProfile = async profileID => {
   // get the profile with the ID
   // you need to do this to make sure the id you feed into the mongoose query below is an object not a string
@@ -49,6 +52,16 @@ const getAnswersProfile = async profileID => {
     answer => answer.question[0].section === "Availability & Booking"
   )
 
+  // check if profile image
+
+  // insert file path of profile pictures folder
+  const filePath = `${__dirname}/../../assets/profile-images`
+  const getImageArr = await getImageNames(filePath)
+
+  const profileImage = getImageArr.filter(imageName => imageName.split("-")[0] === profileID)
+
+  console.log("image", profileImage)
+
   return {
     ...BasicInfo[0],
     ...allAnswers,
@@ -56,6 +69,7 @@ const getAnswersProfile = async profileID => {
     supportDetails,
     socialMedia,
     bookingDetails,
+    profileImage,
   }
 }
 

@@ -25,7 +25,7 @@ export default class ProfileSections extends Component {
         ) : null}
         {socialMedia.length > 0 ? (
           <SectionCard>
-            <h3>Social Media:</h3>
+            <h3>Social Media</h3>
             <AnswerSection answers={socialMedia} />
           </SectionCard>
         ) : null}

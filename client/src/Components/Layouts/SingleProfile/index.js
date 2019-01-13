@@ -33,6 +33,7 @@ class SinflePforile extends Component {
     bookingDetails: [],
     socialMedia: [],
     supportDetails: [],
+    profileImage: null,
   }
 
   componentDidMount() {
@@ -53,7 +54,13 @@ class SinflePforile extends Component {
             }
           }
         })
-        const { basicInfoAnswers, bookingDetails, socialMedia, supportDetails } = result.data
+        const {
+          basicInfoAnswers,
+          bookingDetails,
+          socialMedia,
+          supportDetails,
+          profileImage,
+        } = result.data
         this.setState({
           questionsAndAnswers,
           userInfo: result.data.BsicInfo[0],
@@ -62,6 +69,7 @@ class SinflePforile extends Component {
           bookingDetails,
           socialMedia,
           supportDetails,
+          profileImage,
         })
       })
       .catch(err => console.log(err))
@@ -82,6 +90,13 @@ class SinflePforile extends Component {
     }
   }
 
+  checkAvatar = () =>
+    this.state.profileImage.length > 0 ? (
+      <Avatar src={`/static/${this.state.profileImage}`} />
+    ) : (
+      <Avatar src={require("../../../assets/images/logo_bw.jpg")} />
+    )
+
   render() {
     const { answers, loading } = this.state
 
@@ -93,7 +108,7 @@ class SinflePforile extends Component {
       return (
         <Container>
           <TitleCard>
-            <Avatar src={this.getAnswers("Organisation photo or logo")} />
+            {this.checkAvatar()}
             <Informations>
               <h4> {this.getAnswers("Known organisation name")} </h4>
               {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
@@ -137,6 +152,7 @@ class SinflePforile extends Component {
           />
 
           <SectionCard>
+            <h3>Contact</h3>
             <h4>phone: {this.state.userInfo.phone}</h4>
             <h4>Email: {this.state.userInfo.email}</h4>
           </SectionCard>

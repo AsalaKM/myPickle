@@ -2,15 +2,15 @@
 
 exports[`AboutmyPikle matches snapshot 1`] = `
 <div
-  className="sc-bdVaJa csHzmu"
+  className="sc-bdVaJa eFPZsD"
 >
-  <h3
-    className="sc-bwzfXH gJIwTT"
+  <h2
+    className="sc-bwzfXH kCppBb"
   >
-    My Pickle
-  </h3>
+    About My Pickle
+  </h2>
   <div
-    className="sc-htpNat bCibYJ"
+    className="sc-htpNat jYXKdb"
   >
     <h5>
       WE STAND FOR WORLDWIDE WELLNESS
@@ -23,12 +23,12 @@ exports[`AboutmyPikle matches snapshot 1`] = `
     </h5>
   </div>
   <p
-    className="sc-bxivhb jHwmyZ"
+    className="sc-bxivhb giIgxL"
   >
     Find health & wellbeing support that’s right for you. Be supported and have a better life. Feel happier, stronger and healthier.
   </p>
   <a
-    className="sc-ifAKCX bUBbrR"
+    className="sc-ifAKCX gxTOri"
     href="mailto:cat@mypickle.org"
   >
     Click here to contact us and find out more

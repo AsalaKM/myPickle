@@ -12,13 +12,13 @@ export default class ProfileSections extends Component {
     return (
       <React.Fragment>
         {supportDetails.length > 0 ? (
-          <SectionCard>
+          <SectionCard id="support">
             <h3>Support Details</h3>
             <AnswerSection answers={supportDetails} />
           </SectionCard>
         ) : null}
         {bookingDetails.length > 0 ? (
-          <SectionCard>
+          <SectionCard id="booking">
             <h3>Availability & Booking</h3>
             <AnswerSection answers={bookingDetails} />
           </SectionCard>

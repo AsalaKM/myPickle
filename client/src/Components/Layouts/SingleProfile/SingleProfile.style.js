@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link, animateScroll as scroll } from "react-scroll"
 
 export const Container = styled.div`
   background: var(--white);
@@ -141,4 +142,37 @@ export const LocationWrapper = styled.div`
     font-family: "Gosmick Sans", sans-serif;
     font-size: 1.25rem;
   }
+`
+export const NavLink = styled(Link).attrs({
+  className: "mp-bg-white mp-b--primary-color",
+})`
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  width: 30vw;
+  height: 3rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  text-align: center;
+
+  :hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  :focus {
+    background-color: var(--darkPrimary);
+    color: var(--white);
+  }
+`
+
+export const ContactLink = styled(NavLink)`
+  height: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0;
+  width: 40vw;
 `

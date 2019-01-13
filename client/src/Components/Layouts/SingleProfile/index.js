@@ -18,6 +18,8 @@ import {
   SupportAnswers,
   TitleWrapper,
   LocationWrapper,
+  NavLink,
+  ContactLink,
 } from "./SingleProfile.style"
 
 import { ContactButton, ProfileButton } from "../../Common/Buttons"
@@ -47,11 +49,8 @@ class SinflePforile extends Component {
     axios
       .get(`/single-profile/${id}`)
       .then(result => {
-        console.log("RESULT", result)
         const questionsAndAnswers = Object.keys(result.data).map(element => {
           if (result.data[element].question) {
-            console.log(result.data[element].question[0].questionText)
-            console.log(result.data[element].answers || [])
             return {
               question: result.data[element].question[0].questionText,
               answers: result.data[element].answer || [],
@@ -136,7 +135,15 @@ class SinflePforile extends Component {
                     <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
                   )}
                 </MultiAnswer>
-                <ContactButton className="contact">Contact</ContactButton>
+                <ContactLink
+                  to="contact"
+                  smooth={true}
+                  offset={-40}
+                  duration={500}
+                  className="contact"
+                >
+                  Contact
+                </ContactLink>
                 {socialMedia.length > 0 ? <SocialSection socialAnswers={socialMedia} /> : null}
               </Informations>
             </TitleWrapper>
@@ -144,8 +151,12 @@ class SinflePforile extends Component {
 
           <Navigate>
             <ProfileButton>Blog</ProfileButton>
-            <ProfileButton>Services</ProfileButton>
-            <ProfileButton>Booking</ProfileButton>
+            <NavLink to="support" smooth={true} offset={-40} duration={500}>
+              Support Details
+            </NavLink>
+            <NavLink to="booking" smooth={true} offset={-40} duration={500}>
+              Booking
+            </NavLink>
           </Navigate>
 
           <SectionCard>
@@ -166,10 +177,12 @@ class SinflePforile extends Component {
             socialMedia={socialMedia}
           />
 
-          <SectionCard>
+          <SectionCard id="contact">
             <h3>Contact</h3>
-            <h4>phone: {this.state.userInfo.phone}</h4>
-            <h4>Email: {this.state.userInfo.email}</h4>
+            <h4>Phone: {this.state.userInfo.phone}</h4>
+            <h4>
+              Email: <a href={`mailto:${this.state.userInfo.email}`}>{this.state.userInfo.email}</a>
+            </h4>
           </SectionCard>
         </Container>
       )

@@ -20,6 +20,7 @@ import EditBookingDetails from "../Layouts/EditProfile/BookingAvailability"
 import EditSocialMedia from "../Layouts/EditProfile/SocialMedia"
 import EditBasicInfo from "../Layouts/EditProfile/BasicInfo"
 import Landing from "../Layouts/LandingPage/index"
+import Navbar from "../Layouts/Navbar-v2"
 import BrowseProfiles from "../Layouts/BrowseProfiles"
 import BrowseBlogPosts from "../Layouts/BrowseBlogPosts"
 import FindSupport from "../Layouts/FindSupport/index"
@@ -77,79 +78,82 @@ class App extends Component {
     if (!loaded) return null
     return (
       <Router history={history}>
-        <Switch>
-          {/* Public routes to go here */}
-          <Route path="/" exact component={Landing} />
-          <Route path="/register" exact component={Register} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/newlogin" exact component={FirstTimeLogin} />
-          <PublicRoute path="/find-support" exact component={FindSupport} footer />
+        <div>
+          <Navbar isAuthenticated={isAuthenticated} user={profileId} />
+          <Switch>
+            {/* Public routes to go here */}
+            <Route path="/" exact component={Landing} />
+            <Route path="/register" exact component={Register} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/newlogin" exact component={FirstTimeLogin} />
+            <PublicRoute path="/find-support" exact component={FindSupport} footer />
 
-          <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
-          <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
-          <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
+            <PublicRoute path="/profiles" exact component={BrowseProfiles} footer />
+            <PublicRoute path="/blog" exact component={BrowseBlogPosts} footer />
+            <PublicRoute path="/blog/:id" exact component={BlogPost} footer />
 
-          {/* Private routes to go here */}
-          <PrivateRoute
-            path="/edit-profile"
-            exact
-            component={EditProfile}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/edit-profile/support-details"
-            exact
-            component={EditSupportDetails}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/edit-profile/target-clients"
-            exact
-            component={EditTargetClients}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/edit-profile/availability-booking"
-            exact
-            component={EditBookingDetails}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/edit-profile/social-media"
-            exact
-            component={EditSocialMedia}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/edit-profile/basic-info"
-            exact
-            component={EditBasicInfo}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/dashboard"
-            exact
-            component={Dashboard}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
-          <PrivateRoute
-            path="/postarticles"
-            exact
-            component={PostArticles}
-            profileId={profileId}
-            isAuthenticated={isAuthenticated}
-          />
+            {/* Private routes to go here */}
+            <PrivateRoute
+              path="/edit-profile"
+              exact
+              component={EditProfile}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/edit-profile/support-details"
+              exact
+              component={EditSupportDetails}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/edit-profile/target-clients"
+              exact
+              component={EditTargetClients}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/edit-profile/availability-booking"
+              exact
+              component={EditBookingDetails}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/edit-profile/social-media"
+              exact
+              component={EditSocialMedia}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/edit-profile/basic-info"
+              exact
+              component={EditBasicInfo}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/dashboard"
+              exact
+              component={Dashboard}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/postarticles"
+              exact
+              component={PostArticles}
+              profileId={profileId}
+              isAuthenticated={isAuthenticated}
+            />
 
-          {/* Final route for pages they don't find */}
-          <Route component={PageNotFound} />
-        </Switch>
+            {/* Final route for pages they don't find */}
+            <Route component={PageNotFound} />
+          </Switch>
+        </div>
       </Router>
     )
   }

@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 const storeArticle = require("../../../database/queries/storeArticle")
 
 const createArticle = async (req, res) => {
-  const { title, categoriesSelected, text, profileId } = req.body
+  const { title, categoriesSelected, text } = req.body
+  const profileID = req.user.profileId
   const { image } = req.files
   const fileType = image.mimetype
   if (fileType === "image/jpeg" || fileType === "image/png" || fileType === "image/gif") {
@@ -24,7 +25,7 @@ const createArticle = async (req, res) => {
         category: newCategories,
         content: text,
         image: imageURL,
-        profile: profileId,
+        profile: profileID,
       }
       // query for store article in DB
       const newArticle = await storeArticle(article)

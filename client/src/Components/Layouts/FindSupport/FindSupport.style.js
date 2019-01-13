@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 export const Heading = styled.h3.attrs({
-  className: "f5 f5-ns fw4 lh-title mp-black-color mv0",
+  className: "f5 f5-ns fw3 lh-title mp-black-color mv0",
 })``
 
 export const AllButton = styled(Link).attrs({
@@ -20,7 +20,7 @@ export const Container = styled.div.attrs({
 `
 
 export const ColumnContainer = styled.div.attrs({
-  className: "dt w-100 mt2",
+  className: "dt w-100 mt2 pa3",
 })``
 
 export const ColumnOne = styled.div.attrs({

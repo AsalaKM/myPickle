@@ -18,6 +18,48 @@ class BrowseProfiles extends Component {
     }
   }
 
+  renderProfiles = profiles => {
+    const { admin } = this.state
+    return (
+      <React.Fragment>
+        {profiles.map(profile => {
+          const { organisation, wellnessType, avatarURL, profileID, approved } = profile
+          if (admin) {
+            return (
+              <div>
+                <Profile
+                  key={Math.random()}
+                  organisation={organisation}
+                  wellnessType={wellnessType}
+                  avatar={avatarURL}
+                  profileID={profileID}
+                  adminStatus={this.state.admin}
+                  approved={approved}
+                />
+              </div>
+            )
+          } else {
+            return (
+              <div>
+                {approved && (
+                  <Profile
+                    key={Math.random()}
+                    organisation={organisation}
+                    wellnessType={wellnessType}
+                    avatar={avatarURL}
+                    profileID={profileID}
+                    adminStatus={this.state.admin}
+                    approved={approved}
+                  />
+                )}
+              </div>
+            )
+          }
+        })}
+      </React.Fragment>
+    )
+  }
+
   componentDidMount() {
     // get profiles
     axios
@@ -35,31 +77,15 @@ class BrowseProfiles extends Component {
 
   render() {
     const { loaded, profiles } = this.state
+    console.log(this.state)
+
     if (!loaded) {
       return <div>loading...</div>
-    } else if (profiles.length === 0) {
+    }
+    if (profiles.length === 0) {
       return <div>currently there are no profiles</div>
     } else {
-      return (
-        <React.Fragment style={`padding-bottom: 3rem`}>
-          {profiles.map(profile => {
-            const { organisation, wellnessType, avatarURL, profileID, approved } = profile
-            return (
-              <div>
-                {approved && (
-                  <Profile
-                    key={Math.random()}
-                    organisation={organisation}
-                    wellnessType={wellnessType}
-                    avatar={avatarURL}
-                    profileID={profileID}
-                  />
-                )}
-              </div>
-            )
-          })}
-        </React.Fragment>
-      )
+      return <div>{this.renderProfiles(profiles)}</div>
     }
   }
 }

@@ -1,3 +1,4 @@
+const User = require("./models/User")
 const Profile = require("./models/Profile")
 const SupportType = require("./models/SupportType")
 

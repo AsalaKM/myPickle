@@ -3,6 +3,7 @@ const express = require("express")
 const router = express.Router()
 
 const getRegisterQuestionsController = require("./getRegisterQuestionsController")
+const getSingleProfile = require("./getSingleProfile")
 const signUpController = require("./signUpController")
 const uploadImage = require("./uploadImage")
 const checkEmail = require("./checkEmail")
@@ -57,6 +58,8 @@ router.use("/edit-profile/:section", editProfileSection)
 
 // update profile routes
 // router.use("/update-profile/target/:id", updateTargetClientsDetails)
+router.use("/update-profile/:section/:id", updateProfileSection)
+router.use("/single-profile/", getSingleProfile)
 router.use("/update-profile/:section", updateProfileSection)
 router.use("/users", user)
 

@@ -33,13 +33,13 @@ class Dashboard extends Component {
     this.props.history.push("/edit-profile")
   }
   browseProfiles = () => {
-    this.props.history.push("/")
+    this.props.history.push("/profiles")
   }
   browsePosts = () => {
-    this.props.history.push("/")
+    this.props.history.push("/blog")
   }
   createPlog = () => {
-    this.props.history.push("/")
+    this.props.history.push("/postarticles")
   }
 
   render() {

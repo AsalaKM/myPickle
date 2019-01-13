@@ -53,6 +53,9 @@ const Arrow = styled.img.attrs({
   width: 40px;
   height: 40px;
 `
+const Profiles = styled.div`
+  padding-bottom: 3rem;
+`
 
 export {
   Button,
@@ -66,4 +69,5 @@ export {
   Avatar,
   Arrow,
   Link,
+  Profiles,
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
 import jwt_decode from "jwt-decode"
+
 import axios from "axios"
 
 class BrowseProfiles extends Component {

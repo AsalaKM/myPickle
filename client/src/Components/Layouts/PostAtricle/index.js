@@ -2,22 +2,31 @@ import React, { Component } from "react"
 import axios from "axios"
 // import the form compenent
 import ArticleForm from "./ArticleForm"
+import formRules from "./FormRules"
 
 import swal from "sweetalert"
 
 class PostArticle extends Component {
-  state = {
-    article: {
-      title: "",
-      categoriesSelected: [],
-      text: "",
-      image: null,
-    },
-    categoryOptions: [],
-    errors: [],
-    hasError: false,
-    uploading: false,
+  constructor() {
+    super()
+
+    this.validator = formRules
+
+    this.state = {
+      article: {
+        title: "",
+        categoriesSelected: [],
+        text: "",
+        image: null,
+        profileId: "",
+      },
+      categoryOptions: [],
+      validation: this.validator.valid(),
+      uploading: false,
+    }
+    this.submitted = false
   }
+
   async componentDidMount() {
     try {
       const { profileId } = this.props
@@ -62,35 +71,49 @@ class PostArticle extends Component {
   }
   handleSubmit = async e => {
     e.preventDefault()
-    const { article } = this.state
-    const { history } = this.props
-    const formData = new FormData()
-    for (let key in article) {
-      if (key === "categoriesSelected") {
-        let categoriesSelected = article[key].map(item => {
-          return item.value
-        })
-        formData.append(key, categoriesSelected)
-      } else {
-        formData.append(key, article[key])
+    const validation = this.validator.validate(this.state.article)
+    this.setState({ validation })
+    this.submitted = true
+    if (validation.isValid) {
+      const { article } = this.state
+      const { history } = this.props
+      const formData = new FormData()
+      for (let key in article) {
+        if (key === "categoriesSelected") {
+          let categoriesSelected = article[key].map(item => {
+            return item.value
+          })
+          formData.append(key, categoriesSelected)
+        } else {
+          formData.append(key, article[key])
+        }
       }
-    }
-    try {
-      const success = await axios.post("/articles/", formData)
-      const { url } = success.data.createdArticele
-      swal(
-        "Great!",
-        `Article ${success.data.createdArticele.title} created Successfully!`,
-        "success"
-      ).then(() => history.push(url))
-    } catch (error) {
+      try {
+        const success = await axios.post("/articles/", formData)
+        const { url } = success.data.createdArticele
+        swal(
+          "Great!",
+          `Article ${success.data.createdArticele.title} created Successfully!`,
+          "success"
+        ).then(() => history.push(url))
+      } catch (error) {
+        swal({
+          icon: "error",
+          title: `Oops!! something happened, ${error.msg} `,
+        })
+      }
+    } else {
       swal({
         icon: "error",
-        title: "Oops!! something happen, sorry",
+        title: "Oops!! Please complete the article form",
       })
     }
   }
   render() {
+    let validation = this.submitted
+      ? this.validator.validate(this.state.article)
+      : this.state.validation
+
     const data = this.state
 
     return (
@@ -100,6 +123,7 @@ class PostArticle extends Component {
           handleChange={this.handleChange}
           imageUpload={this.imageUpload}
           handleSubmit={this.handleSubmit}
+          validation={validation}
         />
       </React.Fragment>
     )

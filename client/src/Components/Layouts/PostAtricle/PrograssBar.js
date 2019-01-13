@@ -9,19 +9,25 @@ const ProgressBarWrapper = styled.div`
 `
 
 const fillWidly = y => keyframes`
-0% {width: 0%}
-100% {width: ${y}%} 
+  0% { 
+    width: 0%
+  }
+  100% {
+    width: ${y}%;
+    background: green;
+  } 
 `
 const ProgressBarDiv = styled.div`
   background: #ff0000;
   height: 100%;
-  animation: ${props => fillWidly(props.fill)} 3s linear; //will animate 20 times
+  animation: ${props => (props.inActive ? "none" : fillWidly(props.fill))} 3s linear;
+  animation-fill-mode: forwards;
   position: relative;
 `
 const PrograssBar = props => {
   return (
     <ProgressBarWrapper>
-      <ProgressBarDiv fill={props.fill} />
+      <ProgressBarDiv fill={props.fill} inActive={props.inActive} />
     </ProgressBarWrapper>
   )
 }

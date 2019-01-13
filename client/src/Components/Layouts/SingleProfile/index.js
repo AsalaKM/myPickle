@@ -26,6 +26,7 @@ import { MultiAnswer } from "../../Common/Answers/AnswerSection.style"
 import ProfileSections from "./ProfileSections"
 
 import AnswerSection from "../../Common/Answers/AnswerSection"
+import SocialSection from "../../Common/Answers/SocialSection"
 
 class SinflePforile extends Component {
   state = {
@@ -121,7 +122,6 @@ class SinflePforile extends Component {
             <TitleWrapper>
               {this.checkAvatar()}
               <Informations>
-                {/* <h4>{this.getAnswers("Please select your area(s) of wellness")}</h4> */}
                 <LocationWrapper>
                   <img src={require("../../../assets/images/location_Icon.svg")} alt="location" />
                   <p>{address.city}</p>
@@ -137,6 +137,7 @@ class SinflePforile extends Component {
                   )}
                 </MultiAnswer>
                 <ContactButton className="contact">Contact</ContactButton>
+                {socialMedia.length > 0 ? <SocialSection socialAnswers={socialMedia} /> : null}
               </Informations>
             </TitleWrapper>
           </TitleCard>

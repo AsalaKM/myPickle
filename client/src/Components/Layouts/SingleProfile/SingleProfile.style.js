@@ -61,10 +61,11 @@ export const Avatar = styled.img`
 
 export const Informations = styled.div`
   padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
 
   .contact {
-    align-self: center;
-    align-content: center;
     margin-top: 1rem;
   }
 `

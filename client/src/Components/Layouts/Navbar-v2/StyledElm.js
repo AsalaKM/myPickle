@@ -60,7 +60,7 @@ const LogoBox = styled.div`
   justify-content: center;
 `
 const ColoredWrapper = styled(Wrapper)`
-  background-color: var(--white);
+  background-color: white;
   box-shadow: ${props => props.shadow || ""};
   &.active {
     position: fixed;

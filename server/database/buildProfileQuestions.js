@@ -730,7 +730,7 @@ const buildProfileQuestions = async () => {
         "£125-149",
         "Over £150",
       ],
-      inputType: "checkbox",
+      inputType: "radio",
       section: "Availability & Booking",
     },
     {

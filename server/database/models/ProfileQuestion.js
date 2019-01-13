@@ -9,7 +9,7 @@ const QuestionSchema = new Schema({
   // this is where we link the question to the SupportType
   supportType: {
     // connect each question to the type of support (e.g. therapist)
-    type: Schema.Types.ObjectId, //FK ref the id in the SupportType model
+    type: Schema.Types.ObjectId, // FK ref the id in the SupportType model
     ref: "supportTypes", // this says which model to go into
   },
   // this is the text of the question

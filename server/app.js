@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
 const passport = require("passport")
 
-const controllers = require("./api/controllers")
+const controllers = require("./api/controllers/index.js")
 
 const dbConnection = require("./database/db_connection")
 

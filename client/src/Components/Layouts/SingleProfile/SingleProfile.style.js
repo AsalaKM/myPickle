@@ -71,14 +71,6 @@ export const Informations = styled.div`
   }
 `
 
-export const Bio = styled.section`
-  background: white;
-  width: 90%;
-  height: 100px;
-  margin-left: 50px;
-  border-radius: 12px;
-`
-
 export const Navigate = styled.div`
   display: flex;
   padding: 0.5rem;
@@ -94,43 +86,7 @@ export const Button = styled.button`
   color: white;
   border-radius: 5px;
 `
-export const Services = styled.section`
-  background: white;
-  width: 90%;
-  height: 375px;
-  margin-left: 50px;
-  border-radius: 12px;
-`
-export const help = styled.div``
-export const OptionsOfSupport = styled.button`
-  background: #59bf15;
-  border: none;
-  color: white;
-  height: 50px;
-  border-radius: 5px;
-  width: 130px;
-`
-export const SupportAnswers = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-`
-export const Delivery = styled.div``
 
-export const Booking = styled.section`
-  background: gray;
-  width: 90%;
-  height: 200px;
-  margin-left: 50px;
-  border-radius: 12px;
-`
-export const Contact = styled.section`
-  width: 90%;
-  height: 100px;
-  margin-left: 50px;
-  border-radius: 12px;
-  background: white;
-`
 export const LocationWrapper = styled.div`
   display: flex;
 
@@ -175,4 +131,43 @@ export const ContactLink = styled(NavLink)`
   border-radius: 2rem;
   box-shadow: 0 0;
   width: 40vw;
+`
+
+export const BlogLink = styled.a.attrs({
+  className: "mp-bg-white mp-b--primary-color",
+})`
+  border-style: solid;
+  text-decoration: none;
+  color: var(--black);
+  border-width: 1px;
+  cursor: pointer;
+  width: 30vw;
+  height: 3rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  text-align: center;
+
+  :hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  :focus {
+    background-color: var(--darkPrimary);
+    color: var(--white);
+  }
+`
+
+export const UrlLink = styled.a`
+  text-decoration: none;
+  color: var(--primary);
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
 `

@@ -7,19 +7,13 @@ import {
   TitleCard,
   Avatar,
   Informations,
-  Bio,
   Navigate,
-  Services,
-  help,
-  Delivery,
-  Booking,
-  Contact,
-  OptionsOfSupport,
-  SupportAnswers,
   TitleWrapper,
   LocationWrapper,
   NavLink,
   ContactLink,
+  UrlLink,
+  BlogLink,
 } from "./SingleProfile.style"
 
 import { ContactButton, ProfileButton } from "../../Common/Buttons"
@@ -128,8 +122,8 @@ class SinflePforile extends Component {
                 <MultiAnswer>
                   {Array.isArray(this.getAnswers("Please select your area(s) of wellness")) !==
                   false ? (
-                    this.getAnswers("Please select your area(s) of wellness").map(item => (
-                      <div>{item}</div>
+                    this.getAnswers("Please select your area(s) of wellness").map((item, index) => (
+                      <div key={index}>{item}</div>
                     ))
                   ) : (
                     <div>{this.getAnswers("Please select your area(s) of wellness")}</div>
@@ -150,7 +144,7 @@ class SinflePforile extends Component {
           </TitleCard>
 
           <Navigate>
-            <ProfileButton>Blog</ProfileButton>
+            <BlogLink href="/blog">Blog</BlogLink>
             <NavLink to="support" smooth={true} offset={-40} duration={500}>
               Support Details
             </NavLink>
@@ -181,7 +175,10 @@ class SinflePforile extends Component {
             <h3>Contact</h3>
             <h4>Phone: {this.state.userInfo.phone}</h4>
             <h4>
-              Email: <a href={`mailto:${this.state.userInfo.email}`}>{this.state.userInfo.email}</a>
+              Email:{" "}
+              <UrlLink href={`mailto:${this.state.userInfo.email}`}>
+                {this.state.userInfo.email}
+              </UrlLink>
             </h4>
           </SectionCard>
         </Container>

@@ -24,6 +24,8 @@ const getQuestions = require("./getQuestions")
 // const updateTargetClientsDetails = require("./updateTargetClientsDetails")
 const updateProfileSection = require("./updateProfileSection")
 
+const user = require("./user")
+
 /* GET home page. */
 router.get("/", (req, res, next) => {
   res.send({ title: "Express" })
@@ -56,5 +58,6 @@ router.use("/edit-profile/:section", editProfileSection)
 router.use("/update-profile/:section/:id", updateProfileSection)
 router.use("/single-profile/", getSingleProfile)
 router.use("/update-profile/:section", updateProfileSection)
+router.use("/users", user)
 
 module.exports = router

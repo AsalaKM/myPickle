@@ -15,9 +15,5 @@ const FormContainer = styled(Container)`
   display: flex;
   align-items: center;
 `
-const ColoredWrapper = styled(Wrapper)`
-  background-color: ${props => props.background || "var(--white)"};
-  box-shadow: ${props => props.shadow || ""};
-`
 
-export { Container, Wrapper, ColoredWrapper, FormContainer }
+export { Container, Wrapper, FormContainer }

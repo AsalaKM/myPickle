@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+  padding-bottom: 2rem;
 `
 
 export const SectionCard = styled.section`

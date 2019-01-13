@@ -11,7 +11,7 @@ const Box = styled.main.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "dt center bb b--black-05 pb2 mt2 mp-bg-white br2 shadow-5",
+  className: "dt center bb b--black-05 pb2 mt3 mp-bg-white br2 shadow-5",
 })`
   width: 95%;
 `
@@ -53,6 +53,9 @@ const Arrow = styled.img.attrs({
   width: 40px;
   height: 40px;
 `
+const Profiles = styled.div`
+  padding-bottom: 3rem;
+`
 
 export {
   Button,
@@ -66,4 +69,5 @@ export {
   Avatar,
   Arrow,
   Link,
+  Profiles,
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
+import { Profiles } from "./BrowseProfiles.style"
 
 import axios from "axios"
 
@@ -21,9 +22,11 @@ class BrowseProfiles extends Component {
     const { loaded, profiles } = this.state
     if (!loaded) {
       return <div>loading...</div>
+    } else if (profiles.length === 0) {
+      return <div>currently there are no profiles</div>
     } else {
       return (
-        <React.Fragment style={`padding-bottom: 3rem`}>
+        <Profiles>
           {profiles.map(profile => {
             const { organisation, wellnessType, avatarURL, profileID } = profile
             return (
@@ -36,7 +39,7 @@ class BrowseProfiles extends Component {
               />
             )
           })}
-        </React.Fragment>
+        </Profiles>
       )
     }
   }

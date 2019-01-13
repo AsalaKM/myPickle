@@ -3,7 +3,7 @@ import { WrapperElements, MyPikle, Text, SendingEmail, Paragrapgh } from "./Abou
 
 const AboutmyPikle = () => (
   <WrapperElements>
-    <MyPikle>My Pickle</MyPikle>
+    <MyPikle>About My Pickle</MyPikle>
     <Text>
       <h5>WE STAND FOR WORLDWIDE WELLNESS</h5>
       <h5>We want people to be better supported.</h5>

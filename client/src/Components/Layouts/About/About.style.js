@@ -2,24 +2,32 @@ import styled from "styled-components"
 
 export const WrapperElements = styled.div`
   margin: 0 auto;
-  font-family: cursive;
+  padding: 1rem;
+  padding-top: 2rem;
 `
-export const MyPikle = styled.h3`
+export const MyPikle = styled.h2`
   text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary);
 `
 
 export const Text = styled.div`
   text-align: center;
-  margin-top: 30px;
+  margin-bottom: 3rem;
 `
 
 export const Paragrapgh = styled.p`
-  margin-left: 18px;
+  margin-bottom: 2rem;
 `
+
 export const SendingEmail = styled.a`
   text-decoration: none;
-  margin-left: 18px;
-  color: #59bf15;
-  text-align: center;
-  font-size: 15px;
+  display: flex;
+  justify-content: center;
+
+  color: var(--primary);
+
+  :hover {
+    text-decoration: underline;
+  }
 `

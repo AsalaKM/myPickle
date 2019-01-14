@@ -4,7 +4,7 @@ import { CheckboxField, ErrorMsg } from "./Questions.style"
 
 export default class CheckboxInput extends Component {
   render() {
-    const { question, handleChange, answers, unanswered } = this.props
+    const { question, handleChange, answers, unanswered, checkRequiredAnswers } = this.props
     const { questionText, _id: questionId, options, helperText, isRequired } = question
     return (
       <React.Fragment>
@@ -27,6 +27,7 @@ export default class CheckboxInput extends Component {
                     id={uniqueId}
                     name={questionId}
                     onChange={handleChange}
+                    onBlur={checkRequiredAnswers}
                     checked={answers[questionId] && answers[questionId].includes(option)}
                   />
                   <span className="checkmark" />

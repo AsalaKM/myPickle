@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa dzeNFW"
+>
+  <div>
+    <p
+      className="sc-bwzfXH f4 mp-alert-color uTxCW"
+    >
+      Profile status: awaiting approval
+    </p>
+    <p
+      className="sc-htpNat f6 KtFsv"
+    >
+      Your profile has not been approved yet and will not be shown. You can still edit your profile and create blog posts. Please check again later.
+    </p>
+  </div>
+  <h2>
+    Welcome back
+    
+  </h2>
+  <button
+    className="sc-bxivhb eJshGa"
+    onClick={[Function]}
+  >
+     Edit Profile 
+  </button>
+  <br />
+  <button
+    className="sc-bxivhb eJshGa"
+    onClick={[Function]}
+  >
+     Create Blog Post 
+  </button>
+  <br />
+  <button
+    className="sc-bxivhb eJshGa"
+    onClick={[Function]}
+  >
+     Browse Profiles
+  </button>
+  <br />
+  <button
+    className="sc-bxivhb eJshGa"
+    onClick={[Function]}
+  >
+    Browse Blog Posts
+  </button>
+  <br />
+</div>
+`;

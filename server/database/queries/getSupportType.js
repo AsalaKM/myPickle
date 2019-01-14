@@ -8,12 +8,17 @@ const getSupportType = async dataObj => {
   })
   // find support type answer coming from request object
   const supportTypeAnswer = dataObj[supportTypeQuestion._id]
+
+  console.log(supportTypeAnswer)
   // check if answer is therapist or other
-  if (supportTypeAnswer !== "Qualified therapy or counselling service") {
-    const supportTypeElement = await SupportType.findOne({ type: "General" })
+  if (
+    supportTypeAnswer === "Qualified therapy or counselling service" ||
+    supportTypeAnswer.includes("Qualified therapy or counselling service")
+  ) {
+    const supportTypeElement = await SupportType.findOne({ type: "Therapist" })
     return supportTypeElement._id
   }
-  const supportTypeElement = await SupportType.findOne({ type: "Therapist" })
+  const supportTypeElement = await SupportType.findOne({ type: "General" })
   return supportTypeElement._id
 }
 

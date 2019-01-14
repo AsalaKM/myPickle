@@ -13,7 +13,7 @@ export const EditContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   padding: 1rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
 `
 
 export const Button = styled(Link)`

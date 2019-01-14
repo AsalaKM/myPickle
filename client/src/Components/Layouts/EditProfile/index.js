@@ -14,8 +14,6 @@ import eyeIcon from "../../../assets/images/remove_red_eye.svg"
 class EditProfile extends Component {
   render() {
     const { profileId } = this.props
-    console.log(profileId)
-
     return (
       <EditContainer>
         <Header>

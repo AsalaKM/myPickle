@@ -56,15 +56,21 @@ class BrowseProfiles extends Component {
           {profiles
             .filter((e, index) => index < 4)
             .map(profile => {
-              const { organisation, wellnessType, avatarURL, profileID } = profile
+              console.log(profile)
+
+              const { organisation, wellnessType, avatarURL, profileID, approved } = profile
               return (
-                <Profile
-                  key={Math.random()}
-                  organisation={organisation}
-                  wellnessType={wellnessType}
-                  avatar={avatarURL}
-                  profileID={profileID}
-                />
+                <div>
+                  {approved && (
+                    <Profile
+                      key={Math.random()}
+                      organisation={organisation}
+                      wellnessType={wellnessType}
+                      avatar={avatarURL}
+                      profileID={profileID}
+                    />
+                  )}
+                </div>
               )
             })}
           <Container>

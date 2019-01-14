@@ -1,13 +1,14 @@
-const User = require("../models/User")
 const bcrypt = require("bcryptjs")
+const User = require("../models/User")
 
-const registerUser = (name, email, phone, password) =>
+const registerUser = (name, email, phone, password, admin) =>
   new Promise((resolve, reject) => {
     const newUser = new User({
       name,
       email,
       phone,
       password,
+      admin,
     })
 
     bcrypt.genSalt(10, (err, salt) => {

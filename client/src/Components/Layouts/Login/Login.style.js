@@ -26,8 +26,9 @@ export const Input = styled.input`
 `
 
 export const Logo = styled.img`
-  width: 120px;
-  height: 180px;
+  width: 114px;
+  margin-top: 26px;
+  height: 192px;
 `
 
 export const Title = styled.h2`

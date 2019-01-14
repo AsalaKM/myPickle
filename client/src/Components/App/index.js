@@ -7,7 +7,7 @@ import setAuthToken from "../../Utils/setAuthToken"
 
 // import layouts
 import history from "../../history"
-import PageNotFound from "../Layouts/PageNotFound/index"
+import { Error404, Error500 } from "../Layouts/PageNotFound/index"
 import Register from "../Layouts/Register/index"
 import Login from "../Layouts/Login"
 import FirstTimeLogin from "../Layouts/FirstTimeLogin/FirstTimeLogin"
@@ -155,7 +155,8 @@ class App extends Component {
             />
 
             {/* Final route for pages they don't find */}
-            <Route component={PageNotFound} />
+            <Route path="/500" component={Error500} />
+            <Route component={Error404} />
           </Switch>
         </div>
       </Router>

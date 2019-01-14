@@ -78,7 +78,7 @@ class FirstTimeLogin extends Component {
         ).then(value => {
           switch (value) {
             case "skip": {
-              window.location.href = "/profile"
+              window.location.href = "/dashboard"
               break
             }
 

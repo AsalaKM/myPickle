@@ -16,7 +16,7 @@ const Line = styled.span`
 `
 const Button = styled.div`
   background: var(--white);
-  radius: 3px;
+  border-radius: 3px;
   size: 14px;
   color: #656565;
   border: var(--black);
@@ -36,6 +36,20 @@ const Button = styled.div`
     border-color: #003557;
     background-color: #fff;
   }
+  &.navmenu-usr-btn-logout {
+    width: 100%;
+    color: red;
+    background-color: var(--white);
+    padding: 5px;
+    font-size: ${sizes.l};
+    outline: none;
+    border: none !important;
+    &:hover {
+      color: var(--primary);
+      transform: none !important;
+      border-color: none !important;
+    }
+  }
 `
 const BurgerButton = props => {
   return (
@@ -52,7 +66,7 @@ const Logo = styled.img.attrs({ src: img })`
   height: 45px;
   margin-right: 7px;
 `
-const LogoBox = styled.div`
+const LogoBox = styled(Link)`
   width: 45%;
   height: 100%;
   display: flex;
@@ -60,6 +74,8 @@ const LogoBox = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Gosmick Sans", sans-serif;
+  text-decoration: none;
+  color: var(--black);
 `
 const ColoredWrapper = styled(Wrapper)`
   background-color: white;
@@ -77,8 +93,9 @@ const MenuLink = styled(Link)`
   color: var(--black);
   background-color: var(--white);
   padding: 5px;
-  font-size: ${sizes.xl};
+  font-size: ${sizes.l};
   text-decoration: none;
+  line-height: 1.5;
   &:active {
     color: var(--primary);
   }
@@ -97,12 +114,12 @@ const MenuItem = styled.li`
 `
 const MenuList = styled.ul`
   width: 100%;
+  }
 `
 const MenuSlider = styled.div`
   display: inline-block;
   &.show {
     transform: translate3d(0vw, 0, 0);
-    overflow: hidden;
   }
   &.hide {
     transform: translate3d(-100vw, 0, 0);
@@ -129,6 +146,19 @@ const MenuSlider = styled.div`
     cursor: pointer;
   }
 `
+const DropdownHeader = styled.div`
+  position: relative;
+  padding: 5px 0;
+  .dropdown-header-arrow {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    fill: var(--primary);
+    cursor: pointer;
+  }
+`
 
 export {
   Button,
@@ -140,4 +170,5 @@ export {
   MenuSlider,
   MenuItem,
   MenuList,
+  DropdownHeader,
 }

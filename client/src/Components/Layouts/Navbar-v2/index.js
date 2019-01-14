@@ -23,9 +23,18 @@ class Navbar extends Component {
   toggleMenu = () => {
     this.setState({ isActive: !this.state.isActive })
   }
+  toggleDropdown = () => {
+    const { dropDownActive } = this.state
+
+    this.setState({ dropDownActive: !dropDownActive })
+  }
   handleMouseDown = e => {
     this.toggleMenu()
     e.stopPropagation()
+  }
+  logout = () => {
+    localStorage.removeItem("jwtToken")
+    window.location.href = "/"
   }
   render() {
     const theme = {
@@ -34,7 +43,7 @@ class Navbar extends Component {
       background: "white",
     }
     const Empty = { width: "10%" }
-    const { isActive, userName } = this.state
+    const { isActive, userName, dropDownActive } = this.state
     const { isAuthenticated, user } = this.props
     const userAuthData = {
       isAuthenticated,
@@ -49,8 +58,8 @@ class Navbar extends Component {
             ) : (
               <BurgerButton toggleMenu={this.handleMouseDown} />
             )}
-            <LogoBox>
-              myPickle
+            <LogoBox to="/">
+              MYPICKLE
               <Logo />
             </LogoBox>
             <BlockBox theme={Empty} />
@@ -60,6 +69,9 @@ class Navbar extends Component {
             handleMouseDown={this.handleMouseDown}
             userAuthData={userAuthData}
             userName={userName}
+            dropDownActive={dropDownActive}
+            toggleDropdown={this.toggleDropdown}
+            logout={this.logout}
           />
         </Container>
       </ColoredWrapper>

@@ -59,6 +59,7 @@ export const Avatar = styled.img`
   width: 100px;
   border-radius: 100px;
   margin-top: 23px;
+  object-fit: cover;
 `
 
 export const Informations = styled.div`

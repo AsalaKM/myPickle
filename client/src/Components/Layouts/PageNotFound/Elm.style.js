@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Error = styled.div`
   width: 75%;
@@ -8,7 +9,6 @@ const Error = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px 2px 3px #000000;
   margin: 25px auto;
   .error-logo {
     width: 100%;
@@ -30,4 +30,14 @@ const Massege = styled.p`
   line-height: 1.5;
   color: var(--black);
 `
-export { Error, Title, Massege }
+const HomeLink = styled(Link)`
+  margin-top: 1rem;
+  text-decoration: none;
+  color: var(--primary);
+
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export { Error, Title, Massege, HomeLink }

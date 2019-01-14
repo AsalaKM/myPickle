@@ -89,7 +89,7 @@ const buildProfileQuestions = async () => {
         "Activities",
         "Other",
       ],
-      inputType: "radio",
+      inputType: "checkbox",
       isRequired: true,
       section: "Basic Info",
     },

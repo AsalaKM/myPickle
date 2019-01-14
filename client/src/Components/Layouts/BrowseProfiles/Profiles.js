@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import axios from "axios"
 import {
   Box,
   Container,
@@ -13,11 +13,14 @@ import {
   Arrow,
 } from "./BrowseProfiles.style"
 
+import { ApprovalButton, DisapprovalButton } from "../../Common/Buttons"
+
 import history from "../../../history"
 
 class Profile extends Component {
   render() {
-    const { organisation, wellnessType, avatar, profileID } = this.props
+    const { organisation, wellnessType, avatar, profileID, adminStatus, approved } = this.props
+    console.log(this.props)
 
     const checkAvatar = () =>
       avatar ? (
@@ -26,14 +29,30 @@ class Profile extends Component {
         <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )
 
+    const handleApproval = () => {
+      axios
+        .post(`/approve/${profileID}`, { approved: approved })
+        .then(result => window.location.reload())
+        .catch(err => console.log(err))
+    }
+
+    const checkApproval = () => {
+      if (approved) {
+        return <DisapprovalButton onClick={handleApproval}>disapprove</DisapprovalButton>
+      } else {
+        return <ApprovalButton onClick={handleApproval}>approve</ApprovalButton>
+      }
+    }
+
     const viewProfile = e => {
       e.preventDefault()
-      history.push(`profile/${profileID}`)
+      history.push(`/profile/${profileID}`)
     }
 
     return (
       <Box>
-        <Link onClick={viewProfile}>
+        {/* only render defined props --> prevent crash */}
+        {organisation && wellnessType && (
           <Container>
             <Avatar>{checkAvatar()}</Avatar>
             <DetailsOne>
@@ -43,10 +62,13 @@ class Profile extends Component {
               })}
             </DetailsOne>
             <DetailsTwo>
-              <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+              <Link onClick={viewProfile}>
+                <Arrow src={require("../../../assets/images/arrow.svg")} alt="arrow" />
+              </Link>
             </DetailsTwo>
+            {adminStatus && checkApproval()}
           </Container>
-        </Link>
+        )}
       </Box>
     )
   }

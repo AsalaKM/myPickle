@@ -13,6 +13,7 @@ import eyeIcon from "../../../assets/images/remove_red_eye.svg"
 
 class EditProfile extends Component {
   render() {
+    const { profileId } = this.props
     return (
       <EditContainer>
         <Header>
@@ -38,7 +39,7 @@ class EditProfile extends Component {
           </LeftButton>
           <RightButton to={`/edit-profile/social-media`}>Social</RightButton>
         </TwoButton>
-        <ProfileContainer to={`/profile`}>
+        <ProfileContainer to={`/profile/${profileId}`}>
           <img src={eyeIcon} alt="eye-icon" />
           View profile
         </ProfileContainer>

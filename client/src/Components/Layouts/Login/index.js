@@ -5,6 +5,7 @@ import setAuthToken from "../../../Utils/setAuthToken"
 
 import home from "../../../assets/images/home.svg"
 import logo from "../../../assets/images/logo.jpg"
+// import logo from "../../../assets/images/logo.svg"
 
 import {
   LoginPage,

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import img from "../../../assets/images/pickle_logo.png"
+import img from "../../../assets/images/logo.jpeg"
 
 const Container = styled.div`
   display: flex;
@@ -13,9 +13,10 @@ const Container = styled.div`
 
 const Logo = styled.div`
   display: flex;
-  margin: auto;
-  width: 139px;
-  height: 174px;
+  margin: 0 auto;
+  margin-top: 55px;
+  width: 100px;
+  height: 160px;
   background: url(${img}) no-repeat;
   background-size: cover;
 `
@@ -31,7 +32,7 @@ const Paragraph = styled.p.attrs({
   className: "mp-black-color",
 })`
   text-align: center;
-  font-weight: 100;
+  font-weight: 80;
 `
 
 const TextLink = styled(Link).attrs({
@@ -53,8 +54,9 @@ const Button = styled(Link).attrs({
   display: flex
   line-height: 35px;
   margin: 5px 5px;
-  border-radius: 7px;
-  border-style: solid
+  border-radius: 5px;
+  border-style: solid;
+  border-width:2px;
   text-decoration: none;
   padding: 12px;
   font-weight: 100;

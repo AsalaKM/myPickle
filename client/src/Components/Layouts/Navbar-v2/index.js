@@ -50,7 +50,7 @@ class Navbar extends Component {
               <BurgerButton toggleMenu={this.handleMouseDown} />
             )}
             <LogoBox>
-              MYPICKLE
+              myPickle
               <Logo />
             </LogoBox>
             <BlockBox theme={Empty} />

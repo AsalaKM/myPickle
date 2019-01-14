@@ -1,5 +1,6 @@
 // creates User and initial profile
 const express = require("express")
+
 const router = express.Router()
 
 // load queries
@@ -15,7 +16,7 @@ router.post("/", async (req, res) => {
   // get support type id (either therapist or general)
   const supportTypeID = await getSupportType(req.body).catch(err => res.status(400).json(err))
   // register a new user
-  const newUser = await registerUser(name, email, phone, password).catch(err => {
+  const newUser = await registerUser(name, email, phone, password, false).catch(err => {
     res.status(400).json(err)
   })
   console.log(newUser)

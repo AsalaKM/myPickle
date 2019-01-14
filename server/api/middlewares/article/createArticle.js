@@ -3,6 +3,9 @@ const storeArticle = require("../../../database/queries/storeArticle")
 
 const createArticle = async (req, res) => {
   const { title, categoriesSelected, text } = req.body
+  if (!req.files) {
+    return res.status(406).json({ msg: "Oops!! please select an Image" })
+  }
   const profileID = req.user.profileId
   const { image } = req.files
   const fileType = image.mimetype
@@ -31,7 +34,7 @@ const createArticle = async (req, res) => {
       const newArticle = await storeArticle(article)
       return res.status(201).json(newArticle)
     } catch (error) {
-      return res.status(400).json({ error })
+      return res.status(400).json({ msg: error })
     }
   }
   return res.status(406).json({ msg: "the file you uploaded is not image" })

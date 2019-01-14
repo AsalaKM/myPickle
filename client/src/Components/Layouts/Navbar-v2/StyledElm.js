@@ -128,4 +128,14 @@ const MenuSlider = styled.div`
   }
 `
 
-export { BurgerButton, Logo, LogoBox, ColoredWrapper, MenuLink, MenuSlider, MenuItem, MenuList }
+export {
+  Button,
+  BurgerButton,
+  Logo,
+  LogoBox,
+  ColoredWrapper,
+  MenuLink,
+  MenuSlider,
+  MenuItem,
+  MenuList,
+}

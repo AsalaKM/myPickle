@@ -11,6 +11,9 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  .form-control {
+    width: 100%;
+  }
 `
 const Input = styled.input`
   width: 100%;
@@ -63,19 +66,17 @@ const TextArea = styled.textarea.attrs({
   margin-top: 5px;
   padding: 0.78571429em 1em;
   background: #fff;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid ${props => props.border || "rgba(34, 36, 38, 0.15)"};
   outline: 0;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
   line-height: 1.2857;
-  &.border-color {
-    border: 1px solid rgba(34, 36, 38, 0.15);
-  }
   resize: vertical;
 `
-const Text = styled.p`
+const AlertMsg = styled.span`
+  width: 100%;
   font-family: "Raleway", sans-serif;
-  color: ${props => props.color || "#4d4d4d"};
+  color: ${props => props.active && "red"};
 `
 const Button = styled.button`
   width: 300px;
@@ -91,4 +92,4 @@ const Button = styled.button`
   border: none;
 `
 
-export { Form, Input, Label, Title, TextArea, Text, Button }
+export { Form, Input, Label, Title, TextArea, AlertMsg, Button }

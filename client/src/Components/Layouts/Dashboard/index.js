@@ -7,6 +7,7 @@ class Dashboard extends Component {
   state = {
     name: "",
     loaded: false,
+    login: false,
     approved: null,
   }
 
@@ -20,6 +21,7 @@ class Dashboard extends Component {
           name: `, ${firstName}`,
           loaded: true,
           approved: result.data,
+          login: true,
         })
       })
     } else {
@@ -42,8 +44,14 @@ class Dashboard extends Component {
     this.props.history.push("/postarticles")
   }
 
+  logout = () => {
+    localStorage.removeItem("jwtToken")
+    window.location.href = "/"
+  }
+
   render() {
-    const { loaded, name, approved } = this.state
+    const { loaded, name, approved, login } = this.state
+    const { logout } = this
 
     if (!loaded) {
       return <h1>Loading your details...</h1>
@@ -70,8 +78,7 @@ class Dashboard extends Component {
         <br />
         <Button onClick={this.browsePosts}>Browse Blog Posts</Button>
         <br />
-
-        <Logout>Logout</Logout>
+        {login ? <Logout onClick={logout}>Logout</Logout> : null}
       </Container>
     )
   }

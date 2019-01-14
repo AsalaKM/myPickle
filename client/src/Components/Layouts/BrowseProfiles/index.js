@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Profile from "./Profiles"
-import { Profiles } from "./BrowseProfiles.style"
+import jwt_decode from "jwt-decode"
 
 import axios from "axios"
 
@@ -8,6 +8,7 @@ class BrowseProfiles extends Component {
   state = {
     profiles: null,
     loaded: false,
+    admin: false,
   }
 
   componentDidMount() {
@@ -16,31 +17,74 @@ class BrowseProfiles extends Component {
       .get("/profiles")
       .then(result => this.setState({ profiles: result.data, loaded: true }))
       .catch(err => console.log(err))
+
+    // check user
+    if (localStorage.jwtToken) {
+      const decoded = jwt_decode(localStorage.jwtToken)
+      const name = decoded.name
+      this.checkAmin(name)
+    }
+  }
+
+  checkAmin = name => {
+    if (name === "Admin") {
+      this.setState({
+        admin: true,
+      })
+    }
+  }
+
+  renderProfiles = profiles => {
+    const { admin } = this.state
+    return (
+      <React.Fragment>
+        {profiles.map(profile => {
+          const { organisation, wellnessType, avatarURL, profileID, approved } = profile
+          if (admin) {
+            return (
+              <div>
+                <Profile
+                  key={Math.random()}
+                  organisation={organisation}
+                  wellnessType={wellnessType}
+                  avatar={avatarURL}
+                  profileID={profileID}
+                  adminStatus={this.state.admin}
+                  approved={approved}
+                />
+              </div>
+            )
+          } else {
+            return (
+              <div>
+                {approved && (
+                  <Profile
+                    key={Math.random()}
+                    organisation={organisation}
+                    wellnessType={wellnessType}
+                    avatar={avatarURL}
+                    profileID={profileID}
+                    adminStatus={this.state.admin}
+                    approved={approved}
+                  />
+                )}
+              </div>
+            )
+          }
+        })}
+      </React.Fragment>
+    )
   }
 
   render() {
     const { loaded, profiles } = this.state
     if (!loaded) {
       return <div>loading...</div>
-    } else if (profiles.length === 0) {
+    }
+    if (profiles.length === 0) {
       return <div>currently there are no profiles</div>
     } else {
-      return (
-        <Profiles>
-          {profiles.map(profile => {
-            const { organisation, wellnessType, avatarURL, profileID } = profile
-            return (
-              <Profile
-                key={Math.random()}
-                organisation={organisation}
-                wellnessType={wellnessType}
-                avatar={avatarURL}
-                profileID={profileID}
-              />
-            )
-          })}
-        </Profiles>
-      )
+      return <div>{this.renderProfiles(profiles)}</div>
     }
   }
 }

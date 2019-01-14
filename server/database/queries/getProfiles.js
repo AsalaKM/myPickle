@@ -10,7 +10,7 @@ const getProfiles = async () => {
   // get all profiles
   const profiles = await Profile.find({})
   // create profile ID array
-  const profileIDs = await profiles.map(e => e._id)
+  const profileIDs = await profiles.map(e => ({ id: e._id, approved: e.approved }))
 
   // find wellnessQuestion ID
   const wellnessQuestion = await ProfileQuestion.findOne({
@@ -33,11 +33,13 @@ const getProfiles = async () => {
   // loop over profileIDs array
   for (let i = 0; i < profileIDs.length; i++) {
     // get all answers of each ID
-    const profileAnswers = await ProfileAnswer.find({ profile: profileIDs[i] })
+    const profileAnswers = await ProfileAnswer.find({ profile: profileIDs[i].id })
     // create profileObj for each ID
     const profileObj = {}
     // insert profileID for each entry
-    profileObj.profileID = profileIDs[i]
+    profileObj.profileID = profileIDs[i].id
+    // insert approved status
+    profileObj.approved = profileIDs[i].approved
     // loop over profileAnswers
     for (let k = 0; k < profileAnswers.length; k++) {
       // insert name answer
@@ -57,6 +59,8 @@ const getProfiles = async () => {
     })
     profileArray.push(profileObj)
   }
+  console.log(profileArray)
+
   return profileArray
 }
 

@@ -42,7 +42,11 @@ const AddressField = styled(TextField)`
   }
 `
 
-const FileField = styled(CommonStyles)``
+const FileField = styled(CommonStyles)`
+  input[type="file"] {
+    width: 100%;
+  }
+`
 
 const DropdownField = styled(CommonStyles)`
   .dropdown__control {
@@ -102,7 +106,7 @@ const RadioField = styled(CommonStyles)`
 
         border-radius: 50%;
         background-color: white;
-      } 
+      }
     }
 
     .checkmark {

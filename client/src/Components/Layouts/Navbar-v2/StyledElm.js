@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Wrapper } from "../../Generic-helpers/layoutpack"
-import img from "../../../assets/pickle_logo.svg"
+import img from "../../../assets/images/logo.jpeg"
 import { Link } from "react-router-dom"
 import { sizes } from "../../Generic-helpers/variables"
 
@@ -63,7 +63,8 @@ const BurgerButton = props => {
 const Logo = styled.img.attrs({ src: img })`
   display: flex;
   width: 20%;
-  height: 75px;
+  height: 45px;
+  margin-right: 7px;
 `
 const LogoBox = styled(Link)`
   width: 45%;
@@ -72,6 +73,7 @@ const LogoBox = styled(Link)`
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
+  font-family: "Gosmick Sans", sans-serif;
   text-decoration: none;
   color: var(--black);
 `

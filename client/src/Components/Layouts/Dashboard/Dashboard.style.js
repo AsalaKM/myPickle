@@ -6,8 +6,14 @@ export const Container = styled.div`
   height: 470px;
   width: 80%;
   margin: 0 auto;
-  margin-top: 100px;
 `
+export const Headline = styled.p.attrs({
+  className: "f4 mp-alert-color",
+})``
+
+export const Text = styled.p.attrs({
+  className: "f6",
+})``
 
 export const Button = styled.button`
   height: 50px;

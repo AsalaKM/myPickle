@@ -10,6 +10,7 @@ import TextInput from "../../Common/Questions/TextInput"
 import RadioInput from "../../Common/Questions/RadioInput"
 import FileUploadInput from "../../Common/Questions/FileUploadInput"
 import TextFieldInput from "../../Common/Questions/TextFieldInput"
+import CheckboxInput from "../../Common/Questions/CheckboxInput"
 
 export default class RegisterStepThree extends React.Component {
   componentDidMount() {
@@ -85,6 +86,19 @@ export default class RegisterStepThree extends React.Component {
                 checkRequiredAnswers={checkRequiredAnswers}
                 imageUpload={imageUpload}
                 validateInput={validateInput}
+              />
+            ))}
+          {basicInfoQuestions
+            .filter(question => question.inputType === "checkbox")
+            .map((question, index) => (
+              <CheckboxInput
+                key={index}
+                question={question}
+                handleChange={handleChange}
+                checkRequiredAnswers={checkRequiredAnswers}
+                validateInput={validateInput}
+                answers={answers}
+                unanswered={unanswered}
               />
             ))}
         </Answers>

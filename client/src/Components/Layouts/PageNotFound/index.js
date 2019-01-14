@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Wrapper } from "../../Generic-helpers/layoutpack"
-import { Error, Title, Massege } from "./Elm.style"
+import { Error, Title, Massege, HomeLink } from "./Elm.style"
 import { ReactComponent as Logo } from "../../../assets/pickle_logo.svg"
 
 const Error404 = () => (
@@ -11,7 +11,10 @@ const Error404 = () => (
         <Title>
           4<span>0</span>4
         </Title>
-        <Massege>This is not the page you are looking for</Massege>
+        <Massege>Sorry, we can't find the page you are looking for</Massege>
+        <HomeLink to={"/"}>
+          <h3>Return home</h3>
+        </HomeLink>
       </Error>
     </Container>
   </Wrapper>
@@ -24,7 +27,10 @@ const Error500 = () => (
         <Title>
           Oops!! <span>5</span>00
         </Title>
-        <Massege>look like somthing went wrong</Massege>
+        <Massege>Sorry, looks like somthing went wrong!</Massege>
+        <HomeLink to={"/"}>
+          <h3>Return home</h3>
+        </HomeLink>
       </Error>
     </Container>
   </Wrapper>

@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 matches snapshot 1`] = `
+<div
+  className="sc-bwzfXH jwfMIB"
+>
+  <div
+    className="sc-bdVaJa ccpsQN"
+  >
+    <div
+      className="sc-bxivhb dKkUBg"
+    >
+      <svg
+        className="error-logo"
+      >
+        pickle_logo.svg
+      </svg>
+      <h1
+        className="sc-ifAKCX byHice"
+      >
+        4
+        <span>
+          0
+        </span>
+        4
+      </h1>
+      <p
+        className="sc-EHOje hJIuCB"
+      >
+        Sorry, we can't find the page you are looking for
+      </p>
+      <a
+        className="sc-bZQynM JyOBu"
+        href="/"
+        onClick={[Function]}
+      >
+        <h3>
+          Return home
+        </h3>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`500 matches snapshot 1`] = `
+<div
+  className="sc-bwzfXH jwfMIB"
+>
+  <div
+    className="sc-bdVaJa ccpsQN"
+  >
+    <div
+      className="sc-bxivhb dKkUBg"
+    >
+      <svg
+        className="error-logo"
+      >
+        pickle_logo.svg
+      </svg>
+      <h1
+        className="sc-ifAKCX byHice"
+      >
+        Oops!! 
+        <span>
+          5
+        </span>
+        00
+      </h1>
+      <p
+        className="sc-EHOje hJIuCB"
+      >
+        Sorry, looks like somthing went wrong!
+      </p>
+      <a
+        className="sc-bZQynM JyOBu"
+        href="/"
+        onClick={[Function]}
+      >
+        <h3>
+          Return home
+        </h3>
+      </a>
+    </div>
+  </div>
+</div>
+`;

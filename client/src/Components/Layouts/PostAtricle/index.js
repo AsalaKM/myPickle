@@ -28,9 +28,9 @@ class PostArticle extends Component {
   }
 
   async componentDidMount() {
+    const { profileId, history } = this.props
+    const { article } = this.state
     try {
-      const { profileId } = this.props
-      const { article } = this.state
       const success = await axios.get("/categories")
       const type = Object.prototype.toString
         .call(success.data)
@@ -46,7 +46,7 @@ class PostArticle extends Component {
       }
       this.setState({ article: { ...article, profileId } })
     } catch (error) {
-      console.log(error)
+      history.push("/500")
     }
   }
   handleChange = event => {

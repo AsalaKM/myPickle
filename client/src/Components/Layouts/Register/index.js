@@ -237,6 +237,7 @@ class Register extends Component {
 
       requiredQs.forEach(item => {
         if (!answerState[item] || answerState[item].length < 1) {
+          console.log("answer", item)
           if (!newUnanswered.includes(item)) newUnanswered.push(item)
           counter += 1
         }

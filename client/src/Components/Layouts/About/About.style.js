@@ -11,6 +11,10 @@ export const MyPikle = styled.h2`
   color: var(--primary);
 `
 
+export const List = styled.li.attrs({
+  className: "list f5 pl0",
+})``
+
 export const Text = styled.div`
   text-align: center;
   margin-bottom: 3rem;

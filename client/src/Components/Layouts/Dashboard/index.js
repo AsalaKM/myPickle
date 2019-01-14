@@ -1,12 +1,13 @@
 import React, { Component } from "react"
-import { Button, Container, Logout } from "./Dashboard.style"
-
+import { Button, Container, Logout, Headline, Text } from "./Dashboard.style"
+import axios from "axios"
 import jwt_decode from "jwt-decode"
 
 class Dashboard extends Component {
   state = {
     name: "",
     loaded: false,
+    approved: null,
   }
 
   componentDidMount() {
@@ -14,9 +15,12 @@ class Dashboard extends Component {
       const decoded = jwt_decode(localStorage.jwtToken)
       const name = decoded.name
       const firstName = name.split(" ")[0]
-      this.setState({
-        name: `, ${firstName}`,
-        loaded: true,
+      axios.get("/check-approval").then(result => {
+        this.setState({
+          name: `, ${firstName}`,
+          loaded: true,
+          approved: result.data,
+        })
       })
     } else {
       this.setState({
@@ -29,17 +33,17 @@ class Dashboard extends Component {
     this.props.history.push("/edit-profile")
   }
   browseProfiles = () => {
-    this.props.history.push("/")
+    this.props.history.push("/profiles")
   }
   browsePosts = () => {
-    this.props.history.push("/")
+    this.props.history.push("/blog")
   }
   createPlog = () => {
-    this.props.history.push("/")
+    this.props.history.push("/postarticles")
   }
 
   render() {
-    const { loaded, name } = this.state
+    const { loaded, name, approved } = this.state
 
     if (!loaded) {
       return <h1>Loading your details...</h1>
@@ -47,6 +51,15 @@ class Dashboard extends Component {
 
     return (
       <Container>
+        {!approved && (
+          <div>
+            <Headline>Profile status: awaiting approval</Headline>
+            <Text>
+              Your profile has not been approved yet and will not be shown. You can still edit your
+              profile and create blog posts. Please check again later.
+            </Text>
+          </div>
+        )}
         <h2>Welcome back{name}</h2>
 
         <Button onClick={this.editProfile}> Edit Profile </Button>

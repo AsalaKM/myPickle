@@ -36,7 +36,8 @@ const buildDb = async () => {
     "Josephine Doeski",
     "josephine@the-therapists.co.uk",
     "004407566683",
-    "123456"
+    "123456",
+    false
   )
 
   console.log("new user", therapist)
@@ -45,7 +46,8 @@ const buildDb = async () => {
     "Henry Poundinger",
     "henry@financial-advice.co.uk",
     "004407565473",
-    "123456"
+    "123456",
+    false
   )
 
   console.log("new user", generalUser)

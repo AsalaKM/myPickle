@@ -1,5 +1,5 @@
 import React from "react"
-import { MenuLink, MenuItem, MenuList, Button } from "./StyledElm"
+import { MenuLink, MenuItem, MenuList } from "./StyledElm"
 
 const DropDownList = props => {
   return (

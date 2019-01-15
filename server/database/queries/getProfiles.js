@@ -55,11 +55,12 @@ const getProfiles = async () => {
     // insert imageURL
     getImageArr.forEach(imageURL => {
       const profileID = imageURL.split("-")[0]
-      profileIDs[i] == profileID ? (profileObj.avatarURL = imageURL) : ""
+
+      profileIDs[i].id == profileID ? (profileObj.avatarURL = imageURL) : ""
     })
+
     profileArray.push(profileObj)
   }
-  console.log(profileArray)
 
   return profileArray
 }

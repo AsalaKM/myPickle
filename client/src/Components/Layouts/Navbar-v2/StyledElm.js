@@ -26,7 +26,7 @@ const Button = styled.div`
   justify-content: center;
   &:hover {
     span {
-      background-color: #96d9ff;
+      background-color: var(--primary);
     }
     cursor: pointer;
     border-color: #003557;

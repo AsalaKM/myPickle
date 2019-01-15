@@ -62,7 +62,7 @@ const BurgerButton = props => {
 }
 const Logo = styled.img.attrs({ src: img })`
   width: auto;
-  height: 45px;
+  height: 2rem;
   margin-right: 7px;
 `
 const LogoBox = styled(Link)`

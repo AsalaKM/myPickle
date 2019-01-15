@@ -77,7 +77,7 @@ const LogoBox = styled(Link)`
   color: var(--black);
 `
 const ColoredWrapper = styled(Wrapper)`
-  background-color: white;
+  background-color: var(--lightwhite);
   box-shadow: ${props => props.shadow || ""};
   &.active {
     position: fixed;
@@ -126,7 +126,7 @@ const MenuSlider = styled.div`
   transition: transform 0.5s ease;
   width: 100vw;
   height: 100vh;
-  background-color: var(--white);
+  background-color: var(--lightwhite);
   position: fixed;
   top: 50px;
   left: 0;

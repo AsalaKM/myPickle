@@ -40,7 +40,7 @@ class Navbar extends Component {
     const theme = {
       child: "display:flex;flex: 0 1 50px;align-items: center; justify-content: space-between;",
       width: "100%",
-      background: "white",
+      background: "var(--lightwhite)",
     }
     const Empty = { width: "10%" }
     const { isActive, userName, dropDownActive } = this.state

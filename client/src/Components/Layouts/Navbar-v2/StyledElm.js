@@ -61,8 +61,7 @@ const BurgerButton = props => {
   )
 }
 const Logo = styled.img.attrs({ src: img })`
-  display: flex;
-  width: 20%;
+  width: auto;
   height: 45px;
   margin-right: 7px;
 `

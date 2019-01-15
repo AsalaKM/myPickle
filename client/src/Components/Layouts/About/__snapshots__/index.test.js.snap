@@ -10,25 +10,36 @@ exports[`AboutmyPikle matches snapshot 1`] = `
     About My Pickle
   </h2>
   <div
-    className="sc-htpNat jYXKdb"
+    className="sc-bxivhb IZFgF"
   >
-    <h5>
-      WE STAND FOR WORLDWIDE WELLNESS
-    </h5>
-    <h5>
-      We want people to be better supported.
-    </h5>
-    <h5>
-      We care about access to services.
-    </h5>
+    <h4>
+      We make finding support easy. As an independent nonprofit community support network, we offer:
+    </h4>
+    <h4>
+      We make finding support easy.
+    </h4>
+    <h4>
+      As an independent nonprofit community support network, we offer:
+    </h4>
+    <li
+      className="sc-htpNat list f5 pl0 KtFsv"
+    >
+      <p>
+        Simplicity – Expertly designed for great user experience
+      </p>
+      <p>
+        Community – Share & find advice & stories
+      </p>
+      <p>
+        Variety – Search public, private, charities & community services
+      </p>
+    </li>
+    <h4>
+      And we give back. All our profits are donated to improve access to services.
+    </h4>
   </div>
-  <p
-    className="sc-bxivhb giIgxL"
-  >
-    Find health & wellbeing support that’s right for you. Be supported and have a better life. Feel happier, stronger and healthier.
-  </p>
   <a
-    className="sc-ifAKCX gxTOri"
+    className="sc-EHOje cwviPy"
     href="mailto:cat@mypickle.org"
   >
     Click here to contact us and find out more

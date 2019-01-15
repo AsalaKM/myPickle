@@ -11,13 +11,18 @@ const Box = styled.main.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "dt center bb b--black-05 pb2 mt3 mp-bg-white br2 shadow-5",
+  className: "dt center bb b--black-05 pa2 mt3 mp-bg-lightwhite br2 shadow-5",
 })`
   width: 95%;
+  display: flex;
+  align-items: center;
 `
 const Avatar = styled.div.attrs({
-  className: "dtc w3 w3-ns v-mid",
-})``
+  className: "dtc w3 w3-ns v-mid flex",
+})`
+  align-items: center;
+  height: 100%;
+`
 
 const ProfilePhoto = styled.img.attrs({
   className: "b--black-10 db br-100 w3 w3-ns h3 h3-ns",
@@ -28,7 +33,9 @@ const ProfilePhoto = styled.img.attrs({
 
 const DetailsOne = styled.div.attrs({
   className: "dtc v-mid pl3",
-})``
+})`
+  width: 80%;
+`
 
 const Name = styled.h2.attrs({ className: "f5 f5-ns fw6 lh-title mp-black-color mv0" })``
 
@@ -38,9 +45,7 @@ const List = styled.p.attrs({
 
 const DetailsTwo = styled.div.attrs({
   className: "fr",
-})`
-  margin-top: 15px;
-`
+})``
 
 const Link = styled.a.attrs({
   className: "pointer",

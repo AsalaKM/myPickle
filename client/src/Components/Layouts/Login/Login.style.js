@@ -5,13 +5,7 @@ export const LoginPage = styled.div`
   flex-direction: column;
   width: 80%;
   margin: 0 auto;
-  margin-top: 125px;
-`
-export const HomeIcon = styled.img`
-  height: 30px;
-  width: 60px;
-  margin-top: -99px;
-  margin-left: -30px;
+  padding-top: 1rem;
 `
 
 export const Input = styled.input`
@@ -20,15 +14,14 @@ export const Input = styled.input`
   border: none;
   border-radius: 9px;
   background: #f8fbfa;
-  font-size: 18px;
   text-align: center;
   display: block;
 `
 
 export const Logo = styled.img`
-  width: 114px;
+  width: auto;
   margin-top: 26px;
-  height: 185px;
+  height: 8rem;
 `
 
 export const Title = styled.h2`

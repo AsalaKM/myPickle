@@ -3,7 +3,6 @@ import axios from "axios"
 
 import setAuthToken from "../../../Utils/setAuthToken"
 
-import home from "../../../assets/images/home.svg"
 import logo from "../../../assets/images/logo.jpeg"
 
 import {
@@ -98,11 +97,9 @@ class FirstTimeLogin extends Component {
     const { errors } = this.state
     return (
       <LoginPage>
-        <HomeIcon src={home} onClick={this.clickHome} />
-
         <Branding>
           <Logo src={logo} />
-          <Title>myPikle</Title>
+          <Title>myPickle</Title>
         </Branding>
 
         <form>

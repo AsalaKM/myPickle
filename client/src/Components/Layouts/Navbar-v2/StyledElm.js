@@ -137,7 +137,7 @@ const MenuSlider = styled.div`
   justify-content: center;
   .nav-index-offset {
     position: absolute;
-    right: 40px;
+    right: 2rem;
     top: 0;
     width: ${sizes.xxxxl};
     height: ${sizes.xxxxl};

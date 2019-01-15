@@ -34,9 +34,9 @@ const NavMenu = props => {
               <DropdownHeader onClick={toggleDropdown}>
                 <MenuLink to={`/profile/${user}`}>{structUserName}</MenuLink>
                 {dropDownActive ? (
-                  <ArrowDown className="dropdown-header-arrow" />
-                ) : (
                   <ArrowUp className="dropdown-header-arrow" />
+                ) : (
+                  <ArrowDown className="dropdown-header-arrow" />
                 )}
               </DropdownHeader>
               {dropDownActive ? (

@@ -2,7 +2,7 @@
 
 exports[`Dashboard matches snapshot 1`] = `
 <div
-  className="sc-bdVaJa dzeNFW"
+  className="sc-bdVaJa hDeqGg"
 >
   <div>
     <p
@@ -21,28 +21,28 @@ exports[`Dashboard matches snapshot 1`] = `
     
   </h2>
   <button
-    className="sc-bxivhb eJshGa"
+    className="sc-bxivhb dQULsJ"
     onClick={[Function]}
   >
      Edit Profile 
   </button>
   <br />
   <button
-    className="sc-bxivhb eJshGa"
+    className="sc-bxivhb dQULsJ"
     onClick={[Function]}
   >
      Create Blog Post 
   </button>
   <br />
   <button
-    className="sc-bxivhb eJshGa"
+    className="sc-bxivhb dQULsJ"
     onClick={[Function]}
   >
      Browse Profiles
   </button>
   <br />
   <button
-    className="sc-bxivhb eJshGa"
+    className="sc-bxivhb dQULsJ"
     onClick={[Function]}
   >
     Browse Blog Posts

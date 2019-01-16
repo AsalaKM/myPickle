@@ -26,7 +26,7 @@ const Button = styled.div`
   justify-content: center;
   &:hover {
     span {
-      background-color: #96d9ff;
+      background-color: var(--primary);
     }
     cursor: pointer;
     border-color: #003557;
@@ -61,9 +61,8 @@ const BurgerButton = props => {
   )
 }
 const Logo = styled.img.attrs({ src: img })`
-  display: flex;
-  width: 20%;
-  height: 45px;
+  width: auto;
+  height: 2rem;
   margin-right: 7px;
 `
 const LogoBox = styled(Link)`
@@ -78,7 +77,7 @@ const LogoBox = styled(Link)`
   color: var(--black);
 `
 const ColoredWrapper = styled(Wrapper)`
-  background-color: white;
+  background-color: var(--lightwhite);
   box-shadow: ${props => props.shadow || ""};
   &.active {
     position: fixed;
@@ -127,7 +126,7 @@ const MenuSlider = styled.div`
   transition: transform 0.5s ease;
   width: 100vw;
   height: 100vh;
-  background-color: var(--white);
+  background-color: var(--lightwhite);
   position: fixed;
   top: 50px;
   left: 0;
@@ -138,7 +137,7 @@ const MenuSlider = styled.div`
   justify-content: center;
   .nav-index-offset {
     position: absolute;
-    right: 40px;
+    right: 2rem;
     top: 0;
     width: ${sizes.xxxxl};
     height: ${sizes.xxxxl};

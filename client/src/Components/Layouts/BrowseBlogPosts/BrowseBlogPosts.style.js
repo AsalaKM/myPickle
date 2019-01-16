@@ -6,7 +6,7 @@ const Box = styled.section.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "bt bb b--black-10 pv3 ph2 ph0-l shadow-5 br2",
+  className: "bt bb b--black-10 pv3 ph2 ph0-l  br2",
 })``
 
 const Article = styled(Link).attrs({

@@ -10,7 +10,7 @@ export const AllButton = styled(Link).attrs({
 })``
 
 export const Box = styled.div.attrs({})`
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
 `
 
 export const Container = styled.div.attrs({

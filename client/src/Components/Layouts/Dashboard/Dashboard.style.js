@@ -3,9 +3,13 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 470px;
-  width: 80%;
+  padding: 1rem;
   margin: 0 auto;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
 `
 export const Headline = styled.p.attrs({
   className: "f4 mp-alert-color",
@@ -24,7 +28,6 @@ export const Button = styled.button`
   border-color: #53dd6c;
   background: #f8fbfa;
   box-shadow: 1px 1px green;
-  font-size: 18px;
   cursor: pointer;
 `
 export const Logout = styled.button`
@@ -32,5 +35,7 @@ export const Logout = styled.button`
   width: 100%;
   border: none;
   border-radius: 5px;
-  background: #ff0022;
+  color: var(--alert);
+  background-color: var(--white);
+  cursor: pointer;
 `

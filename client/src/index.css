@@ -38,6 +38,7 @@ html {
   --secondary: #f7f161;
   --alert: #ff0022;
   --white: #f8fbfa;
+  --lightwhite: #fcfdfc;
   --black: #2a2b2e;
   --gray: #e8ede9;
 }
@@ -102,6 +103,10 @@ html {
 
 .mp-bg-white {
   background-color: #f8fbfa;
+}
+
+.mp-bg-lightwhite {
+  background-color: #fcfdfc;
 }
 
 .mp-bg-black {

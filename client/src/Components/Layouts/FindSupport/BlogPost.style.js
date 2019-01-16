@@ -5,9 +5,10 @@ const Box = styled.section.attrs({
 })``
 
 const Container = styled.article.attrs({
-  className: "dt center bb b--black-05 pb2 mt2 mp-bg-white shadow-5",
+  className: "dt center bb b--black-05 pa2 mt2 mp-bg-lightwhite shadow-5 flex",
 })`
   width: 95%;
+  align-items: center;
 `
 
 const Link = styled.a.attrs({
@@ -16,12 +17,14 @@ const Link = styled.a.attrs({
 
 const DetailsOne = styled.div.attrs({
   className: "dtc v-mid pl3",
-})``
+})`
+  width: 70%;
+`
 
 const DetailsTwo = styled.div.attrs({
-  className: "fr",
+  className: "fr flex",
 })`
-  margin-bottom: 20px;
+  align-items: center;
 `
 
 const ImageContainer = styled.div.attrs({

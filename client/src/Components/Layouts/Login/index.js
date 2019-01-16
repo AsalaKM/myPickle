@@ -3,19 +3,9 @@ import axios from "axios"
 
 import setAuthToken from "../../../Utils/setAuthToken"
 
-import home from "../../../assets/images/home.svg"
 import logo from "../../../assets/images/logo.jpeg"
 
-import {
-  LoginPage,
-  HomeIcon,
-  Logo,
-  Title,
-  Input,
-  Button,
-  RegisterLink,
-  Branding,
-} from "./Login.style.js"
+import { LoginPage, Logo, Title, Input, Button, RegisterLink, Branding } from "./Login.style.js"
 
 import { ErrorMsg } from "../../Common/Questions/Questions.style"
 
@@ -63,11 +53,9 @@ class Login extends Component {
     const { errors } = this.state
     return (
       <LoginPage>
-        <HomeIcon src={home} onClick={this.clickHome} />
-
         <Branding>
           <Logo src={logo} />
-          <Title>myPikle</Title>
+          <Title>myPickle</Title>
         </Branding>
 
         <form>

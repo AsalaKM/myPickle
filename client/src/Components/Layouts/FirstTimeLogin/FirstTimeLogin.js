@@ -5,16 +5,7 @@ import setAuthToken from "../../../Utils/setAuthToken"
 
 import logo from "../../../assets/images/logo.jpeg"
 
-import {
-  LoginPage,
-  HomeIcon,
-  Logo,
-  Title,
-  Input,
-  Button,
-  RegisterLink,
-  Branding,
-} from "../Login/Login.style"
+import { LoginPage, Logo, Title, Input, Button, RegisterLink, Branding } from "../Login/Login.style"
 
 import { ErrorMsg } from "../../Common/Questions/Questions.style"
 import swal from "sweetalert"

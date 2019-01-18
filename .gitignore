@@ -72,5 +72,9 @@ server/assetes
 package-lock.json
 
 # profile pictures
-server/assets/profile-images/
-server/assets/articleupload/
+server/assets/profile-images/*.jpg
+server/assets/profile-images/*.jpeg
+server/assets/profile-images/*.png
+server/assets/articleupload/*.jpg
+server/assets/articleupload/*.jpeg
+server/assets/articleupload/*.png

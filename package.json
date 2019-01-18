@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "toClient": "cd client",
-    "start": "cd server && npm i && npm run start",
     "build": "cd client && npm run build",
     "dev:servStart": "cd server && npm run dev:start",
     "dev:viewStart": "cd client && npm start",
@@ -23,7 +22,7 @@
     "build:dummyCatArticle": "node server/database/article_category_data.js",
     "build:allDummyData": "npm run build:dummyData && npm run profileQuestions && npm run build:dummyCatArticle",
     "netlify:build": "npm run client:init && npm run build",
-    "heroku:prebuild": "npm run server:init"
+    "heroku:postbuild": "npm run server:init && cd server && npm run start"
   },
   "repository": {
     "type": "git",

@@ -28,10 +28,10 @@ class Register extends Component {
 
   componentDidMount() {
     axios
-      .get(`${process.env.REACT_APP_HOST}/get-register-questions`)
+      .get(`${process.env.REACT_APP_HOST || ""}/get-register-questions`)
       .then(res => this.setState({ registerQuestions: res.data }))
       .catch(err => console.log("message", err))
-    console.log("PROCESS", process.env.HOST)
+    console.log("PROCESS", process.env.REACT_APP_HOST)
     window.scrollTo(0, 0)
   }
 
@@ -252,7 +252,7 @@ class Register extends Component {
     }
 
     axios
-      .post(`${process.env.HOST || ""}/register-user`, registerAnswers)
+      .post(`${process.env.REACT_APP_HOST || ""}/register-user`, registerAnswers)
       .then(profileId => {
         if (Object.keys(file).length > 0) {
           this.uploadImage(profileId.data)
@@ -272,7 +272,9 @@ class Register extends Component {
     for (let key in file) {
       formData.append(profileId, file[key])
     }
-    axios.post(`${process.env.HOST || ""}/upload-image`, formData).catch(err => console.log(err))
+    axios
+      .post(`${process.env.REACT_APP_HOST || ""}/upload-image`, formData)
+      .catch(err => console.log(err))
   }
 
   render() {

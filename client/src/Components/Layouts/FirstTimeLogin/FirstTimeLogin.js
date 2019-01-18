@@ -36,7 +36,7 @@ class FirstTimeLogin extends Component {
     const user = { email: email, password: password }
 
     axios
-      .post(`${process.env.HOST || ""}/login-user`, user)
+      .post(`${process.env.REACT_APP_HOST || ""}/login-user`, user)
       .then(async res => {
         // get the token from the response
         const { token } = res.data

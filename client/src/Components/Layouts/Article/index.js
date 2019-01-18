@@ -26,7 +26,7 @@ class BlogPost extends Component {
     const articleId = pathName.split("/")[2]
 
     axios
-      .get(`${process.env.HOST || ""}/get-blog-post/${articleId}`)
+      .get(`${process.env.REACT_APP_HOST || ""}/get-blog-post/${articleId}`)
       .then(articleDetails =>
         this.setState({
           article: articleDetails.data.article,

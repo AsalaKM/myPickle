@@ -26,7 +26,7 @@ class TargetClients extends Component {
       setAuthToken(localStorage.jwtToken)
       // get questions for the support-details section
       axios
-        .get(`${process.env.HOST || ""}/get-questions/target-clients`)
+        .get(`${process.env.REACT_APP_HOST || ""}/get-questions/target-clients`)
         .then(questions =>
           this.setState({
             targetQuestions: questions.data,
@@ -35,7 +35,7 @@ class TargetClients extends Component {
         .catch(err => console.log(err))
 
       axios
-        .get(`${process.env.HOST || ""}/edit-profile/target-clients`)
+        .get(`${process.env.REACT_APP_HOST || ""}/edit-profile/target-clients`)
         .then(answers =>
           this.setState({
             targetAnswers: answers.data.questions,

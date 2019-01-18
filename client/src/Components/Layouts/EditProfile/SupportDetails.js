@@ -28,13 +28,13 @@ export default class SupportDetails extends Component {
       setAuthToken(localStorage.jwtToken)
       // get questions for the support-details section
       axios
-        .get(`${process.env.HOST || ""}/get-questions/support-details`)
+        .get(`${process.env.REACT_APP_HOST || ""}/get-questions/support-details`)
         .then(questions => this.setState({ supportQuestions: questions.data }))
         .catch(err => console.log(err))
 
       // get the answers the user has provided for this section
       axios
-        .get(`${process.env.HOST || ""}/edit-profile/support-details`)
+        .get(`${process.env.REACT_APP_HOST || ""}/edit-profile/support-details`)
         .then(supportDetails =>
           this.setState({
             supportAnswers: supportDetails.data.questions,

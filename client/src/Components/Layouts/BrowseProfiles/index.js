@@ -14,7 +14,7 @@ class BrowseProfiles extends Component {
   componentDidMount() {
     // get profiles
     axios
-      .get(`${process.env.HOST || ""}/profiles`)
+      .get(`${process.env.REACT_APP_HOST || ""}/profiles`)
       .then(result => this.setState({ profiles: result.data, loaded: true }))
       .catch(err => console.log(err))
 

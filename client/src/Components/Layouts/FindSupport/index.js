@@ -23,9 +23,9 @@ class BrowseProfiles extends Component {
 
   componentDidMount() {
     // get profiles
-    const getProfiles = () => axios.get(`${process.env.HOST || ""}/profiles`)
+    const getProfiles = () => axios.get(`${process.env.REACT_APP_HOST || ""}/profiles`)
     // get blogPosts
-    const getBlogPosts = () => axios.get(`${process.env.HOST || ""}/blog`)
+    const getBlogPosts = () => axios.get(`${process.env.REACT_APP_HOST || ""}/blog`)
 
     axios
       .all([getProfiles(), getBlogPosts()])

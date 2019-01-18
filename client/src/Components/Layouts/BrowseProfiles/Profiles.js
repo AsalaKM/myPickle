@@ -31,7 +31,7 @@ class Profile extends Component {
 
     const handleApproval = () => {
       axios
-        .post(`${process.env.HOST || ""}/approve/${profileID}`, { approved: approved })
+        .post(`${process.env.REACT_APP_HOST || ""}/approve/${profileID}`, { approved: approved })
         .then(result => window.location.reload())
         .catch(err => console.log(err))
     }

@@ -30,13 +30,13 @@ export default class BasicInfo extends Component {
 
       // get questions for the support-details section
       axios
-        .get(`${process.env.HOST || ""}/get-questions/basic-info`)
+        .get(`${process.env.REACT_APP_HOST || ""}/get-questions/basic-info`)
         .then(questions => this.setState({ basicQuestions: questions.data }))
         .catch(err => console.log(err))
 
       // get the answers the user has provided for this section
       axios
-        .get(`${process.env.HOST || ""}/edit-profile/basic-info`)
+        .get(`${process.env.REACT_APP_HOST || ""}/edit-profile/basic-info`)
         .then(basicDetails => {
           console.log("data", basicDetails.data)
           this.setState({

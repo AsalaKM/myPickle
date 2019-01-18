@@ -27,13 +27,13 @@ export default class SocialMedia extends Component {
       setAuthToken(localStorage.jwtToken)
       // get questions for the support-details section
       axios
-        .get(`${process.env.HOST || ""}/get-questions/social-media`)
+        .get(`${process.env.REACT_APP_HOST || ""}/get-questions/social-media`)
         .then(questions => this.setState({ socialQuestions: questions.data }))
         .catch(err => console.log(err))
 
       // get the answers the user has provided for this section
       axios
-        .get(`${process.env.HOST || ""}/edit-profile/social-media`)
+        .get(`${process.env.REACT_APP_HOST || ""}/edit-profile/social-media`)
         .then(socialDetails =>
           this.setState({
             socialAnswers: socialDetails.data.questions,

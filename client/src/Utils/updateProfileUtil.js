@@ -3,7 +3,7 @@ import swal from "sweetalert"
 
 const updateProfileUtil = (history, answerState, sectionType) => {
   axios
-    .post(`${process.env.HOST || ""}/update-profile/${sectionType}`, answerState)
+    .post(`${process.env.REACT_APP_HOST || ""}/update-profile/${sectionType}`, answerState)
     .then(result => {
       swal("Done!", "Thanks for updating your profile!", "success").then(() =>
         history.push("/edit-profile")

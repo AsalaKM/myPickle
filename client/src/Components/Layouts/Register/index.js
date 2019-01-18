@@ -28,10 +28,10 @@ class Register extends Component {
 
   componentDidMount() {
     axios
-      .get(`https://mypickle.herokuapp.com/get-register-questions`)
+      .get(`${process.env.HOST}/get-register-questions`)
       .then(res => this.setState({ registerQuestions: res.data }))
       .catch(err => console.log("message", err))
-
+    console.log("PROCESS", process.env.HOST)
     window.scrollTo(0, 0)
   }
 

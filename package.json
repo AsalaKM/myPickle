@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "toClient": "cd client",
-    "start": "cd server && npm run start",
+    "start": "cd server && npm i && npm run start",
     "build": "cd client && npm run build",
     "dev:servStart": "cd server && npm run dev:start",
     "dev:viewStart": "cd client && npm start",

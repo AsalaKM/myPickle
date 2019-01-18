@@ -51,4 +51,14 @@ app
   .use("/static", express.static(path.join(__dirname, "./assets/articleupload")))
   .use(controllers)
 
+if (process.env.NODE_ENV === "production") {
+  // serve any static files
+  app.use(express.static(path.join(__dirname, "../client/build")))
+
+  // Handle React routing, resturn all requests to React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"))
+  })
+}
+
 module.exports = app

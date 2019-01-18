@@ -122,7 +122,7 @@ $ npm run dev:both
 ```
 Wait for a `compiled successfully` message.
 
-#### 9. Have Fun
+#### 8. Have Fun
 The webapp should now be running on
 ```localhost:3000```
 Now you can play with the code all you like 🎉

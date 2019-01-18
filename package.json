@@ -21,7 +21,8 @@
     "profileQuestions": "node server/database/buildProfileQuestions.js",
     "build:dummyData": "node server/database/dummy_data_build.js",
     "build:dummyCatArticle": "node server/database/article_category_data.js",
-    "build:allDummyData": "npm run build:dummyData && npm run profileQuestions && npm run build:dummyCatArticle"
+    "build:allDummyData": "npm run build:dummyData && npm run profileQuestions && npm run build:dummyCatArticle",
+    "netlify:build": "npm run client:init && npm run build"
   },
   "repository": {
     "type": "git",

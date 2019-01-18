@@ -39,7 +39,7 @@ class SinflePforile extends Component {
     const id = windowPath.split("/")[2]
 
     axios
-      .get(`/single-profile/${id}`)
+      .get(`${process.env.HOST || ""}/single-profile/${id}`)
       .then(result => {
         const questionsAndAnswers = Object.keys(result.data).map(
           (element, index) =>

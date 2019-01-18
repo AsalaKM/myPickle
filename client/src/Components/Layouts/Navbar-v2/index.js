@@ -14,7 +14,7 @@ class Navbar extends Component {
   async componentDidMount() {
     const { isAuthenticated, user } = this.props
     if (isAuthenticated) {
-      const response = await axios.get(`/users/${user}`)
+      const response = await axios.get(`${process.env.HOST || ""}/users/${user}`)
       this.setState({ userName: response.data })
     } else {
       this.setState({ userName: "Guest" })

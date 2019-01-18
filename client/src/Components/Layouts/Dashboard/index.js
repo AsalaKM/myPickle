@@ -16,7 +16,7 @@ class Dashboard extends Component {
       const decoded = jwt_decode(localStorage.jwtToken)
       const name = decoded.name
       const firstName = name.split(" ")[0]
-      axios.get("/check-approval").then(result => {
+      axios.get(`${process.env.HOST || ""}/check-approval`).then(result => {
         this.setState({
           name: `, ${firstName}`,
           loaded: true,

@@ -28,13 +28,13 @@ export default class BookingDetails extends Component {
       setAuthToken(localStorage.jwtToken)
       // get questions for the support-details section
       axios
-        .get(`/get-questions/availability-booking`)
+        .get(`${process.env.HOST || ""}/get-questions/availability-booking`)
         .then(questions => this.setState({ bookingQuestions: questions.data }))
         .catch(err => console.log(err))
 
       // get the answers the user has provided for this section
       axios
-        .get(`/edit-profile/availability-booking`)
+        .get(`${process.env.HOST || ""}/edit-profile/availability-booking`)
         .then(supportDetails =>
           this.setState({
             bookingAnswers: supportDetails.data.questions,

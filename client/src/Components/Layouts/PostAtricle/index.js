@@ -31,7 +31,7 @@ class PostArticle extends Component {
     const { profileId, history } = this.props
     const { article } = this.state
     try {
-      const success = await axios.get("/categories")
+      const success = await axios.get(`${process.env.HOST || ""}/categories`)
       const type = Object.prototype.toString
         .call(success.data)
         .split(" ")[1]
@@ -89,7 +89,7 @@ class PostArticle extends Component {
         }
       }
       try {
-        const success = await axios.post("/articles/", formData)
+        const success = await axios.post(`${process.env.HOST || ""}/articles/`, formData)
         const { url } = success.data.createdArticele
         swal(
           "Great!",

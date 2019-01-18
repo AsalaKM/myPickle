@@ -13,7 +13,7 @@ class BrowseBlogPosts extends Component {
   componentDidMount() {
     // get profiles
     axios
-      .get("/blog")
+      .get(`${process.env.HOST || ""}/blog`)
       .then(result => this.setState({ blogPosts: result.data, loaded: true }))
       .catch(err => console.log(err))
   }

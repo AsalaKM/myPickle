@@ -75,6 +75,6 @@ package-lock.json
 server/assets/profile-images/*.jpg
 server/assets/profile-images/*.jpeg
 server/assets/profile-images/*.png
-server/assets/articleupload/*.jpg
-server/assets/articleupload/*.jpeg
-server/assets/articleupload/*.png
+# server/assets/articleupload/*.jpg
+# server/assets/articleupload/*.jpeg
+# server/assets/articleupload/*.png

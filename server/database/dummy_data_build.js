@@ -80,20 +80,20 @@ const buildDb = async () => {
   // get support type of general users
   const supportTypeGeneral = await SupportType.findOne({ type: "General" })
 
-  // create new profile for user with support type therapist and user_id as foreign keys
+  // create new profile for user with support type therapist and userid as foreign keys
   const therapistProfile = new Profile({
-    supportType: supportTypeTherapist._id,
-    user: therapist._id,
+    supportType: supportTypeTherapist.id,
+    user: therapist.id,
     approved: true,
   })
 
   await therapistProfile.save()
   // console.log("therapist profile added")
 
-  // create new profile for user with support type general and user_id as foreign keys
+  // create new profile for user with support type general and userid as foreign keys
   const generalProfile = new Profile({
-    supportType: supportTypeGeneral._id,
-    user: generalUser._id,
+    supportType: supportTypeGeneral.id,
+    user: generalUser.id,
     approved: true,
   })
 
@@ -101,36 +101,36 @@ const buildDb = async () => {
   // console.log("general profile added")
 
   // get all profile questions related to therapist type
-  const therapistQuestions = await ProfileQuestion.find({ supportType: supportTypeTherapist._id })
+  const therapistQuestions = await ProfileQuestion.find({ supportType: supportTypeTherapist.id })
   // get all profile questions related to general type
-  const generalQuestions = await ProfileQuestion.find({ supportType: supportTypeGeneral._id })
+  const generalQuestions = await ProfileQuestion.find({ supportType: supportTypeGeneral.id })
 
   // create answers for therapist
   const therapistAnswers = await ProfileAnswer.insertMany([
     // ADMIN AREA ANSWERS
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[0]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[0].id,
       answer: ["Emotional", "Social", "Spiritual"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[1]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[1].id,
       answer: "The Therapists London",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[2]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[2].id,
       answer: { address: "66 Moaning Road", city: "London", postcode: "E5 0DW" },
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[3]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[3].id,
       answer: "JUWH: AKFAFD788, DAAD: 24FRHUW9, THAK: ASLW20401",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[4]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[4].id,
       answer: [
         "Qualified therapy or counselling service",
         "Guidance and advice",
@@ -139,63 +139,63 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[5]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[5].id,
       answer: "The Therapists London",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[6]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[6].id,
       answer: "private sector (for profit)",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[7]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[7].id,
       answer: "https://www.therapists-london.co.uk",
     },
     // profile picture to be dealt with later
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[8]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[8].id,
       answer: "",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[9]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[9].id,
       answer: "We would love to hear your story and offer individual support",
     },
     // END OF THE INITIAL REGISTRATION PROCESS
     // START OF SOCIAL SECTION
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[10]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[10].id,
       answer: "https://www.facebook.com/therapists-london",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[11]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[11].id,
       answer: "https://www.twitter.com/therapists-london",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[12]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[12].id,
       answer: "https://www.instagram.com/therapists-london",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[13]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[13].id,
       answer: "https://www.linkedin.com/therapists-london",
     },
     // END OF SOCIAL SECTION
     // START OF SUPPORT DETAILS
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[14]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[14].id,
       answer: "We are there for you",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[15]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[15].id,
       answer: [
         "Confidence",
         "Life challenges",
@@ -209,46 +209,46 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[16]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[16].id,
       answer: "For everyone who faces anxiety and stress and need emotional support",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[17]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[17].id,
       answer: ["Face to face & local", "Online e.g web chat", "Home visit"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[18]._id,
-      answer: "Other",
+      profile: therapistProfile.id,
+      question: generalQuestions[18].id,
+      answer: ["Other"],
     },
     // profile pic to be dealt with later
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[19]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[19].id,
       answer: "",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[20]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[20].id,
       answer: "https://www.therapist-unity.co.uk",
     },
     // END OF SUPPORT DETAILS SECTION
     // START OF AVAILABILITY AND BOOKING SECTION
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[21]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[21].id,
       answer: ["Local", "National", "Online"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[22]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[22].id,
       answer: "Paid",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[23]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[23].id,
       answer: {
         Monday: ["Morning", "Evening"],
         Tuesday: ["Morning", "Afternoon", "Evening"],
@@ -258,48 +258,48 @@ const buildDb = async () => {
       },
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[24]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[24].id,
       answer: "",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[25]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[25].id,
       answer: ["English", "Arabic"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[26]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[26].id,
       answer: "Please contact us via our website or directly via phone",
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[27]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[27].id,
       answer: ["All"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[28]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[28].id,
       answer: ["Individuals"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[29]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[29].id,
       answer: ["All – no preference"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[30]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[30].id,
       answer: ["Female", "Male"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[31]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[31].id,
       answer: ["All – no preference"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[32]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[32].id,
       answer: [
         "White Irish",
         "White Gypsy or Irish Traveller",
@@ -316,18 +316,18 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[33]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[33].id,
       answer: ["Christian", "Buddhist", "Hindu", "Jewish", "Muslim", "Sikh"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[34]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[34].id,
       answer: ["All – no preference"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[35]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[35].id,
       answer: [
         "Employed",
         "Unemployed (seeking work)",
@@ -336,8 +336,8 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[36]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[36].id,
       answer: [
         "Environment and agriculture",
         "Financial and insurance services",
@@ -356,8 +356,8 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[37]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[37].id,
       answer: [
         "Family without children",
         "Step family",
@@ -366,54 +366,54 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[38]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[38].id,
       answer: ["All – no preference"],
     },
     {
-      profile: therapistProfile._id,
-      question: generalQuestions[39]._id,
+      profile: therapistProfile.id,
+      question: generalQuestions[39].id,
       answer: ["Mental health problem(s)"],
     },
     // END OF TARGET CLIENT SECTION
     // START OF QUESTIONS SPECIFICALLY FOR THERAPISTS
     // START OF SUPPORT DETAILS
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[0]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[0].id,
       answer: "We are The Therapists for you in London.",
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[1]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[1].id,
       answer: "5",
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[2]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[2].id,
       answer: "Therapist Association, AFH231, London Therapist Unity",
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[3]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[3].id,
       answer: [
         "Emotional Therapist Qualification Certificate 2014 and 2018",
         "Feel Good Association Gold Medal",
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[4]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[4].id,
       answer: ["Family/marriage /systemic", "Feminist therapy", "Hypnotherapy"],
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[5]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[5].id,
       answer: "Head of Testing for My Pickle",
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[6]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[6].id,
       answer: [
         "Schizophrenia",
         "Seasonal affective disorder (SAD)",
@@ -422,13 +422,13 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[7]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[7].id,
       answer: "Over £150",
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[8]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[8].id,
       answer: [
         "Freedom Healthnet",
         "General & Medical",
@@ -440,8 +440,8 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: therapistProfile._id,
-      question: therapistQuestions[9]._id,
+      profile: therapistProfile.id,
+      question: therapistQuestions[9].id,
       answer: "6 weeks or over",
     },
   ])
@@ -450,88 +450,88 @@ const buildDb = async () => {
   const generalUserAnswers = await ProfileAnswer.insertMany([
     // ADMIN AREA ANSWERS
     {
-      profile: generalProfile._id,
-      question: generalQuestions[0]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[0].id,
       answer: ["Financial", "Emotional"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[1]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[1].id,
       answer: "Financial Advisers London Co",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[2]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[2].id,
       answer: { address: "66 Chelsea Lane", city: "London", postcode: "W28 93W" },
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[3]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[3].id,
       answer: "FAAF: 123456FD788, DAAD: 24DAW2599",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[4]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[4].id,
       answer: ["Financial support", "Guidance and advice"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[5]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[5].id,
       answer: "Financial Advisors London Co",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[6]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[6].id,
       answer: "private sector (for profit)",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[7]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[7].id,
       answer: "https://www.fa-london.co.uk",
     },
     // profile picture to be dealt with later
     {
-      profile: generalProfile._id,
-      question: generalQuestions[8]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[8].id,
       answer: "",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[9]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[9].id,
       answer: "We offer finacial advise to people in need. Effective,clear, low rates.",
     },
     // END OF THE INITIAL REGISTRATION PROCESS
     // START OF SOCIAL SECTION
     {
-      profile: generalProfile._id,
-      question: generalQuestions[10]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[10].id,
       answer: "https://www.facebook.com/fa-london-co",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[11]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[11].id,
       answer: "https://www.twitter.com/fa-london-co",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[12]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[12].id,
       answer: "https://www.instagram.com/fa-london-co",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[13]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[13].id,
       answer: "https://www.linkedin.com/fa-london-co",
     },
     // END OF SOCIAL SECTION
     // START OF SUPPORT DETAILS
     {
-      profile: generalProfile._id,
-      question: generalQuestions[14]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[14].id,
       answer: "financial advise: effective, for everyone",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[15]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[15].id,
       answer: [
         "Communication",
         "Life challenges",
@@ -540,48 +540,48 @@ const buildDb = async () => {
         "Education & Employability",
       ],
     },
-    {
-      profile: generalProfile._id,
-      question: generalQuestions[16]._id,
-      answer:
-        "For everyone in need and people who cannot afford to seek financial advice from standard financial consultants",
-    },
-    {
-      profile: generalProfile._id,
-      question: generalQuestions[17]._id,
-      answer: ["Face to face & local", "Online e.g web chat", "Home visit"],
-    },
-    {
-      profile: generalProfile._id,
-      question: generalQuestions[18]._id,
-      answer: "None",
-    },
+    // {
+    //   profile: generalProfile.id,
+    //   question: generalQuestions[16].id,
+    //   answer:
+    //     "For everyone in need and people who cannot afford to seek financial advice from standard financial consultants",
+    // },
+    // {
+    //   profile: generalProfile.id,
+    //   question: generalQuestions[17].id,
+    //   answer: ["Face to face & local", "Online e.g web chat", "Home visit"],
+    // },
+    // {
+    //   profile: generalProfile.id,
+    //   question: generalQuestions[18].id,
+    //   answer: "None",
+    // },
     // profile pic to be dealt with later
     {
-      profile: generalProfile._id,
-      question: generalQuestions[19]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[19].id,
       answer: "",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[20]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[20].id,
       answer: "https://www.finance-charities.co.uk",
     },
     // END OF SUPPORT DETAILS SECTION
     // START OF AVAILABILITY AND BOOKING SECTION
     {
-      profile: generalProfile._id,
-      question: generalQuestions[21]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[21].id,
       answer: ["Local", "National", "Online"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[22]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[22].id,
       answer: "Mix of free and paid",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[23]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[23].id,
       answer: {
         Monday: ["Morning", "Evening"],
         Tuesday: ["Morning", "Afternoon", "Evening"],
@@ -591,66 +591,66 @@ const buildDb = async () => {
       },
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[24]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[24].id,
       answer: "11-12-2034",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[25]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[25].id,
       answer: ["German", "English", "Arabic"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[26]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[26].id,
       answer: "Please contact us via our website or directly via phone",
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[27]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[27].id,
       answer: ["All"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[28]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[28].id,
       answer: ["Individuals", "Groups"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[29]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[29].id,
       answer: ["20-29", "30-29", "40-49", "50-59"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[30]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[30].id,
       answer: ["All – no preference"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[31]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[31].id,
       answer: ["All – no preference"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[32]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[32].id,
       answer: ["Indian", "Pakistani", "Bangladeshi", "African", "Caribbean", "Arab"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[33]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[33].id,
       answer: ["Buddhist", "Hindu", "Jewish", "Muslim", "Sikh"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[34]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[34].id,
       answer: [
         "Developmental e.g. downs syndrome, cerebral palsy",
         "Physical or sensory e.g. mobility, visual or hearing impairment",
       ],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[35]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[35].id,
       answer: [
         "Employed",
         "Unemployed (seeking work)",
@@ -659,8 +659,8 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[36]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[36].id,
       answer: [
         "Business, consulting and management",
         "Charity and voluntary work",
@@ -676,8 +676,8 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[37]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[37].id,
       answer: [
         "Family without children",
         "Step family",
@@ -686,13 +686,13 @@ const buildDb = async () => {
       ],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[38]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[38].id,
       answer: ["Single", "In a relationship", "Separated", "Divorced", "Widowed"],
     },
     {
-      profile: generalProfile._id,
-      question: generalQuestions[39]._id,
+      profile: generalProfile.id,
+      question: generalQuestions[39].id,
       answer: [
         "Cancer",
         "Chronic pain",
@@ -703,6 +703,9 @@ const buildDb = async () => {
       ],
     },
   ])
+
+  console.log("Qs", generalQuestions)
+  console.log("As", generalUserAnswers)
 
   // Check if questions and answers arrays are of the same length
   console.log("therapist questions length", therapistQuestions.length)

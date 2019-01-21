@@ -40,7 +40,10 @@ class BlogPost extends Component {
 
   checkProfilePicture = () =>
     this.state.profileImage ? (
-      <ProfilePhoto src={`/static/${this.state.profileImage}`} alt="profile" />
+      <ProfilePhoto
+        src={`${process.env.REACT_APP_HOST || ""}/static/${this.state.profileImage}`}
+        alt="profile"
+      />
     ) : (
       <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} alt="profile" />
     )

@@ -97,7 +97,7 @@ class SinflePforile extends Component {
 
   checkAvatar = () =>
     this.state.profileImage.length > 0 ? (
-      <Avatar src={`/static/${this.state.profileImage}`} />
+      <Avatar src={`${process.env.REACT_APP_HOST || ""}/static/${this.state.profileImage}`} />
     ) : (
       <Avatar src={require("../../../assets/images/logo_bw.jpg")} />
     )

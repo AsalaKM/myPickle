@@ -22,7 +22,7 @@ class Post extends Component {
     // checks if article contains image
     const checkPicture = () =>
       pictureURL ? (
-        <ArticlePhoto src={`/static/${pictureURL}`} />
+        <ArticlePhoto src={`${process.env.REACT_APP_HOST || ""}/static/${pictureURL}`} />
       ) : (
         <ArticlePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )

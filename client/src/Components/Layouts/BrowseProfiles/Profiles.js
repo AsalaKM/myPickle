@@ -24,7 +24,7 @@ class Profile extends Component {
 
     const checkAvatar = () =>
       avatar ? (
-        <ProfilePhoto src={`/static/${avatar}`} />
+        <ProfilePhoto src={`${process.env.REACT_APP_HOST || ""}/static/${avatar}`} />
       ) : (
         <ProfilePhoto src={require("../../../assets/images/logo_bw.jpg")} />
       )

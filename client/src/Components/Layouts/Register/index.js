@@ -156,11 +156,13 @@ class Register extends Component {
 
       // check the server to see if the email already exists
       else {
-        await axios.post("/check-email", { email: answerState.email }).catch(err => {
-          console.log("EMAIL", err.response.data)
-          this.setState({ serverErrors: err.response.data })
-          counter += 1
-        })
+        await axios
+          .post(`${process.env.REACT_APP_HOST || ""}/check-email`, { email: answerState.email })
+          .catch(err => {
+            console.log("EMAIL", err.response.data)
+            this.setState({ serverErrors: err.response.data })
+            counter += 1
+          })
       }
     }
     if (counter === 0) {

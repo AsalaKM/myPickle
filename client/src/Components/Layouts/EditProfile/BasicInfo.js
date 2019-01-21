@@ -119,7 +119,9 @@ export default class BasicInfo extends Component {
     for (let key in file) {
       formData.append(profileId, file[key])
     }
-    await axios.post("/upload-image", formData).catch(err => console.log(err))
+    await axios
+      .post(`${process.env.REACT_APP_HOST || ""}/upload-image`, formData)
+      .catch(err => console.log(err))
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Router, Route, Switch } from "react-router-dom"
+import axios from "axios"
 
 // set up authorization
 import jwt_decode from "jwt-decode"
@@ -37,6 +38,7 @@ class App extends Component {
     profileId: null,
     isAuthenticated: false,
     loaded: false,
+    heroku: false,
   }
 
   componentDidMount() {
@@ -54,9 +56,11 @@ class App extends Component {
         localStorage.removeItem("jwtToken")
         // remove from header
         setAuthToken(false)
+        this.callApi().catch(err => console.log(err))
         // reset state
         this.setState({ isAuthenticated: false, profileId: null, loaded: true })
       } else {
+        this.callApi().catch(err => console.log(err))
         // get the profile id from the token
         const profileId = decoded.profileId
         this.setState({
@@ -67,6 +71,8 @@ class App extends Component {
       }
     } else {
       // if there's no token then set state
+      // first make sure heroku/server is live
+      this.callApi().catch(err => console.log(err))
       this.setState({
         isAuthenticated: false,
         loaded: true,
@@ -74,10 +80,31 @@ class App extends Component {
     }
   }
 
+  // api call made to backend to make sure heroku is spun up
+  callApi = async () => {
+    this.calledTimes = 0
+    const response = await axios.get(`${process.env.REACT_APP_HOST || ""}/profiles`)
+    if (response.status !== 200) console.error(response)
+    // if no results received, try again (make max 3 calls)
+    if (response.data.length > 0) {
+      this.setState({ heroku: true })
+    } else if (this.calledTimes < 2) {
+      setTimeout(this.callApi, 5000)
+    }
+  }
+
   render() {
-    const { isAuthenticated, loaded, profileId } = this.state
+    const { isAuthenticated, loaded, profileId, heroku } = this.state
     // make sure component has mounted before loading
-    if (!loaded) return null
+    if (!loaded || !heroku)
+      return (
+        <React.Fragment>
+          <div className="pa5 flex flex-column justify-center items-center vh-100">
+            <img src={require("../../assets/images/logo.jpeg")} alt="logo" className="w4" />
+            <h1>Loading...</h1>
+          </div>
+        </React.Fragment>
+      )
     return (
       <Router history={history}>
         <div>

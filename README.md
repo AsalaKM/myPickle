@@ -10,7 +10,12 @@ Over the course of three workshops related to the Tech for Better Programme (TfB
 TfB supported the concept and helped designing a Minimum Viable Product (MVP) focussing on the most relevant features and needs presented by the product owner.
 
 ## About the MVP
-The app’s ambition is to create a proof-of-concept enabling the product owner to test the idea to create an Integrated Wellness Platform. The responsive web-app can be seen as a connector for people that are offering support and individuals looking for support. Support providers go through a sign-up process relating themselves to one or more dimensions of integrated wellness. An additional profile builder allows them to input further details such as support offerings, booking & availability and target clients. Secure authentication was managed to be set up on top of the initial planned scope meaning that each support provider can have their own unique log in, with all their data protected.
+#### Note:
+This is a Minimum Viable Product (MVP) which was designed and built over the course of 4 weeks (1 design sprint, user testing and 2 build sprints). In case the app will be developed further its important to mention that there needs to be further work on refactoring and testing the codebase. 
+
+The app’s ambition is to create a proof-of-concept enabling the product owner to test the idea to create an Integrated Wellness Platform. 
+
+The responsive web-app can be seen as a connector for people that are offering support and individuals looking for support. Support providers go through a sign-up process relating themselves to one or more dimensions of integrated wellness. An additional profile builder allows them to input further details such as support offerings, booking & availability and target clients. Secure authentication was managed to be set up on top of the initial planned scope meaning that each support provider can have their own unique log in, with all their data protected.
 
 Another main feature of the app is that registered support providers can create blog posts related to their fields of expertise. This should allow users to find out more about specific topics and offer advice. Blog posts as well as profiles are related to various data categories with the aim to eventually provide filter options enabling users to find information and support in an effective manner. Moreover a very basic CMS system was embedded. Before profile listings go live they have to be approved by the product owner. 
 
@@ -40,6 +45,25 @@ Core-sprint: set up project environment, create basic features (e.g. sign up pro
 
 January 7th-11th
 Core+-sprint: debugging, design features, image-upload, filter, cms-system
+
+## Future Sprints:
+Considering overall goals of the product, we thought it would also be useful to have a number of suggestions for what we would recommend for the most immediate future sprints, whether this would be with us or other developers:
+
+### Create more tests for codebase 
+As mentioned above, this is crucial to make the app future proof and avoid quickly racking up technical debt.
+Full user authentication
+We are very happy that we managed to build very secure authentication, which was a bonus feature for this sprint. However, we would want to make even more secure with password recovery to make it fully usable for users beyond the user testing you are doing next. 
+### Search filters
+Whilst we ran out of time on this sprint to push it live, we have started building the functionality for a filter based on wellness type. This can be finished and developed further with users being able to filter based on multiple factors (e.g. location, price)
+### User log in
+So we can start building in further interactions (e.g. messaging providers on the platform, liking content), we need to build a log in and profile set up for users for are looking for support
+### Content Management System
+We have built some initial content management functionality. This can be massively developed to include deleting profiles, emailing users, deleting articles etc. 
+### Content enhancement
+There is a lot more that can be done to make the platform ‘stickier’ for users - share function for articles on social media, upvoting/downvoting content, embedding video content for blog posts, commenting on blog posts, reviewing support providers.
+### SEO
+With this sort of platform, search engine optimisation is a crucial way to attract more users. We can look at optimising the content on the platform for this and include digital marketing features such as analytics and SEO frameworks. 
+
 
 ## Team
 My Pickle was the second application built within the TfB graduate program which can be seen as an ongoing effort to establish long-term relations between developers from London and Gaza in order to work on client projects in an agile way. 

@@ -23,6 +23,10 @@ Another main feature of the app is that registered support providers can create 
 
 As stated above what has been built to date is a MVP that will enable the product owner to do further user testing. 
 
+## Product Owner Testimonial
+“The brief was ambitious and complex but Joe and Simon helped break it down into clear components.  The amount of work put in over the festive season and what was produced in the time provided was incredible. The delivered app provides a great resource for talking donors through when seeking funding and a solid base to develop further. 
+The team in London and Gaza were really friendly and I hope to work with them again.“
+
 ![landing](https://user-images.githubusercontent.com/23721486/51394475-6480fb00-1b32-11e9-9426-6bfc0c568dec.png)
 
 ![findsupport](https://user-images.githubusercontent.com/23721486/51394474-6480fb00-1b32-11e9-9314-35dca6215a40.png)

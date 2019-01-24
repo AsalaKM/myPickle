@@ -10,8 +10,10 @@ Over the course of three workshops related to the Tech for Better Programme (TfB
 TfB supported the concept and helped designing a Minimum Viable Product (MVP) focussing on the most relevant features and needs presented by the product owner.
 
 ## About the MVP
+This current version of the app is a Minimum Viable Product (MVP) focussing on the most relevant features and needs. Working in agile software development it is important to constantly test products with users. MVPs can be taken out as proof-of-concepts challenging own pre-assumptions and to eventually improve digitalised ideas and needs.
+
 #### Note:
-This is a Minimum Viable Product (MVP) which was designed and built over the course of 4 weeks (1 design sprint, user testing and 2 build sprints). In case the app will be developed further its important to mention that there needs to be further work on refactoring and testing the codebase. 
+The MVP was designed and built over the course of 4 weeks (1 design sprint, user testing and 2 build sprints). In case the app will be developed further its important to mention that there needs to be further work on refactoring and testing the codebase. 
 
 The app’s ambition is to create a proof-of-concept enabling the product owner to test the idea to create an Integrated Wellness Platform. 
 
